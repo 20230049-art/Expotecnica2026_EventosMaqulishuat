@@ -11,14 +11,14 @@ using Vista.Utilidades;
 
 namespace Vista.IniciarSesion
 {
-    public partial class frmInicio : Form
+    public partial class frmSeleccionarPefil : Form
     {
-        public frmInicio()
+        public frmSeleccionarPefil()
         {
             InitializeComponent();
-
         }
 
+        //Cmbio de formularios 
         private Form activeForm = null;
         private void abrirFormulario(Form formularioAbrir)
         {
@@ -44,9 +44,14 @@ namespace Vista.IniciarSesion
             formularioAbrir.Show();
         }
 
-        private void tlpFondo_Click(object sender, EventArgs e)
+        private void btnSeleccionarGerente_Click_1(object sender, EventArgs e)
         {
-            abrirFormulario(new frmSeleccionarPefil());
+            abrirFormulario(new frmIniciarSesionGerente());
+        }
+
+        private void btnSeleccionarEmpleado_Click_1(object sender, EventArgs e)
+        {
+            abrirFormulario(new frmfrmIniciarSesionEmpleado());
         }
     }
 }
