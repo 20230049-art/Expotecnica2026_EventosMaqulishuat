@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.EmpleadoMenu;
 using Vista.Utilidades;
 
 namespace Vista.IniciarSesion
@@ -20,6 +21,37 @@ namespace Vista.IniciarSesion
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             this.Resize += (s, e) => AjustarTitulo();
             AjustarTitulo();
+
+            Redondeo.RedondearFig(panel1, 8);
+            Redondeo.RedondearFig(panlContraseña, 4);
+            Redondeo.RedondearFig(pnlUsuario, 4);
+            Redondeo.RedondearFig(btnIngresarEmpleado, 4);
+        }
+
+        //Cambio de formualrios
+        private Form activeForm = null;
+        private void abrirFormulario(Form formularioAbrir)
+        {
+            if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
+            {
+                return;
+            }
+
+            if (activeForm != null)
+            {
+                activeForm.Close();
+                pnlVistaIniciarEmpleado.Controls.Remove(activeForm);
+                activeForm.Dispose();
+            }
+
+            activeForm = formularioAbrir;
+            formularioAbrir.TopLevel = false;
+            formularioAbrir.FormBorderStyle = FormBorderStyle.None;
+            formularioAbrir.Dock = DockStyle.Fill;
+
+            pnlVistaIniciarEmpleado.Controls.Add(formularioAbrir);
+            formularioAbrir.BringToFront();
+            formularioAbrir.Show();
         }
 
         private void AjustarTitulo()
@@ -47,9 +79,48 @@ namespace Vista.IniciarSesion
             }
         }
 
-        private void lblTitulo_Click(object sender, EventArgs e)
+        private void btnIngresarEmpleado_Click(object sender, EventArgs e)
         {
-            
+        //    try
+        //    {
+        //        string nombreUsuario = txtNombreUsuario.Text;
+        //        string contrasena = txtContrasena.Text;
+
+        //        if (string.IsNullOrEmpty(nombreUsuario) || string.IsNullOrEmpty(contrasena))
+        //        {
+        //            MessageBox.Show("Por favor ingrese usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return;
+        //        }
+
+        //        Usuario EmpleadoUsuario = new Usuario();
+        //        Usuario EmpleadoValido = usuario.ValidarLoginEmpleado(nombreUsuario, contrasena);
+
+        //        if (EmpleadoValido != null)
+        //        {
+        //            if (EmpleadoValido.IdTipoUsuario == 2)
+        //            {
+        //                MessageBox.Show($"¡Bienvenido {EmpleadoValido.NombreUsuario}!", "Login exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //                int idEmpleado = EmpleadoValido.IdEmpleado.Value;
+
+        //                CuentaAbierta.IdEmpleado = idEmpleado;
+
+                        abrirFormulario(new frmEmpleadoMenu());
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Tipo de usuario no reconocido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
         }
     }
 }

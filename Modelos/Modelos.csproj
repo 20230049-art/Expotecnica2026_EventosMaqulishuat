@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Conexion_DB\ConexionDB.cs" />
     <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
