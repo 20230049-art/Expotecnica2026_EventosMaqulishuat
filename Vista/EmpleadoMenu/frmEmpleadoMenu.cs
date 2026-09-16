@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.ClientesEmpleado;
 using Vista.EmpleadoProducto;
+using Vista.EmpleadoServicios;
 using Vista.IniciarSesion;
 using Vista.Utilidades;
 
@@ -126,7 +127,7 @@ namespace Vista.EmpleadoMenu
 
         private void btnServicios_Click(object sender, EventArgs e)
         {
-           // abrirForm(new frmServicios());
+            abrirForm(new frmServicios());
             ActivarBoton(btnServicios);
         }
 

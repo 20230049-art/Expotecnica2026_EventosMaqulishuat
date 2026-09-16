@@ -34,9 +34,9 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.lblProductos = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flpProductos = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlPlantilla = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
@@ -61,8 +61,8 @@
             this.panel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.flpProductos.SuspendLayout();
             this.pnlPlantilla.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -115,7 +115,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel6.Controls.Add(this.pictureBox12, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
@@ -133,7 +133,7 @@
             // 
             this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox12.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox12.Location = new System.Drawing.Point(1682, 36);
+            this.pictureBox12.Location = new System.Drawing.Point(1669, 36);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(200, 79);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -145,37 +145,21 @@
             this.lblProductos.AutoSize = true;
             this.lblProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(57, 33);
+            this.lblProductos.Location = new System.Drawing.Point(56, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(666, 85);
+            this.lblProductos.Size = new System.Drawing.Size(654, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "PRODUCTOS";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.6659657F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.90511F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.4692388F));
-            this.tableLayoutPanel1.Controls.Add(this.flpProductos, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 171);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 98.87359F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.126408F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 799);
-            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel7.Controls.Add(this.txtBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(729, 36);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(716, 36);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -198,6 +182,22 @@
             this.txtBuscar.Text = "Buscar producto";
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged_1);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.6659657F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.90511F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.4692388F));
+            this.tableLayoutPanel1.Controls.Add(this.flpProductos, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 171);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 98.87359F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.126408F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 799);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
             // flpProductos
             // 
             this.flpProductos.AutoScroll = true;
@@ -206,7 +206,7 @@
             this.flpProductos.Location = new System.Drawing.Point(15, 3);
             this.flpProductos.Name = "flpProductos";
             this.flpProductos.Size = new System.Drawing.Size(1890, 784);
-            this.flpProductos.TabIndex = 1;
+            this.flpProductos.TabIndex = 0;
             // 
             // pnlPlantilla
             // 
@@ -227,8 +227,8 @@
             this.flpProductos.SetFlowBreak(this.pnlPlantilla, true);
             this.pnlPlantilla.Location = new System.Drawing.Point(3, 3);
             this.pnlPlantilla.Name = "pnlPlantilla";
-            this.pnlPlantilla.Size = new System.Drawing.Size(1845, 178);
-            this.pnlPlantilla.TabIndex = 14;
+            this.pnlPlantilla.Size = new System.Drawing.Size(1693, 178);
+            this.pnlPlantilla.TabIndex = 15;
             this.pnlPlantilla.Visible = false;
             // 
             // panel21
@@ -293,7 +293,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(53)))), ((int)(((byte)(39)))));
-            this.label17.Location = new System.Drawing.Point(1277, 26);
+            this.label17.Location = new System.Drawing.Point(1125, 26);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Padding = new System.Windows.Forms.Padding(0, 0, 0, 12);
@@ -350,7 +350,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(53)))), ((int)(((byte)(39)))));
-            this.label19.Location = new System.Drawing.Point(849, 26);
+            this.label19.Location = new System.Drawing.Point(697, 26);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Padding = new System.Windows.Forms.Padding(0, 0, 0, 12);
@@ -401,7 +401,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(53)))), ((int)(((byte)(39)))));
-            this.label22.Location = new System.Drawing.Point(226, 80);
+            this.label22.Location = new System.Drawing.Point(74, 80);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
@@ -416,7 +416,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(53)))), ((int)(((byte)(39)))));
-            this.label23.Location = new System.Drawing.Point(228, 38);
+            this.label23.Location = new System.Drawing.Point(76, 38);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Padding = new System.Windows.Forms.Padding(0, 0, 0, 12);
@@ -450,9 +450,9 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.flpProductos.ResumeLayout(false);
             this.pnlPlantilla.ResumeLayout(false);
             this.pnlPlantilla.PerformLayout();

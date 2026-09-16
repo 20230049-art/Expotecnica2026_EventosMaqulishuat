@@ -76,6 +76,36 @@
     <Compile Include="EmpleadoProducto\frmProductos.Designer.cs">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmpleadoServicios\frmServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServicios.Designer.cs">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoVentas\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoVentas\frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoVentas\frmCompraFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoVentas\frmCompraFinal.Designer.cs">
+      <DependentUpon>frmCompraFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoVentas\frmProductoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoVentas\frmProductoDetalle.Designer.cs">
+      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFondoNegro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFondoNegro.Designer.cs">
+      <DependentUpon>frmFondoNegro.cs</DependentUpon>
+    </Compile>
     <Compile Include="GerenteInicio\frmInicioGerente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,8 +144,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\ControlesBloqueo.cs" />
     <Compile Include="Utilidades\Redondeo.cs" />
     <Compile Include="Utilidades\Responsive.cs" />
+    <EmbeddedResource Include="ClientesEmpleado\frmActualizarInfo.resx">
+      <DependentUpon>frmActualizarInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientesEmpleado\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmpleadoMenu\frmEmlpeadoInicio.resx">
       <DependentUpon>frmEmlpeadoInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +161,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmpleadoProducto\frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServicios.resx">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFondoNegro.resx">
+      <DependentUpon>frmFondoNegro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteInicio\frmInicioGerente.resx">
       <DependentUpon>frmInicioGerente.cs</DependentUpon>
@@ -188,7 +231,6 @@
     <None Include="Resources\Captura de pantalla 2026-07-07 112345.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EmpleadoServicios\" />
     <Folder Include="EmpleadosVenta\" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +238,33 @@
       <Project>{182E471B-02C4-4695-9EC7-AEEB5973B9E2}</Project>
       <Name>Modelos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-15 012743.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-15 012318.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-15 013509.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-15 0135091.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimacionS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-15 014218.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-15 014003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Persona1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-07-07 105701.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

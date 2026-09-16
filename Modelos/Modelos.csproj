@@ -44,7 +44,11 @@
   <ItemGroup>
     <Compile Include="Conexion_DB\ConexionDB.cs" />
     <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\EventosGloblales.cs" />
     <Compile Include="Entidades\Productos.cs" />
+    <Compile Include="Entidades\Servicios.cs" />
+    <Compile Include="Entidades\TipoClientes.cs" />
+    <Compile Include="Entidades\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
