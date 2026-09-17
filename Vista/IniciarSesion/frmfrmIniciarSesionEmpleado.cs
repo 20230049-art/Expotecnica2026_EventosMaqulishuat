@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.EmpleadoMenu;
+using Vista.EmpleadoServicios;
 using Vista.Utilidades;
 
 namespace Vista.IniciarSesion
@@ -22,10 +23,11 @@ namespace Vista.IniciarSesion
             this.Resize += (s, e) => AjustarTitulo();
             AjustarTitulo();
 
-            Redondeo.RedondearFig(panel1, 8);
+            Redondeo.RedondearFig(panel1, 10);
             Redondeo.RedondearFig(panlContraseña, 4);
             Redondeo.RedondearFig(pnlUsuario, 4);
-            Redondeo.RedondearFig(btnIngresarEmpleado, 4);
+            Redondeo.RedondearFig(btnIngresarEmpleado, 5);
+            Redondeo.RedondearFig(btnRegresar, 5);
         }
 
         //Cambio de formualrios
@@ -63,7 +65,7 @@ namespace Vista.IniciarSesion
 
             // Calcular tamaño de fuente proporcional al ancho
             // Ajusta los valores según tu diseño
-            float tamanoFuente = anchoDisponible / 30f; // Entre más grande el divisor, más pequeña la fuente
+            float tamanoFuente = anchoDisponible / 28f; // Entre más grande el divisor, más pequeña la fuente
 
             // Aplicar límites
             tamanoFuente = Math.Max(16f, Math.Min(100f, tamanoFuente));
@@ -121,6 +123,11 @@ namespace Vista.IniciarSesion
         //    {
         //        MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //    }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new frmSeleccionarPefil());
         }
     }
 }

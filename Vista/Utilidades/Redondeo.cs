@@ -24,5 +24,19 @@ namespace Vista.Utilidades
 
             control.Region = new Region(forma);
         }
+
+        public static void RedondearFormulario(Form formulario, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
+
+            path.AddArc(0, 0, radio, radio, 180, 90);
+            path.AddArc(formulario.Width - radio, 0, radio, radio, 270, 90);
+            path.AddArc(formulario.Width - radio, formulario.Height - radio, radio, radio, 0, 90);
+            path.AddArc(0, formulario.Height - radio, radio, radio, 90, 90);
+
+            path.CloseFigure();
+
+            formulario.Region = new Region(path);
+        }
     }
 }

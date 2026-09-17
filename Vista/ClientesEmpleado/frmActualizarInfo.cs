@@ -23,6 +23,11 @@ namespace Vista.ClientesEmpleado
             MostrarInformacionCliente();
             CargarTipoCliente();
 
+            Redondeo.RedondearFormulario(this, 13);
+            Redondeo.RedondearFig(pnltituloNombre, 9);
+            Redondeo.RedondearFig(btnActualizar, 6);
+            Redondeo.RedondearFig(btnSalir, 6);
+
             ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
             controlesBloqueo.BloquearControlesTXT(txtNombre);
             controlesBloqueo.BloquearControlesTXT(txtApellido);

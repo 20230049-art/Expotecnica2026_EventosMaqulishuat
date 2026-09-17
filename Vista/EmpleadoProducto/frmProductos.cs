@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.ClientesEmpleado;
+using Vista.EmpleadosVenta;
 
 namespace Vista.EmpleadoProducto
 {
@@ -24,8 +26,8 @@ namespace Vista.EmpleadoProducto
             InitializeComponent();
             this.idVentaActiva = idVenta;
             this.nombreCliente = nombreCliente;
-            //MostrarProductoEmpleado();
-            //BotonVenta();
+            MostrarProductoEmpleado();
+            BotonVenta();
         }
 
         public frmProductos()
@@ -62,17 +64,17 @@ namespace Vista.EmpleadoProducto
             btnCarrito.BringToFront();
         }
 
-        //private void BtnCarrito_Click(object sender, EventArgs e)
-        //{
-        //    if (idVentaActiva <= 0)
-        //    {
-        //        MessageBox.Show("No hay una venta activa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
+        private void BtnCarrito_Click(object sender, EventArgs e)
+        {
+            if (idVentaActiva <= 0)
+            {
+                MessageBox.Show("No hay una venta activa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        //    frmCompraFinal frmCompraFinal = new frmCompraFinal(idVentaActiva, nombreCliente);
-        //    frmCompraFinal.ShowDialog();
-        //}
+            frmCompraFinal frmCompraFinal = new frmCompraFinal(idVentaActiva, nombreCliente);
+            frmCompraFinal.ShowDialog();
+        }
 
 
 
@@ -85,33 +87,43 @@ namespace Vista.EmpleadoProducto
             foreach (DataRow fila in producto.Rows)
             {
                 Panel panelProductos = PanelProducto(fila);
-                //panelProductos.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                panelProductos.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
                 flpProductos.Controls.Add(panelProductos);
             }
         }
 
-        //private void btnCompra_Click(object sender, EventArgs e)
-        //{
-        //    Button panelProducto = (Button)sender;
-        //    int idProducto = Convert.ToInt32(panelProducto.Tag);
+        private void btnCompra_Click(object sender, EventArgs e)
+        {
+            Button panelProducto = (Button)sender;
+            int idProducto = Convert.ToInt32(panelProducto.Tag);
 
-        //    if (idVentaActiva <= 0)
-        //    {
-        //        DialogResult result = MessageBox.Show("Actualmente no cuenta con un cliente seleccionado. ¿Desea seleccionar un cliente para iniciar una nueva venta?",
-        //            "Venta no inicia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (idVentaActiva <= 0)
+            {
+                DialogResult result = MessageBox.Show("Actualmente no cuenta con un cliente seleccionado. ¿Desea seleccionar un cliente para iniciar una nueva venta?",
+                    "Venta no inicia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        //        if (result == DialogResult.Yes)
-        //        {
-        //            frmBuscarClientecs frmBuscar = new frmBuscarClientecs();
-        //            frmBuscar.ShowDialog();
-        //        }
-        //        return;
-        //    }
+                if (result == DialogResult.Yes)
+                {
+                    frmFondoNegro fondo = new frmFondoNegro();
+                    fondo.StartPosition = FormStartPosition.CenterParent;
+                    fondo.WindowState = FormWindowState.Maximized;
+                    fondo.Show();
 
-        //    frmProductoDetalle abrir = new frmProductoDetalle(idProducto, idVentaActiva);
-        //    abrir.ShowDialog();
-        //}
+                    frmBuscarCliente frmBuscar = new frmBuscarCliente();
+                    frmBuscar.StartPosition = FormStartPosition.CenterParent;
+           
+                    frmBuscar.ShowDialog();
+                    frmBuscar.BringToFront();
+
+                    fondo.Close();
+                }
+                return;
+            }
+
+            frmProductoDetalle abrir = new frmProductoDetalle(idProducto, idVentaActiva);
+            abrir.ShowDialog();
+        }
 
         private Panel PanelProducto(DataRow fila)
         {
@@ -204,7 +216,7 @@ namespace Vista.EmpleadoProducto
             btnCompra.AutoSize = true;
             btnCompra.Tag = fila["IdProducto"];
             btnCompra.TabIndex = 3;
-            //btnCompra.Click += btnCompra_Click;
+            btnCompra.Click += btnCompra_Click;
 
             Panel pnlDecoracion1 = new Panel();
             pnlDecoracion1.Size = new Size(1620, 1);

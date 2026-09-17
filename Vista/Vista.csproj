@@ -33,8 +33,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt-Net-Next, Version=4.2.0.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.2.0\lib\net48\BCrypt-Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.6, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.6\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,11 +98,65 @@
     <Compile Include="EmpleadoProducto\frmProductos.Designer.cs">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosDecoracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosDecoracion.Designer.cs">
+      <DependentUpon>frmServiciosDecoracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmpleadoServicios\frmServicios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmpleadoServicios\frmServicios.Designer.cs">
       <DependentUpon>frmServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosAnimacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosAnimacion.Designer.cs">
+      <DependentUpon>frmServiciosAnimacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosCristaleria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosCristaleria.Designer.cs">
+      <DependentUpon>frmServiciosCristaleria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosCuberteria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosCuberteria.Designer.cs">
+      <DependentUpon>frmServiciosCuberteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosDiscomovileIluminación.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosDiscomovileIluminación.Designer.cs">
+      <DependentUpon>frmServiciosDiscomovileIluminación.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosInmoviliarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoServicios\frmServiciosInmoviliarios.Designer.cs">
+      <DependentUpon>frmServiciosInmoviliarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadosVenta\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadosVenta\frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadosVenta\frmCompraFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadosVenta\frmCompraFinal.Designer.cs">
+      <DependentUpon>frmCompraFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadosVenta\frmProductoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadosVenta\frmProductoDetalle.Designer.cs">
+      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
     </Compile>
     <Compile Include="EmpleadoVentas\frmBuscarCliente.cs">
       <SubType>Form</SubType>
@@ -165,6 +241,27 @@
     <EmbeddedResource Include="EmpleadoServicios\frmServicios.resx">
       <DependentUpon>frmServicios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServiciosAnimacion.resx">
+      <DependentUpon>frmServiciosAnimacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServiciosCristaleria.resx">
+      <DependentUpon>frmServiciosCristaleria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServiciosCuberteria.resx">
+      <DependentUpon>frmServiciosCuberteria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServiciosDecoracion.resx">
+      <DependentUpon>frmServiciosDecoracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServiciosDiscomovileIluminación.resx">
+      <DependentUpon>frmServiciosDiscomovileIluminación.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoServicios\frmServiciosInmoviliarios.resx">
+      <DependentUpon>frmServiciosInmoviliarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadosVenta\frmProductoDetalle.resx">
+      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFondoNegro.resx">
       <DependentUpon>frmFondoNegro.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +293,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -230,9 +328,7 @@
   <ItemGroup>
     <None Include="Resources\Captura de pantalla 2026-07-07 112345.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EmpleadosVenta\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Modelos\Modelos.csproj">
       <Project>{182E471B-02C4-4695-9EC7-AEEB5973B9E2}</Project>
@@ -265,6 +361,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Captura de pantalla 2026-07-07 105701.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\botonRegresar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cristaleria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-09-16 1850071.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DecoracionS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-09-16 192820.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DiscomovilS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-09-03 101250.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-09-16 194836.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

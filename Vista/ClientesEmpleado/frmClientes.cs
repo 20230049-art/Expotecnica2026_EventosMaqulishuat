@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.EmpleadoProducto;
+using Vista.Utilidades;
 
 namespace Vista.ClientesEmpleado
 {
@@ -19,6 +20,8 @@ namespace Vista.ClientesEmpleado
             InitializeComponent();
             DataTable clientes = Clientes.MostrarClientes();
             CargarClientesEnPantalla(clientes);
+
+            Redondeo.RedondearFig(btnAgregar, 6);
 
             EventosGloblales.ClienteAgregado += RegarcarPanelCliente;
             EventosGloblales.ClienteActualizado += RegarcarPanelCliente;
@@ -62,7 +65,9 @@ namespace Vista.ClientesEmpleado
             panelCliente.BackColor = pnlContenedorInfo.BackColor;
             panelCliente.BorderStyle = pnlContenedorInfo.BorderStyle;
             panelCliente.Location = pnlContenedorInfo.Location;
+            Redondeo.RedondearFig(panelCliente, 11);
             panelCliente.Tag = fila["IdCliente"];
+            
 
             Panel panelCompra = new Panel();
 
@@ -71,6 +76,7 @@ namespace Vista.ClientesEmpleado
             panelCompra.BackColor = pnlAgregarCompra.BackColor;
             panelCompra.BorderStyle = pnlAgregarCompra.BorderStyle;
             panelCompra.Location = pnlAgregarCompra.Location;
+            Redondeo.RedondearFig(panelCompra, 9);
 
             Label lblTituloNombre = new Label();
 
@@ -147,7 +153,7 @@ namespace Vista.ClientesEmpleado
             btnCompra.FlatAppearance.BorderSize = 0;
             btnCompra.AutoSize = true;
             btnCompra.Tag = fila["IdCliente"];
-            //btnCompra.Click += BtnCompra_Click;
+            btnCompra.Click += BtnCompra_Click;
 
             PictureBox pbLogo = new PictureBox();
             pbLogo.Location = new Point(38, 12);
@@ -199,52 +205,46 @@ namespace Vista.ClientesEmpleado
             fondo.Close();
         }
 
-        //private void btnAgregar_Click(object sender, EventArgs e)
-        //{
-        //    frmClientesAgregarB abrir = new frmClientesAgregarB();
-        //    abrir.ShowDialog();
-        //}
+        private void BtnCompra_Click(object sender, EventArgs e)
+        {
+            Button btnCompra = (Button)sender;
+            int idCliente = Convert.ToInt32(btnCompra.Tag);
 
-        //private void BtnCompra_Click(object sender, EventArgs e)
-        //{
-        //    Button btnCompra = (Button)sender;
-        //    int idCliente = Convert.ToInt32(btnCompra.Tag);
+            DataTable dtCliente = Clientes.ObtenerClienteId(idCliente);
+            string nombreCliente = "";
 
-        //    DataTable dtCliente = Clientes.ObtenerClienteId(idCliente);
-        //    string nombreCliente = "";
+            if (dtCliente.Rows.Count > 0)
+            {
+                nombreCliente = dtCliente.Rows[0]["NombreCliente"].ToString()
+                + ""
+                + dtCliente.Rows[0]["ApellidoCliente"].ToString();
+            }
+            try
+            {
+                DateTime fechaUso = DateTime.Now.AddDays(1);
+                int idTipoPago = 1;
 
-        //    if (dtCliente.Rows.Count > 0)
-        //    {
-        //        nombreCliente = dtCliente.Rows[0]["NombreCliente"].ToString()
-        //        + ""
-        //        + dtCliente.Rows[0]["ApellidoCliente"].ToString();
-        //    }
-        //    try
-        //    {
-        //        DateTime fechaUso = DateTime.Now.AddDays(1);
-        //        int idTipoPago = 1;
+                Venta nuevaVenta = new Venta();
 
-        //        Venta nuevaVenta = new Venta();
+                int idVenta = nuevaVenta.IngresarVenta(CuentaAbierta.IdEmpleado,
+                    idCliente, fechaUso, idTipoPago);
 
-        //        int idVenta = nuevaVenta.IngresarVenta(CuentaAbierta.IdEmpleado,
-        //            idCliente, fechaUso, idTipoPago);
+                if (idVenta > 0)
+                {
+                    MessageBox.Show($"Venta iniciada para: {nombreCliente}", "Venta Creada",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        //        if (idVenta > 0)
-        //        {
-        //            MessageBox.Show($"Venta iniciada para: {nombreCliente}", "Venta Creada",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        //            frmProductos abrir = new frmProductos(idVenta, nombreCliente);
-        //            abrir.ShowDialog();
-        //            abrir.ShowIcon = false;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error al iniciar venta: {ex.Message}", "Error",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+                    frmProductos abrir = new frmProductos(idVenta, nombreCliente);
+                    abrir.ShowDialog();
+                    abrir.ShowIcon = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al iniciar venta: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void txtBuscar_TextChanged_1(object sender, EventArgs e)
         {

@@ -36,40 +36,40 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblTextoIluminacion = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lblTituloMobiliario = new System.Windows.Forms.Label();
-            this.lblTextoMobiliario = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblTextoMobiliario = new System.Windows.Forms.Label();
+            this.lblTituloMobiliario = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.pnlCristaleria = new System.Windows.Forms.Panel();
-            this.lblTituloCristaleria = new System.Windows.Forms.Label();
-            this.lbltTextoCristaleria = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbltTextoCristaleria = new System.Windows.Forms.Label();
+            this.lblTituloCristaleria = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.lblTituloBaile = new System.Windows.Forms.Label();
-            this.lblTextoBaile = new System.Windows.Forms.Label();
-            this.pnlImagenAnimacion = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTextoBaile = new System.Windows.Forms.Label();
+            this.lblTituloBaile = new System.Windows.Forms.Label();
+            this.pnlImagenAnimacion = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.lblTituloCuberteria = new System.Windows.Forms.Label();
-            this.lblTextoCuberteria = new System.Windows.Forms.Label();
-            this.pnlImagenCuberteria = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTextoCuberteria = new System.Windows.Forms.Label();
+            this.lblTituloCuberteria = new System.Windows.Forms.Label();
+            this.pnlImagenCuberteria = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.lblTituloDecoracion = new System.Windows.Forms.Label();
-            this.lblTextoDecoracion = new System.Windows.Forms.Label();
-            this.pnlImagenDecoracion = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTituloDecoracion = new System.Windows.Forms.Label();
+            this.pnlImagenDecoracion = new System.Windows.Forms.Panel();
+            this.lblTextoDecoracion = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -84,10 +84,10 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -96,16 +96,16 @@
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.pnlImagenAnimacion.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.pnlImagenAnimacion.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel16.SuspendLayout();
-            this.pnlImagenCuberteria.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.pnlImagenCuberteria.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
-            this.pnlImagenDecoracion.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.pnlImagenDecoracion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -123,7 +123,7 @@
             this.pnlVistaServicios.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaServicios.Name = "pnlVistaServicios";
             this.pnlVistaServicios.Size = new System.Drawing.Size(1924, 973);
-            this.pnlVistaServicios.TabIndex = 3;
+            this.pnlVistaServicios.TabIndex = 5;
             // 
             // tlpContenedorPrincipal
             // 
@@ -158,7 +158,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel6.Controls.Add(this.pictureBox12, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -178,7 +178,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(56, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(658, 85);
+            this.lblProductos.Size = new System.Drawing.Size(654, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "SERVICIOS";
             // 
@@ -212,7 +212,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(67)))), ((int)(((byte)(44)))));
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(87, 410);
@@ -232,86 +232,6 @@
             this.panel9.Size = new System.Drawing.Size(550, 341);
             this.panel9.TabIndex = 5;
             // 
-            // lblTextoIluminacion
-            // 
-            this.lblTextoIluminacion.AutoSize = true;
-            this.lblTextoIluminacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTextoIluminacion.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextoIluminacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTextoIluminacion.Location = new System.Drawing.Point(4, 232);
-            this.lblTextoIluminacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTextoIluminacion.Name = "lblTextoIluminacion";
-            this.lblTextoIluminacion.Size = new System.Drawing.Size(542, 95);
-            this.lblTextoIluminacion.TabIndex = 4;
-            this.lblTextoIluminacion.Text = "Equipo de sonido profesional y para todo los tamaños de eventos con show de luces" +
-    " inteligentes, luces led y laser.";
-            this.lblTextoIluminacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(87, 32);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(556, 333);
-            this.panel2.TabIndex = 11;
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(195)))), ((int)(((byte)(180)))));
-            this.panel7.Controls.Add(this.tableLayoutPanel5);
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(550, 327);
-            this.panel7.TabIndex = 5;
-            // 
-            // lblTituloMobiliario
-            // 
-            this.lblTituloMobiliario.AutoSize = true;
-            this.lblTituloMobiliario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTituloMobiliario.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloMobiliario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloMobiliario.Location = new System.Drawing.Point(4, 194);
-            this.lblTituloMobiliario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTituloMobiliario.Name = "lblTituloMobiliario";
-            this.lblTituloMobiliario.Size = new System.Drawing.Size(542, 52);
-            this.lblTituloMobiliario.TabIndex = 2;
-            this.lblTituloMobiliario.Text = "Alquiler de mobiliario";
-            this.lblTituloMobiliario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTextoMobiliario
-            // 
-            this.lblTextoMobiliario.AutoSize = true;
-            this.lblTextoMobiliario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTextoMobiliario.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextoMobiliario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTextoMobiliario.Location = new System.Drawing.Point(4, 246);
-            this.lblTextoMobiliario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTextoMobiliario.Name = "lblTextoMobiliario";
-            this.lblTextoMobiliario.Size = new System.Drawing.Size(542, 68);
-            this.lblTextoMobiliario.TabIndex = 4;
-            this.lblTextoMobiliario.Text = "Contamos con una amplia variedad de mesas, sillas y más, diseñados para adaptarse" +
-    " al estilo y tamaño de tu evento.";
-            this.lblTextoMobiliario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.label1.Location = new System.Drawing.Point(4, 172);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(542, 60);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Discomóvil e Iluminación";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -330,6 +250,37 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(550, 341);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.label1.Location = new System.Drawing.Point(4, 172);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(542, 60);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Discomóvil e Iluminación";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lblTextoIluminacion
+            // 
+            this.lblTextoIluminacion.AutoSize = true;
+            this.lblTextoIluminacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTextoIluminacion.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextoIluminacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTextoIluminacion.Location = new System.Drawing.Point(4, 232);
+            this.lblTextoIluminacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTextoIluminacion.Name = "lblTextoIluminacion";
+            this.lblTextoIluminacion.Size = new System.Drawing.Size(542, 95);
+            this.lblTextoIluminacion.TabIndex = 4;
+            this.lblTextoIluminacion.Text = "Equipo de sonido profesional y para todo los tamaños de eventos con show de luces" +
+    " inteligentes, luces led y laser.";
+            this.lblTextoIluminacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTextoIluminacion.Click += new System.EventHandler(this.lblTextoIluminacion_Click);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.pictureBox2);
@@ -338,6 +289,29 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(544, 166);
             this.panel4.TabIndex = 7;
+            this.panel4.Click += new System.EventHandler(this.panel4_Click_1);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(67)))), ((int)(((byte)(44)))));
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(87, 32);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(556, 333);
+            this.panel2.TabIndex = 11;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(195)))), ((int)(((byte)(180)))));
+            this.panel7.Controls.Add(this.tableLayoutPanel5);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(550, 327);
+            this.panel7.TabIndex = 5;
             // 
             // tableLayoutPanel5
             // 
@@ -365,10 +339,42 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(544, 188);
             this.panel5.TabIndex = 0;
+            this.panel5.Click += new System.EventHandler(this.panel5_Click_1);
+            // 
+            // lblTextoMobiliario
+            // 
+            this.lblTextoMobiliario.AutoSize = true;
+            this.lblTextoMobiliario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTextoMobiliario.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextoMobiliario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTextoMobiliario.Location = new System.Drawing.Point(4, 246);
+            this.lblTextoMobiliario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTextoMobiliario.Name = "lblTextoMobiliario";
+            this.lblTextoMobiliario.Size = new System.Drawing.Size(542, 68);
+            this.lblTextoMobiliario.TabIndex = 4;
+            this.lblTextoMobiliario.Text = "Contamos con una amplia variedad de mesas, sillas y más, diseñados para adaptarse" +
+    " al estilo y tamaño de tu evento.";
+            this.lblTextoMobiliario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTextoMobiliario.Click += new System.EventHandler(this.lblTextoMobiliario_Click);
+            // 
+            // lblTituloMobiliario
+            // 
+            this.lblTituloMobiliario.AutoSize = true;
+            this.lblTituloMobiliario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTituloMobiliario.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloMobiliario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTituloMobiliario.Location = new System.Drawing.Point(4, 194);
+            this.lblTituloMobiliario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloMobiliario.Name = "lblTituloMobiliario";
+            this.lblTituloMobiliario.Size = new System.Drawing.Size(542, 52);
+            this.lblTituloMobiliario.TabIndex = 2;
+            this.lblTituloMobiliario.Text = "Alquiler de mobiliario";
+            this.lblTituloMobiliario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloMobiliario.Click += new System.EventHandler(this.lblTituloMobiliario_Click);
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.Gray;
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(67)))), ((int)(((byte)(44)))));
             this.panel10.Controls.Add(this.pnlCristaleria);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(699, 32);
@@ -388,34 +394,6 @@
             this.pnlCristaleria.Size = new System.Drawing.Size(532, 327);
             this.pnlCristaleria.TabIndex = 5;
             // 
-            // lblTituloCristaleria
-            // 
-            this.lblTituloCristaleria.AutoSize = true;
-            this.lblTituloCristaleria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTituloCristaleria.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCristaleria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloCristaleria.Location = new System.Drawing.Point(4, 189);
-            this.lblTituloCristaleria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTituloCristaleria.Name = "lblTituloCristaleria";
-            this.lblTituloCristaleria.Size = new System.Drawing.Size(524, 54);
-            this.lblTituloCristaleria.TabIndex = 3;
-            this.lblTituloCristaleria.Text = "Cristalería";
-            this.lblTituloCristaleria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbltTextoCristaleria
-            // 
-            this.lbltTextoCristaleria.AutoSize = true;
-            this.lbltTextoCristaleria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbltTextoCristaleria.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltTextoCristaleria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lbltTextoCristaleria.Location = new System.Drawing.Point(4, 243);
-            this.lbltTextoCristaleria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbltTextoCristaleria.Name = "lbltTextoCristaleria";
-            this.lbltTextoCristaleria.Size = new System.Drawing.Size(524, 75);
-            this.lbltTextoCristaleria.TabIndex = 4;
-            this.lbltTextoCristaleria.Text = "Dale brillo a cada mesa con nuestra selecta colección de cristalería.";
-            this.lbltTextoCristaleria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
@@ -434,6 +412,36 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(532, 327);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
+            // lbltTextoCristaleria
+            // 
+            this.lbltTextoCristaleria.AutoSize = true;
+            this.lbltTextoCristaleria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbltTextoCristaleria.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltTextoCristaleria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lbltTextoCristaleria.Location = new System.Drawing.Point(4, 243);
+            this.lbltTextoCristaleria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbltTextoCristaleria.Name = "lbltTextoCristaleria";
+            this.lbltTextoCristaleria.Size = new System.Drawing.Size(524, 75);
+            this.lbltTextoCristaleria.TabIndex = 4;
+            this.lbltTextoCristaleria.Text = "Dale brillo a cada mesa con nuestra selecta colección de cristalería.";
+            this.lbltTextoCristaleria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbltTextoCristaleria.Click += new System.EventHandler(this.lbltTextoCristaleria_Click);
+            // 
+            // lblTituloCristaleria
+            // 
+            this.lblTituloCristaleria.AutoSize = true;
+            this.lblTituloCristaleria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTituloCristaleria.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCristaleria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTituloCristaleria.Location = new System.Drawing.Point(4, 189);
+            this.lblTituloCristaleria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloCristaleria.Name = "lblTituloCristaleria";
+            this.lblTituloCristaleria.Size = new System.Drawing.Size(524, 54);
+            this.lblTituloCristaleria.TabIndex = 3;
+            this.lblTituloCristaleria.Text = "Cristalería";
+            this.lblTituloCristaleria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloCristaleria.Click += new System.EventHandler(this.lblTituloCristaleria_Click);
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.pictureBox4);
@@ -442,10 +450,11 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(526, 183);
             this.panel6.TabIndex = 5;
+            this.panel6.Click += new System.EventHandler(this.panel6_Click_1);
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.Gray;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(67)))), ((int)(((byte)(44)))));
             this.panel8.Controls.Add(this.panel11);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(699, 410);
@@ -465,44 +474,6 @@
             this.panel11.Size = new System.Drawing.Size(532, 341);
             this.panel11.TabIndex = 5;
             // 
-            // lblTituloBaile
-            // 
-            this.lblTituloBaile.AutoSize = true;
-            this.lblTituloBaile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTituloBaile.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBaile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloBaile.Location = new System.Drawing.Point(4, 169);
-            this.lblTituloBaile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTituloBaile.Name = "lblTituloBaile";
-            this.lblTituloBaile.Size = new System.Drawing.Size(524, 65);
-            this.lblTituloBaile.TabIndex = 6;
-            this.lblTituloBaile.Text = "Servicios de Animación";
-            this.lblTituloBaile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTextoBaile
-            // 
-            this.lblTextoBaile.AutoSize = true;
-            this.lblTextoBaile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTextoBaile.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextoBaile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTextoBaile.Location = new System.Drawing.Point(4, 234);
-            this.lblTextoBaile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTextoBaile.Name = "lblTextoBaile";
-            this.lblTextoBaile.Size = new System.Drawing.Size(524, 95);
-            this.lblTextoBaile.TabIndex = 4;
-            this.lblTextoBaile.Text = "¡Que la diversión no se detenga! Ofrecemos animadores profesionales que mantienen" +
-    " la energía y alegría en tu evento en todo momento.";
-            this.lblTextoBaile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlImagenAnimacion
-            // 
-            this.pnlImagenAnimacion.Controls.Add(this.pictureBox3);
-            this.pnlImagenAnimacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlImagenAnimacion.Location = new System.Drawing.Point(3, 3);
-            this.pnlImagenAnimacion.Name = "pnlImagenAnimacion";
-            this.pnlImagenAnimacion.Size = new System.Drawing.Size(526, 163);
-            this.pnlImagenAnimacion.TabIndex = 5;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -521,9 +492,50 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(532, 341);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
+            // lblTextoBaile
+            // 
+            this.lblTextoBaile.AutoSize = true;
+            this.lblTextoBaile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTextoBaile.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextoBaile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTextoBaile.Location = new System.Drawing.Point(4, 234);
+            this.lblTextoBaile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTextoBaile.Name = "lblTextoBaile";
+            this.lblTextoBaile.Size = new System.Drawing.Size(524, 95);
+            this.lblTextoBaile.TabIndex = 4;
+            this.lblTextoBaile.Text = "¡Que la diversión no se detenga! Ofrecemos animadores profesionales que mantienen" +
+    " la energía y alegría en tu evento en todo momento.";
+            this.lblTextoBaile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTextoBaile.Click += new System.EventHandler(this.lblTextoBaile_Click);
+            // 
+            // lblTituloBaile
+            // 
+            this.lblTituloBaile.AutoSize = true;
+            this.lblTituloBaile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTituloBaile.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBaile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTituloBaile.Location = new System.Drawing.Point(4, 169);
+            this.lblTituloBaile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloBaile.Name = "lblTituloBaile";
+            this.lblTituloBaile.Size = new System.Drawing.Size(524, 65);
+            this.lblTituloBaile.TabIndex = 6;
+            this.lblTituloBaile.Text = "Servicios de Animación";
+            this.lblTituloBaile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloBaile.Click += new System.EventHandler(this.lblTituloBaile_Click);
+            // 
+            // pnlImagenAnimacion
+            // 
+            this.pnlImagenAnimacion.Controls.Add(this.pictureBox3);
+            this.pnlImagenAnimacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlImagenAnimacion.Location = new System.Drawing.Point(3, 3);
+            this.pnlImagenAnimacion.Name = "pnlImagenAnimacion";
+            this.pnlImagenAnimacion.Size = new System.Drawing.Size(526, 163);
+            this.pnlImagenAnimacion.TabIndex = 5;
+            this.pnlImagenAnimacion.Click += new System.EventHandler(this.pnlImagenAnimacion_Click_1);
+            // 
             // panel12
             // 
-            this.panel12.BackColor = System.Drawing.Color.Gray;
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(67)))), ((int)(((byte)(44)))));
             this.panel12.Controls.Add(this.panel16);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(1282, 32);
@@ -543,43 +555,6 @@
             this.panel16.Size = new System.Drawing.Size(536, 327);
             this.panel16.TabIndex = 5;
             // 
-            // lblTituloCuberteria
-            // 
-            this.lblTituloCuberteria.AutoSize = true;
-            this.lblTituloCuberteria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTituloCuberteria.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCuberteria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloCuberteria.Location = new System.Drawing.Point(4, 184);
-            this.lblTituloCuberteria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTituloCuberteria.Name = "lblTituloCuberteria";
-            this.lblTituloCuberteria.Size = new System.Drawing.Size(528, 55);
-            this.lblTituloCuberteria.TabIndex = 4;
-            this.lblTituloCuberteria.Text = "Cubertería";
-            this.lblTituloCuberteria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTextoCuberteria
-            // 
-            this.lblTextoCuberteria.AutoSize = true;
-            this.lblTextoCuberteria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTextoCuberteria.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextoCuberteria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTextoCuberteria.Location = new System.Drawing.Point(4, 239);
-            this.lblTextoCuberteria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTextoCuberteria.Name = "lblTextoCuberteria";
-            this.lblTextoCuberteria.Size = new System.Drawing.Size(528, 76);
-            this.lblTextoCuberteria.TabIndex = 4;
-            this.lblTextoCuberteria.Text = "Cada detalle cuenta, y la cubertería es parte de la experiencia";
-            this.lblTextoCuberteria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlImagenCuberteria
-            // 
-            this.pnlImagenCuberteria.Controls.Add(this.pictureBox6);
-            this.pnlImagenCuberteria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlImagenCuberteria.Location = new System.Drawing.Point(3, 3);
-            this.pnlImagenCuberteria.Name = "pnlImagenCuberteria";
-            this.pnlImagenCuberteria.Size = new System.Drawing.Size(530, 178);
-            this.pnlImagenCuberteria.TabIndex = 5;
-            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 1;
@@ -598,9 +573,49 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(536, 327);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
+            // lblTextoCuberteria
+            // 
+            this.lblTextoCuberteria.AutoSize = true;
+            this.lblTextoCuberteria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTextoCuberteria.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextoCuberteria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTextoCuberteria.Location = new System.Drawing.Point(4, 239);
+            this.lblTextoCuberteria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTextoCuberteria.Name = "lblTextoCuberteria";
+            this.lblTextoCuberteria.Size = new System.Drawing.Size(528, 76);
+            this.lblTextoCuberteria.TabIndex = 4;
+            this.lblTextoCuberteria.Text = "Cada detalle cuenta, y la cubertería es parte de la experiencia";
+            this.lblTextoCuberteria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTextoCuberteria.Click += new System.EventHandler(this.lblTextoCuberteria_Click);
+            // 
+            // lblTituloCuberteria
+            // 
+            this.lblTituloCuberteria.AutoSize = true;
+            this.lblTituloCuberteria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTituloCuberteria.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCuberteria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTituloCuberteria.Location = new System.Drawing.Point(4, 184);
+            this.lblTituloCuberteria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloCuberteria.Name = "lblTituloCuberteria";
+            this.lblTituloCuberteria.Size = new System.Drawing.Size(528, 55);
+            this.lblTituloCuberteria.TabIndex = 4;
+            this.lblTituloCuberteria.Text = "Cubertería";
+            this.lblTituloCuberteria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloCuberteria.Click += new System.EventHandler(this.lblTituloCuberteria_Click);
+            // 
+            // pnlImagenCuberteria
+            // 
+            this.pnlImagenCuberteria.Controls.Add(this.pictureBox6);
+            this.pnlImagenCuberteria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlImagenCuberteria.Location = new System.Drawing.Point(3, 3);
+            this.pnlImagenCuberteria.Name = "pnlImagenCuberteria";
+            this.pnlImagenCuberteria.Size = new System.Drawing.Size(530, 178);
+            this.pnlImagenCuberteria.TabIndex = 5;
+            this.pnlImagenCuberteria.Click += new System.EventHandler(this.pnlImagenCuberteria_Click_1);
+            // 
             // panel13
             // 
-            this.panel13.BackColor = System.Drawing.Color.Gray;
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(67)))), ((int)(((byte)(44)))));
             this.panel13.Controls.Add(this.panel14);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(1282, 410);
@@ -620,43 +635,6 @@
             this.panel14.Size = new System.Drawing.Size(536, 341);
             this.panel14.TabIndex = 5;
             // 
-            // lblTituloDecoracion
-            // 
-            this.lblTituloDecoracion.AutoSize = true;
-            this.lblTituloDecoracion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTituloDecoracion.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDecoracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloDecoracion.Location = new System.Drawing.Point(4, 177);
-            this.lblTituloDecoracion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTituloDecoracion.Name = "lblTituloDecoracion";
-            this.lblTituloDecoracion.Size = new System.Drawing.Size(528, 53);
-            this.lblTituloDecoracion.TabIndex = 5;
-            this.lblTituloDecoracion.Text = "Decoración";
-            this.lblTituloDecoracion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTextoDecoracion
-            // 
-            this.lblTextoDecoracion.AutoSize = true;
-            this.lblTextoDecoracion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTextoDecoracion.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextoDecoracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTextoDecoracion.Location = new System.Drawing.Point(4, 230);
-            this.lblTextoDecoracion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTextoDecoracion.Name = "lblTextoDecoracion";
-            this.lblTextoDecoracion.Size = new System.Drawing.Size(528, 97);
-            this.lblTextoDecoracion.TabIndex = 4;
-            this.lblTextoDecoracion.Text = "Transformamos cualquier espacio en el escenario de tus sueños.";
-            this.lblTextoDecoracion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pnlImagenDecoracion
-            // 
-            this.pnlImagenDecoracion.Controls.Add(this.pictureBox5);
-            this.pnlImagenDecoracion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlImagenDecoracion.Location = new System.Drawing.Point(3, 3);
-            this.pnlImagenDecoracion.Name = "pnlImagenDecoracion";
-            this.pnlImagenDecoracion.Size = new System.Drawing.Size(530, 171);
-            this.pnlImagenDecoracion.TabIndex = 5;
-            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 1;
@@ -675,11 +653,51 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(536, 341);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
+            // lblTituloDecoracion
+            // 
+            this.lblTituloDecoracion.AutoSize = true;
+            this.lblTituloDecoracion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTituloDecoracion.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloDecoracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTituloDecoracion.Location = new System.Drawing.Point(4, 177);
+            this.lblTituloDecoracion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloDecoracion.Name = "lblTituloDecoracion";
+            this.lblTituloDecoracion.Size = new System.Drawing.Size(528, 53);
+            this.lblTituloDecoracion.TabIndex = 5;
+            this.lblTituloDecoracion.Text = "Decoración";
+            this.lblTituloDecoracion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloDecoracion.Click += new System.EventHandler(this.lblTituloDecoracion_Click);
+            // 
+            // pnlImagenDecoracion
+            // 
+            this.pnlImagenDecoracion.Controls.Add(this.pictureBox5);
+            this.pnlImagenDecoracion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlImagenDecoracion.Location = new System.Drawing.Point(3, 3);
+            this.pnlImagenDecoracion.Name = "pnlImagenDecoracion";
+            this.pnlImagenDecoracion.Size = new System.Drawing.Size(530, 171);
+            this.pnlImagenDecoracion.TabIndex = 5;
+            this.pnlImagenDecoracion.Click += new System.EventHandler(this.pnlImagenDecoracion_Click_1);
+            // 
+            // lblTextoDecoracion
+            // 
+            this.lblTextoDecoracion.AutoSize = true;
+            this.lblTextoDecoracion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTextoDecoracion.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextoDecoracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTextoDecoracion.Location = new System.Drawing.Point(4, 230);
+            this.lblTextoDecoracion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTextoDecoracion.Name = "lblTextoDecoracion";
+            this.lblTextoDecoracion.Size = new System.Drawing.Size(528, 97);
+            this.lblTextoDecoracion.TabIndex = 4;
+            this.lblTextoDecoracion.Text = "Transformamos cualquier espacio en el escenario de tus sueños.";
+            this.lblTextoDecoracion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblTextoDecoracion.Click += new System.EventHandler(this.lblTextoDecoracion_Click);
+            // 
             // pictureBox12
             // 
             this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox12.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox12.Location = new System.Drawing.Point(1673, 36);
+            this.pictureBox12.Location = new System.Drawing.Point(1669, 36);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(200, 79);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -782,11 +800,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -797,19 +815,19 @@
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.pnlImagenAnimacion.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.pnlImagenAnimacion.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
-            this.pnlImagenCuberteria.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            this.pnlImagenCuberteria.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
-            this.pnlImagenDecoracion.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.pnlImagenDecoracion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -832,45 +850,45 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTextoIluminacion;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label lblTituloMobiliario;
-        private System.Windows.Forms.Label lblTextoMobiliario;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblTextoMobiliario;
+        private System.Windows.Forms.Label lblTituloMobiliario;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel pnlCristaleria;
-        private System.Windows.Forms.Label lblTituloCristaleria;
-        private System.Windows.Forms.Label lbltTextoCristaleria;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label lblTextoBaile;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label lbltTextoCristaleria;
+        private System.Windows.Forms.Label lblTituloCristaleria;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label lblTextoBaile;
         private System.Windows.Forms.Label lblTituloBaile;
         private System.Windows.Forms.Panel pnlImagenAnimacion;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Label lblTituloCuberteria;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label lblTextoCuberteria;
+        private System.Windows.Forms.Label lblTituloCuberteria;
         private System.Windows.Forms.Panel pnlImagenCuberteria;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label lblTituloDecoracion;
-        private System.Windows.Forms.Label lblTextoDecoracion;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label lblTituloDecoracion;
         private System.Windows.Forms.Panel pnlImagenDecoracion;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label lblTextoDecoracion;
     }
 }

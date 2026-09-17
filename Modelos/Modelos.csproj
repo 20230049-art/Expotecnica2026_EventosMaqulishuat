@@ -31,8 +31,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt-Net-Next, Version=4.2.0.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.2.0\lib\net48\BCrypt-Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.6, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.6\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,13 +66,30 @@
   <ItemGroup>
     <Compile Include="Conexion_DB\ConexionDB.cs" />
     <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\CuentaAbierta.cs" />
+    <Compile Include="Entidades\DetalledeVenta.cs" />
+    <Compile Include="Entidades\DocumentoPDF.cs" />
+    <Compile Include="Entidades\Documentos.cs" />
+    <Compile Include="Entidades\Empleados.cs" />
+    <Compile Include="Entidades\EstadoEmpleados.cs" />
+    <Compile Include="Entidades\EstadoVentas.cs" />
     <Compile Include="Entidades\EventosGloblales.cs" />
+    <Compile Include="Entidades\FacturaCompleta.cs" />
     <Compile Include="Entidades\Productos.cs" />
+    <Compile Include="Entidades\Proveedores.cs" />
+    <Compile Include="Entidades\RegistrodePagos.cs" />
+    <Compile Include="Entidades\Reportes.cs" />
     <Compile Include="Entidades\Servicios.cs" />
     <Compile Include="Entidades\TipoClientes.cs" />
+    <Compile Include="Entidades\TipoPagos.cs" />
+    <Compile Include="Entidades\TipoPagoVentas.cs" />
+    <Compile Include="Entidades\TipoUsuarios.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

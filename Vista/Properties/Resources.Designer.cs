@@ -73,6 +73,16 @@ namespace Vista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap botonRegresar {
+            get {
+                object obj = ResourceManager.GetObject("botonRegresar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Captura_de_pantalla_2026_07_07_105701 {
             get {
                 object obj = ResourceManager.GetObject("Captura de pantalla 2026-07-07 105701", resourceCulture);
@@ -153,9 +163,99 @@ namespace Vista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_07_15_0140031 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-07-15 0140031", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Captura_de_pantalla_2026_07_15_014218 {
             get {
                 object obj = ResourceManager.GetObject("Captura de pantalla 2026-07-15 014218", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_03_101250 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-03 101250", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_16_185007 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-16 185007", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_16_1850071 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-16 1850071", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_16_192820 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-16 192820", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_16_194836 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-16 194836", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cristaleria {
+            get {
+                object obj = ResourceManager.GetObject("Cristaleria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DecoracionS {
+            get {
+                object obj = ResourceManager.GetObject("DecoracionS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DiscomovilS {
+            get {
+                object obj = ResourceManager.GetObject("DiscomovilS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
