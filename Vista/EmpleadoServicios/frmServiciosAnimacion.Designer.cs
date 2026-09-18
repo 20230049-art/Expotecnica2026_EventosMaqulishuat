@@ -117,7 +117,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel6.Controls.Add(this.pictureBox12, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel3, 2, 1);
@@ -135,7 +135,7 @@
             // 
             this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox12.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox12.Location = new System.Drawing.Point(1664, 36);
+            this.pictureBox12.Location = new System.Drawing.Point(1663, 36);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(200, 79);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -149,7 +149,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(56, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(649, 85);
+            this.lblProductos.Size = new System.Drawing.Size(648, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "SERVICIOS";
             // 
@@ -161,7 +161,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel3.Controls.Add(this.txtBuscar, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(711, 36);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(710, 36);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -310,7 +310,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.18293F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7317073F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.37805F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel5.Controls.Add(this.panel4, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.lblAnimacionInfo, 3, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -329,7 +329,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(30, 11);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(648, 173);
+            this.panel4.Size = new System.Drawing.Size(647, 173);
             this.panel4.TabIndex = 0;
             // 
             // pictureBox2
@@ -338,7 +338,7 @@
             this.pictureBox2.Image = global::Vista.Properties.Resources.AnimacionS;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(648, 173);
+            this.pictureBox2.Size = new System.Drawing.Size(647, 173);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -348,10 +348,10 @@
             this.lblAnimacionInfo.AutoSize = true;
             this.lblAnimacionInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAnimacionInfo.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnimacionInfo.Location = new System.Drawing.Point(722, 38);
+            this.lblAnimacionInfo.Location = new System.Drawing.Point(721, 38);
             this.lblAnimacionInfo.Margin = new System.Windows.Forms.Padding(30);
             this.lblAnimacionInfo.Name = "lblAnimacionInfo";
-            this.lblAnimacionInfo.Size = new System.Drawing.Size(874, 119);
+            this.lblAnimacionInfo.Size = new System.Drawing.Size(872, 119);
             this.lblAnimacionInfo.TabIndex = 2;
             this.lblAnimacionInfo.Text = resources.GetString("lblAnimacionInfo.Text");
             // 

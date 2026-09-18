@@ -55,7 +55,7 @@ namespace Vista.EmpleadoProducto
             btnCarrito.Size = new Size(160, 45);
             btnCarrito.Location = new Point(this.ClientSize.Width - 180, 15);
             btnCarrito.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            // btnCarrito.Click += BtnCarrito_Click;
+            btnCarrito.Click += BtnCarrito_Click;
 
             btnCarrito.MouseEnter += (s, e) => btnCarrito.BackColor = Color.FromArgb(56, 142, 60);
             btnCarrito.MouseLeave += (s, e) => btnCarrito.BackColor = Color.FromArgb(76, 175, 80);

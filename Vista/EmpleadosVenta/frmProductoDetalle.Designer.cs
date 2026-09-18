@@ -105,7 +105,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.55348F));
             this.tableLayoutPanel2.Controls.Add(this.txtBuscar, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 34);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(45, 34);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -130,7 +130,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(215)))), ((int)(((byte)(191)))));
             this.panel1.Controls.Add(this.flpVistaClientes);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(46, 113);
+            this.panel1.Location = new System.Drawing.Point(45, 113);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1178, 501);
             this.panel1.TabIndex = 1;

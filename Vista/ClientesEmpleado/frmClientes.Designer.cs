@@ -42,6 +42,7 @@
             this.pnlAgregarCompra = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregarCompra = new System.Windows.Forms.Button();
+            this.pbImg = new System.Windows.Forms.PictureBox();
             this.pnlContenedorInfo = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label38 = new System.Windows.Forms.Label();
-            this.pbImg = new System.Windows.Forms.PictureBox();
             this.pnlVistaClientes.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,8 +70,8 @@
             this.pnlContenedor.SuspendLayout();
             this.pnlAgregarCompra.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.pnlContenedorInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
+            this.pnlContenedorInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVistaClientes
@@ -117,7 +117,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.btnAgregar, 3, 1);
@@ -136,9 +136,9 @@
             this.lblProductos.AutoSize = true;
             this.lblProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(56, 33);
+            this.lblProductos.Location = new System.Drawing.Point(55, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(646, 85);
+            this.lblProductos.Size = new System.Drawing.Size(641, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "CLIENTES";
             // 
@@ -150,7 +150,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel7.Controls.Add(this.txtBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(708, 36);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(702, 36);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -181,7 +181,7 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnAgregar.Location = new System.Drawing.Point(1661, 36);
+            this.btnAgregar.Location = new System.Drawing.Point(1655, 36);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(200, 79);
             this.btnAgregar.TabIndex = 10;
@@ -242,7 +242,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanel2.Controls.Add(this.btnAgregarCompra, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.pbImg, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -264,11 +264,22 @@
             this.btnAgregarCompra.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarCompra.Location = new System.Drawing.Point(10, 103);
             this.btnAgregarCompra.Name = "btnAgregarCompra";
-            this.btnAgregarCompra.Size = new System.Drawing.Size(108, 32);
+            this.btnAgregarCompra.Size = new System.Drawing.Size(102, 32);
             this.btnAgregarCompra.TabIndex = 0;
             this.btnAgregarCompra.Text = "AGREGAR\r\nCOMPRA";
             this.btnAgregarCompra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAgregarCompra.UseVisualStyleBackColor = true;
+            // 
+            // pbImg
+            // 
+            this.pbImg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImg.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_105701;
+            this.pbImg.Location = new System.Drawing.Point(10, 13);
+            this.pbImg.Name = "pbImg";
+            this.pbImg.Size = new System.Drawing.Size(102, 84);
+            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImg.TabIndex = 1;
+            this.pbImg.TabStop = false;
             // 
             // pnlContenedorInfo
             // 
@@ -478,17 +489,6 @@
             this.label38.TabIndex = 26;
             this.label38.Text = "16/5/28";
             // 
-            // pbImg
-            // 
-            this.pbImg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImg.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_105701;
-            this.pbImg.Location = new System.Drawing.Point(10, 13);
-            this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(108, 84);
-            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImg.TabIndex = 1;
-            this.pbImg.TabStop = false;
-            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -511,9 +511,9 @@
             this.pnlContenedor.ResumeLayout(false);
             this.pnlAgregarCompra.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.pnlContenedorInfo.ResumeLayout(false);
             this.pnlContenedorInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.ResumeLayout(false);
 
         }

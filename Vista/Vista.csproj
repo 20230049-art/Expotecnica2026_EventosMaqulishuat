@@ -259,7 +259,16 @@
     <EmbeddedResource Include="EmpleadoServicios\frmServiciosInmoviliarios.resx">
       <DependentUpon>frmServiciosInmoviliarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadosVenta\frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadosVenta\frmCompraFinal.resx">
+      <DependentUpon>frmCompraFinal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmpleadosVenta\frmProductoDetalle.resx">
+      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoVentas\frmProductoDetalle.resx">
       <DependentUpon>frmProductoDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFondoNegro.resx">

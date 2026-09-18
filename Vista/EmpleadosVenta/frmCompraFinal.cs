@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,12 @@ namespace Vista.EmpleadosVenta
 {
     public partial class frmCompraFinal : Form
     {
-        public frmCompraFinal()
+        private int idVentaActiva;
+        private string nombreCliente;
+        private FacturaCompleta facturaActual;
+        private bool ventaFinalizada = false;
+
+        public frmCompraFinal(int idVenta, string cliente)
         {
             InitializeComponent();
         }

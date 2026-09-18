@@ -181,11 +181,6 @@ namespace Vista.ClientesEmpleado
             return panelContenedor;
         }
 
-        private void abrirfrmFondoNegro_Click(object sender, EventArgs e)
-        {
-            frmFondoNegro abrir = new frmFondoNegro();
-            abrir.ShowDialog();
-        }
         private void AbrirFormularioActualizar_Click(object sender, EventArgs e)
         {
             Panel panelCliente = (Panel)sender;
