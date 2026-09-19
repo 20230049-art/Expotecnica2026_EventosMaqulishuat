@@ -63,7 +63,6 @@
             this.lblNombres = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.pnlVistaAgregarCliente.SuspendLayout();
             this.tlpVistaClientes.SuspendLayout();
@@ -88,7 +87,7 @@
             this.pnlVistaAgregarCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaAgregarCliente.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaAgregarCliente.Name = "pnlVistaAgregarCliente";
-            this.pnlVistaAgregarCliente.Size = new System.Drawing.Size(1280, 718);
+            this.pnlVistaAgregarCliente.Size = new System.Drawing.Size(1280, 680);
             this.pnlVistaAgregarCliente.TabIndex = 2;
             // 
             // tlpVistaClientes
@@ -104,7 +103,7 @@
             this.tlpVistaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tlpVistaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tlpVistaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 311F));
-            this.tlpVistaClientes.Size = new System.Drawing.Size(1280, 718);
+            this.tlpVistaClientes.Size = new System.Drawing.Size(1280, 680);
             this.tlpVistaClientes.TabIndex = 0;
             // 
             // pnlTitulo
@@ -151,12 +150,11 @@
             this.pblDatosIngresar.Controls.Add(this.pnlNombre);
             this.pblDatosIngresar.Controls.Add(this.btnActualizar);
             this.pblDatosIngresar.Controls.Add(this.btnSalir);
-            this.pblDatosIngresar.Controls.Add(this.btnEliminar);
             this.pblDatosIngresar.Controls.Add(this.btnCerrar);
             this.pblDatosIngresar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pblDatosIngresar.Location = new System.Drawing.Point(3, 171);
             this.pblDatosIngresar.Name = "pblDatosIngresar";
-            this.pblDatosIngresar.Size = new System.Drawing.Size(1896, 544);
+            this.pblDatosIngresar.Size = new System.Drawing.Size(1896, 506);
             this.pblDatosIngresar.TabIndex = 11;
             // 
             // panel8
@@ -465,7 +463,7 @@
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnActualizar.Location = new System.Drawing.Point(442, 389);
+            this.btnActualizar.Location = new System.Drawing.Point(442, 402);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(162, 45);
             this.btnActualizar.TabIndex = 9;
@@ -480,27 +478,13 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnSalir.Location = new System.Drawing.Point(653, 389);
+            this.btnSalir.Location = new System.Drawing.Point(653, 402);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(162, 45);
             this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "Cerrar";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnEliminar.Location = new System.Drawing.Point(547, 473);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(174, 45);
-            this.btnEliminar.TabIndex = 10;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = false;
             // 
             // btnCerrar
             // 
@@ -509,7 +493,7 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnCerrar.Location = new System.Drawing.Point(827, 389);
+            this.btnCerrar.Location = new System.Drawing.Point(827, 402);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(0, 0);
             this.btnCerrar.TabIndex = 13;
@@ -520,11 +504,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 718);
+            this.ClientSize = new System.Drawing.Size(1280, 680);
             this.Controls.Add(this.pnlVistaAgregarCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1280, 718);
-            this.MinimumSize = new System.Drawing.Size(1280, 718);
+            this.MinimumSize = new System.Drawing.Size(1280, 680);
             this.Name = "frmActualizarInfo";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -595,7 +579,6 @@
         private System.Windows.Forms.Label lblNombres;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCerrar;
     }
 }

@@ -37,6 +37,10 @@ namespace Vista.ClientesEmpleado
             controlesBloqueo.BloquearControlesMTXT(mtxbTelefono);
             controlesBloqueo.BloquearControlesTXT(txtCorreo);
 
+            txtDui.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
+            txtNcr.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
+            txtNit.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
+
             txtNombre.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
             txtApellido.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
         }

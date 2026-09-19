@@ -15,7 +15,9 @@ namespace Vista.EmpleadoServicios
     {
         public frmServicios()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
             Redondeo.RedondearFig(panel2, 9);
             Redondeo.RedondearFig(panel10, 9);
@@ -32,6 +34,12 @@ namespace Vista.EmpleadoServicios
             Redondeo.RedondearFig(panel8, 9);
             Redondeo.RedondearFig(panel9, 9);
             Redondeo.RedondearFig(panel1, 9);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Cambio de formularios
@@ -39,7 +47,9 @@ namespace Vista.EmpleadoServicios
 
         private void abrirForm(Form formularioAbrir)
         {
-            if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
+            try
+            {
+                if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
             {
                 return;
             }
@@ -48,7 +58,6 @@ namespace Vista.EmpleadoServicios
             {
                 activeForm.Hide();
                 pnlVistaServicios.Controls.Remove(activeForm);
-                //activeForm.Dispose();
             }
 
             activeForm = formularioAbrir;
@@ -59,10 +68,17 @@ namespace Vista.EmpleadoServicios
             pnlVistaServicios.Controls.Add(formularioAbrir);
             formularioAbrir.BringToFront();
             formularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message, "ERROR-CAMBIO-103",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void panel5_Click_1(object sender, EventArgs e)
         {
+
             abrirForm(new frmServiciosInmoviliarios());
         }
 

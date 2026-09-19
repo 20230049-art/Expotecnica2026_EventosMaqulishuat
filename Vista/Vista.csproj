@@ -152,11 +152,11 @@
     <Compile Include="EmpleadosVenta\frmCompraFinal.Designer.cs">
       <DependentUpon>frmCompraFinal.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpleadosVenta\frmProductoDetalle.cs">
+    <Compile Include="EmpleadosVenta\frmProductoDetalles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpleadosVenta\frmProductoDetalle.Designer.cs">
-      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
+    <Compile Include="EmpleadosVenta\frmProductoDetalles.Designer.cs">
+      <DependentUpon>frmProductoDetalles.cs</DependentUpon>
     </Compile>
     <Compile Include="EmpleadoVentas\frmBuscarCliente.cs">
       <SubType>Form</SubType>
@@ -265,8 +265,8 @@
     <EmbeddedResource Include="EmpleadosVenta\frmCompraFinal.resx">
       <DependentUpon>frmCompraFinal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpleadosVenta\frmProductoDetalle.resx">
-      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
+    <EmbeddedResource Include="EmpleadosVenta\frmProductoDetalles.resx">
+      <DependentUpon>frmProductoDetalles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpleadoVentas\frmProductoDetalle.resx">
       <DependentUpon>frmProductoDetalle.cs</DependentUpon>
@@ -337,7 +337,34 @@
   <ItemGroup>
     <None Include="Resources\Captura de pantalla 2026-07-07 112345.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\resources\AnimacionS.png" />
+    <Content Include="Resources\resources\botonRegresar.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-07 105701.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-07 112140.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-07 112345.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 012318.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 012743.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 013509.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 0135091.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 014003.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 0140031.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-07-15 014218.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-09-03 101250.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-09-16 185007.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-09-16 1850071.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-09-16 192820.png" />
+    <Content Include="Resources\resources\Captura de pantalla 2026-09-16 194836.png" />
+    <Content Include="Resources\resources\Cristaleria.png" />
+    <Content Include="Resources\resources\DecoracionS.png" />
+    <Content Include="Resources\resources\DiscomovilS.png" />
+    <Content Include="Resources\resources\Fondo2.png" />
+    <Content Include="Resources\resources\LgoColor.png" />
+    <Content Include="Resources\resources\LogoFondo.png" />
+    <Content Include="Resources\resources\LogoInicio.png" />
+    <Content Include="Resources\resources\Persona.png" />
+    <Content Include="Resources\resources\Persona1.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modelos\Modelos.csproj">
       <Project>{182E471B-02C4-4695-9EC7-AEEB5973B9E2}</Project>

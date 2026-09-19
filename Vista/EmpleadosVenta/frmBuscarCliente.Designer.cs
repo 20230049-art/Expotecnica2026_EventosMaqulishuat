@@ -76,9 +76,8 @@
             this.pnlVistaDetalleProducto.Controls.Add(this.tableLayoutPanel1);
             this.pnlVistaDetalleProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaDetalleProducto.Location = new System.Drawing.Point(0, 0);
-            this.pnlVistaDetalleProducto.MaximumSize = new System.Drawing.Size(1262, 671);
             this.pnlVistaDetalleProducto.Name = "pnlVistaDetalleProducto";
-            this.pnlVistaDetalleProducto.Size = new System.Drawing.Size(1262, 671);
+            this.pnlVistaDetalleProducto.Size = new System.Drawing.Size(1280, 671);
             this.pnlVistaDetalleProducto.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -98,7 +97,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.278688F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.00596F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.600596F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1262, 671);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1280, 671);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -110,11 +109,11 @@
             this.tableLayoutPanel2.Controls.Add(this.txtBuscar, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(45, 34);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 34);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1184, 52);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1201, 52);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // txtBuscar
@@ -123,12 +122,13 @@
             this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBuscar.Font = new System.Drawing.Font("Bookman Old Style", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBuscar.Location = new System.Drawing.Point(168, 4);
+            this.txtBuscar.Location = new System.Drawing.Point(171, 4);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(814, 38);
+            this.txtBuscar.Size = new System.Drawing.Size(826, 38);
             this.txtBuscar.TabIndex = 2;
             this.txtBuscar.Text = "Buscar cliente";
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // panel2
             // 
@@ -136,7 +136,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(158, 46);
+            this.panel2.Size = new System.Drawing.Size(161, 46);
             this.panel2.TabIndex = 3;
             // 
             // pictureBox1
@@ -147,7 +147,7 @@
             this.pictureBox1.Image = global::Vista.Properties.Resources.botonRegresar;
             this.pictureBox1.Location = new System.Drawing.Point(3, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(59, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -158,9 +158,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(215)))), ((int)(((byte)(191)))));
             this.panel1.Controls.Add(this.flpVistaClientes);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(45, 113);
+            this.panel1.Location = new System.Drawing.Point(46, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1184, 501);
+            this.panel1.Size = new System.Drawing.Size(1201, 501);
             this.panel1.TabIndex = 1;
             // 
             // flpVistaClientes
@@ -171,7 +171,7 @@
             this.flpVistaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpVistaClientes.Location = new System.Drawing.Point(0, 0);
             this.flpVistaClientes.Name = "flpVistaClientes";
-            this.flpVistaClientes.Size = new System.Drawing.Size(1184, 501);
+            this.flpVistaClientes.Size = new System.Drawing.Size(1201, 501);
             this.flpVistaClientes.TabIndex = 1;
             // 
             // pnlContenedor
@@ -181,7 +181,7 @@
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContenedor.Location = new System.Drawing.Point(3, 3);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(1165, 166);
+            this.pnlContenedor.Size = new System.Drawing.Size(1195, 166);
             this.pnlContenedor.TabIndex = 2;
             this.pnlContenedor.Visible = false;
             // 
@@ -190,7 +190,7 @@
             this.pnlAgregarCompra.BackColor = System.Drawing.Color.SandyBrown;
             this.pnlAgregarCompra.Controls.Add(this.pbImg);
             this.pnlAgregarCompra.Controls.Add(this.btnAgregarCompra);
-            this.pnlAgregarCompra.Location = new System.Drawing.Point(1125, 10);
+            this.pnlAgregarCompra.Location = new System.Drawing.Point(1017, 14);
             this.pnlAgregarCompra.Name = "pnlAgregarCompra";
             this.pnlAgregarCompra.Size = new System.Drawing.Size(145, 135);
             this.pnlAgregarCompra.TabIndex = 40;
@@ -240,7 +240,7 @@
             this.pnlContenedorInfo.Controls.Add(this.label38);
             this.pnlContenedorInfo.Location = new System.Drawing.Point(15, 10);
             this.pnlContenedorInfo.Name = "pnlContenedorInfo";
-            this.pnlContenedorInfo.Size = new System.Drawing.Size(1015, 143);
+            this.pnlContenedorInfo.Size = new System.Drawing.Size(979, 143);
             this.pnlContenedorInfo.TabIndex = 39;
             // 
             // panel10
@@ -427,7 +427,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 671);
+            this.ClientSize = new System.Drawing.Size(1280, 671);
             this.Controls.Add(this.pnlVistaDetalleProducto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1280, 718);

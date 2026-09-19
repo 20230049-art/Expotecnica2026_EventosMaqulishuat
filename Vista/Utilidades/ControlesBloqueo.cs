@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Vista.Utilidades
                     e.SuppressKeyPress = true;
                     e.Handled = true;
 
-                    MessageBox.Show("Esta acción no está permitida.", "Acción bloqueada",
+                    MessageBox.Show("Esta acción no está permitida.", "ERROR-CCP-006",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             };
@@ -43,7 +44,7 @@ namespace Vista.Utilidades
                     e.SuppressKeyPress = true;
                     e.Handled = true;
 
-                    MessageBox.Show("Esta acción no está permitida.", "Acción bloqueada",
+                    MessageBox.Show("Esta acción no está permitida.", "ERROR-CCP-006",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             };
@@ -63,7 +64,7 @@ namespace Vista.Utilidades
                     e.SuppressKeyPress = true;
                     e.Handled = true;
 
-                    MessageBox.Show("Esta acción no está permitida.", "Acción bloqueada",
+                    MessageBox.Show("Esta acción no está permitida.", "ERROR-CCP-006",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             };
@@ -81,7 +82,7 @@ namespace Vista.Utilidades
             {
                 e.Handled = true;
 
-                MessageBox.Show("Solo se permiten letras, espacios, puntos, comas y punto y coma.", "Caracter no válido",
+                MessageBox.Show("Solo se permiten letras, espacios, puntos, comas y punto y coma.", "ERROR-CARACTER-004",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -95,7 +96,7 @@ namespace Vista.Utilidades
             {
                 e.Handled = true;
 
-                MessageBox.Show("Solo se permiten números y un punto decimal.", "Caracter no válido",
+                MessageBox.Show("Solo se permiten números y un punto decimal.", "ERROR-CARACTERNO-005",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return;
@@ -126,6 +127,48 @@ namespace Vista.Utilidades
 
                 return;
             }
+        }
+
+        //Bloqueo de longitud de controles
+        public static void LimitarTextBox(TextBox textBox, int maxCaracteres)
+        {
+            textBox.MaxLength = maxCaracteres;
+
+            textBox.KeyPress += (s, e) =>
+            {
+                if (textBox.Text.Length >= maxCaracteres &&
+                    !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+
+                    MessageBox.Show(
+                        $"Este campo permite un máximo de {maxCaracteres} caracteres.", "ERROR-LONGITUD-003",
+                        MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+            };
+        }
+
+        public static void AplicarMascara(MaskedTextBox maskedTextBox, string mascara)
+        {
+            maskedTextBox.Mask = mascara;
+        }
+
+        public static void LimitarComboBox(ComboBox comboBox, int maxCaracteres)
+        {
+            comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+
+            comboBox.KeyPress += (s, e) =>
+            {
+                if (comboBox.Text.Length >= maxCaracteres &&
+                    !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+
+                    MessageBox.Show(
+                        $"Este campo permite un máximo de {maxCaracteres} caracteres.", "ERROR-LONGITUD-003",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            };
         }
     }
 }

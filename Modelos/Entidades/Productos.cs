@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Modelos.Entidades
 {
@@ -57,10 +58,10 @@ namespace Modelos.Entidades
         }
 
         //Mostrar productos en la vista empleados-Servicios
-        public static DataTable ProductosServiciosEmpleado(int idServicio)
+        public static DataTable VistaEmpleadoServicios(int idServicio)
         {
             SqlConnection conection = ConexionDB.Conectar();
-            string comando = "SELECT * FROM VistaEmpleadoServicios;";
+            string comando = "SELECT * FROM VistaEmpleadoServicios WHERE IdServicio = @idServicio;";
 
             SqlCommand cmd = new SqlCommand(comando, conection);
             cmd.Parameters.AddWithValue("@idServicio", idServicio);
@@ -107,7 +108,6 @@ namespace Modelos.Entidades
             {
                 SqlCommand commandd = new SqlCommand("ObtenerProductosDisponibles", connection);
                 commandd.CommandType = CommandType.StoredProcedure;
-                //connection.Open();
                 using (var reader = commandd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -144,7 +144,7 @@ namespace Modelos.Entidades
             }
         }
 
-        //Buscar Producto por Id
+        //Buscar Producto por Id para ventas
         public static DataTable ObtenerProductoId(int idProducto)
         {
             using (SqlConnection connection = ConexionDB.Conectar())
@@ -172,7 +172,7 @@ namespace Modelos.Entidades
             DataTable tablaCliente = new DataTable();
             using (SqlConnection connection = ConexionDB.Conectar())
             {
-                using (var command = new SqlCommand("BuscarProductoEnEmpleado", connection))
+                using (var command = new SqlCommand("BuscarProductoEmpleado", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("@busqueda", SqlDbType.VarChar).Value = busqueda ?? (object)DBNull.Value;
@@ -208,6 +208,43 @@ namespace Modelos.Entidades
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+
+        //Buscar productos barra busqueda en servicios
+        public static DataTable BuscarProductosPorServicio(int idServicio, string busqueda)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("BuscarProductoServicio", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IdServicio", idServicio);
+                        cmd.Parameters.AddWithValue("@Busqueda", busqueda);
+
+                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                        {
+                            ad.Fill(dt);
+                        }
+                    }
+                } 
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Ocurrió un error en la base de datos: " + ex.Message,
+                                "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dt;
         }
     }
 }

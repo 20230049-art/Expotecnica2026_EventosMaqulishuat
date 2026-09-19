@@ -22,6 +22,7 @@ namespace Vista.ClientesEmpleado
             CargarClientesEnPantalla(clientes);
 
             Redondeo.RedondearFig(btnAgregar, 6);
+            ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
 
             EventosGloblales.ClienteAgregado += RegarcarPanelCliente;
             EventosGloblales.ClienteActualizado += RegarcarPanelCliente;
@@ -38,6 +39,15 @@ namespace Vista.ClientesEmpleado
         private void CargarClientesEnPantalla(DataTable clientes)
         {
             flpClientes.Controls.Clear();
+
+            if (clientes == null || clientes.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron clientes que coincidan con la búsqueda.", "ERROR-NODATO-007",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+
+                return;
+            }
 
             foreach (DataRow fila in clientes.Rows)
             {

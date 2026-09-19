@@ -117,7 +117,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.btnAgregar, 3, 1);
@@ -138,7 +138,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(55, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(641, 85);
+            this.lblProductos.Size = new System.Drawing.Size(638, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "CLIENTES";
             // 
@@ -150,7 +150,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel7.Controls.Add(this.txtBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(702, 36);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(699, 36);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -181,7 +181,7 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnAgregar.Location = new System.Drawing.Point(1655, 36);
+            this.btnAgregar.Location = new System.Drawing.Point(1652, 36);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(200, 79);
             this.btnAgregar.TabIndex = 10;
@@ -242,7 +242,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.Controls.Add(this.btnAgregarCompra, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.pbImg, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -262,9 +262,9 @@
             this.btnAgregarCompra.FlatAppearance.BorderSize = 0;
             this.btnAgregarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarCompra.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCompra.Location = new System.Drawing.Point(10, 103);
+            this.btnAgregarCompra.Location = new System.Drawing.Point(9, 103);
             this.btnAgregarCompra.Name = "btnAgregarCompra";
-            this.btnAgregarCompra.Size = new System.Drawing.Size(102, 32);
+            this.btnAgregarCompra.Size = new System.Drawing.Size(100, 32);
             this.btnAgregarCompra.TabIndex = 0;
             this.btnAgregarCompra.Text = "AGREGAR\r\nCOMPRA";
             this.btnAgregarCompra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -274,9 +274,9 @@
             // 
             this.pbImg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbImg.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_105701;
-            this.pbImg.Location = new System.Drawing.Point(10, 13);
+            this.pbImg.Location = new System.Drawing.Point(9, 13);
             this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(102, 84);
+            this.pbImg.Size = new System.Drawing.Size(100, 84);
             this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImg.TabIndex = 1;
             this.pbImg.TabStop = false;

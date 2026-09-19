@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.ClientesEmpleado;
 using Vista.EmpleadosVenta;
+using Vista.Utilidades;
 
 namespace Vista.EmpleadoProducto
 {
@@ -28,6 +29,8 @@ namespace Vista.EmpleadoProducto
             this.nombreCliente = nombreCliente;
             MostrarProductoEmpleado();
             BotonVenta();
+
+            ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
         }
 
         public frmProductos()
@@ -101,7 +104,7 @@ namespace Vista.EmpleadoProducto
             if (idVentaActiva <= 0)
             {
                 DialogResult result = MessageBox.Show("Actualmente no cuenta con un cliente seleccionado. ¿Desea seleccionar un cliente para iniciar una nueva venta?",
-                    "Venta no inicia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "INFO-NOVENTA-01", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -121,7 +124,7 @@ namespace Vista.EmpleadoProducto
                 return;
             }
 
-            frmProductoDetalle abrir = new frmProductoDetalle(idProducto, idVentaActiva);
+            frmProductoDetalles abrir = new frmProductoDetalles(idProducto, idVentaActiva);
             abrir.ShowDialog();
         }
 
@@ -254,7 +257,7 @@ namespace Vista.EmpleadoProducto
 
             if (productosFiltrados == null || productosFiltrados.Rows.Count == 0)
             {
-                MessageBox.Show("No se encontraron productos que coincidan con la búsqueda.", "Aviso",
+                MessageBox.Show("No se encontraron productos que coincidan con la búsqueda.", "ERROR-NODATO-007",
                     MessageBoxButtons.OK, MessageBoxIcon.Information
                 );
 

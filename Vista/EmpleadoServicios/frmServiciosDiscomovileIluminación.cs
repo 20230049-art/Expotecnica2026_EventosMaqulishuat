@@ -15,15 +15,25 @@ namespace Vista.EmpleadoServicios
     {
         public frmServiciosDiscomovileIluminación()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
             MostrarServicio();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Cambio de formularios
         private Form activeForm = null;
         private void abrirForm(Form formularioAbrir)
         {
-            if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
+            try
+            {
+                if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
             {
                 return;
             }
@@ -43,18 +53,46 @@ namespace Vista.EmpleadoServicios
             pnlVistaDiscomovil.Controls.Add(formularioAbrir);
             formularioAbrir.BringToFront();
             formularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message, "ERROR-CAMBIO-103",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pbRegresar_Click(object sender, EventArgs e)
         {
-            abrirForm(new frmServicios());
+            try
+            {
+                abrirForm(new frmServicios());
+             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al regresar al formulario anterior: " + ex.Message, "ERROR-NAVANTERIOR-104",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void MostrarServicio()
         {
-            flpServicio.Controls.Clear();
+            try
+            {
+                DataTable productos = Productos.VistaEmpleadoServicios(4);
 
-            DataTable productos = Productos.ProductosServiciosEmpleado(4);
+                MostrarProductos(productos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los productos del servicio: " + ex.Message,
+                                "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void MostrarProductos(DataTable productos)
+        {
+            try
+            {
+                flpServicio.Controls.Clear();
 
             foreach (DataRow fila in productos.Rows)
             {
@@ -158,6 +196,46 @@ namespace Vista.EmpleadoServicios
                 panelPrincipal.Controls.Add(btnCompra);
 
                 flpServicio.Controls.Add(panelPrincipal);
+            }
+        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar los productos: " + ex.Message, "ERROR-CARGADATOS-008",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string busqueda = txtBuscar.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(busqueda))
+                {
+                    MostrarServicio();
+                    return;
+                }
+
+                DataTable productos = Productos.BuscarProductosPorServicio(4, busqueda);
+
+                if (productos == null || productos.Rows.Count == 0)
+                {
+                    MostrarProductos(productos);
+
+                    MessageBox.Show("No se encontraron productos que coincidan con la búsqueda.", "ERROR-NODATO-007",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                MostrarProductos(productos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al intentar buscar los productos: " + ex.Message,
+                                "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MostrarProductos(new DataTable());
             }
         }
     }

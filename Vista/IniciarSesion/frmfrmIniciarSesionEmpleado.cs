@@ -28,6 +28,13 @@ namespace Vista.IniciarSesion
             Redondeo.RedondearFig(pnlUsuario, 4);
             Redondeo.RedondearFig(btnIngresarEmpleado, 5);
             Redondeo.RedondearFig(btnRegresar, 5);
+
+            ControlesBloqueo.LimitarTextBox(txtContrasena, 55);
+            ControlesBloqueo.LimitarTextBox(txtNombreUsuario, 180);
+
+            ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
+            controlesBloqueo.BloquearControlesTXT(txtNombreUsuario);
+            controlesBloqueo.BloquearControlesTXT(txtNombreUsuario);
         }
 
         //Cambio de formualrios

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.ClientesEmpleado;
+using Vista.Utilidades;
 
 namespace Vista.EmpleadosVenta
 {
@@ -16,133 +18,178 @@ namespace Vista.EmpleadosVenta
         public frmBuscarCliente()
         {
             InitializeComponent();
-            MostrarCliente();
+            DataTable clientes = Clientes.MostrarClientes();
+            CargarClientesEnPantalla(clientes);
+
+            ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
         }
 
-        private void MostrarCliente()
+        //Muestra los datos de la DB atraves del panel creado
+
+        private void CargarClientesEnPantalla(DataTable clientes)
         {
             flpVistaClientes.Controls.Clear();
 
-            DataTable clientes = Clientes.MostrarClientes();
+            if (clientes == null || clientes.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron clientes que coincidan con la búsqueda.", "ERROR-NODATO-007",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+
+                return;
+            }
 
             foreach (DataRow fila in clientes.Rows)
             {
-
-                Panel panelContenedor = new Panel();
-
-                panelContenedor.Width = pnlContenedor.Width;
-                panelContenedor.Height = pnlContenedor.Height;
-                panelContenedor.BorderStyle = pnlContenedor.BorderStyle;
-                panelContenedor.BackColor = Color.FromArgb(247, 215, 191);
-
-                Panel panelCliente = new Panel();
-
-                panelCliente.Width = pnlContenedorInfo.Width;
-                panelCliente.Height = pnlContenedorInfo.Height;
-                panelCliente.BackColor = pnlContenedorInfo.BackColor;
-                panelCliente.BorderStyle = pnlContenedorInfo.BorderStyle;
-                panelCliente.Location = pnlContenedorInfo.Location;
-                panelCliente.Tag = fila["IdCliente"];
-
-                Panel panelCompra = new Panel();
-
-                panelCompra.Width = pnlAgregarCompra.Width;
-                panelCompra.Height = pnlAgregarCompra.Height;
-                panelCompra.BackColor = pnlAgregarCompra.BackColor;
-                panelCompra.BorderStyle = pnlAgregarCompra.BorderStyle;
-                panelCompra.Location = pnlAgregarCompra.Location;
-
-                Label lblTituloNombre = new Label();
-
-                lblTituloNombre.Text = "Nombre".ToString();
-                lblTituloNombre.Font = new Font("Book Antiqua", 20, FontStyle.Bold);
-                lblTituloNombre.ForeColor = Color.FromArgb(64, 6, 6);
-                lblTituloNombre.Location = new Point(18, 13);
-                lblTituloNombre.AutoSize = true;
-
-                Label lblNombre = new Label();
-
-                lblNombre.Text = fila["NombreCliente"].ToString();
-                lblNombre.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
-                lblNombre.Location = new Point(18, 42);
-                lblNombre.AutoSize = true;
-
-                Label lblApellido = new Label();
-
-                lblApellido.Text = fila["ApellidoCliente"].ToString();
-                lblApellido.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
-                lblApellido.Location = new Point(18, 70);
-                lblApellido.AutoSize = true;
-
-                Label lblDocumento = new Label();
-                lblDocumento.Text = "DUI: " + fila["DUICliente"].ToString();
-                lblDocumento.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
-                lblDocumento.Location = new Point(256, 20);
-                lblDocumento.AutoSize = true;
-
-                Label lblTituloTipoCliente = new Label();
-                lblTituloTipoCliente.Text = "Tipo de Cliente: ".ToString();
-                lblTituloTipoCliente.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
-                lblTituloTipoCliente.Location = new Point(256, 48);
-                lblTituloTipoCliente.AutoSize = true;
-
-                Label lblTipoCliente = new Label();
-                lblTipoCliente.Text = fila["TipoCliente"].ToString();
-                lblTipoCliente.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
-                lblTipoCliente.Location = new Point(257, 73);
-                lblTipoCliente.AutoSize = true;
-
-                Label lblContacto = new Label();
-                lblContacto.Text = "Contacto".ToString();
-                lblContacto.Font = new Font("Book Antiqua", 19, FontStyle.Bold);
-                lblContacto.ForeColor = Color.FromArgb(64, 6, 6);
-                lblContacto.Location = new Point(479, 10);
-                lblContacto.AutoSize = true;
-
-                Label lblTelefono = new Label();
-                lblTelefono.Text = fila["TelefonoCliente"].ToString();
-                lblTelefono.Font = new Font("Book Antiqua", 16, FontStyle.Regular);
-                lblTelefono.Location = new Point(482, 38);
-                lblTelefono.AutoSize = true;
-
-                Label lblCorreo = new Label();
-                lblCorreo.Text = fila["CorreoCliente"].ToString();
-                lblCorreo.Font = new Font("Book Antiqua", 16, FontStyle.Regular);
-                lblCorreo.Location = new Point(482, 59);
-                lblCorreo.MaximumSize = new Size(262, 0);
-                lblCorreo.AutoSize = true;
-
-                Panel pnlDecoracion = new Panel();
-                pnlDecoracion.Size = new Size(1, 80);
-                pnlDecoracion.Location = new Point(248, 18);
-                pnlDecoracion.BackColor = Color.Black;
-
-                Panel pnlDecoracion1 = new Panel();
-                pnlDecoracion1.Size = new Size(1, 80);
-                pnlDecoracion1.Location = new Point(468, 18);
-                pnlDecoracion1.BackColor = Color.Black;
-
-                panelContenedor.Controls.Add(panelCliente);
-                panelContenedor.Controls.Add(panelCompra);
-                panelCliente.Controls.Add(lblTituloNombre);
-                panelCliente.Controls.Add(lblNombre);
-                panelCliente.Controls.Add(lblApellido);
-                panelCliente.Controls.Add(lblDocumento);
-                panelCliente.Controls.Add(lblTituloTipoCliente);
-                panelCliente.Controls.Add(lblTipoCliente);
-                panelCliente.Controls.Add(lblContacto);
-                panelCliente.Controls.Add(lblTelefono);
-                panelCliente.Controls.Add(lblCorreo);
-                panelCliente.Controls.Add(pnlDecoracion);
-                panelCliente.Controls.Add(pnlDecoracion1);
-
-                flpVistaClientes.Controls.Add(panelContenedor);
+                Panel panelCliente = MostrarCliente(fila);
+                flpVistaClientes.Controls.Add(panelCliente);
             }
+        }
+
+        private Panel MostrarCliente(DataRow fila)
+        {
+
+            Panel panelContenedor = new Panel();
+
+            panelContenedor.Width = pnlContenedor.Width;
+            panelContenedor.Height = pnlContenedor.Height;
+            panelContenedor.BorderStyle = pnlContenedor.BorderStyle;
+            panelContenedor.BackColor = Color.FromArgb(253, 241, 217);
+            panelContenedor.Tag = fila["IdCliente"];
+
+            Panel panelCliente = new Panel();
+
+            panelCliente.Width = pnlContenedorInfo.Width;
+            panelCliente.Height = pnlContenedorInfo.Height;
+            panelCliente.BackColor = pnlContenedorInfo.BackColor;
+            panelCliente.BorderStyle = pnlContenedorInfo.BorderStyle;
+            panelCliente.Location = pnlContenedorInfo.Location;
+            Redondeo.RedondearFig(panelCliente, 11);
+            panelCliente.Tag = fila["IdCliente"];
+
+
+            Panel panelCompra = new Panel();
+
+            panelCompra.Width = pnlAgregarCompra.Width;
+            panelCompra.Height = pnlAgregarCompra.Height;
+            panelCompra.BackColor = pnlAgregarCompra.BackColor;
+            panelCompra.BorderStyle = pnlAgregarCompra.BorderStyle;
+            panelCompra.Location = pnlAgregarCompra.Location;
+            Redondeo.RedondearFig(panelCompra, 9);
+
+            Label lblTituloNombre = new Label();
+
+            lblTituloNombre.Text = "Nombre".ToString();
+            lblTituloNombre.Font = new Font("Book Antiqua", 22, FontStyle.Bold);
+            lblTituloNombre.ForeColor = Color.FromArgb(64, 6, 6);
+            lblTituloNombre.Location = new Point(28, 21);
+            lblTituloNombre.AutoSize = true;
+
+            Label lblNombre = new Label();
+
+            lblNombre.Text = fila["NombreCliente"].ToString();
+            lblNombre.Font = new Font("Book Antiqua", 20, FontStyle.Regular);
+            lblNombre.Location = new Point(28, 52);
+            lblNombre.AutoSize = true;
+
+            Label lblApellido = new Label();
+
+            lblApellido.Text = fila["ApellidoCliente"].ToString();
+            lblApellido.Font = new Font("Book Antiqua", 20, FontStyle.Regular);
+            lblApellido.Location = new Point(28, 84);
+            lblApellido.AutoSize = true;
+
+            Label lblDocumento = new Label();
+            lblDocumento.Text = "DUI: " + fila["DUICliente"].ToString();
+            lblDocumento.Font = new Font("Book Antiqua", 21, FontStyle.Regular);
+            lblDocumento.Location = new Point(324, 30);
+            lblDocumento.AutoSize = true;
+
+            Label lblTipoCliente = new Label();
+            lblTipoCliente.Text = "Tipo de Cliente: " + fila["TipoCliente"].ToString();
+            lblTipoCliente.Font = new Font("Book Antiqua", 21, FontStyle.Regular);
+            lblTipoCliente.Location = new Point(324, 72);
+            lblTipoCliente.AutoSize = true;
+
+            Label lblContacto = new Label();
+            lblContacto.Text = "Contacto".ToString();
+            lblContacto.Font = new Font("Book Antiqua", 22, FontStyle.Bold);
+            lblContacto.ForeColor = Color.FromArgb(64, 6, 6);
+            lblContacto.Location = new Point(674, 21);
+            lblContacto.AutoSize = true;
+
+            Label lblTelefono = new Label();
+            lblTelefono.Text = fila["TelefonoCliente"].ToString();
+            lblTelefono.Font = new Font("Book Antiqua", 19, FontStyle.Regular);
+            lblTelefono.Location = new Point(674, 52);
+            lblTelefono.AutoSize = true;
+
+            Label lblCorreo = new Label();
+            lblCorreo.Text = fila["CorreoCliente"].ToString();
+            lblCorreo.Font = new Font("Book Antiqua", 19, FontStyle.Regular);
+            lblCorreo.Location = new Point(674, 83);
+            lblCorreo.MaximumSize = new Size(400, 0);
+            lblCorreo.AutoSize = true;
+
+            Panel pnlDecoracion = new Panel();
+            pnlDecoracion.Size = new Size(1, 105);
+            pnlDecoracion.Location = new Point(310, 18);
+            pnlDecoracion.BackColor = Color.Black;
+
+            Panel pnlDecoracion1 = new Panel();
+            pnlDecoracion1.Size = new Size(1, 105);
+            pnlDecoracion1.Location = new Point(654, 18);
+            pnlDecoracion1.BackColor = Color.Black;
+
+            Button btnCompra = new Button();
+            btnCompra.BackColor = Color.SandyBrown;
+            btnCompra.Size = new Size(124, 55);
+            btnCompra.MaximumSize = new Size(124, 65);
+            btnCompra.Text = "AGREGAR COMPRA ".ToString();
+            btnCompra.Font = new Font("Book Antiqua", 11, FontStyle.Bold);
+            btnCompra.Location = new Point(10, 76);
+            btnCompra.FlatStyle = FlatStyle.Flat;
+            btnCompra.FlatAppearance.BorderSize = 0;
+            btnCompra.AutoSize = true;
+            btnCompra.Tag = fila["IdCliente"];
+
+            PictureBox pbLogo = new PictureBox();
+            pbLogo.Location = new Point(38, 12);
+            pbLogo.Size = pbImg.Size;
+            pbLogo.Image = pbImg.Image;
+
+            panelContenedor.Controls.Add(panelCliente);
+            panelContenedor.Controls.Add(panelCompra);
+            panelCliente.Controls.Add(lblTituloNombre);
+            panelCliente.Controls.Add(lblNombre);
+            panelCliente.Controls.Add(lblApellido);
+            panelCliente.Controls.Add(lblDocumento);
+            panelCliente.Controls.Add(lblTipoCliente);
+            panelCliente.Controls.Add(lblContacto);
+            panelCliente.Controls.Add(lblTelefono);
+            panelCliente.Controls.Add(lblCorreo);
+            panelCliente.Controls.Add(pnlDecoracion);
+            panelCliente.Controls.Add(pnlDecoracion1);
+
+            panelCompra.Controls.Add(btnCompra);
+            panelCompra.Controls.Add(pbLogo);
+
+            flpVistaClientes.Controls.Add(panelContenedor);
+
+            return panelContenedor;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscar.Text.Trim();
+            Clientes clientes = new Clientes();
+            DataTable clientesFiltrados = clientes.BuscarCliente(busqueda);
+            CargarClientesEnPantalla(clientesFiltrados);
         }
     }
 }
