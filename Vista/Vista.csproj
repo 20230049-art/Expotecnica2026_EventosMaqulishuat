@@ -158,29 +158,17 @@
     <Compile Include="EmpleadosVenta\frmProductoDetalles.Designer.cs">
       <DependentUpon>frmProductoDetalles.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpleadoVentas\frmBuscarCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmpleadoVentas\frmBuscarCliente.Designer.cs">
-      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmpleadoVentas\frmCompraFinal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmpleadoVentas\frmCompraFinal.Designer.cs">
-      <DependentUpon>frmCompraFinal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmpleadoVentas\frmProductoDetalle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmpleadoVentas\frmProductoDetalle.Designer.cs">
-      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmFondoNegro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFondoNegro.Designer.cs">
       <DependentUpon>frmFondoNegro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteClientes\frmClientesAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteClientes\frmClientesAgregar.Designer.cs">
+      <DependentUpon>frmClientesAgregar.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenteInicio\frmInicioGerente.cs">
       <SubType>Form</SubType>
@@ -268,11 +256,11 @@
     <EmbeddedResource Include="EmpleadosVenta\frmProductoDetalles.resx">
       <DependentUpon>frmProductoDetalles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpleadoVentas\frmProductoDetalle.resx">
-      <DependentUpon>frmProductoDetalle.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmFondoNegro.resx">
       <DependentUpon>frmFondoNegro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteClientes\frmClientesAgregar.resx">
+      <DependentUpon>frmClientesAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteInicio\frmInicioGerente.resx">
       <DependentUpon>frmInicioGerente.cs</DependentUpon>

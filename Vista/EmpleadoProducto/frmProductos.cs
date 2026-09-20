@@ -24,26 +24,45 @@ namespace Vista.EmpleadoProducto
 
         public frmProductos(int idVenta, string nombreCliente)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
             this.idVentaActiva = idVenta;
             this.nombreCliente = nombreCliente;
             MostrarProductoEmpleado();
             BotonVenta();
 
             ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public frmProductos()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
             this.idVentaActiva = 0;
             this.nombreCliente = "";
             MostrarProductoEmpleado();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BotonVenta()
         {
-            if (idVentaActiva <= 0)
+            try
+            {
+
+                if (idVentaActiva <= 0)
             {
                 return;
             }
@@ -65,25 +84,48 @@ namespace Vista.EmpleadoProducto
 
             this.Controls.Add(btnCarrito);
             btnCarrito.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el botón de venta: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnCarrito_Click(object sender, EventArgs e)
         {
+            try
+            {
             if (idVentaActiva <= 0)
             {
-                MessageBox.Show("No hay una venta activa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay una venta activa.", "VENTA-NOACTIVA-120", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            frmCompraFinal frmCompraFinal = new frmCompraFinal(idVentaActiva, nombreCliente);
-            frmCompraFinal.ShowDialog();
+                frmCompraFinal frmCompraFinal = new frmCompraFinal(idVentaActiva, nombreCliente);
+                frmCompraFinal.ShowDialog();
+
+                if (frmCompraFinal.DialogResult == DialogResult.Cancel)
+                {
+                    this.Close();
+                }
+
+                if (frmCompraFinal.DialogResult == DialogResult.OK)
+                {
+                    MostrarProductoEmpleado();
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
-
-
 
         private void MostrarProductoEmpleado()
         {
-            flpProductos.Controls.Clear();
+            try
+            {
+                flpProductos.Controls.Clear();
 
             DataTable producto = Productos.MostrarProductosEmpleado();
 
@@ -94,10 +136,19 @@ namespace Vista.EmpleadoProducto
 
                 flpProductos.Controls.Add(panelProductos);
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los productos: " + ex.Message,
+                                "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCompra_Click(object sender, EventArgs e)
         {
+            try
+            {
+
             Button panelProducto = (Button)sender;
             int idProducto = Convert.ToInt32(panelProducto.Tag);
 
@@ -108,10 +159,10 @@ namespace Vista.EmpleadoProducto
 
                 if (result == DialogResult.Yes)
                 {
-                    frmFondoNegro fondo = new frmFondoNegro();
-                    fondo.StartPosition = FormStartPosition.CenterParent;
-                    fondo.WindowState = FormWindowState.Maximized;
-                    fondo.Show();
+                    frmFondoNegro fondoo = new frmFondoNegro();
+                    fondoo.StartPosition = FormStartPosition.CenterParent;
+                    fondoo.WindowState = FormWindowState.Maximized;
+                    fondoo.Show();
 
                     frmBuscarCliente frmBuscar = new frmBuscarCliente();
                     frmBuscar.StartPosition = FormStartPosition.CenterParent;
@@ -119,18 +170,40 @@ namespace Vista.EmpleadoProducto
                     frmBuscar.ShowDialog();
                     frmBuscar.BringToFront();
 
-                    fondo.Close();
+                    fondoo.Close();
                 }
                 return;
             }
 
-            frmProductoDetalles abrir = new frmProductoDetalles(idProducto, idVentaActiva);
-            abrir.ShowDialog();
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
+
+                frmProductoDetalles abrir = new frmProductoDetalles(idProducto, idVentaActiva);
+                abrir.ShowDialog();
+
+                fondo.Close();
+
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El identificador del producto no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el detalle del producto: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Panel PanelProducto(DataRow fila)
         {
-            Panel panelProductos = new Panel();
+            try
+            {
+
+                Panel panelProductos = new Panel();
 
             panelProductos.Width = pnlPlantilla.Width;
             panelProductos.Height = pnlPlantilla.Height;
@@ -241,19 +314,49 @@ namespace Vista.EmpleadoProducto
             panelProductos.Controls.Add(pnlDecoracion1);
 
             return panelProductos;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Una columna esperada no existe en los datos del producto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Un dato del producto no tiene el formato esperado: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el panel del producto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
         }
 
         private void txtBuscar_TextChanged_1(object sender, EventArgs e)
         {
-            string busqueda = txtBuscar.Text.Trim();
+            try
+            {
+                string busqueda = txtBuscar.Text.Trim();
             Productos productos = new Productos();
             DataTable productosFiltrados = productos.BuscarProductoEmpleado(busqueda);
             MostrarProductosEmpleado(productosFiltrados);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message,
+                        "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void MostrarProductosEmpleado(DataTable productosFiltrados)
         {
-            flpProductos.Controls.Clear();
+            try
+            {
+                flpProductos.Controls.Clear();
 
             if (productosFiltrados == null || productosFiltrados.Rows.Count == 0)
             {
@@ -269,6 +372,12 @@ namespace Vista.EmpleadoProducto
                 Panel panelProducto = PanelProducto(fila);
 
                 flpProductos.Controls.Add(panelProducto);
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar los productos filtrados: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

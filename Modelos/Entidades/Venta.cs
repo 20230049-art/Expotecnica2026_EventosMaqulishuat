@@ -83,7 +83,7 @@ namespace Modelos.Entidades
                             Iva: (decimal)reader["Iva"],
                             Descuento: reader["DescuentoVenta"] != DBNull.Value ? (decimal)reader["DescuentoVenta"] : 0,
                             Total: (decimal)reader["TotalVenta"],
-                            TipoPago: reader["TipoPagoVenta"].ToString(),
+                            TipoPago: reader["TipoPago"].ToString(),
                             EstadoVenta: reader["EstadoVenta"].ToString()
                         );
                     }
@@ -188,6 +188,25 @@ namespace Modelos.Entidades
 
                 command.ExecuteNonQuery();
                 conexion.Close();
+            }
+        }
+
+        //Cancelar Venta
+        public void CancelarVenta(int idVenta)
+        {
+            try
+            {
+                using (SqlConnection connection = ConexionDB.Conectar())
+                {
+                    SqlCommand command = new SqlCommand("CancelarVenta", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cancelar la venta.", ex);
             }
         }
     }

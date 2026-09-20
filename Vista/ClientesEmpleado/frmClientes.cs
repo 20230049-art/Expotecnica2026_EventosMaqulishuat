@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.EmpleadoProducto;
+using Vista.EmpleadoServicios;
+using Vista.GerenteClientes;
 using Vista.Utilidades;
 
 namespace Vista.ClientesEmpleado
@@ -17,28 +20,107 @@ namespace Vista.ClientesEmpleado
     {
         public frmClientes()
         {
-            InitializeComponent();
-            DataTable clientes = Clientes.MostrarClientes();
-            CargarClientesEnPantalla(clientes);
+            try
+            {
+                InitializeComponent();
+                DataTable clientes = Clientes.MostrarClientes();
+                CargarClientesEnPantalla(clientes);
 
-            Redondeo.RedondearFig(btnAgregar, 6);
-            ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
+                Redondeo.RedondearFig(btnAgregar, 7);
+                ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
 
-            EventosGloblales.ClienteAgregado += RegarcarPanelCliente;
+                EventosGloblales.ClienteAgregado += RegarcarPanelCliente;
             EventosGloblales.ClienteActualizado += RegarcarPanelCliente;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Cambio de formularios
+        private Form activeForm = null;
+        private void abrirForm(Form formularioAbrir)
+        {
+            try
+            {
+                if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
+                {
+                    return;
+                }
+
+                if (activeForm != null)
+                {
+                    activeForm.FormClosed -= ActiveForm_FormClosed;
+                    activeForm.Close();
+                    pnlVistaClientes.Controls.Remove(activeForm);
+                    activeForm.Dispose();
+                    activeForm = null;
+                }
+
+                activeForm = formularioAbrir;
+                formularioAbrir.TopLevel = false;
+                formularioAbrir.FormBorderStyle = FormBorderStyle.None;
+                formularioAbrir.Dock = DockStyle.Fill;
+
+                formularioAbrir.FormClosed += ActiveForm_FormClosed;
+
+                pnlVistaClientes.Controls.Add(formularioAbrir);
+                formularioAbrir.BringToFront();
+                formularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message, "ERROR-CAMBIO-103",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActiveForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                if (activeForm != null)
+                {
+                    activeForm.FormClosed -= ActiveForm_FormClosed;
+                    pnlVistaClientes.Controls.Remove(activeForm);
+                    activeForm.Dispose();
+                    activeForm = null;
+                }
+
+                DataTable clientes = Clientes.MostrarClientes();
+                CargarClientesEnPantalla(clientes);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario: " + ex.Message,
+                    "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void RegarcarPanelCliente(object sender, EventArgs e)
         {
-            DataTable clientes = Clientes.MostrarClientes();
-            CargarClientesEnPantalla(clientes);
+            try
+            {
+                DataTable clientes = Clientes.MostrarClientes();
+                CargarClientesEnPantalla(clientes);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al recargar la lista de clientes: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Muestra los datos de la DB atraves del panel creado
 
         private void CargarClientesEnPantalla(DataTable clientes)
         {
-            flpClientes.Controls.Clear();
+            try
+            {
+                flpClientes.Controls.Clear();
 
             if (clientes == null || clientes.Rows.Count == 0)
             {
@@ -51,16 +133,35 @@ namespace Vista.ClientesEmpleado
 
             foreach (DataRow fila in clientes.Rows)
             {
-                Panel panelCliente = MostrarCliente(fila);
-                flpClientes.Controls.Add(panelCliente);
-                panelCliente.Click += AbrirFormularioActualizar_Click;
+                    Panel panelCliente = MostrarCliente(fila);
+
+                    if (panelCliente == null)
+                    {
+                        continue;
+                    }
+
+                    panelCliente.Click += AbrirFormularioActualizar_Click;
+
+                    flpClientes.Controls.Add(panelCliente);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar los clientes en pantalla: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private Panel MostrarCliente(DataRow fila)
         {
+            try
+            {
+                if (fila == null)
+                {
+                    return null;
+                }
 
-            Panel panelContenedor = new Panel();
+                Panel panelContenedor = new Panel();
 
             panelContenedor.Width = pnlContenedor.Width;
             panelContenedor.Height = pnlContenedor.Height;
@@ -186,46 +287,99 @@ namespace Vista.ClientesEmpleado
             panelCompra.Controls.Add(btnCompra);
             panelCompra.Controls.Add(pbLogo);
 
-            flpClientes.Controls.Add(panelContenedor);
-
             return panelContenedor;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Una columna esperada no existe en los datos del cliente: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el panel del cliente: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         private void AbrirFormularioActualizar_Click(object sender, EventArgs e)
         {
-            Panel panelCliente = (Panel)sender;
-            int idCliente = Convert.ToInt32(panelCliente.Tag);
+            try
+            {
+                Panel panelCliente = (Panel)sender;
+                if (panelCliente == null || panelCliente.Tag == null)
+                {
+                    MessageBox.Show("No se pudo identificar el cliente seleccionado.",
+                            "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            frmFondoNegro fondo = new frmFondoNegro();
-            fondo.StartPosition = FormStartPosition.CenterParent;
-            fondo.WindowState = FormWindowState.Maximized; 
-            fondo.Show();
+                int idCliente = Convert.ToInt32(panelCliente.Tag);
 
-            frmActualizarInfo formularioActualizar = new frmActualizarInfo(idCliente);
-            formularioActualizar.StartPosition = FormStartPosition.CenterParent;
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
 
-            formularioActualizar.ShowDialog();
-            formularioActualizar.BringToFront();
+                frmActualizarInfo formularioActualizar = new frmActualizarInfo(idCliente);
+                formularioActualizar.StartPosition = FormStartPosition.CenterParent;
 
-            fondo.Close();
+                formularioActualizar.ShowDialog();
+                formularioActualizar.BringToFront();
+
+                fondo.Close();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El identificador del cliente no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de actualización: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnCompra_Click(object sender, EventArgs e)
         {
-            Button btnCompra = (Button)sender;
-            int idCliente = Convert.ToInt32(btnCompra.Tag);
-
-            DataTable dtCliente = Clientes.ObtenerClienteId(idCliente);
-            string nombreCliente = "";
-
-            if (dtCliente.Rows.Count > 0)
-            {
-                nombreCliente = dtCliente.Rows[0]["NombreCliente"].ToString()
-                + ""
-                + dtCliente.Rows[0]["ApellidoCliente"].ToString();
-            }
             try
             {
+
+                Button btnCompra = (Button)sender;
+
+                if (btnCompra == null || btnCompra.Tag == null)
+                {
+                    MessageBox.Show("No se pudo identificar el cliente seleccionado.",
+                            "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int idCliente = Convert.ToInt32(btnCompra.Tag);
+
+                if (CuentaAbierta.IdEmpleado <= 0)
+                {
+                    MessageBox.Show("No hay un empleado con sesión activa.",
+                            "INFO-VENTAEMPLE-02", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DataTable dtCliente = Clientes.ObtenerClienteId(idCliente);
+                string nombreCliente = "";
+
+                if (dtCliente == null || dtCliente.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontró la información del cliente seleccionado.",
+                            "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                if (dtCliente.Rows.Count > 0)
+                {
+                    nombreCliente = dtCliente.Rows[0]["NombreCliente"].ToString()
+                    + " " + dtCliente.Rows[0]["ApellidoCliente"].ToString();
+                }
                 DateTime fechaUso = DateTime.Now.AddDays(1);
                 int idTipoPago = 1;
 
@@ -236,38 +390,85 @@ namespace Vista.ClientesEmpleado
 
                 if (idVenta > 0)
                 {
-                    MessageBox.Show($"Venta iniciada para: {nombreCliente}", "Venta Creada",
+                    MessageBox.Show($"Venta iniciada para: {nombreCliente}", "INFO-VENTA-00",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
                     frmProductos abrir = new frmProductos(idVenta, nombreCliente);
-                    abrir.ShowDialog();
-                    abrir.ShowIcon = false;
+                    abrirForm(abrir);
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo iniciar la venta. Intente nuevamente.",
+                            "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El identificador del cliente no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error de base de datos al iniciar la venta: " + ex.Message,
+                        "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al iniciar venta: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al iniciar la venta: " + ex.Message,
+                    "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txtBuscar_TextChanged_1(object sender, EventArgs e)
         {
-            string busqueda = txtBuscar.Text.Trim();
+            try
+            {
+                string busqueda = txtBuscar.Text.Trim();
             Clientes clientes = new Clientes();
             DataTable clientesFiltrados = clientes.BuscarCliente(busqueda);
             CargarClientesEnPantalla(clientesFiltrados);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda de clientes: " + ex.Message,
+                        "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void frmClientes_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            EventosGloblales.ClienteAgregado -= RegarcarPanelCliente;
+                EventosGloblales.ClienteAgregado -= RegarcarPanelCliente;
             EventosGloblales.ClienteActualizado -= RegarcarPanelCliente;
         }
 
-        private void pnlContenedorInfo_Paint(object sender, PaintEventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
+            try
+            { 
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
 
+                frmClientesAgregar formularioActualizar = new frmClientesAgregar();
+                formularioActualizar.StartPosition = FormStartPosition.CenterParent;
+
+                formularioActualizar.ShowDialog();
+                formularioActualizar.BringToFront();
+
+                fondo.Close();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El identificador del cliente no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de agregarn: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

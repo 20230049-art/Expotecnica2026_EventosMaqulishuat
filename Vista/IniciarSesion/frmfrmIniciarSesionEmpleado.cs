@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,13 @@ namespace Vista.IniciarSesion
 {
     public partial class frmfrmIniciarSesionEmpleado : Form
     {
-
+        private Usuario usuario = new Usuario();
+        private ErrorProvider errorProvider = new ErrorProvider();
         public frmfrmIniciarSesionEmpleado()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             this.Resize += (s, e) => AjustarTitulo();
             AjustarTitulo();
@@ -35,13 +39,22 @@ namespace Vista.IniciarSesion
             ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
             controlesBloqueo.BloquearControlesTXT(txtNombreUsuario);
             controlesBloqueo.BloquearControlesTXT(txtNombreUsuario);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Cambio de formualrios
         private Form activeForm = null;
         private void abrirFormulario(Form formularioAbrir)
         {
-            if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
+            try
+            {
+                if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
             {
                 return;
             }
@@ -61,23 +74,24 @@ namespace Vista.IniciarSesion
             pnlVistaIniciarEmpleado.Controls.Add(formularioAbrir);
             formularioAbrir.BringToFront();
             formularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar de formulario: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AjustarTitulo()
         {
             if (lblTitulo == null || lblTitulo.IsDisposed) return;
 
-            // El label está dentro de un panel, usamos el ancho del panel padre
             int anchoDisponible = lblTitulo.Parent?.ClientSize.Width ?? this.ClientSize.Width;
 
-            // Calcular tamaño de fuente proporcional al ancho
-            // Ajusta los valores según tu diseño
-            float tamanoFuente = anchoDisponible / 28f; // Entre más grande el divisor, más pequeña la fuente
+            float tamanoFuente = anchoDisponible / 28f; 
 
-            // Aplicar límites
             tamanoFuente = Math.Max(16f, Math.Min(100f, tamanoFuente));
 
-            // Solo cambiar si es necesario
             if (Math.Abs(lblTitulo.Font.Size - tamanoFuente) > 0.1f)
             {
                 lblTitulo.Font = new Font(
@@ -90,51 +104,79 @@ namespace Vista.IniciarSesion
 
         private void btnIngresarEmpleado_Click(object sender, EventArgs e)
         {
-        //    try
-        //    {
-        //        string nombreUsuario = txtNombreUsuario.Text;
-        //        string contrasena = txtContrasena.Text;
+            try
+            {
+                errorProvider.Clear();
 
-        //        if (string.IsNullOrEmpty(nombreUsuario) || string.IsNullOrEmpty(contrasena))
-        //        {
-        //            MessageBox.Show("Por favor ingrese usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            return;
-        //        }
+                string nombreUsuario = txtNombreUsuario.Text;
+                string contrasena = txtContrasena.Text;
 
-        //        Usuario EmpleadoUsuario = new Usuario();
-        //        Usuario EmpleadoValido = usuario.ValidarLoginEmpleado(nombreUsuario, contrasena);
+                bool valido = true;
 
-        //        if (EmpleadoValido != null)
-        //        {
-        //            if (EmpleadoValido.IdTipoUsuario == 2)
-        //            {
-        //                MessageBox.Show($"¡Bienvenido {EmpleadoValido.NombreUsuario}!", "Login exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (string.IsNullOrEmpty(nombreUsuario))
+                {
+                    errorProvider.SetError(txtNombreUsuario,"Ingrese su usuario.");
+          
+                    valido = false;
+                }
 
-        //                int idEmpleado = EmpleadoValido.IdEmpleado.Value;
+                if (string.IsNullOrEmpty(contrasena))
+                {
+                    errorProvider.SetError(txtContrasena, "Ingresa tu contraseña.");
 
-        //                CuentaAbierta.IdEmpleado = idEmpleado;
+                    valido = false;
+                }
+
+                if (!valido)
+                {
+                    MessageBox.Show( "Por favor ingrese usuario y contraseña.", "ERROR-CAMVACIO-001",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                Usuario EmpleadoUsuario = new Usuario();
+                Usuario EmpleadoValido = usuario.ValidarLoginEmpleado(nombreUsuario, contrasena);
+
+
+                if (EmpleadoValido != null)
+                {
+                    if (EmpleadoValido.IdTipoUsuario == 2)
+                    {
+                        MessageBox.Show($"¡Bienvenido {EmpleadoValido.NombreUsuario}!", "USUARIO-ACTIVO-1", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        int idEmpleado = EmpleadoValido.IdEmpleado.Value;
+
+                        CuentaAbierta.IdEmpleado = idEmpleado;
 
                         abrirFormulario(new frmEmpleadoMenu());
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Tipo de usuario no reconocido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tipo de usuario no reconocido.", "ERROR-USUARIO-013", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos.", "ERROR-CREDENCIALES-150", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            abrirFormulario(new frmSeleccionarPefil());
+            try
+            {
+                abrirFormulario(new frmSeleccionarPefil());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al regresar al formulario anterior: " + ex.Message,
+                        "ERROR-NAVANTERIOR-104", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

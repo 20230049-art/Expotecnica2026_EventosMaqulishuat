@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,9 @@ namespace Vista.ClientesEmpleado
 
         public frmActualizarInfo(int idCliente)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
             this.idCliente = idCliente;
             MostrarInformacionCliente();
             CargarTipoCliente();
@@ -43,10 +46,18 @@ namespace Vista.ClientesEmpleado
 
             txtNombre.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
             txtApellido.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al inicializar el formulario: " + ex.Message,
+                        "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void MostrarInformacionCliente()
         {
+            try
+            { 
             DataTable dt = Clientes.ObtenerClienteId(idCliente);
 
             if (dt.Rows.Count > 0)
@@ -60,11 +71,24 @@ namespace Vista.ClientesEmpleado
                 txtCorreo.Text = dt.Rows[0]["CorreoCliente"].ToString();
                 cmbTipoCliente.SelectedValue = dt.Rows[0]["IdTipoCliente"];
             }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Una columna esperada no existe en los datos del cliente: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la información del cliente: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            Clientes cliente = new Clientes();
+            try
+            {
+                Clientes cliente = new Clientes();
 
             cliente.IdCliente = idCliente;
             cliente.NombreCliente = txtNombre.Text;
@@ -83,18 +107,50 @@ namespace Vista.ClientesEmpleado
             EventosGloblales.EnClienteActualizado();
 
             this.Close();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El tipo de cliente seleccionado no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al actualizar el cliente en la base de datos: " + ex.Message,
+                        "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el cliente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CargarTipoCliente()
         {
-            cmbTipoCliente.DataSource = TipoClientes.ObtenerTipoCliente();
+            try
+            {
+                cmbTipoCliente.DataSource = TipoClientes.ObtenerTipoCliente();
             cmbTipoCliente.DisplayMember = "TipoCliente";
             cmbTipoCliente.ValueMember = "IdTipoCliente";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los tipos de cliente: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar el formulario: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
