@@ -330,6 +330,8 @@ namespace Vista.EmpleadosVenta
 
                 MostrarFacturaGenerada(facturaActual);
 
+                VentaActiva.Limpiar();
+
                 MessageBox.Show($"Venta finalizada correctamente.\nFactura: {facturaActual.NumeroFactura}",
                         "VENTA-FINALIZADA-200", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -425,6 +427,8 @@ namespace Vista.EmpleadosVenta
                 {
                     Venta venta = new Venta();
                     venta.CancelarVenta(idVentaActiva);
+
+                    VentaActiva.Limpiar();
 
                     MessageBox.Show("Compra cancelada. La venta fue eliminada y los productos regresaron al inventario.",
                     "VENTA-CANCELAR-105", MessageBoxButtons.OK, MessageBoxIcon.Information);

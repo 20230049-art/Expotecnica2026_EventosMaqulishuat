@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlVistaInicio = new System.Windows.Forms.Panel();
             this.tlpFondo = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaInicio.SuspendLayout();
             this.tlpFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,6 +70,7 @@
             this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.92703F));
             this.tlpFondo.Size = new System.Drawing.Size(1924, 973);
             this.tlpFondo.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.tlpFondo, "Da click en cualquier lugar de la pantalla");
             this.tlpFondo.Click += new System.EventHandler(this.tlpFondo_Click);
             // 
             // label1
@@ -83,6 +86,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label1, "Da click en cualquier lugar de la pantalla");
             // 
             // pictureBox1
             // 
@@ -96,6 +100,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Da click en cualquier lugar de la pantalla");
             // 
             // frmInicio
             // 
@@ -119,5 +124,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpFondo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

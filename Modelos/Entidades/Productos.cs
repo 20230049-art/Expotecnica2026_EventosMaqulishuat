@@ -129,7 +129,7 @@ namespace Modelos.Entidades
         }
 
         //Agregar Producto a la venta
-        public void AgregarProductoVenta(int idVenta, int producto, int cantidad)
+        public void AgregarProductoVenta(int idVenta, int producto, int cantidad, decimal descuento = 0)
         {
             using (SqlConnection connection = ConexionDB.Conectar())
             {
@@ -139,6 +139,7 @@ namespace Modelos.Entidades
                 commandd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
                 commandd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = producto;
                 commandd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = cantidad;
+                commandd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = descuento;
 
                 commandd.ExecuteNonQuery();
             }

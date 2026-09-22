@@ -192,9 +192,10 @@ namespace Vista.EmpleadoServicios
                 btnCompra.Size = new Size(170, 68);
                 btnCompra.MaximumSize = new Size(250, 68);
                 btnCompra.AutoSize = true;
-                //btnCompra.Click += AbrirfrmVenta_Click;
+                btnCompra.Tag = fila["IdProducto"];       
+                btnCompra.Click += btnCompra_Click;
 
-                panelPrincipal.Controls.Add(pbProducto);
+                    panelPrincipal.Controls.Add(pbProducto);
                 panelPrincipal.Controls.Add(lblTituloNombre);
                 panelPrincipal.Controls.Add(lblNombre);
                 panelPrincipal.Controls.Add(lblTituloCantidad);
@@ -214,6 +215,72 @@ namespace Vista.EmpleadoServicios
             {
                 MessageBox.Show("Error al mostrar los productos: " + ex.Message, "ERROR-CARGADATOS-008",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCompra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button panelProducto = (Button)sender;
+                int idProducto = Convert.ToInt32(panelProducto.Tag);
+
+                if (!VentaActiva.HayVentaActiva)
+                {
+                    DialogResult result = MessageBox.Show(
+                        "Actualmente no cuenta con un cliente seleccionado. ¿Desea seleccionar un cliente para iniciar una nueva venta?",
+                        "INFO-NOVENTA-01", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        frmFondoNegro fondoo = new frmFondoNegro();
+                        fondoo.StartPosition = FormStartPosition.CenterParent;
+                        fondoo.WindowState = FormWindowState.Maximized;
+                        fondoo.Show();
+
+                        frmBuscarCliente frmBuscar = new frmBuscarCliente();
+                        frmBuscar.StartPosition = FormStartPosition.CenterParent;
+
+                        DialogResult resultadoBuscar = frmBuscar.ShowDialog();
+                        frmBuscar.BringToFront();
+
+                        fondoo.Close();
+
+                        if (resultadoBuscar == DialogResult.OK && VentaActiva.HayVentaActiva)
+                        {
+                            frmFondoNegro fondo2 = new frmFondoNegro();
+                            fondo2.StartPosition = FormStartPosition.CenterParent;
+                            fondo2.WindowState = FormWindowState.Maximized;
+                            fondo2.Show();
+
+                            frmProductoDetalles abrir = new frmProductoDetalles(idProducto, VentaActiva.IdVenta);
+                            abrir.ShowDialog();
+
+                            fondo2.Close();
+                        }
+                    }
+                    return;
+                }
+
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
+
+                frmProductoDetalles abrir2 = new frmProductoDetalles(idProducto, VentaActiva.IdVenta);
+                abrir2.ShowDialog();
+
+                fondo.Close();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El identificador del producto no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el detalle del producto: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -250,17 +317,5 @@ namespace Vista.EmpleadoServicios
                 MostrarProductos(new DataTable());
             }
         }
-
-        //private void AbrirfrmVenta_Click(object sender, EventArgs e)
-        //{
-        //    // abrirFormEncima(new PantallaNegro());
-
-        //    //abrirFormEncima(new frmPantallaEncimacs());
-        //    frmBuscarClientecs abrir = new frmBuscarClientecs();
-        //    abrir.StartPosition = FormStartPosition.Manual;
-
-        //    abrir.ShowDialog();
-
-        //}
     }
 }

@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlVistaIniciarEmpleado = new System.Windows.Forms.Panel();
             this.tlpFondo = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnIngresarEmpleado = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panlContraseña = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -42,24 +41,27 @@
             this.pnlUsuario = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
-            this.pnlcontenedor = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnRegresar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnIngresarEmpleado = new System.Windows.Forms.Button();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlcontenedor = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaIniciarEmpleado.SuspendLayout();
             this.tlpFondo.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panlContraseña.SuspendLayout();
             this.pnlUsuario.SuspendLayout();
-            this.pnlcontenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.pnlcontenedor.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVistaIniciarEmpleado
@@ -116,35 +118,6 @@
             this.panel3.Size = new System.Drawing.Size(1057, 440);
             this.panel3.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(30)))), ((int)(((byte)(15)))));
-            this.label2.Location = new System.Drawing.Point(519, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(245, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "¿Olvidaste tu contraseña?";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnIngresarEmpleado
-            // 
-            this.btnIngresarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(181)))), ((int)(((byte)(99)))));
-            this.btnIngresarEmpleado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnIngresarEmpleado.FlatAppearance.BorderSize = 0;
-            this.btnIngresarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresarEmpleado.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(47)))), ((int)(((byte)(36)))));
-            this.btnIngresarEmpleado.Location = new System.Drawing.Point(519, 17);
-            this.btnIngresarEmpleado.Name = "btnIngresarEmpleado";
-            this.btnIngresarEmpleado.Size = new System.Drawing.Size(245, 52);
-            this.btnIngresarEmpleado.TabIndex = 3;
-            this.btnIngresarEmpleado.Text = "Ingresar";
-            this.btnIngresarEmpleado.UseVisualStyleBackColor = false;
-            this.btnIngresarEmpleado.Click += new System.EventHandler(this.btnIngresarEmpleado_Click);
-            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -186,6 +159,7 @@
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(653, 29);
             this.txtContrasena.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtContrasena, "Ingresa tu contraseña");
             // 
             // txtTituloUsuario
             // 
@@ -228,54 +202,7 @@
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(653, 29);
             this.txtNombreUsuario.TabIndex = 1;
-            // 
-            // pnlcontenedor
-            // 
-            this.pnlcontenedor.Controls.Add(this.tableLayoutPanel3);
-            this.pnlcontenedor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlcontenedor.Location = new System.Drawing.Point(0, 0);
-            this.pnlcontenedor.Name = "pnlcontenedor";
-            this.pnlcontenedor.Size = new System.Drawing.Size(1057, 106);
-            this.pnlcontenedor.TabIndex = 2;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoEllipsis = true;
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTitulo.Font = new System.Drawing.Font("Book Antiqua", 46.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(205, 15);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(621, 91);
-            this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Iniciar Sesión";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnRegresar
-            // 
-            this.btnRegresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(148)))));
-            this.btnRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRegresar.FlatAppearance.BorderSize = 0;
-            this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegresar.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(47)))), ((int)(((byte)(36)))));
-            this.btnRegresar.Location = new System.Drawing.Point(214, 17);
-            this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(244, 52);
-            this.btnRegresar.TabIndex = 4;
-            this.btnRegresar.Text = "Regresar";
-            this.btnRegresar.UseVisualStyleBackColor = false;
-            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            this.toolTip1.SetToolTip(this.txtNombreUsuario, "Ingresa tu usuario");
             // 
             // tableLayoutPanel1
             // 
@@ -298,6 +225,63 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1057, 135);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
+            // btnIngresarEmpleado
+            // 
+            this.btnIngresarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(181)))), ((int)(((byte)(99)))));
+            this.btnIngresarEmpleado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnIngresarEmpleado.FlatAppearance.BorderSize = 0;
+            this.btnIngresarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresarEmpleado.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(47)))), ((int)(((byte)(36)))));
+            this.btnIngresarEmpleado.Location = new System.Drawing.Point(518, 17);
+            this.btnIngresarEmpleado.Name = "btnIngresarEmpleado";
+            this.btnIngresarEmpleado.Size = new System.Drawing.Size(244, 52);
+            this.btnIngresarEmpleado.TabIndex = 3;
+            this.btnIngresarEmpleado.Text = "Ingresar";
+            this.toolTip1.SetToolTip(this.btnIngresarEmpleado, "Ingresa al sistema");
+            this.btnIngresarEmpleado.UseVisualStyleBackColor = false;
+            this.btnIngresarEmpleado.Click += new System.EventHandler(this.btnIngresarEmpleado_Click);
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(148)))));
+            this.btnRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRegresar.FlatAppearance.BorderSize = 0;
+            this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegresar.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(47)))), ((int)(((byte)(36)))));
+            this.btnRegresar.Location = new System.Drawing.Point(214, 17);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(243, 52);
+            this.btnRegresar.TabIndex = 4;
+            this.btnRegresar.Text = "Regresar";
+            this.toolTip1.SetToolTip(this.btnRegresar, "regresar a la pantalla anterior");
+            this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(30)))), ((int)(((byte)(15)))));
+            this.label2.Location = new System.Drawing.Point(518, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(244, 18);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "¿Olvidaste tu contraseña?";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTip1.SetToolTip(this.label2, "Recuperar contraseña");
+            // 
+            // pnlcontenedor
+            // 
+            this.pnlcontenedor.Controls.Add(this.tableLayoutPanel3);
+            this.pnlcontenedor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlcontenedor.Location = new System.Drawing.Point(0, 0);
+            this.pnlcontenedor.Name = "pnlcontenedor";
+            this.pnlcontenedor.Size = new System.Drawing.Size(1057, 106);
+            this.pnlcontenedor.TabIndex = 2;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
@@ -316,6 +300,19 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1057, 106);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoEllipsis = true;
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblTitulo.Font = new System.Drawing.Font("Book Antiqua", 46.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(205, 15);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(621, 91);
+            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Text = "Iniciar Sesión";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox1);
@@ -324,6 +321,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(145, 100);
             this.panel2.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Vista.Properties.Resources.LgoColor;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // frmfrmIniciarSesionEmpleado
             // 
@@ -343,13 +350,13 @@
             this.panlContraseña.PerformLayout();
             this.pnlUsuario.ResumeLayout(false);
             this.pnlUsuario.PerformLayout();
-            this.pnlcontenedor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.pnlcontenedor.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,5 +384,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

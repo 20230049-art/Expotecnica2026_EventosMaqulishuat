@@ -148,7 +148,7 @@ namespace Modelos.Entidades
             DataTable tabla = new DataTable();
             using (SqlConnection connection = ConexionDB.Conectar())
             {
-                using (var command = new SqlCommand("BuscarDocumentoBN", connection))
+                using (var command = new SqlCommand("BuscarDocumentos", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("@busqueda", SqlDbType.VarChar).Value = busqueda ?? (object)DBNull.Value;

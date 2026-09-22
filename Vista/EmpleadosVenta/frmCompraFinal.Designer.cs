@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVistaCompraFinal = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -104,6 +105,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.lblNumeroFactura = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaCompraFinal.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -193,7 +195,7 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 319F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 323F));
             this.tableLayoutPanel7.Controls.Add(this.btnCancelarVenta, 2, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(696, 23);
@@ -213,11 +215,12 @@
             this.btnCancelarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarVenta.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.btnCancelarVenta.Location = new System.Drawing.Point(812, 20);
+            this.btnCancelarVenta.Location = new System.Drawing.Point(808, 20);
             this.btnCancelarVenta.Name = "btnCancelarVenta";
-            this.btnCancelarVenta.Size = new System.Drawing.Size(314, 56);
+            this.btnCancelarVenta.Size = new System.Drawing.Size(318, 56);
             this.btnCancelarVenta.TabIndex = 12;
             this.btnCancelarVenta.Text = "Cancelar Compra";
+            this.toolTip1.SetToolTip(this.btnCancelarVenta, "Elimianr Compra");
             this.btnCancelarVenta.UseVisualStyleBackColor = false;
             this.btnCancelarVenta.Click += new System.EventHandler(this.btnCancelarVenta_Click);
             // 
@@ -226,7 +229,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.85714F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.14286F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.Controls.Add(this.pbRegresar, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
@@ -242,22 +245,23 @@
             // 
             this.pbRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbRegresar.Image = global::Vista.Properties.Resources.botonRegresar;
-            this.pbRegresar.Location = new System.Drawing.Point(84, 20);
+            this.pbRegresar.Location = new System.Drawing.Point(83, 20);
             this.pbRegresar.Name = "pbRegresar";
-            this.pbRegresar.Size = new System.Drawing.Size(87, 70);
+            this.pbRegresar.Size = new System.Drawing.Size(84, 70);
             this.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbRegresar.TabIndex = 0;
             this.pbRegresar.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbRegresar, "Botón regresar.");
             this.pbRegresar.Click += new System.EventHandler(this.pbRegresar_Click);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.962461F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.83108F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.630866F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.98749F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.535975F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.023983F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.17727F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.815433F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.09176F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.256517F));
             this.tableLayoutPanel3.Controls.Add(this.btnConfirmarCompra, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.pnlInfo, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -276,11 +280,12 @@
             this.btnConfirmarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmarCompra.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmarCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.btnConfirmarCompra.Location = new System.Drawing.Point(1488, 3);
+            this.btnConfirmarCompra.Location = new System.Drawing.Point(1454, 3);
             this.btnConfirmarCompra.Name = "btnConfirmarCompra";
             this.btnConfirmarCompra.Size = new System.Drawing.Size(339, 62);
             this.btnConfirmarCompra.TabIndex = 4;
             this.btnConfirmarCompra.Text = "Confirmar Compra";
+            this.toolTip1.SetToolTip(this.btnConfirmarCompra, "Confirmar Compra");
             this.btnConfirmarCompra.UseVisualStyleBackColor = false;
             this.btnConfirmarCompra.Click += new System.EventHandler(this.btnConfirmarCompra_Click);
             // 
@@ -290,10 +295,11 @@
             this.pnlInfo.Controls.Add(this.lblClienteNombreCompleto);
             this.pnlInfo.Controls.Add(this.label35);
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlInfo.Location = new System.Drawing.Point(79, 3);
+            this.pnlInfo.Location = new System.Drawing.Point(60, 3);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1295, 62);
+            this.pnlInfo.Size = new System.Drawing.Size(1335, 62);
             this.pnlInfo.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.pnlInfo, "Nombre del cliente al que pertenece la compra");
             // 
             // lblClienteNombreCompleto
             // 
@@ -375,6 +381,7 @@
             this.pnlContenedorInfo.Name = "pnlContenedorInfo";
             this.pnlContenedorInfo.Size = new System.Drawing.Size(1152, 169);
             this.pnlContenedorInfo.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.pnlContenedorInfo, "Datos del cliente");
             // 
             // lblDui
             // 
@@ -571,6 +578,7 @@
             this.dgvDetallesVenta.RowTemplate.Height = 24;
             this.dgvDetallesVenta.Size = new System.Drawing.Size(1117, 441);
             this.dgvDetallesVenta.TabIndex = 41;
+            this.toolTip1.SetToolTip(this.dgvDetallesVenta, "Productos de la compra ");
             // 
             // tableLayoutPanel8
             // 
@@ -655,6 +663,7 @@
             this.btnFacturaGenerar.Size = new System.Drawing.Size(133, 36);
             this.btnFacturaGenerar.TabIndex = 2;
             this.btnFacturaGenerar.Text = "PDF";
+            this.toolTip1.SetToolTip(this.btnFacturaGenerar, "Generar factura");
             this.btnFacturaGenerar.UseVisualStyleBackColor = false;
             this.btnFacturaGenerar.Click += new System.EventHandler(this.btnFacturaGenerar_Click);
             // 
@@ -669,6 +678,7 @@
             this.dtpFechaUso.Name = "dtpFechaUso";
             this.dtpFechaUso.Size = new System.Drawing.Size(320, 27);
             this.dtpFechaUso.TabIndex = 55;
+            this.toolTip1.SetToolTip(this.dtpFechaUso, "Seleccionar fecha de uso");
             // 
             // label6
             // 
@@ -696,6 +706,7 @@
             this.cmbTipoPago.Name = "cmbTipoPago";
             this.cmbTipoPago.Size = new System.Drawing.Size(172, 31);
             this.cmbTipoPago.TabIndex = 53;
+            this.toolTip1.SetToolTip(this.cmbTipoPago, "Seleccionar forma de pago");
             // 
             // label2
             // 
@@ -1198,6 +1209,7 @@
             this.ClientSize = new System.Drawing.Size(1924, 973);
             this.Controls.Add(this.pnlVistaCompraFinal);
             this.Name = "frmCompraFinal";
+            this.ShowInTaskbar = false;
             this.Text = "frmCompraFinal";
             this.pnlVistaCompraFinal.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1302,5 +1314,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dgvDetallesVenta;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

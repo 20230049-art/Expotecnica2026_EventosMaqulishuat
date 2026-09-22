@@ -170,6 +170,36 @@
     <Compile Include="GerenteClientes\frmClientesAgregar.Designer.cs">
       <DependentUpon>frmClientesAgregar.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerenteClientes\frmClientesTotales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteClientes\frmClientesTotales.Designer.cs">
+      <DependentUpon>frmClientesTotales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteDocumentacion\frmDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteDocumentacion\frmDocumentos.Designer.cs">
+      <DependentUpon>frmDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteEmpleados\frmActualizarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteEmpleados\frmActualizarEmpleado.Designer.cs">
+      <DependentUpon>frmActualizarEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteEmpleados\frmAnadirEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteEmpleados\frmAnadirEmpleado.Designer.cs">
+      <DependentUpon>frmAnadirEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteEmpleados\frmEmpleadosGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteEmpleados\frmEmpleadosGerente.Designer.cs">
+      <DependentUpon>frmEmpleadosGerente.cs</DependentUpon>
+    </Compile>
     <Compile Include="GerenteInicio\frmInicioGerente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +291,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteClientes\frmClientesAgregar.resx">
       <DependentUpon>frmClientesAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteClientes\frmClientesTotales.resx">
+      <DependentUpon>frmClientesTotales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteDocumentacion\frmDocumentos.resx">
+      <DependentUpon>frmDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteEmpleados\frmActualizarEmpleado.resx">
+      <DependentUpon>frmActualizarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteEmpleados\frmAnadirEmpleado.resx">
+      <DependentUpon>frmAnadirEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteEmpleados\frmEmpleadosGerente.resx">
+      <DependentUpon>frmEmpleadosGerente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteInicio\frmInicioGerente.resx">
       <DependentUpon>frmInicioGerente.cs</DependentUpon>

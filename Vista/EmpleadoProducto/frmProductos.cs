@@ -21,16 +21,35 @@ namespace Vista.EmpleadoProducto
         private Button btnCarrito;
         private Panel pnlContenedor;
         private FlowLayoutPanel flpProducto;
+        private bool vieneDeClientes = false;
 
         public frmProductos(int idVenta, string nombreCliente)
         {
             try
             {
                 InitializeComponent();
-            this.idVentaActiva = idVenta;
-            this.nombreCliente = nombreCliente;
-            MostrarProductoEmpleado();
-            BotonVenta();
+                this.idVentaActiva = idVenta;
+                this.nombreCliente = nombreCliente;
+                this.vieneDeClientes = true;
+
+                if (idVenta > 0)
+                {
+                    VentaActiva.Iniciar(idVenta, nombreCliente);
+                }
+
+                if (VentaActiva.HayVentaActiva)
+                {
+                    this.idVentaActiva = VentaActiva.IdVenta;
+                    this.nombreCliente = VentaActiva.NombreCliente;
+                }
+                else
+                {
+                    this.idVentaActiva = 0;
+                    this.nombreCliente = "";
+                }
+
+                MostrarProductoEmpleado();
+                BotonVenta();
 
             ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
             }
@@ -46,9 +65,23 @@ namespace Vista.EmpleadoProducto
             try
             {
                 InitializeComponent();
-            this.idVentaActiva = 0;
-            this.nombreCliente = "";
-            MostrarProductoEmpleado();
+                this.vieneDeClientes = false;
+
+                if (VentaActiva.HayVentaActiva)
+                {
+                    this.idVentaActiva = VentaActiva.IdVenta;
+                    this.nombreCliente = VentaActiva.NombreCliente;
+                }
+                else
+                {
+                    this.idVentaActiva = 0;
+                    this.nombreCliente = "";
+                }
+
+                MostrarProductoEmpleado();
+                //BotonVenta();
+
+                ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
             }
             catch (Exception ex)
             {
@@ -96,24 +129,56 @@ namespace Vista.EmpleadoProducto
         {
             try
             {
-            if (idVentaActiva <= 0)
-            {
-                MessageBox.Show("No hay una venta activa.", "VENTA-NOACTIVA-120", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                int idVentaUsar = VentaActiva.HayVentaActiva ? VentaActiva.IdVenta : idVentaActiva;
+
+                if (idVentaActiva <= 0)
+                {
+                    MessageBox.Show("No hay una venta activa.", "VENTA-NOACTIVA-120", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string nombreUsar = VentaActiva.HayVentaActiva ? VentaActiva.NombreCliente : nombreCliente;
 
                 frmCompraFinal frmCompraFinal = new frmCompraFinal(idVentaActiva, nombreCliente);
                 frmCompraFinal.ShowDialog();
 
                 if (frmCompraFinal.DialogResult == DialogResult.Cancel)
                 {
-                    this.Close();
+                    VentaActiva.Limpiar();
+                    this.idVentaActiva = 0;
+                    this.nombreCliente = "";
+
+                    if (vieneDeClientes)
+                    {
+                        this.DialogResult = DialogResult.Cancel;
+                        this.Close();
+                    }
+                    else
+                    {
+                        if (btnCarrito != null)
+                        {
+                            btnCarrito.Dispose();
+                            btnCarrito = null;
+                        }
+                        MostrarProductoEmpleado();
+                    }
                 }
 
-                if (frmCompraFinal.DialogResult == DialogResult.OK)
+                if (vieneDeClientes)
                 {
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                }
+                else
+                {
+                    if (btnCarrito != null)
+                    {
+                        btnCarrito.Dispose();
+                        btnCarrito = null;
+                    }
                     MostrarProductoEmpleado();
                 }
+
             }
             catch (Exception)
             {
@@ -149,42 +214,69 @@ namespace Vista.EmpleadoProducto
             try
             {
 
-            Button panelProducto = (Button)sender;
-            int idProducto = Convert.ToInt32(panelProducto.Tag);
+                Button panelProducto = (Button)sender;
+                int idProducto = Convert.ToInt32(panelProducto.Tag);
 
-            if (idVentaActiva <= 0)
-            {
-                DialogResult result = MessageBox.Show("Actualmente no cuenta con un cliente seleccionado. ¿Desea seleccionar un cliente para iniciar una nueva venta?",
-                    "INFO-NOVENTA-01", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                if (idVentaActiva <= 0 && !VentaActiva.HayVentaActiva)
                 {
-                    frmFondoNegro fondoo = new frmFondoNegro();
-                    fondoo.StartPosition = FormStartPosition.CenterParent;
-                    fondoo.WindowState = FormWindowState.Maximized;
-                    fondoo.Show();
+                    DialogResult result = MessageBox.Show("Actualmente no cuenta con un cliente seleccionado. ¿Desea seleccionar un cliente para iniciar una nueva venta?",
+                        "INFO-NOVENTA-01", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    frmBuscarCliente frmBuscar = new frmBuscarCliente();
-                    frmBuscar.StartPosition = FormStartPosition.CenterParent;
-           
-                    frmBuscar.ShowDialog();
-                    frmBuscar.BringToFront();
+                    if (result == DialogResult.Yes)
+                    {
+                        frmFondoNegro fondoo = new frmFondoNegro();
+                        fondoo.StartPosition = FormStartPosition.CenterParent;
+                        fondoo.WindowState = FormWindowState.Maximized;
+                        fondoo.Show();
 
-                    fondoo.Close();
+                        frmBuscarCliente frmBuscar = new frmBuscarCliente();
+                        frmBuscar.StartPosition = FormStartPosition.CenterParent;
+
+                        DialogResult resultadoBuscar = frmBuscar.ShowDialog();
+                        frmBuscar.BringToFront();
+
+                        fondoo.Close();
+
+                        if (resultadoBuscar == DialogResult.OK && VentaActiva.HayVentaActiva)
+                        {
+                            this.idVentaActiva = VentaActiva.IdVenta;
+                            this.nombreCliente = VentaActiva.NombreCliente;
+
+                            if (btnCarrito != null)
+                            {
+                                btnCarrito.Dispose();
+                                btnCarrito = null;
+                            }
+                            BotonVenta();
+
+                            frmFondoNegro fondo2 = new frmFondoNegro();
+                            fondo2.StartPosition = FormStartPosition.CenterParent;
+                            fondo2.WindowState = FormWindowState.Maximized;
+                            fondo2.Show();
+
+                            frmProductoDetalles abrir = new frmProductoDetalles(idProducto, idVentaActiva);
+                            abrir.ShowDialog();
+
+                            fondo2.Close();
+
+                            ActualizarBotonCarrito();
+                        }
+                    }
+                    return;
                 }
-                return;
-            }
+                int idVentaUsar = VentaActiva.HayVentaActiva ? VentaActiva.IdVenta : idVentaActiva;
 
                 frmFondoNegro fondo = new frmFondoNegro();
                 fondo.StartPosition = FormStartPosition.CenterParent;
                 fondo.WindowState = FormWindowState.Maximized;
                 fondo.Show();
 
-                frmProductoDetalles abrir = new frmProductoDetalles(idProducto, idVentaActiva);
-                abrir.ShowDialog();
+                frmProductoDetalles abrir2 = new frmProductoDetalles(idProducto, idVentaUsar);
+                abrir2.ShowDialog();
 
                 fondo.Close();
 
+                ActualizarBotonCarrito();
             }
             catch (FormatException ex)
             {
@@ -195,6 +287,38 @@ namespace Vista.EmpleadoProducto
             {
                 MessageBox.Show("Error al abrir el detalle del producto: " + ex.Message,
                         "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarBotonCarrito()
+        {
+            try
+            {
+                if (btnCarrito == null) return;
+
+                int idVentaConsultar = VentaActiva.HayVentaActiva ? VentaActiva.IdVenta : idVentaActiva;
+
+                if (idVentaConsultar <= 0) return;
+
+                DetalledeVenta detalleVenta = new DetalledeVenta();
+                var detalle = detalleVenta.ObtenerDetalleVenta(idVentaConsultar);
+
+                if (detalle == null || detalle.Count == 0)
+                {
+                    btnCarrito.Enabled = false;
+                    btnCarrito.BackColor = Color.Gray;
+                    btnCarrito.Text = "Sin productos";
+                }
+                else
+                {
+                    btnCarrito.Enabled = true;
+                    btnCarrito.BackColor = Color.FromArgb(76, 175, 80);
+                    btnCarrito.Text = "Ver Compra";
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error ActualizarBotonCarrito: " + ex.Message);
             }
         }
 
@@ -379,6 +503,11 @@ namespace Vista.EmpleadoProducto
                 MessageBox.Show("Error al mostrar los productos filtrados: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCompra_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

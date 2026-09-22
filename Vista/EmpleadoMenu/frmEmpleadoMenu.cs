@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Vista.ClientesEmpleado;
 using Vista.EmpleadoProducto;
 using Vista.EmpleadoServicios;
+using Vista.GerenteClientes;
 using Vista.IniciarSesion;
 using Vista.Utilidades;
 
@@ -25,7 +26,7 @@ namespace Vista.EmpleadoMenu
             InitializeComponent();
             this.Resize += frmEmpleadoMenu_Resize;
 
-            Redondeo.RedondearFig(btnCerrarSesionGere, 4);
+            Redondeo.RedondearFig(btnCerrarSesionGere, 6);
             Redondeo.RedondearFig(pnlTituloHora, 6);
             Redondeo.RedondearFig(pnlContenedorTitulo, 6);
         }
@@ -139,22 +140,8 @@ namespace Vista.EmpleadoMenu
 
         private void btnCalendario_Click(object sender, EventArgs e)
         {
-            //abrirForm(new frmCalendarioInicio());
+            abrirForm(new frmClientesTotales());
             ActivarBoton(btnCalendario);
-        }
-
-        private void btnCerrarSesionGere_Click(object sender, EventArgs e)
-        {
-            frmSeleccionarPefil frmSeleccionar = new frmSeleccionarPefil();
-
-            this.pnlContenedorVistas.Visible = false;
-            frmSeleccionar.TopLevel = false;
-            frmSeleccionar.FormBorderStyle = FormBorderStyle.None;
-            frmSeleccionar.Dock = DockStyle.Fill;
-
-            pnlContenedorVistas.Controls.Clear();
-            pnlContenedorVistas.Controls.Add(frmSeleccionar);
-            frmSeleccionar.Show();
         }
 
         private void RestaurarBotones()
@@ -173,9 +160,9 @@ namespace Vista.EmpleadoMenu
             botones.BackColor = Color.FromArgb(253, 241, 217);
         }
 
-        private void lblTituloHorario_Click(object sender, EventArgs e)
+        private void btnCerrarSesionGere_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
     }
 }

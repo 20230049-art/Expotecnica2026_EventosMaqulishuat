@@ -152,6 +152,7 @@ namespace Vista.EmpleadosVenta
             btnCompra.FlatAppearance.BorderSize = 0;
             btnCompra.AutoSize = true;
             btnCompra.Tag = fila["IdCliente"];
+            btnCompra.Click += BtnCompra_Click;
 
             PictureBox pbLogo = new PictureBox();
             pbLogo.Location = new Point(38, 12);
@@ -177,6 +178,77 @@ namespace Vista.EmpleadosVenta
             flpVistaClientes.Controls.Add(panelContenedor);
 
             return panelContenedor;
+        }
+
+        private void BtnCompra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button btnCompra = (Button)sender;
+
+                if (btnCompra == null || btnCompra.Tag == null)
+                {
+                    MessageBox.Show("No se pudo identificar el cliente seleccionado.",
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int idCliente = Convert.ToInt32(btnCompra.Tag);
+
+                if (CuentaAbierta.IdEmpleado <= 0)
+                {
+                    MessageBox.Show("No hay un empleado con sesión activa.",
+                        "INFO-VENTAEMPLE-02", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DataTable dtCliente = Clientes.ObtenerClienteId(idCliente);
+                string nombreCliente = "";
+
+                if (dtCliente == null || dtCliente.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontró la información del cliente seleccionado.",
+                        "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                nombreCliente = dtCliente.Rows[0]["NombreCliente"].ToString()
+                                + " " + dtCliente.Rows[0]["ApellidoCliente"].ToString();
+
+                DateTime fechaUso = DateTime.Now.AddDays(1);
+                int idTipoPago = 1;
+
+                Venta nuevaVenta = new Venta();
+
+                int idVenta = nuevaVenta.IngresarVenta(
+                    CuentaAbierta.IdEmpleado,
+                    idCliente,
+                    fechaUso,
+                    idTipoPago);
+
+                if (idVenta > 0)
+                {
+                    VentaActiva.Iniciar(idVenta, nombreCliente);
+
+                    MessageBox.Show($"Venta iniciada para: {nombreCliente}","INFO-VENTA-00", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+
+                    //Esta malo
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo iniciar la venta. Intente nuevamente.",
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al iniciar la venta: " + ex.Message,
+                    "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

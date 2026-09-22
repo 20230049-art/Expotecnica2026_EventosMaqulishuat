@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlVistaAgregarCliente = new System.Windows.Forms.Panel();
             this.tlpVistaClientes = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTitulo = new System.Windows.Forms.Panel();
@@ -64,6 +65,7 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaAgregarCliente.SuspendLayout();
             this.tlpVistaClientes.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
@@ -124,7 +126,7 @@
             this.pnltituloNombre.Margin = new System.Windows.Forms.Padding(4);
             this.pnltituloNombre.Name = "pnltituloNombre";
             this.pnltituloNombre.Size = new System.Drawing.Size(1142, 67);
-            this.pnltituloNombre.TabIndex = 9;
+            this.pnltituloNombre.TabIndex = 0;
             // 
             // lblInformCliente
             // 
@@ -177,7 +179,8 @@
             this.txtDui.Multiline = true;
             this.txtDui.Name = "txtDui";
             this.txtDui.Size = new System.Drawing.Size(325, 32);
-            this.txtDui.TabIndex = 3;
+            this.txtDui.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.txtDui, "DUI del cliente, incluyendo el guion (-)");
             // 
             // label9
             // 
@@ -210,7 +213,8 @@
             this.txtNit.Multiline = true;
             this.txtNit.Name = "txtNit";
             this.txtNit.Size = new System.Drawing.Size(325, 32);
-            this.txtNit.TabIndex = 4;
+            this.txtNit.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.txtNit, "NIT del cliente, incluyendo los guiones(-)");
             // 
             // label6
             // 
@@ -244,6 +248,7 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(325, 32);
             this.txtCorreo.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtCorreo, "Correo Electrónico del cliente");
             // 
             // label7
             // 
@@ -252,9 +257,9 @@
             this.label7.Location = new System.Drawing.Point(11, 3);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(292, 39);
+            this.label7.Size = new System.Drawing.Size(306, 39);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Correo Electónico";
+            this.label7.Text = "Correo Electrónico";
             // 
             // panel4
             // 
@@ -277,7 +282,8 @@
             this.txtNcr.Multiline = true;
             this.txtNcr.Name = "txtNcr";
             this.txtNcr.Size = new System.Drawing.Size(325, 32);
-            this.txtNcr.TabIndex = 7;
+            this.txtNcr.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.txtNcr, "NCR del cliente, incluyendo los guiones(-)");
             // 
             // panel7
             // 
@@ -345,6 +351,7 @@
             this.cmbTipoCliente.Name = "cmbTipoCliente";
             this.cmbTipoCliente.Size = new System.Drawing.Size(319, 35);
             this.cmbTipoCliente.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.cmbTipoCliente, "Seleccione el tipo de cliente");
             // 
             // label4
             // 
@@ -378,6 +385,7 @@
             this.mtxbTelefono.Name = "mtxbTelefono";
             this.mtxbTelefono.Size = new System.Drawing.Size(325, 29);
             this.mtxbTelefono.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.mtxbTelefono, "Número de teléfono del cliente");
             // 
             // label3
             // 
@@ -411,6 +419,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(325, 32);
             this.txtApellido.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtApellido, "Apellidos del cliente");
             // 
             // label2
             // 
@@ -444,6 +453,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(325, 32);
             this.txtNombre.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtNombre, "Nombre del cliente");
             // 
             // lblNombres
             // 
@@ -481,7 +491,7 @@
             this.btnSalir.Location = new System.Drawing.Point(653, 402);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(162, 45);
-            this.btnSalir.TabIndex = 11;
+            this.btnSalir.TabIndex = 10;
             this.btnSalir.Text = "Cerrar";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -580,5 +590,6 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlVistaDetalleProducto = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -57,6 +58,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label38 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaDetalleProducto.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -77,7 +79,7 @@
             this.pnlVistaDetalleProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaDetalleProducto.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaDetalleProducto.Name = "pnlVistaDetalleProducto";
-            this.pnlVistaDetalleProducto.Size = new System.Drawing.Size(1280, 671);
+            this.pnlVistaDetalleProducto.Size = new System.Drawing.Size(1280, 718);
             this.pnlVistaDetalleProducto.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -97,7 +99,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.278688F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.00596F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.600596F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1280, 671);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1280, 718);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -109,11 +111,11 @@
             this.tableLayoutPanel2.Controls.Add(this.txtBuscar, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 34);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 37);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1201, 52);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1201, 56);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // txtBuscar
@@ -128,6 +130,7 @@
             this.txtBuscar.Size = new System.Drawing.Size(826, 38);
             this.txtBuscar.TabIndex = 2;
             this.txtBuscar.Text = "Buscar cliente";
+            this.toolTip1.SetToolTip(this.txtBuscar, "Buscar cliente");
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // panel2
@@ -136,7 +139,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(161, 46);
+            this.panel2.Size = new System.Drawing.Size(161, 50);
             this.panel2.TabIndex = 3;
             // 
             // pictureBox1
@@ -147,10 +150,11 @@
             this.pictureBox1.Image = global::Vista.Properties.Resources.botonRegresar;
             this.pictureBox1.Location = new System.Drawing.Point(3, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(59, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(59, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Botón regresar");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
@@ -158,9 +162,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(215)))), ((int)(((byte)(191)))));
             this.panel1.Controls.Add(this.flpVistaClientes);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(46, 113);
+            this.panel1.Location = new System.Drawing.Point(46, 122);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1201, 501);
+            this.panel1.Size = new System.Drawing.Size(1201, 537);
             this.panel1.TabIndex = 1;
             // 
             // flpVistaClientes
@@ -171,7 +175,7 @@
             this.flpVistaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpVistaClientes.Location = new System.Drawing.Point(0, 0);
             this.flpVistaClientes.Name = "flpVistaClientes";
-            this.flpVistaClientes.Size = new System.Drawing.Size(1201, 501);
+            this.flpVistaClientes.Size = new System.Drawing.Size(1201, 537);
             this.flpVistaClientes.TabIndex = 1;
             // 
             // pnlContenedor
@@ -181,7 +185,7 @@
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContenedor.Location = new System.Drawing.Point(3, 3);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(1195, 166);
+            this.pnlContenedor.Size = new System.Drawing.Size(1195, 194);
             this.pnlContenedor.TabIndex = 2;
             this.pnlContenedor.Visible = false;
             // 
@@ -190,17 +194,17 @@
             this.pnlAgregarCompra.BackColor = System.Drawing.Color.SandyBrown;
             this.pnlAgregarCompra.Controls.Add(this.pbImg);
             this.pnlAgregarCompra.Controls.Add(this.btnAgregarCompra);
-            this.pnlAgregarCompra.Location = new System.Drawing.Point(1017, 14);
+            this.pnlAgregarCompra.Location = new System.Drawing.Point(1000, 6);
             this.pnlAgregarCompra.Name = "pnlAgregarCompra";
-            this.pnlAgregarCompra.Size = new System.Drawing.Size(145, 135);
+            this.pnlAgregarCompra.Size = new System.Drawing.Size(168, 162);
             this.pnlAgregarCompra.TabIndex = 40;
             // 
             // pbImg
             // 
             this.pbImg.Image = global::Vista.Properties.Resources.Persona;
-            this.pbImg.Location = new System.Drawing.Point(40, 12);
+            this.pbImg.Location = new System.Drawing.Point(39, 18);
             this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(71, 65);
+            this.pbImg.Size = new System.Drawing.Size(96, 73);
             this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImg.TabIndex = 1;
             this.pbImg.TabStop = false;
@@ -210,12 +214,13 @@
             this.btnAgregarCompra.FlatAppearance.BorderSize = 0;
             this.btnAgregarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarCompra.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCompra.Location = new System.Drawing.Point(13, 80);
+            this.btnAgregarCompra.Location = new System.Drawing.Point(25, 98);
             this.btnAgregarCompra.Name = "btnAgregarCompra";
             this.btnAgregarCompra.Size = new System.Drawing.Size(124, 55);
             this.btnAgregarCompra.TabIndex = 0;
             this.btnAgregarCompra.Text = "AGREGAR\r\nCOMPRA";
             this.btnAgregarCompra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTip1.SetToolTip(this.btnAgregarCompra, "Botón agregar compra cliente");
             this.btnAgregarCompra.UseVisualStyleBackColor = true;
             // 
             // pnlContenedorInfo
@@ -238,9 +243,9 @@
             this.pnlContenedorInfo.Controls.Add(this.label37);
             this.pnlContenedorInfo.Controls.Add(this.panel7);
             this.pnlContenedorInfo.Controls.Add(this.label38);
-            this.pnlContenedorInfo.Location = new System.Drawing.Point(15, 10);
+            this.pnlContenedorInfo.Location = new System.Drawing.Point(8, 6);
             this.pnlContenedorInfo.Name = "pnlContenedorInfo";
-            this.pnlContenedorInfo.Size = new System.Drawing.Size(979, 143);
+            this.pnlContenedorInfo.Size = new System.Drawing.Size(949, 162);
             this.pnlContenedorInfo.TabIndex = 39;
             // 
             // panel10
@@ -427,11 +432,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 671);
+            this.ClientSize = new System.Drawing.Size(1280, 718);
             this.Controls.Add(this.pnlVistaDetalleProducto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1280, 718);
             this.Name = "frmBuscarCliente";
+            this.ShowInTaskbar = false;
             this.Text = "frmBuscarCliente";
             this.pnlVistaDetalleProducto.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -481,5 +487,6 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

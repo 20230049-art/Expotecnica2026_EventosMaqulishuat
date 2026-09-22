@@ -122,19 +122,28 @@ namespace Vista.EmpleadosVenta
                 decimal subtotal = cantidad * precioUnitario;
                 decimal descuento = 0;
 
-            if (!string.IsNullOrEmpty(mtbDescuent.Text))
-            {
-                decimal.TryParse(mtbDescuent.Text, out descuento);
                 if (descuento > subtotal)
                 {
+                    MessageBox.Show($"El descuento (${descuento:F2}) no puede ser mayor al subtotal (${subtotal:F2}).",
+                        "INFO-DESCUENTO-10", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                     descuento = subtotal;
+                    mtbDescuent.Text = descuento.ToString("F2");
                 }
-            }
 
-            decimal total = subtotal - descuento;
+                if (!string.IsNullOrEmpty(mtbDescuent.Text))
+                {
+                    decimal.TryParse(mtbDescuent.Text, out descuento);
+                    if (descuento > subtotal)
+                    {
+                        descuento = subtotal;
+                    }
+                }
 
-            mtbSubTotal.Text = "$" + subtotal.ToString("F2");
-            mtbTotal.Text = "$" + total.ToString("F2");
+                decimal total = subtotal - descuento;
+
+                mtbSubTotal.Text = "$" + subtotal.ToString("F2");
+                mtbTotal.Text = "$" + total.ToString("F2");
 
                 calculando = false;
 
@@ -179,6 +188,15 @@ namespace Vista.EmpleadosVenta
                     return;
                 }
 
+                decimal subtotal = cantidad * precioUnitario;
+                if (descuento < 0)
+                {
+                    MessageBox.Show("El descuento no puede ser negativo.", "ERROR-DESCUENTO-05",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
                 if (idVentaActiva <= 0)
                 {
                     MessageBox.Show("No hay una venta activa para agregar el producto.",
@@ -187,7 +205,7 @@ namespace Vista.EmpleadosVenta
                 }
 
                 Productos detalle = new Productos();
-                detalle.AgregarProductoVenta(idVentaActiva, idProducto, cantidad);
+                detalle.AgregarProductoVenta(idVentaActiva, idProducto, cantidad, descuento);
 
 
                 if (descuento > 0)
@@ -195,7 +213,6 @@ namespace Vista.EmpleadosVenta
                     MessageBox.Show($"Producto agregado con descuento de ${descuento:F2}",
                         "INFO-DESCUENTO-00", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
                 MessageBox.Show($"Producto agregado correctamente.\nCantidad: {cantidad}\nSubtotal: ${(cantidad * precioUnitario):F2}",
                     "INFO-VENTAPRODUC-05", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
