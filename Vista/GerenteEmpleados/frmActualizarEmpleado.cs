@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace Vista.GerenteEmpleados
     {
         private int idEmpleado;
         private ErrorProvider errorProvider;
+        private string rutaFotoRelativa = "";
+
         public frmActualizarEmpleado(int idEmpleado)
         {
             try
@@ -41,7 +44,7 @@ namespace Vista.GerenteEmpleados
                 controlesBloqueo.BloquearControlesTXT(txtNombre);
                 controlesBloqueo.BloquearControlesTXT(txtApellido);
                 controlesBloqueo.BloquearControlesTXT(txtDui);
-                controlesBloqueo.BloquearControlesTXT(txtTelefono);
+                controlesBloqueo.BloquearControlesMTXT(mtxbTelefono);
                 controlesBloqueo.BloquearControlesTXT(txtCorreo);
                 controlesBloqueo.BloquearControlesTXT(txtCargo);
                 controlesBloqueo.BloquearControlesTXT(txtCuentaBancaria);
@@ -49,13 +52,13 @@ namespace Vista.GerenteEmpleados
                 txtNombre.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
                 txtApellido.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
                 txtCargo.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
-                txtTelefono.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros(txtTelefono, e);
+                mtxbTelefono.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros(mtxbTelefono, e);
                 txtDui.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros(txtDui, e);
 
                 txtNombre.TextChanged += (s, e) => errorProvider.SetError(txtNombre, "");
                 txtApellido.TextChanged += (s, e) => errorProvider.SetError(txtApellido, "");
                 txtDui.TextChanged += (s, e) => errorProvider.SetError(txtDui, "");
-                txtTelefono.TextChanged += (s, e) => errorProvider.SetError(txtTelefono, "");
+                mtxbTelefono.TextChanged += (s, e) => errorProvider.SetError(mtxbTelefono, "");
                 txtCorreo.TextChanged += (s, e) => errorProvider.SetError(txtCorreo, "");
                 txtCargo.TextChanged += (s, e) => errorProvider.SetError(txtCargo, "");
                 txtCuentaBancaria.TextChanged += (s, e) => errorProvider.SetError(txtCuentaBancaria, "");
@@ -97,9 +100,32 @@ namespace Vista.GerenteEmpleados
                 txtApellido.Text = dt.Rows[0]["ApellidoEmpleado"].ToString();
                 txtDui.Text = dt.Rows[0]["DUIEmpleado"].ToString();
                 txtCargo.Text = dt.Rows[0]["CargoEmpleado"].ToString();
-                txtTelefono.Text = dt.Rows[0]["TelefonoEmpleado"].ToString();
+                mtxbTelefono.Text = dt.Rows[0]["TelefonoEmpleado"].ToString();
                 txtCorreo.Text = dt.Rows[0]["CorreoEmpleado"].ToString();
                 txtCuentaBancaria.Text = dt.Rows[0]["CuentaBancariaEmpleado"].ToString();
+                string rutaBD = dt.Rows[0]["FotoEmpleado"] != DBNull.Value? dt.Rows[0]["FotoEmpleado"].ToString() : "";
+
+                if (!string.IsNullOrWhiteSpace(rutaBD))
+                {
+                    string rutaCompleta = Path.IsPathRooted(rutaBD)
+                        ? rutaBD
+                        : Path.Combine(Application.StartupPath, rutaBD);
+
+                    if (File.Exists(rutaCompleta))
+                    {
+                        using (var stream = new FileStream(rutaCompleta, FileMode.Open, FileAccess.Read))
+                        {
+                            pctEmpleado.Image = Image.FromStream(stream);
+                        }
+                        pctEmpleado.SizeMode = PictureBoxSizeMode.StretchImage;
+                        rutaFotoRelativa = rutaBD;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("No se encontró la foto: " + rutaCompleta);
+                    }
+                }
+
 
                 // ⚠️ OJO: pctEmpleado es un PictureBox, no un TextBox.
                 // .Text no carga la imagen. Deberías usar una URL o convertir los bytes a Image.
@@ -154,16 +180,21 @@ namespace Vista.GerenteEmpleados
                     errorProvider.SetError(txtDui, "El DUI es obligatorio.");
                     hayErrores = true;
                 }
-                else if (dui.Length != 9)
+                else
                 {
-                    errorProvider.SetError(txtDui, "El DUI debe tener 9 dígitos.");
-                    hayErrores = true;
+                    int soloDigitos = dui.Count(char.IsDigit);
+
+                    if (soloDigitos != 9)
+                    {
+                        errorProvider.SetError(txtDui, "El DUI debe tener 9 dígitos.");
+                        hayErrores = true;
+                    }
                 }
 
-                string telefono = txtTelefono.Text.Trim();
+                string telefono =   mtxbTelefono.Text.Trim();
                 if (!string.IsNullOrWhiteSpace(telefono) && telefono.Length < 8)
                 {
-                    errorProvider.SetError(txtTelefono, "El teléfono debe tener al menos 8 dígitos.");
+                    errorProvider.SetError( mtxbTelefono, "El teléfono debe tener al menos 8 dígitos.");
                     hayErrores = true;
                 }
 
@@ -187,36 +218,38 @@ namespace Vista.GerenteEmpleados
                     }
 
 
-                    //DialogResult respuesta = MessageBox.Show(
-                    //    $"¿Está seguro que desea actualizar los datos del empleado?\n\n" +
-                    //    $"Nombre: {txtNombre.Text.Trim()} {txtApellido.Text.Trim()}\n" +
-                    //    $"Cargo: {txtCargo.Text.Trim()}",
-                    //    "Confirmar Actualización",
-                    //    MessageBoxButtons.YesNo,
-                    //    MessageBoxIcon.Question);
+                //DialogResult respuesta = MessageBox.Show(
+                //    $"¿Está seguro que desea actualizar los datos del empleado?\n\n" +
+                //    $"Nombre: {txtNombre.Text.Trim()} {txtApellido.Text.Trim()}\n" +
+                //    $"Cargo: {txtCargo.Text.Trim()}",
+                //    "Confirmar Actualización",
+                //    MessageBoxButtons.YesNo,
+                //    MessageBoxIcon.Question);
 
-                    //if (respuesta != DialogResult.Yes) return;
+                //if (respuesta != DialogResult.Yes) return;
 
-                    Empleados empleado = new Empleados();
-
-                    empleado.IdEmpleado = idEmpleado;
-                    empleado.NombreEmpleado = txtNombre.Text.Trim();
-                    empleado.ApellidoEmpleado = txtApellido.Text.Trim();
-                    empleado.DUIEmpleado = txtDui.Text.Trim();
-                    empleado.TelefonoEmpleado = txtTelefono.Text.Trim();
-                    empleado.CorreoEmpleado = txtCorreo.Text.Trim();
-                    empleado.CargoEmpleado = txtCargo.Text.Trim();
-                    empleado.CuentaBancariaEmpleado = txtCuentaBancaria.Text.Trim();
-
-                    empleado.FotoEmpleado = pctEmpleado.Text;
-
-                    Empleados.ActualizarEmpleado(empleado);
-
-                    MessageBox.Show("Empleado actualizado correctamente.", "Éxito",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.Close();
                 }
+                Empleados empleado = new Empleados();
+
+                empleado.IdEmpleado = idEmpleado;
+                empleado.NombreEmpleado = txtNombre.Text.Trim();
+                empleado.ApellidoEmpleado = txtApellido.Text.Trim();
+                empleado.DUIEmpleado = txtDui.Text.Trim();
+                empleado.TelefonoEmpleado =     mtxbTelefono.Text.Trim();
+                empleado.CorreoEmpleado = txtCorreo.Text.Trim();
+                empleado.CargoEmpleado = txtCargo.Text.Trim();
+                empleado.CuentaBancariaEmpleado = txtCuentaBancaria.Text.Trim();
+
+                empleado.FotoEmpleado = rutaFotoRelativa;
+
+                Empleados.ActualizarEmpleado(empleado);
+
+                MessageBox.Show("Empleado actualizado correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                EventosGloblales.EnEmpleadosAgregados();
+
+                this.Close();
             }
 
             catch (FormatException ex)
@@ -243,6 +276,63 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Error al actualizar el empleado: " + ex.Message,
                         "ERROR-ACTUALIZAR-009", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnSubirFoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Title = "Seleccionar foto del empleado";
+                    ofd.Filter = "Imágenes|*.jpg;*.jpeg;*.png;*.bmp";
+                    ofd.Multiselect = false;
+
+                    if (ofd.ShowDialog() != DialogResult.OK) return;
+
+                    string archivoOrigen = ofd.FileName;
+
+                    FileInfo info = new FileInfo(archivoOrigen);
+                    if (info.Length > 5 * 1024 * 1024)
+                    {
+                        MessageBox.Show("La imagen no debe superar los 5 MB.",
+                                "ERROR-LONGITUD-003", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    string carpetaFotos = Path.Combine(Application.StartupPath, "FotosEmpleados");
+                    if (!Directory.Exists(carpetaFotos))
+                    {
+                        Directory.CreateDirectory(carpetaFotos);
+                    }
+
+                    string extension = Path.GetExtension(archivoOrigen);
+                    string nombreUnico = $"empleado_{DateTime.Now:yyyyMMddHHmmss}{extension}";
+                    string rutaDestino = Path.Combine(carpetaFotos, nombreUnico);
+
+                    File.Copy(archivoOrigen, rutaDestino, true);
+
+                    rutaFotoRelativa = Path.Combine("FotosEmpleados", nombreUnico);
+
+                    pctEmpleado.Image = Image.FromFile(rutaDestino);
+                    pctEmpleado.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("No se pudo copiar la foto: " + ex.Message,
+                        "ERROR-ARCHIVO-160", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("No tiene permisos para guardar la foto: " + ex.Message,
+                        "ERROR-PERMISO-161", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la foto: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
     }
 }

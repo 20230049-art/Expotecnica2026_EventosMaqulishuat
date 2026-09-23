@@ -473,9 +473,9 @@
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnActualizar.Location = new System.Drawing.Point(442, 402);
+            this.btnActualizar.Location = new System.Drawing.Point(440, 402);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(162, 45);
+            this.btnActualizar.Size = new System.Drawing.Size(176, 45);
             this.btnActualizar.TabIndex = 9;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = false;
@@ -488,9 +488,9 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnSalir.Location = new System.Drawing.Point(653, 402);
+            this.btnSalir.Location = new System.Drawing.Point(651, 402);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(162, 45);
+            this.btnSalir.Size = new System.Drawing.Size(176, 45);
             this.btnSalir.TabIndex = 10;
             this.btnSalir.Text = "Cerrar";
             this.btnSalir.UseVisualStyleBackColor = false;

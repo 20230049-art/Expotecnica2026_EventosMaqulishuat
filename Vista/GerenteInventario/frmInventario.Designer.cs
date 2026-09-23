@@ -1,6 +1,6 @@
-﻿namespace Vista.GerenteClientes
+﻿namespace Vista.GerenteInventario
 {
-    partial class frmClientesTotales
+    partial class frmInventario
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVistaClientesTotales = new System.Windows.Forms.Panel();
             this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -48,26 +51,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.flpClientes = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlPlantilla = new System.Windows.Forms.Panel();
-            this.pnlContenedorInfo = new System.Windows.Forms.Panel();
-            this.lblCorreoTitulo = new System.Windows.Forms.Label();
-            this.lblDui = new System.Windows.Forms.Label();
-            this.lblTipodeclienteTitulo = new System.Windows.Forms.Label();
-            this.lblCorreo = new System.Windows.Forms.Label();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.lblTipocliente = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.lblTelefonoTitulo = new System.Windows.Forms.Label();
-            this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.lblClienteDesdeTitulo = new System.Windows.Forms.Label();
-            this.lblDocumento = new System.Windows.Forms.Label();
-            this.lblNombreTitulo = new System.Windows.Forms.Label();
-            this.lblApellidos = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.pnlDecoracion1 = new System.Windows.Forms.Panel();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaClientesTotales.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
@@ -78,19 +62,18 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.flpClientes.SuspendLayout();
-            this.pnlPlantilla.SuspendLayout();
-            this.pnlContenedorInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVistaClientesTotales
             // 
+            this.pnlVistaClientesTotales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
             this.pnlVistaClientesTotales.Controls.Add(this.tlpContenedorPrincipal);
             this.pnlVistaClientesTotales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaClientesTotales.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaClientesTotales.Name = "pnlVistaClientesTotales";
             this.pnlVistaClientesTotales.Size = new System.Drawing.Size(1924, 973);
-            this.pnlVistaClientesTotales.TabIndex = 0;
+            this.pnlVistaClientesTotales.TabIndex = 1;
             // 
             // tlpContenedorPrincipal
             // 
@@ -125,7 +108,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -145,9 +128,9 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(53, 31);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(616, 80);
+            this.lblProductos.Size = new System.Drawing.Size(617, 80);
             this.lblProductos.TabIndex = 0;
-            this.lblProductos.Text = "CLIENTES";
+            this.lblProductos.Text = "INVENTARIO";
             // 
             // tableLayoutPanel7
             // 
@@ -157,7 +140,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel7.Controls.Add(this.txtBarraBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(675, 34);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(676, 34);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -177,9 +160,8 @@
             this.txtBarraBuscar.Name = "txtBarraBuscar";
             this.txtBarraBuscar.Size = new System.Drawing.Size(736, 38);
             this.txtBarraBuscar.TabIndex = 1;
-            this.txtBarraBuscar.Text = "Buscar cliente";
-            this.toolTip1.SetToolTip(this.txtBarraBuscar, "Buscar clientes por nombre, apellido o DUI");
-            this.txtBarraBuscar.TextChanged += new System.EventHandler(this.txtBarraBuscar_TextChanged);
+            this.txtBarraBuscar.Text = "Buscar producto";
+            this.toolTip1.SetToolTip(this.txtBarraBuscar, "Buscar producto");
             // 
             // tableLayoutPanel1
             // 
@@ -242,10 +224,9 @@
             this.btnClientesTotales.Name = "btnClientesTotales";
             this.btnClientesTotales.Size = new System.Drawing.Size(455, 75);
             this.btnClientesTotales.TabIndex = 12;
-            this.btnClientesTotales.Text = "Clientes Totales";
-            this.toolTip1.SetToolTip(this.btnClientesTotales, "Muestra los clientes totales");
+            this.btnClientesTotales.Text = "Productos Totales";
+            this.toolTip1.SetToolTip(this.btnClientesTotales, "Mostrar productos totales");
             this.btnClientesTotales.UseVisualStyleBackColor = false;
-            this.btnClientesTotales.Click += new System.EventHandler(this.btnClientesTotales_Click);
             // 
             // btnClientesActivos
             // 
@@ -259,10 +240,9 @@
             this.btnClientesActivos.Name = "btnClientesActivos";
             this.btnClientesActivos.Size = new System.Drawing.Size(458, 75);
             this.btnClientesActivos.TabIndex = 13;
-            this.btnClientesActivos.Text = "Clientes Activos";
-            this.toolTip1.SetToolTip(this.btnClientesActivos, "Muestra los clientes activos, de la semana");
+            this.btnClientesActivos.Text = "Productos Activos";
+            this.toolTip1.SetToolTip(this.btnClientesActivos, "Mostrar productos activos");
             this.btnClientesActivos.UseVisualStyleBackColor = false;
-            this.btnClientesActivos.Click += new System.EventHandler(this.btnClientesActivos_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -291,9 +271,8 @@
             this.btnAgregar.Size = new System.Drawing.Size(359, 32);
             this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
-            this.toolTip1.SetToolTip(this.btnAgregar, "Botón para agregar un cliente");
+            this.toolTip1.SetToolTip(this.btnAgregar, "Agregar producto");
             this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -307,7 +286,7 @@
             this.btnEliminar.Size = new System.Drawing.Size(359, 31);
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
-            this.toolTip1.SetToolTip(this.btnEliminar, "Boton para eliminar un cliente");
+            this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar producto");
             this.btnEliminar.UseVisualStyleBackColor = false;
             // 
             // btnClientesNoActivos
@@ -322,10 +301,9 @@
             this.btnClientesNoActivos.Name = "btnClientesNoActivos";
             this.btnClientesNoActivos.Size = new System.Drawing.Size(460, 75);
             this.btnClientesNoActivos.TabIndex = 14;
-            this.btnClientesNoActivos.Text = "Clientes No Activos";
-            this.toolTip1.SetToolTip(this.btnClientesNoActivos, "Muestra los clientes no activos");
+            this.btnClientesNoActivos.Text = "Productos Agotados";
+            this.toolTip1.SetToolTip(this.btnClientesNoActivos, "Mostrar productos agotados");
             this.btnClientesNoActivos.UseVisualStyleBackColor = false;
-            this.btnClientesNoActivos.Click += new System.EventHandler(this.btnClientesNoActivos_Click);
             // 
             // panel1
             // 
@@ -354,10 +332,10 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5230126F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.64017F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.8368201F));
-            this.tableLayoutPanel4.Controls.Add(this.flpClientes, 1, 0);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.150628F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.07113F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.778243F));
+            this.tableLayoutPanel4.Controls.Add(this.dgvProductos, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 98);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -366,253 +344,54 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1912, 686);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
-            // flpClientes
+            // dgvProductos
             // 
-            this.flpClientes.AutoScroll = true;
-            this.flpClientes.Controls.Add(this.pnlPlantilla);
-            this.flpClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpClientes.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpClientes.Location = new System.Drawing.Point(13, 3);
-            this.flpClientes.Name = "flpClientes";
-            this.flpClientes.Size = new System.Drawing.Size(1880, 680);
-            this.flpClientes.TabIndex = 2;
-            this.flpClientes.WrapContents = false;
+            this.dgvProductos.AllowUserToAddRows = false;
+            this.dgvProductos.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Bookman Old Style", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(194)))), ((int)(((byte)(175)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Lucida Bright", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(136)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Bookman Old Style", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvProductos.Location = new System.Drawing.Point(25, 3);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.ReadOnly = true;
+            this.dgvProductos.RowHeadersWidth = 51;
+            this.dgvProductos.RowTemplate.Height = 24;
+            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProductos.Size = new System.Drawing.Size(1850, 680);
+            this.dgvProductos.TabIndex = 5;
             // 
-            // pnlPlantilla
-            // 
-            this.pnlPlantilla.Controls.Add(this.pnlContenedorInfo);
-            this.pnlPlantilla.Location = new System.Drawing.Point(3, 3);
-            this.pnlPlantilla.Name = "pnlPlantilla";
-            this.pnlPlantilla.Size = new System.Drawing.Size(1833, 220);
-            this.pnlPlantilla.TabIndex = 41;
-            // 
-            // pnlContenedorInfo
-            // 
-            this.pnlContenedorInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.pnlContenedorInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlContenedorInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlContenedorInfo.Controls.Add(this.lblCorreoTitulo);
-            this.pnlContenedorInfo.Controls.Add(this.lblDui);
-            this.pnlContenedorInfo.Controls.Add(this.lblTipodeclienteTitulo);
-            this.pnlContenedorInfo.Controls.Add(this.lblCorreo);
-            this.pnlContenedorInfo.Controls.Add(this.lblNumero);
-            this.pnlContenedorInfo.Controls.Add(this.lblTipocliente);
-            this.pnlContenedorInfo.Controls.Add(this.panel7);
-            this.pnlContenedorInfo.Controls.Add(this.lblTelefonoTitulo);
-            this.pnlContenedorInfo.Controls.Add(this.lblFechaDesde);
-            this.pnlContenedorInfo.Controls.Add(this.lblClienteDesdeTitulo);
-            this.pnlContenedorInfo.Controls.Add(this.lblDocumento);
-            this.pnlContenedorInfo.Controls.Add(this.lblNombreTitulo);
-            this.pnlContenedorInfo.Controls.Add(this.lblApellidos);
-            this.pnlContenedorInfo.Controls.Add(this.lblNombre);
-            this.pnlContenedorInfo.Controls.Add(this.panel8);
-            this.pnlContenedorInfo.Controls.Add(this.panel9);
-            this.pnlContenedorInfo.Controls.Add(this.pnlDecoracion1);
-            this.pnlContenedorInfo.Location = new System.Drawing.Point(10, 27);
-            this.pnlContenedorInfo.Name = "pnlContenedorInfo";
-            this.pnlContenedorInfo.Size = new System.Drawing.Size(1680, 149);
-            this.pnlContenedorInfo.TabIndex = 38;
-            this.toolTip1.SetToolTip(this.pnlContenedorInfo, "Información del cliente");
-            this.pnlContenedorInfo.Visible = false;
-            // 
-            // lblCorreoTitulo
-            // 
-            this.lblCorreoTitulo.AutoSize = true;
-            this.lblCorreoTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblCorreoTitulo.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorreoTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.lblCorreoTitulo.Location = new System.Drawing.Point(909, 68);
-            this.lblCorreoTitulo.Name = "lblCorreoTitulo";
-            this.lblCorreoTitulo.Size = new System.Drawing.Size(136, 40);
-            this.lblCorreoTitulo.TabIndex = 32;
-            this.lblCorreoTitulo.Text = "Correo: ";
-            // 
-            // lblDui
-            // 
-            this.lblDui.AutoSize = true;
-            this.lblDui.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblDui.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDui.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblDui.Location = new System.Drawing.Point(287, 76);
-            this.lblDui.Name = "lblDui";
-            this.lblDui.Size = new System.Drawing.Size(210, 39);
-            this.lblDui.TabIndex = 25;
-            this.lblDui.Text = "01234567-8";
-            // 
-            // lblTipodeclienteTitulo
-            // 
-            this.lblTipodeclienteTitulo.AutoSize = true;
-            this.lblTipodeclienteTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblTipodeclienteTitulo.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipodeclienteTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.lblTipodeclienteTitulo.Location = new System.Drawing.Point(445, 19);
-            this.lblTipodeclienteTitulo.Name = "lblTipodeclienteTitulo";
-            this.lblTipodeclienteTitulo.Size = new System.Drawing.Size(252, 40);
-            this.lblTipodeclienteTitulo.TabIndex = 27;
-            this.lblTipodeclienteTitulo.Text = "Tipo de Cliente";
-            // 
-            // lblCorreo
-            // 
-            this.lblCorreo.AutoSize = true;
-            this.lblCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblCorreo.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblCorreo.Location = new System.Drawing.Point(1018, 70);
-            this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(304, 37);
-            this.lblCorreo.TabIndex = 31;
-            this.lblCorreo.Text = "ejemplo@gmail.com";
-            // 
-            // lblNumero
-            // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblNumero.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblNumero.Location = new System.Drawing.Point(1039, 23);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(201, 37);
-            this.lblNumero.TabIndex = 30;
-            this.lblNumero.Text = "7894 - 2635";
-            // 
-            // lblTipocliente
-            // 
-            this.lblTipocliente.AutoSize = true;
-            this.lblTipocliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblTipocliente.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipocliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblTipocliente.Location = new System.Drawing.Point(713, 70);
-            this.lblTipocliente.Name = "lblTipocliente";
-            this.lblTipocliente.Size = new System.Drawing.Size(137, 39);
-            this.lblTipocliente.TabIndex = 29;
-            this.lblTipocliente.Text = "Natural";
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel7.Location = new System.Drawing.Point(438, 17);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1, 98);
-            this.panel7.TabIndex = 4;
-            // 
-            // lblTelefonoTitulo
-            // 
-            this.lblTelefonoTitulo.AutoSize = true;
-            this.lblTelefonoTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblTelefonoTitulo.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefonoTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.lblTelefonoTitulo.Location = new System.Drawing.Point(905, 20);
-            this.lblTelefonoTitulo.Name = "lblTelefonoTitulo";
-            this.lblTelefonoTitulo.Size = new System.Drawing.Size(161, 40);
-            this.lblTelefonoTitulo.TabIndex = 28;
-            this.lblTelefonoTitulo.Text = "Teléfono:";
-            // 
-            // lblFechaDesde
-            // 
-            this.lblFechaDesde.AutoSize = true;
-            this.lblFechaDesde.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblFechaDesde.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaDesde.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblFechaDesde.Location = new System.Drawing.Point(482, 61);
-            this.lblFechaDesde.Name = "lblFechaDesde";
-            this.lblFechaDesde.Size = new System.Drawing.Size(155, 39);
-            this.lblFechaDesde.TabIndex = 26;
-            this.lblFechaDesde.Text = "16/5/28";
-            // 
-            // lblClienteDesdeTitulo
-            // 
-            this.lblClienteDesdeTitulo.AutoSize = true;
-            this.lblClienteDesdeTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblClienteDesdeTitulo.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClienteDesdeTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.lblClienteDesdeTitulo.Location = new System.Drawing.Point(620, 17);
-            this.lblClienteDesdeTitulo.Name = "lblClienteDesdeTitulo";
-            this.lblClienteDesdeTitulo.Size = new System.Drawing.Size(248, 43);
-            this.lblClienteDesdeTitulo.TabIndex = 24;
-            this.lblClienteDesdeTitulo.Text = "Cliente Desde";
-            // 
-            // lblDocumento
-            // 
-            this.lblDocumento.AutoSize = true;
-            this.lblDocumento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblDocumento.Font = new System.Drawing.Font("Book Antiqua", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDocumento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.lblDocumento.Location = new System.Drawing.Point(305, 19);
-            this.lblDocumento.Name = "lblDocumento";
-            this.lblDocumento.Size = new System.Drawing.Size(150, 39);
-            this.lblDocumento.TabIndex = 23;
-            this.lblDocumento.Text = "DUI/NIT";
-            // 
-            // lblNombreTitulo
-            // 
-            this.lblNombreTitulo.AutoSize = true;
-            this.lblNombreTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblNombreTitulo.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.lblNombreTitulo.Location = new System.Drawing.Point(24, 13);
-            this.lblNombreTitulo.Name = "lblNombreTitulo";
-            this.lblNombreTitulo.Size = new System.Drawing.Size(151, 43);
-            this.lblNombreTitulo.TabIndex = 21;
-            this.lblNombreTitulo.Text = "Nombre";
-            // 
-            // lblApellidos
-            // 
-            this.lblApellidos.AutoSize = true;
-            this.lblApellidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblApellidos.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblApellidos.Location = new System.Drawing.Point(22, 69);
-            this.lblApellidos.Name = "lblApellidos";
-            this.lblApellidos.Size = new System.Drawing.Size(197, 39);
-            this.lblApellidos.TabIndex = 22;
-            this.lblApellidos.Text = "Calix Motto";
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.lblNombre.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblNombre.Location = new System.Drawing.Point(22, 28);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(251, 39);
-            this.lblNombre.TabIndex = 16;
-            this.lblNombre.Text = "Armando Jose ";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel8.Location = new System.Drawing.Point(896, 17);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1, 98);
-            this.panel8.TabIndex = 5;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel9.Location = new System.Drawing.Point(660, 17);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1, 98);
-            this.panel9.TabIndex = 3;
-            // 
-            // pnlDecoracion1
-            // 
-            this.pnlDecoracion1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pnlDecoracion1.Location = new System.Drawing.Point(280, 17);
-            this.pnlDecoracion1.Name = "pnlDecoracion1";
-            this.pnlDecoracion1.Size = new System.Drawing.Size(1, 98);
-            this.pnlDecoracion1.TabIndex = 2;
-            // 
-            // frmClientesTotales
+            // frmInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(1924, 973);
             this.Controls.Add(this.pnlVistaClientesTotales);
-            this.Name = "frmClientesTotales";
-            this.Text = "frmClientesTotales";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmClientesTotales_FormClosing);
+            this.Name = "frmInventario";
+            this.Text = "frmInventario";
             this.pnlVistaClientesTotales.ResumeLayout(false);
             this.tlpContenedorPrincipal.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -624,10 +403,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.flpClientes.ResumeLayout(false);
-            this.pnlPlantilla.ResumeLayout(false);
-            this.pnlContenedorInfo.ResumeLayout(false);
-            this.pnlContenedorInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -645,34 +421,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnClientesTotales;
         private System.Windows.Forms.Button btnClientesActivos;
-        private System.Windows.Forms.Button btnClientesNoActivos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnClientesNoActivos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.FlowLayoutPanel flpClientes;
-        private System.Windows.Forms.Panel pnlPlantilla;
-        private System.Windows.Forms.Panel pnlContenedorInfo;
-        private System.Windows.Forms.Label lblCorreoTitulo;
-        private System.Windows.Forms.Label lblDui;
-        private System.Windows.Forms.Label lblTipodeclienteTitulo;
-        private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.Label lblNumero;
-        private System.Windows.Forms.Label lblTipocliente;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label lblTelefonoTitulo;
-        private System.Windows.Forms.Label lblFechaDesde;
-        private System.Windows.Forms.Label lblClienteDesdeTitulo;
-        private System.Windows.Forms.Label lblDocumento;
-        private System.Windows.Forms.Label lblNombreTitulo;
-        private System.Windows.Forms.Label lblApellidos;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel pnlDecoracion1;
+        private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -42,7 +42,7 @@
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.mtxbTelefono = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -57,6 +57,7 @@
             this.pnlActualizadorCliente = new System.Windows.Forms.Panel();
             this.lblInformCliente = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -207,7 +208,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
-            this.panel2.Controls.Add(this.txtTelefono);
+            this.panel2.Controls.Add(this.mtxbTelefono);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(118, 324);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -215,17 +216,17 @@
             this.panel2.Size = new System.Drawing.Size(337, 83);
             this.panel2.TabIndex = 59;
             // 
-            // txtTelefono
+            // mtxbTelefono
             // 
-            this.txtTelefono.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
-            this.txtTelefono.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(13, 38);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTelefono.Multiline = true;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(305, 39);
-            this.txtTelefono.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.txtTelefono, "Telefono empleado");
+            this.mtxbTelefono.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
+            this.mtxbTelefono.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mtxbTelefono.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxbTelefono.Location = new System.Drawing.Point(11, 40);
+            this.mtxbTelefono.Mask = "0000-0000";
+            this.mtxbTelefono.Name = "mtxbTelefono";
+            this.mtxbTelefono.Size = new System.Drawing.Size(325, 39);
+            this.mtxbTelefono.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.mtxbTelefono, "Número de teléfono del cliente");
             // 
             // label2
             // 
@@ -349,6 +350,7 @@
             this.btnSubirFoto.Text = "Subir";
             this.toolTip1.SetToolTip(this.btnSubirFoto, "Subir foto");
             this.btnSubirFoto.UseVisualStyleBackColor = false;
+            this.btnSubirFoto.Click += new System.EventHandler(this.btnSubirFoto_Click);
             // 
             // pctEmpleado
             // 
@@ -381,6 +383,10 @@
             this.lblInformCliente.Size = new System.Drawing.Size(434, 51);
             this.lblInformCliente.TabIndex = 0;
             this.lblInformCliente.Text = "Actualizar Empleado";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmActualizarEmpleado
             // 
@@ -443,7 +449,6 @@
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtApellido;
@@ -458,5 +463,7 @@
         private System.Windows.Forms.Panel pnlActualizadorCliente;
         private System.Windows.Forms.Label lblInformCliente;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.MaskedTextBox mtxbTelefono;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

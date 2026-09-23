@@ -212,6 +212,24 @@
     <Compile Include="GerenteInicio\frmMenuGerente.Designer.cs">
       <DependentUpon>frmMenuGerente.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerenteInventario\frmActualizarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteInventario\frmActualizarProducto.Designer.cs">
+      <DependentUpon>frmActualizarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteInventario\frmInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteInventario\frmInventario.Designer.cs">
+      <DependentUpon>frmInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteInventario\frmInventarioAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteInventario\frmInventarioAgregar.Designer.cs">
+      <DependentUpon>frmInventarioAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="IniciarSesion\frmfrmIniciarSesionEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +330,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteInicio\frmMenuGerente.resx">
       <DependentUpon>frmMenuGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteInventario\frmActualizarProducto.resx">
+      <DependentUpon>frmActualizarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteInventario\frmInventario.resx">
+      <DependentUpon>frmInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteInventario\frmInventarioAgregar.resx">
+      <DependentUpon>frmInventarioAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IniciarSesion\frmfrmIniciarSesionEmpleado.resx">
       <DependentUpon>frmfrmIniciarSesionEmpleado.cs</DependentUpon>

@@ -88,15 +88,16 @@ namespace Vista.Utilidades
         }
 
         //Validar que los controles de numeros solo resivan numeros y el punto decimal
-        public void ValidarSoloNumeros(System.Windows.Forms.TextBox txt, KeyPressEventArgs e)
+        public void ValidarSoloNumeros(System.Windows.Forms.Control txt, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) &&
                 e.KeyChar != '.' &&
+                e.KeyChar != '-' &&
                 e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
 
-                MessageBox.Show("Solo se permiten números y un punto decimal.", "ERROR-CARACTERNO-005",
+                MessageBox.Show("Solo se permiten números, guipon y un punto decimal.", "ERROR-CARACTERNO-005",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return;

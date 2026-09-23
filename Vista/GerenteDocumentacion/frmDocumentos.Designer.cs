@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlVistaMisDocumentos = new System.Windows.Forms.Panel();
             this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -132,6 +133,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.openfdArchivos = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaMisDocumentos.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -278,7 +280,9 @@
             this.txtBarraBuscar.Name = "txtBarraBuscar";
             this.txtBarraBuscar.Size = new System.Drawing.Size(736, 38);
             this.txtBarraBuscar.TabIndex = 1;
-            this.txtBarraBuscar.Text = "Buscar cliente";
+            this.txtBarraBuscar.Text = "Buscar documento";
+            this.toolTip1.SetToolTip(this.txtBarraBuscar, "Buscar documento por el nombre");
+            this.txtBarraBuscar.TextChanged += new System.EventHandler(this.txtBarraBuscar_TextChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -353,7 +357,9 @@
             this.btnMisDocumentos.Size = new System.Drawing.Size(592, 66);
             this.btnMisDocumentos.TabIndex = 12;
             this.btnMisDocumentos.Text = "Mis documentos";
+            this.toolTip1.SetToolTip(this.btnMisDocumentos, "Ver todos los documentos");
             this.btnMisDocumentos.UseVisualStyleBackColor = false;
+            this.btnMisDocumentos.Click += new System.EventHandler(this.btnMisDocumentos_Click);
             // 
             // btnDocumentosFavoritos
             // 
@@ -368,7 +374,9 @@
             this.btnDocumentosFavoritos.Size = new System.Drawing.Size(598, 66);
             this.btnDocumentosFavoritos.TabIndex = 13;
             this.btnDocumentosFavoritos.Text = "Documentos favoritos";
+            this.toolTip1.SetToolTip(this.btnDocumentosFavoritos, "Ver documentos favoritos");
             this.btnDocumentosFavoritos.UseVisualStyleBackColor = false;
+            this.btnDocumentosFavoritos.Click += new System.EventHandler(this.btnDocumentosFavoritos_Click);
             // 
             // btnDocumentosPapelera
             // 
@@ -383,7 +391,9 @@
             this.btnDocumentosPapelera.Size = new System.Drawing.Size(585, 66);
             this.btnDocumentosPapelera.TabIndex = 14;
             this.btnDocumentosPapelera.Text = "Papelera de Documentos";
+            this.toolTip1.SetToolTip(this.btnDocumentosPapelera, "Ver documentos en papelera");
             this.btnDocumentosPapelera.UseVisualStyleBackColor = false;
+            this.btnDocumentosPapelera.Click += new System.EventHandler(this.btnDocumentosPapelera_Click);
             // 
             // panel1
             // 
@@ -447,6 +457,7 @@
             this.btnAgregar.TabIndex = 14;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -462,6 +473,7 @@
             this.btnEliminar.TabIndex = 15;
             this.btnEliminar.Text = "Papelera";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEliminarSiempre
             // 
@@ -477,6 +489,7 @@
             this.btnEliminarSiempre.TabIndex = 17;
             this.btnEliminarSiempre.Text = "Eliminar";
             this.btnEliminarSiempre.UseVisualStyleBackColor = false;
+            this.btnEliminarSiempre.Click += new System.EventHandler(this.btnEliminarSiempre_Click);
             // 
             // btnRestaurarDocumento
             // 
@@ -492,6 +505,7 @@
             this.btnRestaurarDocumento.TabIndex = 18;
             this.btnRestaurarDocumento.Text = "Restaurar";
             this.btnRestaurarDocumento.UseVisualStyleBackColor = false;
+            this.btnRestaurarDocumento.Click += new System.EventHandler(this.btnRestaurarDocumento_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -545,7 +559,7 @@
             this.pnlContenedor.Controls.Add(this.pbImgDocumento);
             this.pnlContenedor.Location = new System.Drawing.Point(3, 3);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(300, 95);
+            this.pnlContenedor.Size = new System.Drawing.Size(350, 109);
             this.pnlContenedor.TabIndex = 21;
             this.pnlContenedor.Visible = false;
             // 
@@ -586,7 +600,7 @@
             this.panel14.Controls.Add(this.label21);
             this.panel14.Controls.Add(this.label24);
             this.panel14.Controls.Add(this.pictureBox11);
-            this.panel14.Location = new System.Drawing.Point(309, 3);
+            this.panel14.Location = new System.Drawing.Point(359, 3);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(300, 95);
             this.panel14.TabIndex = 26;
@@ -629,7 +643,7 @@
             this.panel6.Controls.Add(this.label2);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.pictureBox2);
-            this.panel6.Location = new System.Drawing.Point(615, 3);
+            this.panel6.Location = new System.Drawing.Point(665, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(300, 95);
             this.panel6.TabIndex = 22;
@@ -672,7 +686,7 @@
             this.panel13.Controls.Add(this.label19);
             this.panel13.Controls.Add(this.label20);
             this.panel13.Controls.Add(this.pictureBox10);
-            this.panel13.Location = new System.Drawing.Point(921, 3);
+            this.panel13.Location = new System.Drawing.Point(971, 3);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(300, 95);
             this.panel13.TabIndex = 27;
@@ -715,7 +729,7 @@
             this.panel7.Controls.Add(this.label4);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Controls.Add(this.pictureBox3);
-            this.panel7.Location = new System.Drawing.Point(1227, 3);
+            this.panel7.Location = new System.Drawing.Point(1277, 3);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(300, 95);
             this.panel7.TabIndex = 23;
@@ -758,7 +772,7 @@
             this.panel12.Controls.Add(this.label14);
             this.panel12.Controls.Add(this.label18);
             this.panel12.Controls.Add(this.pictureBox9);
-            this.panel12.Location = new System.Drawing.Point(1533, 3);
+            this.panel12.Location = new System.Drawing.Point(3, 118);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(300, 95);
             this.panel12.TabIndex = 28;
@@ -801,7 +815,7 @@
             this.panel8.Controls.Add(this.label6);
             this.panel8.Controls.Add(this.label7);
             this.panel8.Controls.Add(this.pictureBox4);
-            this.panel8.Location = new System.Drawing.Point(3, 104);
+            this.panel8.Location = new System.Drawing.Point(309, 118);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(300, 95);
             this.panel8.TabIndex = 24;
@@ -844,7 +858,7 @@
             this.panel19.Controls.Add(this.label33);
             this.panel19.Controls.Add(this.label34);
             this.panel19.Controls.Add(this.pictureBox18);
-            this.panel19.Location = new System.Drawing.Point(309, 104);
+            this.panel19.Location = new System.Drawing.Point(615, 118);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(300, 95);
             this.panel19.TabIndex = 31;
@@ -887,7 +901,7 @@
             this.panel11.Controls.Add(this.label12);
             this.panel11.Controls.Add(this.label13);
             this.panel11.Controls.Add(this.pictureBox8);
-            this.panel11.Location = new System.Drawing.Point(615, 104);
+            this.panel11.Location = new System.Drawing.Point(921, 118);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(300, 95);
             this.panel11.TabIndex = 29;
@@ -930,7 +944,7 @@
             this.panel18.Controls.Add(this.label31);
             this.panel18.Controls.Add(this.label32);
             this.panel18.Controls.Add(this.pictureBox17);
-            this.panel18.Location = new System.Drawing.Point(921, 104);
+            this.panel18.Location = new System.Drawing.Point(1227, 118);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(300, 95);
             this.panel18.TabIndex = 32;
@@ -973,7 +987,7 @@
             this.panel17.Controls.Add(this.label29);
             this.panel17.Controls.Add(this.label30);
             this.panel17.Controls.Add(this.pictureBox16);
-            this.panel17.Location = new System.Drawing.Point(1227, 104);
+            this.panel17.Location = new System.Drawing.Point(1533, 118);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(300, 95);
             this.panel17.TabIndex = 33;
@@ -1016,7 +1030,7 @@
             this.panel23.Controls.Add(this.label41);
             this.panel23.Controls.Add(this.label42);
             this.panel23.Controls.Add(this.pictureBox22);
-            this.panel23.Location = new System.Drawing.Point(1533, 104);
+            this.panel23.Location = new System.Drawing.Point(3, 219);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(300, 95);
             this.panel23.TabIndex = 36;
@@ -1059,7 +1073,7 @@
             this.panel9.Controls.Add(this.label8);
             this.panel9.Controls.Add(this.label9);
             this.panel9.Controls.Add(this.pictureBox5);
-            this.panel9.Location = new System.Drawing.Point(3, 205);
+            this.panel9.Location = new System.Drawing.Point(309, 219);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(300, 95);
             this.panel9.TabIndex = 25;
@@ -1102,7 +1116,7 @@
             this.panel22.Controls.Add(this.label39);
             this.panel22.Controls.Add(this.label40);
             this.panel22.Controls.Add(this.pictureBox21);
-            this.panel22.Location = new System.Drawing.Point(309, 205);
+            this.panel22.Location = new System.Drawing.Point(615, 219);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(300, 95);
             this.panel22.TabIndex = 37;
@@ -1145,7 +1159,7 @@
             this.panel16.Controls.Add(this.label27);
             this.panel16.Controls.Add(this.label28);
             this.panel16.Controls.Add(this.pictureBox14);
-            this.panel16.Location = new System.Drawing.Point(615, 205);
+            this.panel16.Location = new System.Drawing.Point(921, 219);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(300, 95);
             this.panel16.TabIndex = 34;
@@ -1188,7 +1202,7 @@
             this.panel21.Controls.Add(this.label37);
             this.panel21.Controls.Add(this.label38);
             this.panel21.Controls.Add(this.pictureBox20);
-            this.panel21.Location = new System.Drawing.Point(921, 205);
+            this.panel21.Location = new System.Drawing.Point(1227, 219);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(300, 95);
             this.panel21.TabIndex = 38;
@@ -1231,7 +1245,7 @@
             this.panel10.Controls.Add(this.label10);
             this.panel10.Controls.Add(this.label11);
             this.panel10.Controls.Add(this.pictureBox6);
-            this.panel10.Location = new System.Drawing.Point(1227, 205);
+            this.panel10.Location = new System.Drawing.Point(1533, 219);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(300, 95);
             this.panel10.TabIndex = 30;
@@ -1274,7 +1288,7 @@
             this.panel20.Controls.Add(this.label35);
             this.panel20.Controls.Add(this.label36);
             this.panel20.Controls.Add(this.pictureBox19);
-            this.panel20.Location = new System.Drawing.Point(1533, 205);
+            this.panel20.Location = new System.Drawing.Point(3, 320);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(300, 95);
             this.panel20.TabIndex = 39;
@@ -1317,7 +1331,7 @@
             this.panel15.Controls.Add(this.label25);
             this.panel15.Controls.Add(this.label26);
             this.panel15.Controls.Add(this.pictureBox13);
-            this.panel15.Location = new System.Drawing.Point(3, 306);
+            this.panel15.Location = new System.Drawing.Point(309, 320);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(300, 95);
             this.panel15.TabIndex = 35;
@@ -1360,7 +1374,7 @@
             this.panel24.Controls.Add(this.label22);
             this.panel24.Controls.Add(this.label23);
             this.panel24.Controls.Add(this.pictureBox7);
-            this.panel24.Location = new System.Drawing.Point(309, 306);
+            this.panel24.Location = new System.Drawing.Point(615, 320);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(300, 95);
             this.panel24.TabIndex = 40;
@@ -1410,6 +1424,7 @@
             this.Controls.Add(this.pnlVistaMisDocumentos);
             this.Name = "frmDocumentos";
             this.Text = "frmDocumentos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDocumentos_FormClosing);
             this.pnlVistaMisDocumentos.ResumeLayout(false);
             this.tlpContenedorPrincipal.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1592,5 +1607,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.OpenFileDialog openfdArchivos;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

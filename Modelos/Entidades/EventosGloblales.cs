@@ -28,16 +28,41 @@ namespace Modelos.Entidades
         }
 
         public static event EventHandler DocumentosAgregados;
+        public static event EventHandler DocumentosPapelera;
         public static event EventHandler DocumentosEliminados;
+
+        public static void EnDocumentosPapelera()
+        {
+            DocumentosPapelera?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static void EnDocumentosAgregados()
+        {
+            DocumentosAgregados?.Invoke(null, EventArgs.Empty);
+        }
 
         public static void EnDocumentosEliminados()
         {
             DocumentosEliminados?.Invoke(null, EventArgs.Empty);
         }
 
-        public static void EnDocumentosAgregados()
+        public static event EventHandler EmpleadosAgregados;
+        public static event EventHandler EmpleadosActualizar;
+        public static event EventHandler EmpleadosEliminados;
+
+        public static void EnEmpleadosAgregados()
         {
-            DocumentosAgregados?.Invoke(null, EventArgs.Empty);
+            EmpleadosAgregados?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static void EnEmpleadosActualizar()
+        {
+            EmpleadosActualizar?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static void EnEmpleadosEliminados()
+        {
+            EmpleadosEliminados?.Invoke(null, EventArgs.Empty);
         }
     }
 }

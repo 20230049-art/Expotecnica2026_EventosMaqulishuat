@@ -62,7 +62,7 @@ namespace Modelos.Entidades
                     command.Parameters.Add("@DUIEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.DUIEmpleado;
                     command.Parameters.Add("@CorreoEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.CorreoEmpleado;
                     command.Parameters.Add("@CuentaBancariaEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.CuentaBancariaEmpleado;
-                    command.Parameters.Add("@FotoEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.FotoEmpleado;
+                    command.Parameters.Add("@FotoEmpleado", SqlDbType.VarChar).Value = string.IsNullOrWhiteSpace(nuevoEmpleado.FotoEmpleado)? (object)DBNull.Value : nuevoEmpleado.FotoEmpleado; 
 
                     command.ExecuteNonQuery();
                     connection.Close();
@@ -87,7 +87,7 @@ namespace Modelos.Entidades
                     command.Parameters.Add("@CorreoEmpleado", SqlDbType.VarChar).Value = actualizarEmpleado.CorreoEmpleado;
                     command.Parameters.Add("@CargoEmpleado", SqlDbType.VarChar).Value = actualizarEmpleado.CargoEmpleado;
                     command.Parameters.Add("@CuentaBancariaEmpleado", SqlDbType.VarChar).Value = actualizarEmpleado.CuentaBancariaEmpleado;
-                    command.Parameters.Add("@FotoEmpleado", SqlDbType.VarChar).Value = actualizarEmpleado.FotoEmpleado;
+                    command.Parameters.Add("@FotoEmpleado", SqlDbType.VarChar).Value = string.IsNullOrWhiteSpace(actualizarEmpleado.FotoEmpleado) ? (object)DBNull.Value : actualizarEmpleado.FotoEmpleado;
 
                     command.ExecuteNonQuery();
                     connection.Close();
@@ -135,6 +135,47 @@ namespace Modelos.Entidades
                 }
             }
             return tablaEmpleado;
+        }
+
+        //Mostrar empleado por pagina 20
+
+        public static DataTable MostrarEmpleadoPagina(int pagina, int registrosPorPagina, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand command = new SqlCommand("MostrarEmpleadoPaginado", conexion))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        command.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+
+                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        command.Parameters.Add(outputTotal);
+
+                        using (SqlDataAdapter ad = new SqlDataAdapter(command))
+                        {
+                            ad.Fill(dt);
+                        }
+
+                        totalRegistros = outputTotal.Value == DBNull.Value? 0 : Convert.ToInt32(outputTotal.Value);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al obtener los empleados por pagina: " + ex.Message, ex);
+            }
+
+            return dt;
         }
     }
 }

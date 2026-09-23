@@ -162,5 +162,32 @@ namespace Modelos.Entidades
             return tabla;
 
         }
+
+        //Eliminar Documento permanentemente
+        public static bool EliminarDocumentoPermanente(int idDocumentacion)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("EliminarPermanenteDocumento", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al eliminar el documento permanentemente: " + ex.Message, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error inesperado al eliminar el documento: " + ex.Message, ex);
+            }
+        }
     }
 }

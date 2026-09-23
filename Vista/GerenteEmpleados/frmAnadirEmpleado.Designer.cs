@@ -58,6 +58,7 @@
             this.pnlActualizadorCliente = new System.Windows.Forms.Panel();
             this.lblInformCliente = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pnlVistaAnadirEmpleado.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -309,6 +310,7 @@
             this.btnAgregar.TabIndex = 48;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCerrar
             // 
@@ -322,6 +324,7 @@
             this.btnCerrar.TabIndex = 47;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnSubirFoto
             // 
@@ -336,6 +339,7 @@
             this.btnSubirFoto.Text = "Subir";
             this.toolTip1.SetToolTip(this.btnSubirFoto, "Botón para subir una foto sobre el empleado");
             this.btnSubirFoto.UseVisualStyleBackColor = false;
+            this.btnSubirFoto.Click += new System.EventHandler(this.btnSubirFoto_Click);
             // 
             // pbFoto
             // 
@@ -403,6 +407,10 @@
             this.lblInformCliente.TabIndex = 0;
             this.lblInformCliente.Text = "Agregar Empleado";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmAnadirEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -469,5 +477,6 @@
         private System.Windows.Forms.Panel pnlActualizadorCliente;
         private System.Windows.Forms.Label lblInformCliente;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
