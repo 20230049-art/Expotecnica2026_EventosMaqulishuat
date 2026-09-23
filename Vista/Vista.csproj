@@ -50,6 +50,7 @@
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
@@ -230,6 +231,48 @@
     <Compile Include="GerenteInventario\frmInventarioAgregar.Designer.cs">
       <DependentUpon>frmInventarioAgregar.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerenteProveedores\frmAnadirProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteProveedores\frmAnadirProveedor.Designer.cs">
+      <DependentUpon>frmAnadirProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteProveedores\frmEditarProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteProveedores\frmEditarProveedores.Designer.cs">
+      <DependentUpon>frmEditarProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteProveedores\frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteProveedores\frmProveedores.Designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteRegistroPagos\frmRegistroPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteRegistroPagos\frmRegistroPago.Designer.cs">
+      <DependentUpon>frmRegistroPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteRegistroVentas\frmRegistroVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteRegistroVentas\frmRegistroVentas.Designer.cs">
+      <DependentUpon>frmRegistroVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteReportes\frmAgregarReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteReportes\frmAgregarReportes.Designer.cs">
+      <DependentUpon>frmAgregarReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteReportes\frmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteReportes\frmReportes.Designer.cs">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="IniciarSesion\frmfrmIniciarSesionEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +382,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteInventario\frmInventarioAgregar.resx">
       <DependentUpon>frmInventarioAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteProveedores\frmAnadirProveedor.resx">
+      <DependentUpon>frmAnadirProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteProveedores\frmEditarProveedores.resx">
+      <DependentUpon>frmEditarProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteProveedores\frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteRegistroPagos\frmRegistroPago.resx">
+      <DependentUpon>frmRegistroPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteRegistroVentas\frmRegistroVentas.resx">
+      <DependentUpon>frmRegistroVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteReportes\frmReportes.resx">
+      <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IniciarSesion\frmfrmIniciarSesionEmpleado.resx">
       <DependentUpon>frmfrmIniciarSesionEmpleado.cs</DependentUpon>

@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlVistaClientesTotales = new System.Windows.Forms.Panel();
+            this.pnlVistaInventario = new System.Windows.Forms.Panel();
             this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,7 +53,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlVistaClientesTotales.SuspendLayout();
+            this.pnlVistaInventario.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -65,15 +65,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlVistaClientesTotales
+            // pnlVistaInventario
             // 
-            this.pnlVistaClientesTotales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
-            this.pnlVistaClientesTotales.Controls.Add(this.tlpContenedorPrincipal);
-            this.pnlVistaClientesTotales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlVistaClientesTotales.Location = new System.Drawing.Point(0, 0);
-            this.pnlVistaClientesTotales.Name = "pnlVistaClientesTotales";
-            this.pnlVistaClientesTotales.Size = new System.Drawing.Size(1924, 973);
-            this.pnlVistaClientesTotales.TabIndex = 1;
+            this.pnlVistaInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
+            this.pnlVistaInventario.Controls.Add(this.tlpContenedorPrincipal);
+            this.pnlVistaInventario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlVistaInventario.Location = new System.Drawing.Point(0, 0);
+            this.pnlVistaInventario.Name = "pnlVistaInventario";
+            this.pnlVistaInventario.Size = new System.Drawing.Size(1924, 973);
+            this.pnlVistaInventario.TabIndex = 1;
             // 
             // tlpContenedorPrincipal
             // 
@@ -108,7 +108,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -128,7 +128,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(53, 31);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(617, 80);
+            this.lblProductos.Size = new System.Drawing.Size(615, 80);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "INVENTARIO";
             // 
@@ -140,7 +140,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel7.Controls.Add(this.txtBarraBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(676, 34);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(674, 34);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -389,10 +389,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 973);
-            this.Controls.Add(this.pnlVistaClientesTotales);
+            this.Controls.Add(this.pnlVistaInventario);
             this.Name = "frmInventario";
             this.Text = "frmInventario";
-            this.pnlVistaClientesTotales.ResumeLayout(false);
+            this.pnlVistaInventario.ResumeLayout(false);
             this.tlpContenedorPrincipal.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -410,7 +410,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlVistaClientesTotales;
+        private System.Windows.Forms.Panel pnlVistaInventario;
         private System.Windows.Forms.TableLayoutPanel tlpContenedorPrincipal;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
