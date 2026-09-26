@@ -152,5 +152,10 @@ namespace Vista.ClientesEmpleado
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtDui_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

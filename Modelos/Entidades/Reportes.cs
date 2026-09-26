@@ -54,19 +54,28 @@ namespace Modelos.Entidades
         }
 
         //Eliminar Reporte
-        public void EliminarRegistro(int idReporte)
+        public static bool EliminarReporte(int idReporte)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
+            try
             {
-                using (SqlCommand command = new SqlCommand("EliminarReporte", connection))
+                using (SqlConnection connection = ConexionDB.Conectar())
                 {
-                    command.CommandType = CommandType.StoredProcedure;
+                    using (SqlCommand command = new SqlCommand("EliminarReporte", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@IdReporte", SqlDbType.Int).Value = idReporte;
 
-                    command.Parameters.AddWithValue("@Idreporte", idReporte);
-
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                        return command.ExecuteNonQuery() > 0;
+                    }
                 }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -90,33 +99,46 @@ namespace Modelos.Entidades
             }
             return tabla;
         }
-
-        //Eliminar
-        public static bool EliminarCliente(int idCliente)
+        //Reportes pagina
+        public static DataTable MostrarReportesPagina(int pagina, int registrosPorPagina, out int totalRegistros)
         {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
             try
             {
                 using (SqlConnection conexion = ConexionDB.Conectar())
                 {
-                    using (SqlCommand comando = new SqlCommand("EliminarReporte", conexion))
+                    using (SqlCommand cmd = new SqlCommand("MostrarReportesPagina", conexion))
                     {
-                        comando.CommandType = CommandType.StoredProcedure;
-                        comando.Parameters.AddWithValue("@IdReporte", idCliente);
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                        conexion.Open();
-                        comando.ExecuteNonQuery();
+                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
 
-                        return true;
+                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputTotal);
+
+                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                        {
+                            ad.Fill(dt);
+                        }
+
+                        totalRegistros = outputTotal.Value == DBNull.Value
+                            ? 0
+                            : Convert.ToInt32(outputTotal.Value);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show("Error al eliminar el cliente: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
+                throw new Exception("Error al obtener los reportes paginados: " + ex.Message, ex);
             }
+
+            return dt;
         }
     }
 }

@@ -64,5 +64,24 @@ namespace Modelos.Entidades
         {
             EmpleadosEliminados?.Invoke(null, EventArgs.Empty);
         }
+
+        public static event EventHandler ProveedoresAgregados;
+        public static event EventHandler ProveedoresActualizar;
+        public static event EventHandler ProveedoresEliminados;
+
+        public static void EnProveedoresAgregados()
+        {
+            EmpleadosAgregados?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static void EnProveedoresActualizar()
+        {
+            EmpleadosActualizar?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static void EnProveedoresEliminados()
+        {
+            EmpleadosEliminados?.Invoke(null, EventArgs.Empty);
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace Modelos.Entidades
         {
             using (SqlConnection conection = ConexionDB.Conectar())
             {
-                string comando = "SELECT * FROM VistaDatosCliente";
+                string comando = "SELECT * FROM VistaDatosCliente WHERE EliminadoCliente = 0;";
                 SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
@@ -74,7 +74,7 @@ namespace Modelos.Entidades
         }
 
         //Agregar Clientes a la base de Datos
-        public static void AgregarCliente(Clientes nuevocliente)
+        public static (string resultado, int idCliente) AgregarCliente(Clientes nuevoCliente)
         {
             using (SqlConnection connection = ConexionDB.Conectar())
             {
@@ -82,48 +82,37 @@ namespace Modelos.Entidades
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.Add("@NombreCliente", SqlDbType.VarChar).Value = nuevocliente.NombreCliente;
-                    command.Parameters.Add("@ApellidoCliente", SqlDbType.VarChar).Value = nuevocliente.ApellidoCliente;
-
+                    command.Parameters.Add("@NombreCliente", SqlDbType.VarChar).Value = nuevoCliente.NombreCliente;
+                    command.Parameters.Add("@ApellidoCliente", SqlDbType.VarChar).Value = nuevoCliente.ApellidoCliente;
 
                     command.Parameters.Add("@NCRCliente", SqlDbType.VarChar);
-                    if (string.IsNullOrWhiteSpace(nuevocliente.NCRCliente))
-                    {
-                        command.Parameters["@NCRCliente"].Value = DBNull.Value;
-                    }
-                    else
-                    {
-                        command.Parameters["@NCRCliente"].Value = nuevocliente.NCRCliente;
-                    }
+                    command.Parameters["@NCRCliente"].Value =
+                        string.IsNullOrWhiteSpace(nuevoCliente.NCRCliente) ? (object)DBNull.Value : nuevoCliente.NCRCliente;
 
                     command.Parameters.Add("@DUICliente", SqlDbType.VarChar);
-                    if (string.IsNullOrWhiteSpace(nuevocliente.DUICliente))
-                    {
-                        command.Parameters["@DUICliente"].Value = DBNull.Value;
-                    }
-                    else
-                    {
-                        command.Parameters["@DUICliente"].Value = nuevocliente.DUICliente;
-                    }
+                    command.Parameters["@DUICliente"].Value =
+                        string.IsNullOrWhiteSpace(nuevoCliente.DUICliente) ? (object)DBNull.Value : nuevoCliente.DUICliente;
 
                     command.Parameters.Add("@NITCliente", SqlDbType.VarChar);
-                    if (string.IsNullOrWhiteSpace(nuevocliente.NITCliente))
-                    {
-                        command.Parameters["@NITCliente"].Value = DBNull.Value;
-                    }
-                    else
-                    {
-                        command.Parameters["@NITCliente"].Value = nuevocliente.NITCliente;
-                    }
+                    command.Parameters["@NITCliente"].Value =
+                        string.IsNullOrWhiteSpace(nuevoCliente.NITCliente) ? (object)DBNull.Value : nuevoCliente.NITCliente;
 
-                    command.Parameters.Add("@TelefonoCliente", SqlDbType.VarChar).Value = nuevocliente.TelefonoCliente;
-                    command.Parameters.Add("@CorreoCliente", SqlDbType.VarChar).Value = nuevocliente.CorreoCliente;
-                    command.Parameters.Add("@IdTipoCliente", SqlDbType.Int).Value = nuevocliente.IdTipoCliente;
+                    command.Parameters.Add("@TelefonoCliente", SqlDbType.VarChar).Value = nuevoCliente.TelefonoCliente;
+                    command.Parameters.Add("@CorreoCliente", SqlDbType.VarChar).Value = nuevoCliente.CorreoCliente;
+                    command.Parameters.Add("@IdTipoCliente", SqlDbType.Int).Value = nuevoCliente.IdTipoCliente;
 
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string resultado = reader["Resultado"].ToString();
+                            int idCliente = Convert.ToInt32(reader["IdCliente"]);
+                            return (resultado, idCliente);
+                        }
+                    }
                 }
             }
+            return ("ERROR", 0);
         }
 
         //Actualizar Cliente de la base de Datos
@@ -200,7 +189,7 @@ namespace Modelos.Entidades
         }
 
         //Eliminar Cliente de la base de Datos
-        public static void EliminarCliente(int idCliente)
+        public static bool EliminarCliente(int idCliente)
         {
             using (SqlConnection connection = ConexionDB.Conectar())
             {
@@ -208,8 +197,10 @@ namespace Modelos.Entidades
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("@IdCliente", SqlDbType.Int).Value = idCliente;
-                    command.ExecuteNonQuery();
-                    connection.Close();
+
+                    int filas = command.ExecuteNonQuery();
+                    return filas > 0;
+
                 }
             }
 
@@ -235,6 +226,63 @@ namespace Modelos.Entidades
             }
             return tablaCliente;
 
+        }
+
+        //Restaurar cliente
+        public static void RestaurarCliente(int idCliente)
+        {
+            using (SqlConnection connection = ConexionDB.Conectar())
+            {
+                using (SqlCommand command = new SqlCommand("RestaurarCliente", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@IdCliente", SqlDbType.Int).Value = idCliente;
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //Paginas cliente :[
+        public static DataTable MostrarClientesPagina(int pagina, int registrosPorPagina, int tipoFiltro, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("MostrarClientesPaginas", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+
+                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputTotal);
+
+                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                        {
+                            ad.Fill(dt);
+                        }
+
+                        totalRegistros = outputTotal.Value == DBNull.Value
+                            ? 0
+                            : Convert.ToInt32(outputTotal.Value);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al obtener los clientes paginados: " + ex.Message, ex);
+            }
+
+            return dt;
         }
     }
 }

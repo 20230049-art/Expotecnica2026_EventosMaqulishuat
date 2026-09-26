@@ -19,6 +19,16 @@ namespace Vista.GerenteClientes
 {
     public partial class frmClientesTotales : Form
     {
+        private bool modoEliminar = false;
+
+        private const int REGISTROS_POR_PAGINA = 20;
+        private int paginaActual = 1;
+        private int totalPaginas = 1;
+        private int totalRegistros = 0;
+
+        private int filtroActual = 1;
+        private string busquedaActual = "";
+
         public frmClientesTotales()
         {
             try
@@ -32,8 +42,8 @@ namespace Vista.GerenteClientes
                 Redondeo.RedondearFig(btnEliminar, 1);
                 Redondeo.RedondearFig(btnAgregar, 1);
 
-                DataTable clientes = Clientes.MostrarClientes();
-                CargarClientesEnPantalla(clientes);
+                ActivarBoton(btnClientesTotales);
+                CargarPagina(1);
 
                 EventosGloblales.ClienteAgregado += RegarcarPanelCliente;
                 EventosGloblales.ClienteActualizado += RegarcarPanelCliente;
@@ -51,8 +61,22 @@ namespace Vista.GerenteClientes
         {
             try
             {
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
+
                 frmClientesAgregar abrir = new frmClientesAgregar();
                 abrir.ShowDialog();
+
+                fondo.Close();
+
+                CargarPagina(paginaActual);
+
+                if (totalPaginas > 1 && string.IsNullOrWhiteSpace(busquedaActual))
+                {
+                    CargarPagina(totalPaginas);
+                }
             }
             catch (Exception ex)
             {
@@ -96,7 +120,11 @@ namespace Vista.GerenteClientes
             {
                 if (panelCliente == null) return;
 
-                if (estadoCliente)
+                if (modoEliminar)
+                {
+                    panelCliente.BackColor = Color.FromArgb(220, 110, 110);   
+                }
+                else if (estadoCliente)
                 {
                     panelCliente.BackColor = pnlContenedorInfo.BackColor;
                 }
@@ -115,7 +143,7 @@ namespace Vista.GerenteClientes
         {
             try
             {
-                RecargarClientes();
+                CargarPagina(paginaActual);
             }
             catch (Exception ex)
             {
@@ -161,8 +189,9 @@ namespace Vista.GerenteClientes
             try
             {
                 ActivarBoton(btnClientesTotales);
-                DataTable clientes = Clientes.MostrarClientes();
-                CargarClientesEnPantalla(clientes);
+                filtroActual = 1;
+                paginaActual = 1;
+                CargarPagina(1);
             }
             catch (Exception ex)
             {
@@ -176,8 +205,9 @@ namespace Vista.GerenteClientes
             try
             {
                 ActivarBoton(btnClientesActivos);
-                DataTable clientes = Clientes.MostrarClientesActivos();
-                CargarClientesEnPantalla(clientes);
+                filtroActual = 2;
+                paginaActual = 1;
+                CargarPagina(1);
             }
             catch (Exception ex)
             {
@@ -190,9 +220,9 @@ namespace Vista.GerenteClientes
         {
             try
             {
-                ActivarBoton(btnClientesNoActivos);
-                DataTable clientes = Clientes.MostrarClienteInactivos();
-                CargarClientesEnPantalla(clientes);
+                filtroActual = 3;
+                paginaActual = 1;
+                CargarPagina(1);
             }
             catch (Exception ex)
             {
@@ -223,7 +253,27 @@ namespace Vista.GerenteClientes
                         continue;
                     }
 
-                    panelCliente.Click += AbrirfrmActualizar_Click;
+                    DataRow filaLocal = fila;
+
+                    panelCliente.Click += (s, e) =>
+                    {
+                        try
+                        {
+                            if (modoEliminar)
+                            {
+                                ConfirmarEliminar(filaLocal);
+                            }
+                            else
+                            {
+                                AbrirfrmActualizar_Click(s, e);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al procesar el clic del cliente: " + ex.Message,
+                                    "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    };
 
                     flpClientes.Controls.Add(panelCliente);
                 }
@@ -344,8 +394,17 @@ namespace Vista.GerenteClientes
 
                 int idCliente = Convert.ToInt32(panelCliente.Tag);
 
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
+
                 frmActualizarInfo abrir = new frmActualizarInfo(idCliente);
                 abrir.ShowDialog();
+
+                fondo.Close();
+
+                CargarPagina(paginaActual);
             }
             catch (FormatException ex)
             {
@@ -381,18 +440,253 @@ namespace Vista.GerenteClientes
 
                 if (string.IsNullOrWhiteSpace(busqueda))
                 {
-                    RecargarClientes();
+                    paginaActual = 1;
+                    CargarPagina(1);
                     return;
                 }
 
                 Clientes clientes = new Clientes();
                 DataTable clientesFiltrados = clientes.BuscarCliente(busqueda);
+
+                totalRegistros = clientesFiltrados?.Rows.Count ?? 0;
+                totalPaginas = 1;
+                paginaActual = 1;
+
                 CargarClientesEnPantalla(clientesFiltrados);
+                ActualizarControlesPaginacion();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al realizar la búsqueda de clientes: " + ex.Message,
                         "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modoEliminar = true;
+                CargarPagina(paginaActual);
+
+                RecargarClientes();
+
+                MessageBox.Show("Selecciona el cliente que deseas eliminar permanentemente.\n\n" + " Esta acción NO se puede deshacer.",
+                    "INFO-ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar el modo eliminar: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ConfirmarEliminar(DataRow fila)
+        {
+            try
+            {
+                if (fila == null) return;
+
+                int idCliente = Convert.ToInt32(fila["IdCliente"]);
+                string nombreCliente = fila["NombreCliente"].ToString() + " " + fila["ApellidoCliente"].ToString();
+
+                DialogResult confirmacion = MessageBox.Show(
+                    $"¿Estás seguro de eliminar PERMANENTEMENTE el cliente?\n\n" +
+                    $"Cliente: \"{nombreCliente}\"\n\n" +
+                    "Esta acción NO se puede deshacer.",
+                    "Eliminación Permanente",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    EliminarPermanentemente(idCliente);
+                }
+                else
+                {
+                    modoEliminar = false;
+                    CargarPagina(paginaActual);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al confirmar la eliminación permanente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EliminarPermanentemente(int idCliente)
+        {
+            try
+            {
+                bool exito = Clientes.EliminarCliente(idCliente);
+
+                if (exito)
+                {
+                    MessageBox.Show("Cliente eliminado permanentemente.", "PROCEDIMIENTO-EXITOSO",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    EventosGloblales.EnClienteEliminado();
+                    modoEliminar = false;
+                    CargarPagina(paginaActual);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el cliente de la base de datos.",
+                            "ERROR-ELIMINAR-015", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show("Error de base de datos al eliminar el cliente: " + ex.Message,
+                        "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el cliente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                modoEliminar = false;
+                QuitarSombreadoTodos();
+            }
+        }
+
+        private void QuitarSombreadoTodos()
+        {
+            try
+            {
+                modoEliminar = false;
+                CargarPagina(paginaActual);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al quitar sombreado: " + ex.Message);
+            }
+        }
+
+        private void CargarPagina(int pagina)
+        {
+            try
+            {
+                if (pagina < 1) pagina = 1;
+                if (pagina > totalPaginas && totalPaginas > 0) pagina = totalPaginas;
+
+                DataTable clientes;
+
+                if (!string.IsNullOrWhiteSpace(busquedaActual))
+                {
+                    Clientes cli = new Clientes();
+                    clientes = cli.BuscarCliente(busquedaActual);
+                    totalRegistros = clientes?.Rows.Count ?? 0;
+                    totalPaginas = 1;
+                }
+                else
+                {
+                    clientes = Clientes.MostrarClientesPagina(pagina, REGISTROS_POR_PAGINA, filtroActual, out totalRegistros);
+                }
+
+                paginaActual = pagina;
+                totalPaginas = (int)Math.Ceiling((double)totalRegistros / REGISTROS_POR_PAGINA);
+                if (totalPaginas < 1) totalPaginas = 1;
+
+                CargarClientesEnPantalla(clientes);
+                ActualizarControlesPaginacion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la página: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarControlesPaginacion()
+        {
+            try
+            {
+                lblInfoPagina.Text = $"Página {paginaActual} de {totalPaginas}";
+                lblTotalRegistros.Text = $"Total: {totalRegistros} registro(s)";
+
+                btnPaginaAnterior.Enabled = paginaActual > 1;
+                btnPaginaSiguiente.Enabled = paginaActual < totalPaginas;
+
+                GenerarBotonesNumeros();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al actualizar paginación: " + ex.Message);
+            }
+        }
+
+        private void GenerarBotonesNumeros()
+        {
+            try
+            {
+                flpNumerosPagina.Controls.Clear();
+
+                int inicio = Math.Max(1, paginaActual - 3);
+                int fin = Math.Min(totalPaginas, inicio + 6);
+                if (fin - inicio < 6) inicio = Math.Max(1, fin - 6);
+
+                for (int i = inicio; i <= fin; i++)
+                {
+                    Button btnPagina = new Button();
+                    btnPagina.Text = i.ToString();
+                    btnPagina.Width = 35;
+                    btnPagina.Height = 32;
+                    btnPagina.FlatStyle = FlatStyle.Flat;
+                    btnPagina.FlatAppearance.BorderSize = 0;
+                    btnPagina.Font = new Font("Book Antiqua", 12, FontStyle.Bold);
+                    btnPagina.Margin = new Padding(1);
+
+                    if (i == paginaActual)
+                    {
+                        btnPagina.BackColor = Color.FromArgb(208, 112, 3);
+                        btnPagina.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        btnPagina.BackColor = Color.FromArgb(206, 183, 175);
+                        btnPagina.ForeColor = Color.Black;
+                    }
+
+                    int paginaBoton = i;
+                    btnPagina.Click += (s, e) => CargarPagina(paginaBoton);
+
+                    flpNumerosPagina.Controls.Add(btnPagina);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al generar botones de página: " + ex.Message);
+            }
+        }
+
+        private void btnPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarPagina(paginaActual + 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ir a la página siguiente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPaginaSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarPagina(paginaActual + 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ir a la página siguiente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

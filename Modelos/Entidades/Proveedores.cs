@@ -48,7 +48,7 @@ namespace Modelos.Entidades
         }
 
         //Añadir Proveedor
-        public static void IngresarProveedor(Proveedores nuevoProveedor)
+        public static int IngresarProveedor(Proveedores nuevoProveedor)
         {
             using (SqlConnection connection = ConexionDB.Conectar())
             {
@@ -61,8 +61,15 @@ namespace Modelos.Entidades
                     command.Parameters.Add("@TelefonoProveedor", SqlDbType.VarChar).Value = nuevoProveedor.TelefonoProveedor;
                     command.Parameters.Add("@FotoProveedor", SqlDbType.VarChar).Value = nuevoProveedor.FotoProveedor;
 
+                    SqlParameter resultado = new SqlParameter("@Resultado", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(resultado);
+
                     command.ExecuteNonQuery();
-                    connection.Close();
+
+                    return resultado.Value == DBNull.Value ? -1 : Convert.ToInt32(resultado.Value);
                 }
             }
         }
@@ -141,6 +148,92 @@ namespace Modelos.Entidades
                 }
             }
             return tablaProveedor;
+        }
+
+        //Mostrar proveedores por pagina
+        public static DataTable MostrarProveedoresPaginado(int pagina, int registrosPorPagina, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("MostrarProveedoresPagina", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+
+                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputTotal);
+
+                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                        {
+                            ad.Fill(dt);
+                        }
+
+                        totalRegistros = outputTotal.Value == DBNull.Value
+                            ? 0
+                            : Convert.ToInt32(outputTotal.Value);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al obtener los proveedores paginados: " + ex.Message, ex);
+            }
+
+            return dt;
+        }
+
+        //Eliminar producto
+        public static bool EliminarProveedor(int idProveedor)
+        {
+            try
+            {
+                using (SqlConnection connection = ConexionDB.Conectar())
+                {
+                    using (SqlCommand command = new SqlCommand("EliminarProveedor", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@IdProveedor", SqlDbType.Int).Value = idProveedor;
+
+                        return command.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+        }
+
+        // Restaurar
+        public static bool RestaurarProveedor(int idProveedor)
+        {
+            try
+            {
+                using (SqlConnection connection = ConexionDB.Conectar())
+                {
+                    using (SqlCommand command = new SqlCommand("RestaurarProveedor", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@IdProveedor", SqlDbType.Int).Value = idProveedor;
+
+                        return command.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
         }
     }
 }

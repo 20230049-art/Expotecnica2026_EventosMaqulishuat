@@ -738,7 +738,7 @@ namespace Vista.GerenteDocumentacion
                 SombrearPanelEliminarPermanentemente();
 
                 MessageBox.Show( "Selecciona el documento que deseas eliminar permanentemente.\n\n" + " Esta acción NO se puede deshacer.",
-                    "INFO-DOCUMENTO-ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "INFO-ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {

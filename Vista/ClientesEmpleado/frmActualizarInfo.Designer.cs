@@ -181,6 +181,7 @@
             this.txtDui.Size = new System.Drawing.Size(325, 32);
             this.txtDui.TabIndex = 8;
             this.toolTip1.SetToolTip(this.txtDui, "DUI del cliente, incluyendo el guion (-)");
+            this.txtDui.TextChanged += new System.EventHandler(this.txtDui_TextChanged);
             // 
             // label9
             // 

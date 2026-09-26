@@ -90,17 +90,17 @@ namespace Vista.GerenteClientes
                 }
 
                 string dui = txtDui.Text.Trim();
-                if (!string.IsNullOrEmpty(dui) && dui.Length != 9)
+                if (!string.IsNullOrEmpty(dui) && dui.Length != 10)
                 {
-                    MessageBox.Show("El DUI debe tener 9 dígitos.",
+                    MessageBox.Show("El DUI debe tener 10 dígitos.",
                             "ERROR-LONGITUD-003", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 string nit = txtNit.Text.Trim();
-                if (!string.IsNullOrEmpty(nit) && nit.Length != 14)
+                if (!string.IsNullOrEmpty(nit) && nit.Length != 17)
                 {
-                    MessageBox.Show("El NIT debe tener 14 dígitos.",
+                    MessageBox.Show("El NIT debe tener 17 dígitos.",
                             "ERROR-LONGITUD-003", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -124,12 +124,62 @@ namespace Vista.GerenteClientes
                 cliente.CorreoCliente = txtCorreo.Text.Trim();
                 cliente.IdTipoCliente = Convert.ToInt32(cmbTipoCliente.SelectedValue);
 
-                Clientes.AgregarCliente(cliente);
+                try
+                {
+                    var (resultado, idCliente) = Clientes.AgregarCliente(cliente);
 
-                MessageBox.Show("Cliente agregado correctamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (resultado == "NUEVO")
+                    {
+                        MessageBox.Show("Cliente registrado correctamente.",
+                                "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                EventosGloblales.EnClienteAgregado();
+                        EventosGloblales.EnClienteAgregado();
+                        this.Close();
+                    }
+                    else if (resultado == "ELIMINADO")
+                    {
+                        DialogResult respuesta = MessageBox.Show(
+                            "Ya existe un cliente eliminado con estos datos.\n\n" +
+                            "¿Deseas restaurarlo y activarlo nuevamente?",
+                            "Cliente eliminado encontrado",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            Clientes.RestaurarCliente(idCliente);
+
+                            MessageBox.Show("Cliente restaurado correctamente.",
+                                    "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            EventosGloblales.EnClienteAgregado();
+                            this.Close();
+                        }
+                    }
+                    else if (resultado == "ACTIVO")
+                    {
+                        MessageBox.Show("Ya existe un cliente activo con esos datos (DUI, NIT, NCR o Correo duplicado).",
+                                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo procesar el cliente. Resultado inesperado: " + resultado,
+                                "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 2627 || ex.Number == 2601)
+                    {
+                        MessageBox.Show("Ya existe un cliente con esos datos (DUI, NIT o NCR duplicado).",
+                                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error de base de datos al agregar el cliente: " + ex.Message,
+                                "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
                 // Limpiar controles
                 txtNombre.Clear();
@@ -147,19 +197,7 @@ namespace Vista.GerenteClientes
                 MessageBox.Show("El tipo de cliente seleccionado no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    MessageBox.Show("Ya existe un cliente con esos datos (DUI, NIT o NCR duplicado).",
-                            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Error de base de datos al agregar el cliente: " + ex.Message,
-                            "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Error al agregar el cliente: " + ex.Message,

@@ -156,6 +156,7 @@
             this.cmbServicio.Name = "cmbServicio";
             this.cmbServicio.Size = new System.Drawing.Size(482, 36);
             this.cmbServicio.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.cmbServicio, "Seleccionar servicio");
             // 
             // txtNombreProducto
             // 

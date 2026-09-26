@@ -14,7 +14,11 @@ namespace Vista.GerenteRegistroPagos
     {
         public frmRegistroPago()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch { }
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Vista.GerenteEmpleados
 {
     public partial class frmEmpleadosGerente : Form
     {
+        private bool modoEliminar = false;
         private ErrorProvider errorProvider;
 
         private const int REGISTROS_POR_PAGINA = 20;
@@ -33,9 +35,6 @@ namespace Vista.GerenteEmpleados
                 errorProvider.ContainerControl = this;
 
                 CargarPagina(1);
-
-                //DataTable Empleado = Empleados.MostrarEmpleado();
-                //CargarEmpleadosEnPantalla(Empleado);
 
                 EventosGloblales.EmpleadosAgregados += RegarcarPanelEmpleados;
                 EventosGloblales.EmpleadosActualizar += RegarcarPanelEmpleados;
@@ -72,7 +71,27 @@ namespace Vista.GerenteEmpleados
                         continue;
                     }
 
-                    panelEmpleado.Click += AbrirfrmActualizar_Click;
+                    DataRow filaLocal = fila;
+
+                    panelEmpleado.Click += (s, e) =>
+                    {
+                        try
+                        {
+                            if (modoEliminar)
+                            {
+                                ConfirmarEliminarEmpleado(filaLocal);
+                            }
+                            else
+                            {
+                                AbrirfrmActualizar_Click(s, e);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al procesar el clic del empleado: " + ex.Message,
+                                    "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    };
 
                     flpEmpleados.Controls.Add(panelEmpleado);
                 }
@@ -129,6 +148,16 @@ namespace Vista.GerenteEmpleados
                 panelContenedor.BorderStyle = pnlPlantilla.BorderStyle;
                 panelContenedor.Margin = new Padding(10);
                 panelContenedor.Tag = fila["IdEmpleado"];
+
+                if (modoEliminar)
+                {
+                    panelContenedor.BackColor = Color.FromArgb(220, 110, 110);   
+                }
+                else
+                {
+                    panelContenedor.BackColor = Color.FromArgb(244, 220, 197);   
+                }
+
 
                 PictureBox pbLogo = new PictureBox();
                 pbLogo.Width = 110;
@@ -256,20 +285,30 @@ namespace Vista.GerenteEmpleados
                 cmbEstado.Font = new Font("Book Antiqua", 19, FontStyle.Regular);
                 cmbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                cmbEstado.Tag = fila["IdEmpleado"];
+                int idEmpleadoActual = Convert.ToInt32(fila["IdEmpleado"]);
+                int idEstadoActual = Convert.ToInt32(fila["IdEstadoEmpleado"]);
+
+                cmbEstado.Tag = idEmpleadoActual;
+
+                cmbEstado.Enabled = !modoEliminar;
 
                 DataTable estados = EstadoEmpleados.MostrarEstadoEmpleado();
 
                 if (estados != null && estados.Rows.Count > 0)
                 {
-                    cmbEstado.DataSource = estados;
                     cmbEstado.DisplayMember = "EstadoEmpleado";
-                    cmbEstado.ValueMember = "EstadoEmpleado";
-                }
+                    cmbEstado.ValueMember = "IdEstadoEmpleado";
+                    cmbEstado.DataSource = estados;
 
-                // ⚠️ PENDIENTE: La lógica de cambio de estado está comentada.
-                // Descomentar cuando esté lista la conexión con la capa de datos.
-                // cmbEstado.SelectionChangeCommitted += CambiarEstadoEmpleado;
+                    cmbEstado.BindingContext = new BindingContext();
+
+                    cmbEstado.SelectedValue = idEstadoActual;
+
+                    cmbEstado.AccessibleName = idEstadoActual.ToString();
+
+                    cmbEstado.SelectionChangeCommitted += CambiarEstadoEmpleado;
+
+                }
 
                 panelContenedor.Controls.Add(pbLogo);
                 panelContenedor.Controls.Add(lblTituloNombre);
@@ -348,6 +387,23 @@ namespace Vista.GerenteEmpleados
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                modoEliminar = !modoEliminar;
+
+                CargarPagina(paginaActual);
+
+                if (modoEliminar)
+                {
+                    MessageBox.Show("Selecciona el empleado que deseas eliminar.",
+                        "INFO-ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar el modo eliminar: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -364,7 +420,7 @@ namespace Vista.GerenteEmpleados
 
                 fondo.Close();
 
-                CargarPagina(paginaActual);
+                //CargarPagina(paginaActual);
                 if (totalPaginas > 1)
                 {
                     CargarPagina(totalPaginas);
@@ -406,6 +462,43 @@ namespace Vista.GerenteEmpleados
                 errorProvider.SetError(txtBarraBuscar, "Error en la búsqueda.");
                 MessageBox.Show("Error al buscar empleados: " + ex.Message,
                         "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CambiarEstadoEmpleado(object sender, EventArgs e)
+        {
+            try
+            {
+                ComboBox cmb = sender as ComboBox;
+
+                if (cmb == null || cmb.Tag == null || cmb.SelectedValue == null)
+                    return;
+
+                int idEmpleado = Convert.ToInt32(cmb.Tag);
+                int idEstado = Convert.ToInt32(cmb.SelectedValue);
+
+                // Guardamos el nuevo estado en el ComboBox
+                cmb.AccessibleName = idEstado.ToString();
+
+                Empleados.ActualizarEstadoEmpleado(idEstado, idEmpleado);
+
+
+                MessageBox.Show("Estado del empleado actualizado correctamente.",
+                        "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error de base de datos al actualizar el estado: " + ex.Message,
+                        "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                CargarPagina(paginaActual);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el estado: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                CargarPagina(paginaActual);
             }
         }
 
@@ -542,6 +635,73 @@ namespace Vista.GerenteEmpleados
             {
                 MessageBox.Show("Error al ir a la página siguiente: " + ex.Message,
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ConfirmarEliminarEmpleado(DataRow fila)
+        {
+            try
+            {
+                if (fila == null) return;
+
+                int idEmpleado = Convert.ToInt32(fila["IdEmpleado"]);
+                string nombreCompleto = fila["NombreEmpleado"].ToString() + " " + fila["ApellidoEmpleado"].ToString();
+
+                DialogResult confirmacion = MessageBox.Show(
+                    $"¿Estás seguro de eliminar este empleado?\n\n" +
+                    $"Empleado: \"{nombreCompleto}\"\n\n" +
+                    "El empleado dejará de aparecer en la lista, pero sus datos se conservan.",
+                    "INFO-ELIMINAR",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+
+                if (confirmacion != DialogResult.Yes)
+                {
+                    modoEliminar = false;
+                    CargarPagina(paginaActual);
+                    return;
+                }
+
+                EliminarEmpleadoConfirmado(idEmpleado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al confirmar la eliminación: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EliminarEmpleadoConfirmado(int idEmpleado)
+        {
+            try
+            {
+                Empleados.EliminarEmpleado(idEmpleado);
+
+                MessageBox.Show("Empleado eliminado correctamente.",
+                        "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                EventosGloblales.EnEmpleadosEliminados();
+
+                CargarPagina(paginaActual);
+                if (flpEmpleados.Controls.Count == 0 && paginaActual > 1)
+                {
+                    CargarPagina(paginaActual - 1);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message,
+                        "No se puede eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el empleado: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                modoEliminar = false;
             }
         }
     }

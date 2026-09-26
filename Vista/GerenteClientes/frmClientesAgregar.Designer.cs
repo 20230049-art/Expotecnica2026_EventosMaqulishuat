@@ -510,6 +510,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClientesAgregar";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmClientesAgregar";
             this.Load += new System.EventHandler(this.frmClientesAgregar_Load);
             this.tlpVistaClientes.ResumeLayout(false);

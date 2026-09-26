@@ -100,20 +100,11 @@ namespace Vista.GerenteEmpleados
                 }
 
                 string dui = txtDui.Text.Trim();
-                if (string.IsNullOrWhiteSpace(dui))
+                if (!string.IsNullOrEmpty(dui) && dui.Length != 10)
                 {
-                    errorProvider.SetError(txtDui, "El DUI es obligatorio.");
-                    hayErrores = true;
-                }
-                else
-                {
-                    int soloDigitos = dui.Count(char.IsDigit);
-
-                    if (soloDigitos != 9)
-                    {
-                        errorProvider.SetError(txtDui, "El DUI debe tener 9 dígitos.");
-                        hayErrores = true;
-                    }
+                    MessageBox.Show("El DUI debe tener 10 dígitos.",
+                            "ERROR-LONGITUD-003", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
                 string telefono = txtTelefono.Text.Trim();
@@ -122,7 +113,7 @@ namespace Vista.GerenteEmpleados
                     errorProvider.SetError(txtTelefono, "El teléfono es obligatorio.");
                     hayErrores = true;
                 }
-                else if (telefono.Length < 8)
+                else if (telefono.Length < 9)
                 {
                     errorProvider.SetError(txtTelefono, "El teléfono debe tener al menos 8 dígitos.");
                     hayErrores = true;
@@ -180,12 +171,56 @@ namespace Vista.GerenteEmpleados
 
                 empleado.FotoEmpleado = rutaFotoRelativa;
 
-                Empleados.AgregarEmpleado(empleado);
+                try
+                {
+                    var (resultado, idEmpleado) = Empleados.AgregarEmpleado(empleado);
 
-                MessageBox.Show("Empleado agregado correctamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (resultado == "NUEVO")
+                    {
+                        MessageBox.Show("Empleado agregado correctamente.", "PROCEDIMIENTO-EXITOSO",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                EventosGloblales.EnEmpleadosAgregados();
+                        EventosGloblales.EnEmpleadosAgregados();
+                    }
+                    else if (resultado == "ELIMINADO")
+                    {
+                        DialogResult respuesta = MessageBox.Show(
+                            "Ya existe un empleado eliminado con ese DUI o correo.\n\n" +
+                            "¿Deseas restaurarlo y activarlo nuevamente?",
+                            "Empleado eliminado encontrado",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            Empleados.RestaurarEmpleado(idEmpleado);
+
+                            MessageBox.Show("Empleado restaurado correctamente.", "PROCEDIMIENTO-EXITOSO",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            EventosGloblales.EnEmpleadosAgregados();
+                            this.Close();
+                        }
+                    }
+                    else if (resultado == "ACTIVO")
+                    {
+                        MessageBox.Show("Ya existe un empleado activo con ese DUI o correo.",
+                                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 2627 || ex.Number == 2601)
+                    {
+                        MessageBox.Show("Ya existe un empleado con esos datos (DUI o correo duplicado).",
+                                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error de base de datos al agregar el empleado: " + ex.Message,
+                                "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
                 // Limpiar controles
                 txtNombre.Clear();

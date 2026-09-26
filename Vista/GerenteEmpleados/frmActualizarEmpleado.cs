@@ -125,11 +125,6 @@ namespace Vista.GerenteEmpleados
                         System.Diagnostics.Debug.WriteLine("No se encontró la foto: " + rutaCompleta);
                     }
                 }
-
-
-                // ⚠️ OJO: pctEmpleado es un PictureBox, no un TextBox.
-                // .Text no carga la imagen. Deberías usar una URL o convertir los bytes a Image.
-                // pctEmpleado.Image = ... (pendiente si tienes la lógica de conversión)
             }
             catch (ArgumentException ex)
             {
@@ -216,18 +211,6 @@ namespace Vista.GerenteEmpleados
                                 "ERROR-CAMVACIO-001", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
-
-                //DialogResult respuesta = MessageBox.Show(
-                //    $"¿Está seguro que desea actualizar los datos del empleado?\n\n" +
-                //    $"Nombre: {txtNombre.Text.Trim()} {txtApellido.Text.Trim()}\n" +
-                //    $"Cargo: {txtCargo.Text.Trim()}",
-                //    "Confirmar Actualización",
-                //    MessageBoxButtons.YesNo,
-                //    MessageBoxIcon.Question);
-
-                //if (respuesta != DialogResult.Yes) return;
-
                 }
                 Empleados empleado = new Empleados();
 
@@ -247,7 +230,7 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Empleado actualizado correctamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                EventosGloblales.EnEmpleadosAgregados();
+                EventosGloblales.EnEmpleadosActualizar();
 
                 this.Close();
             }

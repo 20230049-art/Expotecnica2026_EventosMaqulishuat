@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlProveeAnadir = new System.Windows.Forms.Panel();
             this.tlpAnadirProvee = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,7 +39,7 @@
             this.mtbTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSubir = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlProveeAnadir.SuspendLayout();
             this.tlpAnadirProvee.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -129,7 +132,7 @@
             this.tlpProveePerfil.ColumnCount = 3;
             this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7582939F));
             this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 99.24171F));
-            this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
             this.tlpProveePerfil.Controls.Add(this.pnlPerfilPro, 1, 1);
             this.tlpProveePerfil.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpProveePerfil.Location = new System.Drawing.Point(0, 0);
@@ -147,7 +150,7 @@
             this.pnlPerfilPro.Controls.Add(this.mtbTelefono);
             this.pnlPerfilPro.Controls.Add(this.txtCorreo);
             this.pnlPerfilPro.Controls.Add(this.txtNombre);
-            this.pnlPerfilPro.Controls.Add(this.button3);
+            this.pnlPerfilPro.Controls.Add(this.btnSubir);
             this.pnlPerfilPro.Controls.Add(this.label4);
             this.pnlPerfilPro.Controls.Add(this.label3);
             this.pnlPerfilPro.Controls.Add(this.label1);
@@ -156,7 +159,7 @@
             this.pnlPerfilPro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPerfilPro.Location = new System.Drawing.Point(11, 14);
             this.pnlPerfilPro.Name = "pnlPerfilPro";
-            this.pnlPerfilPro.Size = new System.Drawing.Size(1060, 207);
+            this.pnlPerfilPro.Size = new System.Drawing.Size(1058, 207);
             this.pnlPerfilPro.TabIndex = 0;
             // 
             // mtbTelefono
@@ -168,7 +171,8 @@
             this.mtbTelefono.Mask = "0000-0000";
             this.mtbTelefono.Name = "mtbTelefono";
             this.mtbTelefono.Size = new System.Drawing.Size(166, 27);
-            this.mtbTelefono.TabIndex = 18;
+            this.mtbTelefono.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.mtbTelefono, "Telefono proveedor");
             // 
             // txtCorreo
             // 
@@ -178,7 +182,8 @@
             this.txtCorreo.Location = new System.Drawing.Point(601, 63);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(415, 27);
-            this.txtCorreo.TabIndex = 17;
+            this.txtCorreo.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtCorreo, "Correo proveedor");
             // 
             // txtNombre
             // 
@@ -188,20 +193,23 @@
             this.txtNombre.Location = new System.Drawing.Point(178, 88);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(378, 32);
-            this.txtNombre.TabIndex = 16;
+            this.txtNombre.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtNombre, "Nombre proveedor");
             // 
-            // button3
+            // btnSubir
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(183)))), ((int)(((byte)(183)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(49, 159);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 34);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Subir ";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnSubir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(183)))), ((int)(((byte)(183)))));
+            this.btnSubir.FlatAppearance.BorderSize = 0;
+            this.btnSubir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubir.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubir.Location = new System.Drawing.Point(49, 159);
+            this.btnSubir.Name = "btnSubir";
+            this.btnSubir.Size = new System.Drawing.Size(84, 34);
+            this.btnSubir.TabIndex = 1;
+            this.btnSubir.Text = "Subir ";
+            this.toolTip1.SetToolTip(this.btnSubir, "Subir foto");
+            this.btnSubir.UseVisualStyleBackColor = false;
+            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
             // label4
             // 
@@ -283,6 +291,7 @@
             this.btnActualizar.TabIndex = 0;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnCerrar
             // 
@@ -295,6 +304,11 @@
             this.btnCerrar.TabIndex = 1;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmEditarProveedores
             // 
@@ -331,7 +345,7 @@
         private System.Windows.Forms.MaskedTextBox mtbTelefono;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSubir;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
@@ -340,5 +354,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

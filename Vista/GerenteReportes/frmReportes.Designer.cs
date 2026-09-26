@@ -34,18 +34,18 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.lblProductos = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtBarraBuscar = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtBuscaInve = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnPaginaAnterior = new System.Windows.Forms.Button();
             this.lblInfoPagina = new System.Windows.Forms.Label();
             this.flpNumerosPagina = new System.Windows.Forms.FlowLayoutPanel();
             this.btnPaginaSiguiente = new System.Windows.Forms.Button();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flpRegistroPagos = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlReportesInfo = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
@@ -64,10 +64,10 @@
             this.panel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.flpRegistroPagos.SuspendLayout();
             this.pnlReportesInfo.SuspendLayout();
             this.pnlScrollInformacion.SuspendLayout();
@@ -116,7 +116,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 872F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel3, 3, 1);
@@ -137,7 +137,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(53, 25);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(615, 88);
+            this.lblProductos.Size = new System.Drawing.Size(610, 88);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "REPORTES";
             // 
@@ -146,10 +146,10 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tableLayoutPanel7.Controls.Add(this.txtBarraBuscar, 1, 1);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel7.Controls.Add(this.txtBuscaInve, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(674, 28);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(669, 28);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.31579F));
@@ -158,34 +158,19 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(866, 82);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
-            // txtBarraBuscar
+            // txtBuscaInve
             // 
-            this.txtBarraBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(237)))));
-            this.txtBarraBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBarraBuscar.Font = new System.Drawing.Font("Bookman Old Style", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarraBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBarraBuscar.Location = new System.Drawing.Point(51, 20);
-            this.txtBarraBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBarraBuscar.Name = "txtBarraBuscar";
-            this.txtBarraBuscar.Size = new System.Drawing.Size(724, 38);
-            this.txtBarraBuscar.TabIndex = 1;
-            this.txtBarraBuscar.Text = "Buscar reportes";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 162);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.064356F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.60396F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.207921F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 808);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.txtBuscaInve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(237)))));
+            this.txtBuscaInve.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBuscaInve.Font = new System.Drawing.Font("Bookman Old Style", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscaInve.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtBuscaInve.Location = new System.Drawing.Point(50, 20);
+            this.txtBuscaInve.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscaInve.Name = "txtBuscaInve";
+            this.txtBuscaInve.Size = new System.Drawing.Size(720, 38);
+            this.txtBuscaInve.TabIndex = 1;
+            this.txtBuscaInve.Text = "Buscar reportes";
+            this.txtBuscaInve.TextChanged += new System.EventHandler(this.txtBuscaInve_TextChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -194,7 +179,7 @@
             this.tableLayoutPanel3.Controls.Add(this.btnAgregar, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnEliminar, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1546, 28);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1541, 28);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.94595F));
@@ -215,6 +200,7 @@
             this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -229,21 +215,23 @@
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanel1
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.778243F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.18201F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.987448F));
-            this.tableLayoutPanel2.Controls.Add(this.flpRegistroPagos, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 52);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1912, 718);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 162);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.064356F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.60396F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.207921F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 808);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
@@ -286,6 +274,7 @@
             this.btnPaginaAnterior.TabIndex = 1;
             this.btnPaginaAnterior.Text = "Anterior";
             this.btnPaginaAnterior.UseVisualStyleBackColor = false;
+            this.btnPaginaAnterior.Click += new System.EventHandler(this.btnPaginaAnterior_Click);
             // 
             // lblInfoPagina
             // 
@@ -321,6 +310,7 @@
             this.btnPaginaSiguiente.TabIndex = 0;
             this.btnPaginaSiguiente.Text = "Siguiente";
             this.btnPaginaSiguiente.UseVisualStyleBackColor = false;
+            this.btnPaginaSiguiente.Click += new System.EventHandler(this.btnPaginaSiguiente_Click);
             // 
             // lblTotalRegistros
             // 
@@ -333,6 +323,21 @@
             this.lblTotalRegistros.TabIndex = 3;
             this.lblTotalRegistros.Text = "label1";
             this.lblTotalRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.778243F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.18201F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.987448F));
+            this.tableLayoutPanel2.Controls.Add(this.flpRegistroPagos, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 52);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1912, 718);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // flpRegistroPagos
             // 
@@ -347,7 +352,6 @@
             // 
             // pnlReportesInfo
             // 
-            this.pnlReportesInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlReportesInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(184)))), ((int)(((byte)(153)))));
             this.pnlReportesInfo.Controls.Add(this.label26);
             this.pnlReportesInfo.Controls.Add(this.pnlScrollInformacion);
@@ -359,9 +363,10 @@
             this.pnlReportesInfo.Controls.Add(this.lblTituloFecha);
             this.pnlReportesInfo.Controls.Add(this.panel14);
             this.pnlReportesInfo.Controls.Add(this.lblFecha);
+            this.pnlReportesInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlReportesInfo.Location = new System.Drawing.Point(3, 3);
             this.pnlReportesInfo.Name = "pnlReportesInfo";
-            this.pnlReportesInfo.Size = new System.Drawing.Size(1748, 157);
+            this.pnlReportesInfo.Size = new System.Drawing.Size(1748, 326);
             this.pnlReportesInfo.TabIndex = 15;
             // 
             // label26
@@ -488,11 +493,11 @@
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.flpRegistroPagos.ResumeLayout(false);
             this.pnlReportesInfo.ResumeLayout(false);
             this.pnlReportesInfo.PerformLayout();
@@ -510,7 +515,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label lblProductos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.TextBox txtBarraBuscar;
+        private System.Windows.Forms.TextBox txtBuscaInve;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnAgregar;

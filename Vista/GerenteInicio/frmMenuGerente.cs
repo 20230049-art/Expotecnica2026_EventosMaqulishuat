@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Vista.GerenteClientes;
 using Vista.GerenteDocumentacion;
 using Vista.GerenteEmpleados;
+using Vista.GerenteProveedores;
+using Vista.GerenteReportes;
 using Vista.IniciarSesion;
 using Vista.Utilidades;
 
@@ -113,12 +115,14 @@ namespace Vista.GerenteInicio
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-
+            abrirForm(new frmProveedores());
+            ActivarBoton(btnProveedores);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-
+            abrirForm(new frmReportes());
+            ActivarBoton(btnReportes);
         }
 
         private void btnCerrarSesionGere_Click(object sender, EventArgs e)

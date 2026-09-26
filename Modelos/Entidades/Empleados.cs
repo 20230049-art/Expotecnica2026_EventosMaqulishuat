@@ -47,7 +47,7 @@ namespace Modelos.Entidades
         }
 
         //Agregar Empleados     
-        public static void AgregarEmpleado(Empleados nuevoEmpleado)
+        public static (string resultado, int idEmpleado) AgregarEmpleado(Empleados nuevoEmpleado)
         {
             using (SqlConnection connection = ConexionDB.Conectar())
             {
@@ -62,13 +62,20 @@ namespace Modelos.Entidades
                     command.Parameters.Add("@DUIEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.DUIEmpleado;
                     command.Parameters.Add("@CorreoEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.CorreoEmpleado;
                     command.Parameters.Add("@CuentaBancariaEmpleado", SqlDbType.VarChar).Value = nuevoEmpleado.CuentaBancariaEmpleado;
-                    command.Parameters.Add("@FotoEmpleado", SqlDbType.VarChar).Value = string.IsNullOrWhiteSpace(nuevoEmpleado.FotoEmpleado)? (object)DBNull.Value : nuevoEmpleado.FotoEmpleado; 
+                    command.Parameters.Add("@FotoEmpleado", SqlDbType.VarChar).Value = string.IsNullOrWhiteSpace(nuevoEmpleado.FotoEmpleado)? (object)DBNull.Value : nuevoEmpleado.FotoEmpleado;
 
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string resultado = reader["Resultado"].ToString();
+                            int idEmpleado = Convert.ToInt32(reader["IdEmpleado"]);
+                            return (resultado, idEmpleado);
+                        }
+                    }
                 }
             }
-
+            return ("ERROR", 0);
         }
 
         //Actualizar Empleados
@@ -136,6 +143,21 @@ namespace Modelos.Entidades
             }
             return tablaEmpleado;
         }
+        //Cambiar cmb Estado
+        public static void ActualizarEstadoEmpleado(int idEstadoEmpleado, int idEmpleado)
+        {
+            using (SqlConnection connection = ConexionDB.Conectar())
+            {
+                using (SqlCommand command = new SqlCommand("ActualizarEstadoEmpleado", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@IdEstadoEmpleado", SqlDbType.Int).Value = idEstadoEmpleado;
+                    command.Parameters.Add("@IdEmpleado", SqlDbType.Int).Value = idEmpleado;
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         //Mostrar empleado por pagina 20
 
@@ -176,6 +198,36 @@ namespace Modelos.Entidades
             }
 
             return dt;
+        }
+
+        //Restaurar empleado
+        public static void RestaurarEmpleado(int idEmpleado)
+        {
+            using (SqlConnection connection = ConexionDB.Conectar())
+            {
+                using (SqlCommand command = new SqlCommand("RestaurarEmpleado", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@IdEmpleado", SqlDbType.Int).Value = idEmpleado;
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //Eliminar Empleado
+        public static bool EliminarEmpleado(int idEmpleado)
+        {
+            using (SqlConnection connection = ConexionDB.Conectar())
+            {
+                using (SqlCommand command = new SqlCommand("EliminarEmpleado", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@IdEmpleado", SqlDbType.Int).Value = idEmpleado;
+
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
         }
     }
 }

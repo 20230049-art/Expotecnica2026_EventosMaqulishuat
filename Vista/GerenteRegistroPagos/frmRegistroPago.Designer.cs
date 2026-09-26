@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlVistaResgistroPagos = new System.Windows.Forms.Panel();
             this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -74,6 +75,7 @@
             this.lblTituloNombre = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaResgistroPagos.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -130,7 +132,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 924F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,7 +152,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(67, 31);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(790, 80);
+            this.lblProductos.Size = new System.Drawing.Size(787, 80);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "REGISTRO DE PAGOS";
             // 
@@ -159,10 +161,10 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel7.Controls.Add(this.txtBarraBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(863, 34);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(860, 34);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.68627F));
@@ -180,9 +182,10 @@
             this.txtBarraBuscar.Location = new System.Drawing.Point(54, 12);
             this.txtBarraBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarraBuscar.Name = "txtBarraBuscar";
-            this.txtBarraBuscar.Size = new System.Drawing.Size(772, 38);
+            this.txtBarraBuscar.Size = new System.Drawing.Size(769, 38);
             this.txtBarraBuscar.TabIndex = 1;
             this.txtBarraBuscar.Text = "Buscar pago";
+            this.toolTip1.SetToolTip(this.txtBarraBuscar, "Buscar pagos");
             // 
             // tableLayoutPanel1
             // 
@@ -242,6 +245,7 @@
             this.btnPaginaAnterior.Size = new System.Drawing.Size(175, 33);
             this.btnPaginaAnterior.TabIndex = 1;
             this.btnPaginaAnterior.Text = "Anterior";
+            this.toolTip1.SetToolTip(this.btnPaginaAnterior, "Pagina anterior");
             this.btnPaginaAnterior.UseVisualStyleBackColor = false;
             // 
             // lblInfoPagina
@@ -264,6 +268,7 @@
             this.flpNumerosPagina.Name = "flpNumerosPagina";
             this.flpNumerosPagina.Size = new System.Drawing.Size(747, 33);
             this.flpNumerosPagina.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.flpNumerosPagina, "Barra navegación");
             // 
             // btnPaginaSiguiente
             // 
@@ -277,6 +282,7 @@
             this.btnPaginaSiguiente.Size = new System.Drawing.Size(175, 33);
             this.btnPaginaSiguiente.TabIndex = 0;
             this.btnPaginaSiguiente.Text = "Siguiente";
+            this.toolTip1.SetToolTip(this.btnPaginaSiguiente, "Pagina siguiente");
             this.btnPaginaSiguiente.UseVisualStyleBackColor = false;
             // 
             // lblTotalRegistros
@@ -308,7 +314,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5838641F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.4246284F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.46072F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel2.Controls.Add(this.btnRealizados, 13, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnTodoslosPagos, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnNoPagado, 5, 0);
@@ -332,11 +338,12 @@
             this.btnRealizados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRealizados.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRealizados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnRealizados.Location = new System.Drawing.Point(1436, 3);
+            this.btnRealizados.Location = new System.Drawing.Point(1415, 3);
             this.btnRealizados.Name = "btnRealizados";
-            this.btnRealizados.Size = new System.Drawing.Size(434, 75);
+            this.btnRealizados.Size = new System.Drawing.Size(427, 75);
             this.btnRealizados.TabIndex = 19;
             this.btnRealizados.Text = "Pagos realizados";
+            this.toolTip1.SetToolTip(this.btnRealizados, "Pagos realizados");
             this.btnRealizados.UseVisualStyleBackColor = false;
             // 
             // btnTodoslosPagos
@@ -349,9 +356,10 @@
             this.btnTodoslosPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
             this.btnTodoslosPagos.Location = new System.Drawing.Point(25, 3);
             this.btnTodoslosPagos.Name = "btnTodoslosPagos";
-            this.btnTodoslosPagos.Size = new System.Drawing.Size(438, 75);
+            this.btnTodoslosPagos.Size = new System.Drawing.Size(431, 75);
             this.btnTodoslosPagos.TabIndex = 12;
             this.btnTodoslosPagos.Text = "Todos los pagos";
+            this.toolTip1.SetToolTip(this.btnTodoslosPagos, "Todos los pagos");
             this.btnTodoslosPagos.UseVisualStyleBackColor = false;
             // 
             // btnNoPagado
@@ -362,11 +370,12 @@
             this.btnNoPagado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNoPagado.Font = new System.Drawing.Font("Bookman Old Style", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNoPagado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnNoPagado.Location = new System.Drawing.Point(490, 3);
+            this.btnNoPagado.Location = new System.Drawing.Point(483, 3);
             this.btnNoPagado.Name = "btnNoPagado";
-            this.btnNoPagado.Size = new System.Drawing.Size(441, 75);
+            this.btnNoPagado.Size = new System.Drawing.Size(434, 75);
             this.btnNoPagado.TabIndex = 13;
             this.btnNoPagado.Text = "No pagado";
+            this.toolTip1.SetToolTip(this.btnNoPagado, "No pagados");
             this.btnNoPagado.UseVisualStyleBackColor = false;
             // 
             // btnPendientes
@@ -377,17 +386,18 @@
             this.btnPendientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPendientes.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPendientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnPendientes.Location = new System.Drawing.Point(960, 3);
+            this.btnPendientes.Location = new System.Drawing.Point(946, 3);
             this.btnPendientes.Name = "btnPendientes";
-            this.btnPendientes.Size = new System.Drawing.Size(446, 75);
+            this.btnPendientes.Size = new System.Drawing.Size(439, 75);
             this.btnPendientes.TabIndex = 14;
             this.btnPendientes.Text = "Pagos pendientes";
+            this.toolTip1.SetToolTip(this.btnPendientes, "Pagos pendientes");
             this.btnPendientes.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(34)))), ((int)(((byte)(18)))));
-            this.panel1.Location = new System.Drawing.Point(1419, 3);
+            this.panel1.Location = new System.Drawing.Point(1398, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 70);
             this.panel1.TabIndex = 16;
@@ -395,7 +405,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(34)))), ((int)(((byte)(18)))));
-            this.panel2.Location = new System.Drawing.Point(944, 3);
+            this.panel2.Location = new System.Drawing.Point(930, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 70);
             this.panel2.TabIndex = 17;
@@ -403,7 +413,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(34)))), ((int)(((byte)(18)))));
-            this.panel4.Location = new System.Drawing.Point(476, 3);
+            this.panel4.Location = new System.Drawing.Point(469, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1, 70);
             this.panel4.TabIndex = 18;
@@ -750,5 +760,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpNumerosPagina;
         private System.Windows.Forms.Button btnPaginaSiguiente;
         private System.Windows.Forms.Label lblTotalRegistros;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
