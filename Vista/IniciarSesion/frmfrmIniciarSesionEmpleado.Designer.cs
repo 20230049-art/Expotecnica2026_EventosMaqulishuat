@@ -157,6 +157,7 @@
             this.txtContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContrasena.Location = new System.Drawing.Point(15, 23);
             this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.PasswordChar = '•';
             this.txtContrasena.Size = new System.Drawing.Size(653, 29);
             this.txtContrasena.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtContrasena, "Ingresa tu contraseña");

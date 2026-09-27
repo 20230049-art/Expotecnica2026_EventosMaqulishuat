@@ -47,6 +47,7 @@
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flpRegistroPagos = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlFondo = new System.Windows.Forms.Panel();
             this.pnlReportesInfo = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.pnlScrollInformacion = new System.Windows.Forms.Panel();
@@ -69,6 +70,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flpRegistroPagos.SuspendLayout();
+            this.pnlFondo.SuspendLayout();
             this.pnlReportesInfo.SuspendLayout();
             this.pnlScrollInformacion.SuspendLayout();
             this.SuspendLayout();
@@ -116,7 +118,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 872F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel3, 3, 1);
@@ -135,9 +137,9 @@
             this.lblProductos.AutoSize = true;
             this.lblProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(53, 25);
+            this.lblProductos.Location = new System.Drawing.Point(52, 25);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(610, 88);
+            this.lblProductos.Size = new System.Drawing.Size(609, 88);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "REPORTES";
             // 
@@ -146,10 +148,10 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel7.Controls.Add(this.txtBuscaInve, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(669, 28);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(667, 28);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.31579F));
@@ -167,7 +169,7 @@
             this.txtBuscaInve.Location = new System.Drawing.Point(50, 20);
             this.txtBuscaInve.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscaInve.Name = "txtBuscaInve";
-            this.txtBuscaInve.Size = new System.Drawing.Size(720, 38);
+            this.txtBuscaInve.Size = new System.Drawing.Size(718, 38);
             this.txtBuscaInve.TabIndex = 1;
             this.txtBuscaInve.Text = "Buscar reportes";
             this.txtBuscaInve.TextChanged += new System.EventHandler(this.txtBuscaInve_TextChanged);
@@ -179,7 +181,7 @@
             this.tableLayoutPanel3.Controls.Add(this.btnAgregar, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnEliminar, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1541, 28);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1539, 28);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.94595F));
@@ -343,12 +345,22 @@
             // 
             this.flpRegistroPagos.AutoScroll = true;
             this.flpRegistroPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
-            this.flpRegistroPagos.Controls.Add(this.pnlReportesInfo);
+            this.flpRegistroPagos.Controls.Add(this.pnlFondo);
             this.flpRegistroPagos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpRegistroPagos.Location = new System.Drawing.Point(37, 3);
             this.flpRegistroPagos.Name = "flpRegistroPagos";
             this.flpRegistroPagos.Size = new System.Drawing.Size(1833, 712);
             this.flpRegistroPagos.TabIndex = 2;
+            // 
+            // pnlFondo
+            // 
+            this.pnlFondo.Controls.Add(this.pnlReportesInfo);
+            this.pnlFondo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFondo.Location = new System.Drawing.Point(3, 3);
+            this.pnlFondo.Name = "pnlFondo";
+            this.pnlFondo.Size = new System.Drawing.Size(1637, 175);
+            this.pnlFondo.TabIndex = 0;
+            this.pnlFondo.Visible = false;
             // 
             // pnlReportesInfo
             // 
@@ -363,10 +375,9 @@
             this.pnlReportesInfo.Controls.Add(this.lblTituloFecha);
             this.pnlReportesInfo.Controls.Add(this.panel14);
             this.pnlReportesInfo.Controls.Add(this.lblFecha);
-            this.pnlReportesInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlReportesInfo.Location = new System.Drawing.Point(3, 3);
+            this.pnlReportesInfo.Location = new System.Drawing.Point(23, 10);
             this.pnlReportesInfo.Name = "pnlReportesInfo";
-            this.pnlReportesInfo.Size = new System.Drawing.Size(1748, 326);
+            this.pnlReportesInfo.Size = new System.Drawing.Size(1593, 152);
             this.pnlReportesInfo.TabIndex = 15;
             // 
             // label26
@@ -382,7 +393,7 @@
             // pnlScrollInformacion
             // 
             this.pnlScrollInformacion.Controls.Add(this.label27);
-            this.pnlScrollInformacion.Location = new System.Drawing.Point(842, 61);
+            this.pnlScrollInformacion.Location = new System.Drawing.Point(842, 60);
             this.pnlScrollInformacion.Name = "pnlScrollInformacion";
             this.pnlScrollInformacion.Size = new System.Drawing.Size(930, 88);
             this.pnlScrollInformacion.TabIndex = 13;
@@ -499,6 +510,7 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.flpRegistroPagos.ResumeLayout(false);
+            this.pnlFondo.ResumeLayout(false);
             this.pnlReportesInfo.ResumeLayout(false);
             this.pnlReportesInfo.PerformLayout();
             this.pnlScrollInformacion.ResumeLayout(false);
@@ -540,5 +552,6 @@
         private System.Windows.Forms.Label lblTituloFecha;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Panel pnlFondo;
     }
 }

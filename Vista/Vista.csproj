@@ -168,6 +168,12 @@
     <Compile Include="frmFondoNegro.Designer.cs">
       <DependentUpon>frmFondoNegro.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerenteAyuda\frmAyuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteAyuda\frmAyuda.Designer.cs">
+      <DependentUpon>frmAyuda.cs</DependentUpon>
+    </Compile>
     <Compile Include="GerenteClientes\frmClientesAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,9 @@
     <EmbeddedResource Include="frmFondoNegro.resx">
       <DependentUpon>frmFondoNegro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GerenteAyuda\frmAyuda.resx">
+      <DependentUpon>frmAyuda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GerenteClientes\frmClientesAgregar.resx">
       <DependentUpon>frmClientesAgregar.cs</DependentUpon>
     </EmbeddedResource>
@@ -400,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteRegistroVentas\frmRegistroVentas.resx">
       <DependentUpon>frmRegistroVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteReportes\frmAgregarReportes.resx">
+      <DependentUpon>frmAgregarReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteReportes\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
@@ -464,6 +476,19 @@
   <ItemGroup>
     <None Include="Resources\Documen.png" />
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\Casa1.png" />
+    <None Include="Resources\Caja.png" />
+    <None Include="Resources\Captura de pantalla 2026-08-08 224136.png" />
+    <None Include="Resources\Captura de pantalla 2026-07-07 104125.png" />
+    <None Include="Resources\Documento.png" />
+    <None Include="Resources\Captura de pantalla 2026-07-07 104318.png" />
+    <None Include="Resources\Captura de pantalla 2026-07-07 104452.png" />
+    <None Include="Resources\Dinero.png" />
+    <None Include="Resources\Captura de pantalla 2026-07-07 1057011.png" />
+    <None Include="Resources\Empleado.png" />
+    <None Include="Resources\Escri.png" />
+    <None Include="Resources\Captura de pantalla 2026-09-26 161202.png" />
+    <None Include="Resources\Captura de pantalla 2026-09-26 221615.png" />
     <Content Include="Resources\resources\AnimacionS.png" />
     <Content Include="Resources\resources\botonRegresar.png" />
     <Content Include="Resources\resources\Captura de pantalla 2026-07-07 105701.png" />

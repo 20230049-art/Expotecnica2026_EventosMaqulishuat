@@ -29,24 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnCerrarSesionGere = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnlContenedorVistas = new System.Windows.Forms.Panel();
-            this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.btnDocumentosGere = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnUsuario = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnProveedores = new System.Windows.Forms.Button();
             this.btnEmpleado = new System.Windows.Forms.Button();
@@ -57,21 +40,75 @@
             this.btnClienteGere = new System.Windows.Forms.Button();
             this.btnInventarioGere = new System.Windows.Forms.Button();
             this.btnInicioGere = new System.Windows.Forms.Button();
+            this.btnCerrarSesionGere = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlContenedorVistas = new System.Windows.Forms.Panel();
+            this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnAyyuda = new System.Windows.Forms.Button();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlContenedorVistas.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.panel1.Controls.Add(this.flowLayoutPanel2);
+            this.panel1.Controls.Add(this.pictureBox14);
+            this.panel1.Controls.Add(this.pictureBox13);
+            this.panel1.Controls.Add(this.btnAyyuda);
+            this.panel1.Controls.Add(this.btnUsuario);
+            this.panel1.Controls.Add(this.pictureBox12);
+            this.panel1.Controls.Add(this.pictureBox11);
+            this.panel1.Controls.Add(this.pictureBox10);
+            this.panel1.Controls.Add(this.pictureBox9);
+            this.panel1.Controls.Add(this.pictureBox8);
+            this.panel1.Controls.Add(this.pictureBox7);
+            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Controls.Add(this.pictureBox5);
+            this.panel1.Controls.Add(this.pictureBox4);
+            this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.btnReportes);
             this.panel1.Controls.Add(this.btnProveedores);
             this.panel1.Controls.Add(this.btnEmpleado);
@@ -92,16 +129,182 @@
             this.panel1.Size = new System.Drawing.Size(293, 973);
             this.panel1.TabIndex = 1;
             // 
-            // pictureBox2
+            // btnUsuario
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox2.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_112345;
-            this.pictureBox2.Location = new System.Drawing.Point(67, 84);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(166, 151);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.btnUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuario.FlatAppearance.BorderSize = 0;
+            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuario.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnUsuario.Location = new System.Drawing.Point(0, 771);
+            this.btnUsuario.Name = "btnUsuario";
+            this.btnUsuario.Size = new System.Drawing.Size(293, 51);
+            this.btnUsuario.TabIndex = 50;
+            this.btnUsuario.Text = "USUARIOS";
+            this.btnUsuario.UseVisualStyleBackColor = false;
+            this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnReportes.Location = new System.Drawing.Point(0, 720);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(293, 51);
+            this.btnReportes.TabIndex = 38;
+            this.btnReportes.Text = "REPORTES";
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
+            // btnProveedores
+            // 
+            this.btnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnProveedores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProveedores.FlatAppearance.BorderSize = 0;
+            this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProveedores.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnProveedores.Location = new System.Drawing.Point(0, 669);
+            this.btnProveedores.Name = "btnProveedores";
+            this.btnProveedores.Size = new System.Drawing.Size(293, 51);
+            this.btnProveedores.TabIndex = 37;
+            this.btnProveedores.Text = "          PROVEEDORES";
+            this.btnProveedores.UseVisualStyleBackColor = false;
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
+            // 
+            // btnEmpleado
+            // 
+            this.btnEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmpleado.FlatAppearance.BorderSize = 0;
+            this.btnEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmpleado.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEmpleado.Location = new System.Drawing.Point(0, 618);
+            this.btnEmpleado.Name = "btnEmpleado";
+            this.btnEmpleado.Size = new System.Drawing.Size(293, 51);
+            this.btnEmpleado.TabIndex = 36;
+            this.btnEmpleado.Text = "     EMPLEADOS";
+            this.btnEmpleado.UseVisualStyleBackColor = false;
+            this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button3.Location = new System.Drawing.Point(0, 567);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(293, 51);
+            this.button3.TabIndex = 35;
+            this.button3.Text = "        DOCUMENTOS";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnRegistroVentas
+            // 
+            this.btnRegistroVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnRegistroVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegistroVentas.FlatAppearance.BorderSize = 0;
+            this.btnRegistroVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistroVentas.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistroVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRegistroVentas.Location = new System.Drawing.Point(0, 516);
+            this.btnRegistroVentas.Name = "btnRegistroVentas";
+            this.btnRegistroVentas.Size = new System.Drawing.Size(293, 51);
+            this.btnRegistroVentas.TabIndex = 34;
+            this.btnRegistroVentas.Text = "           RESGISTRO                 DE VENTAS";
+            this.btnRegistroVentas.UseVisualStyleBackColor = false;
+            this.btnRegistroVentas.Click += new System.EventHandler(this.btnRegistroVentas_Click);
+            // 
+            // btnRegisPagoGere
+            // 
+            this.btnRegisPagoGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnRegisPagoGere.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegisPagoGere.FlatAppearance.BorderSize = 0;
+            this.btnRegisPagoGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisPagoGere.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisPagoGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRegisPagoGere.Location = new System.Drawing.Point(0, 465);
+            this.btnRegisPagoGere.Name = "btnRegisPagoGere";
+            this.btnRegisPagoGere.Size = new System.Drawing.Size(293, 51);
+            this.btnRegisPagoGere.TabIndex = 33;
+            this.btnRegisPagoGere.Text = "             RESGISTRO                   DE PAGOS";
+            this.btnRegisPagoGere.UseVisualStyleBackColor = false;
+            this.btnRegisPagoGere.Click += new System.EventHandler(this.btnRegisPagoGere_Click);
+            // 
+            // btnCalendarioGere
+            // 
+            this.btnCalendarioGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnCalendarioGere.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCalendarioGere.FlatAppearance.BorderSize = 0;
+            this.btnCalendarioGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalendarioGere.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalendarioGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCalendarioGere.Location = new System.Drawing.Point(0, 414);
+            this.btnCalendarioGere.Name = "btnCalendarioGere";
+            this.btnCalendarioGere.Size = new System.Drawing.Size(293, 51);
+            this.btnCalendarioGere.TabIndex = 32;
+            this.btnCalendarioGere.Text = "       CALENDARIO";
+            this.btnCalendarioGere.UseVisualStyleBackColor = false;
+            this.btnCalendarioGere.Click += new System.EventHandler(this.btnCalendarioGere_Click);
+            // 
+            // btnClienteGere
+            // 
+            this.btnClienteGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnClienteGere.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClienteGere.FlatAppearance.BorderSize = 0;
+            this.btnClienteGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClienteGere.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClienteGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnClienteGere.Location = new System.Drawing.Point(0, 363);
+            this.btnClienteGere.Name = "btnClienteGere";
+            this.btnClienteGere.Size = new System.Drawing.Size(293, 51);
+            this.btnClienteGere.TabIndex = 31;
+            this.btnClienteGere.Text = " CLIENTES";
+            this.btnClienteGere.UseVisualStyleBackColor = false;
+            this.btnClienteGere.Click += new System.EventHandler(this.btnClienteGere_Click);
+            // 
+            // btnInventarioGere
+            // 
+            this.btnInventarioGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnInventarioGere.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInventarioGere.FlatAppearance.BorderSize = 0;
+            this.btnInventarioGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventarioGere.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventarioGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnInventarioGere.Location = new System.Drawing.Point(0, 312);
+            this.btnInventarioGere.Name = "btnInventarioGere";
+            this.btnInventarioGere.Size = new System.Drawing.Size(293, 51);
+            this.btnInventarioGere.TabIndex = 29;
+            this.btnInventarioGere.Text = "       INVENTARIO";
+            this.btnInventarioGere.UseVisualStyleBackColor = false;
+            this.btnInventarioGere.Click += new System.EventHandler(this.btnInventarioGere_Click);
+            // 
+            // btnInicioGere
+            // 
+            this.btnInicioGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnInicioGere.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInicioGere.FlatAppearance.BorderSize = 0;
+            this.btnInicioGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInicioGere.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicioGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnInicioGere.Location = new System.Drawing.Point(0, 261);
+            this.btnInicioGere.Name = "btnInicioGere";
+            this.btnInicioGere.Size = new System.Drawing.Size(293, 51);
+            this.btnInicioGere.TabIndex = 30;
+            this.btnInicioGere.Text = "INICIO";
+            this.btnInicioGere.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInicioGere.UseVisualStyleBackColor = false;
+            this.btnInicioGere.Click += new System.EventHandler(this.btnInicioGere_Click);
             // 
             // btnCerrarSesionGere
             // 
@@ -112,7 +315,7 @@
             this.btnCerrarSesionGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesionGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesionGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.btnCerrarSesionGere.Location = new System.Drawing.Point(35, 880);
+            this.btnCerrarSesionGere.Location = new System.Drawing.Point(35, 901);
             this.btnCerrarSesionGere.Name = "btnCerrarSesionGere";
             this.btnCerrarSesionGere.Size = new System.Drawing.Size(219, 48);
             this.btnCerrarSesionGere.TabIndex = 16;
@@ -125,19 +328,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 237);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(293, 30);
+            this.panel2.Size = new System.Drawing.Size(293, 24);
             this.panel2.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_112140;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(293, 237);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // pnlContenedorVistas
             // 
@@ -254,7 +446,6 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(213)))), ((int)(((byte)(191)))));
-            this.panel7.Controls.Add(this.btnDocumentosGere);
             this.panel7.Controls.Add(this.button2);
             this.panel7.Controls.Add(this.button1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -262,20 +453,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(881, 570);
             this.panel7.TabIndex = 1;
-            // 
-            // btnDocumentosGere
-            // 
-            this.btnDocumentosGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnDocumentosGere.FlatAppearance.BorderSize = 0;
-            this.btnDocumentosGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDocumentosGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocumentosGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDocumentosGere.Location = new System.Drawing.Point(0, 255);
-            this.btnDocumentosGere.Name = "btnDocumentosGere";
-            this.btnDocumentosGere.Size = new System.Drawing.Size(292, 60);
-            this.btnDocumentosGere.TabIndex = 18;
-            this.btnDocumentosGere.Text = "      DOCUMENTOS";
-            this.btnDocumentosGere.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -299,174 +476,162 @@
             this.button1.Text = "           RESGISTRO          DE VENTAS";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel2
+            // btnAyyuda
             // 
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 837);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(293, 17);
-            this.flowLayoutPanel2.TabIndex = 39;
+            this.btnAyyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
+            this.btnAyyuda.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAyyuda.FlatAppearance.BorderSize = 0;
+            this.btnAyyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAyyuda.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAyyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAyyuda.Location = new System.Drawing.Point(0, 822);
+            this.btnAyyuda.Name = "btnAyyuda";
+            this.btnAyyuda.Size = new System.Drawing.Size(293, 51);
+            this.btnAyyuda.TabIndex = 52;
+            this.btnAyyuda.Text = "AYUDA     ";
+            this.btnAyyuda.UseVisualStyleBackColor = false;
             // 
-            // btnReportes
+            // pictureBox14
             // 
-            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnReportes.Location = new System.Drawing.Point(0, 780);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(293, 57);
-            this.btnReportes.TabIndex = 38;
-            this.btnReportes.Text = "REPORTES";
-            this.btnReportes.UseVisualStyleBackColor = false;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            this.pictureBox14.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_09_26_221615;
+            this.pictureBox14.Location = new System.Drawing.Point(36, 776);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(41, 37);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox14.TabIndex = 53;
+            this.pictureBox14.TabStop = false;
             // 
-            // btnProveedores
+            // pictureBox13
             // 
-            this.btnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnProveedores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProveedores.FlatAppearance.BorderSize = 0;
-            this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProveedores.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnProveedores.Location = new System.Drawing.Point(0, 723);
-            this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(293, 57);
-            this.btnProveedores.TabIndex = 37;
-            this.btnProveedores.Text = "          PROVEEDORES";
-            this.btnProveedores.UseVisualStyleBackColor = false;
-            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
+            this.pictureBox13.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_09_26_161202;
+            this.pictureBox13.Location = new System.Drawing.Point(35, 825);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(45, 38);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox13.TabIndex = 51;
+            this.pictureBox13.TabStop = false;
             // 
-            // btnEmpleado
+            // pictureBox12
             // 
-            this.btnEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEmpleado.FlatAppearance.BorderSize = 0;
-            this.btnEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpleado.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnEmpleado.Location = new System.Drawing.Point(0, 666);
-            this.btnEmpleado.Name = "btnEmpleado";
-            this.btnEmpleado.Size = new System.Drawing.Size(293, 57);
-            this.btnEmpleado.TabIndex = 36;
-            this.btnEmpleado.Text = "     EMPLEADOS";
-            this.btnEmpleado.UseVisualStyleBackColor = false;
-            this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
+            this.pictureBox12.Image = global::Vista.Properties.Resources.Escri;
+            this.pictureBox12.Location = new System.Drawing.Point(36, 724);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(41, 37);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 49;
+            this.pictureBox12.TabStop = false;
             // 
-            // button3
+            // pictureBox11
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button3.Location = new System.Drawing.Point(0, 609);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(293, 57);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "        DOCUMENTOS";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pictureBox11.Image = global::Vista.Properties.Resources.Empleado;
+            this.pictureBox11.Location = new System.Drawing.Point(36, 623);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(41, 39);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 48;
+            this.pictureBox11.TabStop = false;
             // 
-            // btnRegistroVentas
+            // pictureBox10
             // 
-            this.btnRegistroVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnRegistroVentas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRegistroVentas.FlatAppearance.BorderSize = 0;
-            this.btnRegistroVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistroVentas.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistroVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRegistroVentas.Location = new System.Drawing.Point(0, 552);
-            this.btnRegistroVentas.Name = "btnRegistroVentas";
-            this.btnRegistroVentas.Size = new System.Drawing.Size(293, 57);
-            this.btnRegistroVentas.TabIndex = 34;
-            this.btnRegistroVentas.Text = "             RESGISTRO            DE VENTAS";
-            this.btnRegistroVentas.UseVisualStyleBackColor = false;
-            this.btnRegistroVentas.Click += new System.EventHandler(this.btnRegistroVentas_Click);
+            this.pictureBox10.Image = global::Vista.Properties.Resources.Dinero;
+            this.pictureBox10.Location = new System.Drawing.Point(38, 474);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 47;
+            this.pictureBox10.TabStop = false;
             // 
-            // btnRegisPagoGere
+            // pictureBox9
             // 
-            this.btnRegisPagoGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnRegisPagoGere.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRegisPagoGere.FlatAppearance.BorderSize = 0;
-            this.btnRegisPagoGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisPagoGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisPagoGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRegisPagoGere.Location = new System.Drawing.Point(0, 495);
-            this.btnRegisPagoGere.Name = "btnRegisPagoGere";
-            this.btnRegisPagoGere.Size = new System.Drawing.Size(293, 57);
-            this.btnRegisPagoGere.TabIndex = 33;
-            this.btnRegisPagoGere.Text = "             RESGISTRO            DE PAGOS";
-            this.btnRegisPagoGere.UseVisualStyleBackColor = false;
-            this.btnRegisPagoGere.Click += new System.EventHandler(this.btnRegisPagoGere_Click);
+            this.pictureBox9.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_104452;
+            this.pictureBox9.Location = new System.Drawing.Point(38, 421);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(39, 39);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 46;
+            this.pictureBox9.TabStop = false;
             // 
-            // btnCalendarioGere
+            // pictureBox8
             // 
-            this.btnCalendarioGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnCalendarioGere.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCalendarioGere.FlatAppearance.BorderSize = 0;
-            this.btnCalendarioGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalendarioGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalendarioGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCalendarioGere.Location = new System.Drawing.Point(0, 438);
-            this.btnCalendarioGere.Name = "btnCalendarioGere";
-            this.btnCalendarioGere.Size = new System.Drawing.Size(293, 57);
-            this.btnCalendarioGere.TabIndex = 32;
-            this.btnCalendarioGere.Text = "       CALENDARIO";
-            this.btnCalendarioGere.UseVisualStyleBackColor = false;
-            this.btnCalendarioGere.Click += new System.EventHandler(this.btnCalendarioGere_Click);
+            this.pictureBox8.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_104318;
+            this.pictureBox8.Location = new System.Drawing.Point(38, 370);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(42, 37);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 45;
+            this.pictureBox8.TabStop = false;
             // 
-            // btnClienteGere
+            // pictureBox7
             // 
-            this.btnClienteGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnClienteGere.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClienteGere.FlatAppearance.BorderSize = 0;
-            this.btnClienteGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClienteGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClienteGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnClienteGere.Location = new System.Drawing.Point(0, 381);
-            this.btnClienteGere.Name = "btnClienteGere";
-            this.btnClienteGere.Size = new System.Drawing.Size(293, 57);
-            this.btnClienteGere.TabIndex = 31;
-            this.btnClienteGere.Text = " CLIENTES";
-            this.btnClienteGere.UseVisualStyleBackColor = false;
-            this.btnClienteGere.Click += new System.EventHandler(this.btnClienteGere_Click);
+            this.pictureBox7.Image = global::Vista.Properties.Resources.Documento;
+            this.pictureBox7.Location = new System.Drawing.Point(42, 574);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(30, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 44;
+            this.pictureBox7.TabStop = false;
             // 
-            // btnInventarioGere
+            // pictureBox6
             // 
-            this.btnInventarioGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnInventarioGere.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInventarioGere.FlatAppearance.BorderSize = 0;
-            this.btnInventarioGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventarioGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventarioGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnInventarioGere.Location = new System.Drawing.Point(0, 324);
-            this.btnInventarioGere.Name = "btnInventarioGere";
-            this.btnInventarioGere.Size = new System.Drawing.Size(293, 57);
-            this.btnInventarioGere.TabIndex = 29;
-            this.btnInventarioGere.Text = "       INVENTARIO";
-            this.btnInventarioGere.UseVisualStyleBackColor = false;
-            this.btnInventarioGere.Click += new System.EventHandler(this.btnInventarioGere_Click);
+            this.pictureBox6.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_1057011;
+            this.pictureBox6.Location = new System.Drawing.Point(37, 674);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(41, 39);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 43;
+            this.pictureBox6.TabStop = false;
             // 
-            // btnInicioGere
+            // pictureBox5
             // 
-            this.btnInicioGere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(206)))), ((int)(((byte)(184)))));
-            this.btnInicioGere.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInicioGere.FlatAppearance.BorderSize = 0;
-            this.btnInicioGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInicioGere.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInicioGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnInicioGere.Location = new System.Drawing.Point(0, 267);
-            this.btnInicioGere.Name = "btnInicioGere";
-            this.btnInicioGere.Size = new System.Drawing.Size(293, 57);
-            this.btnInicioGere.TabIndex = 30;
-            this.btnInicioGere.Text = "INICIO";
-            this.btnInicioGere.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInicioGere.UseVisualStyleBackColor = false;
-            this.btnInicioGere.Click += new System.EventHandler(this.btnInicioGere_Click);
+            this.pictureBox5.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_104125;
+            this.pictureBox5.Location = new System.Drawing.Point(38, 320);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(41, 35);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 42;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Vista.Properties.Resources.Casa1;
+            this.pictureBox4.Location = new System.Drawing.Point(39, 272);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 41;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_08_08_224136;
+            this.pictureBox3.Location = new System.Drawing.Point(36, 523);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(43, 41);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 40;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pictureBox2.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_112345;
+            this.pictureBox2.Location = new System.Drawing.Point(67, 84);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(166, 151);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_112140;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(293, 237);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMenuGerente
             // 
@@ -479,8 +644,6 @@
             this.Name = "frmMenuGerente";
             this.Text = "frmMenuGerente";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlContenedorVistas.ResumeLayout(false);
             this.tlpContenedorPrincipal.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -488,6 +651,20 @@
             this.panel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -511,8 +688,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnDocumentosGere;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnEmpleado;
@@ -523,5 +698,19 @@
         private System.Windows.Forms.Button btnClienteGere;
         private System.Windows.Forms.Button btnInventarioGere;
         private System.Windows.Forms.Button btnInicioGere;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.Button btnUsuario;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.Button btnAyyuda;
     }
 }

@@ -7,10 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.GerenteAyuda;
 using Vista.GerenteClientes;
 using Vista.GerenteDocumentacion;
 using Vista.GerenteEmpleados;
+using Vista.GerenteInventario;
 using Vista.GerenteProveedores;
+using Vista.GerenteRegistroPagos;
+using Vista.GerenteRegistroVentas;
 using Vista.GerenteReportes;
 using Vista.IniciarSesion;
 using Vista.Utilidades;
@@ -77,7 +81,8 @@ namespace Vista.GerenteInicio
 
         private void btnInventarioGere_Click(object sender, EventArgs e)
         {
-
+            abrirForm(new frmInventario());
+            ActivarBoton(btnInventarioGere);
         }
 
         private void btnClienteGere_Click(object sender, EventArgs e)
@@ -88,17 +93,20 @@ namespace Vista.GerenteInicio
 
         private void btnCalendarioGere_Click(object sender, EventArgs e)
         {
-
+            abrirForm(new frmRegistroPago());
+            ActivarBoton(btnCalendarioGere);
         }
 
         private void btnRegisPagoGere_Click(object sender, EventArgs e)
         {
-
+            abrirForm(new frmRegistroPago());
+            ActivarBoton(btnRegisPagoGere);
         }
 
         private void btnRegistroVentas_Click(object sender, EventArgs e)
         {
-
+            abrirForm(new frmRegistroVentas());
+            ActivarBoton(btnRegistroVentas);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -123,6 +131,12 @@ namespace Vista.GerenteInicio
         {
             abrirForm(new frmReportes());
             ActivarBoton(btnReportes);
+        }
+
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            abrirForm(new frmAyuda());
+            ActivarBoton(btnUsuario);
         }
 
         private void btnCerrarSesionGere_Click(object sender, EventArgs e)
@@ -164,9 +178,10 @@ namespace Vista.GerenteInicio
                 btnCalendarioGere.BackColor = Color.FromArgb(241, 206, 184);
                 btnRegisPagoGere.BackColor = Color.FromArgb(241, 206, 184);
                 btnRegistroVentas.BackColor = Color.FromArgb(241, 206, 184);
-                btnDocumentosGere.BackColor = Color.FromArgb(241, 206, 184);
+                button3.BackColor = Color.FromArgb(241, 206, 184);
                 btnEmpleado.BackColor = Color.FromArgb(241, 206, 184);
                 btnProveedores.BackColor = Color.FromArgb(241, 206, 184);
+                btnUsuario.BackColor = Color.FromArgb(241, 206, 184);
             }
             catch (Exception ex)
             {

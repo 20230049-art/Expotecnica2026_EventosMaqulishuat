@@ -82,7 +82,7 @@ namespace Vista.GerenteReportes
 
                     DataRow filaLocal = fila;
 
-                    panel.Click += (s, e) =>
+                    SuscribirClickRecursivo(panel, (s, e) =>
                     {
                         try
                         {
@@ -96,7 +96,8 @@ namespace Vista.GerenteReportes
                             MessageBox.Show("Error al procesar el clic del reporte: " + ex.Message,
                                     "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    };
+                    });
+
 
                     flpRegistroPagos.Controls.Add(panel);
                 }
@@ -116,23 +117,20 @@ namespace Vista.GerenteReportes
 
                 Panel panelFondo = new Panel();
 
-                //panelFondo.Width = panelFondo.Width;
-                //panelFondo.Height = pnlFondo.Height;
-                //panelFondo.BorderStyle = pnlFondo.BorderStyle;
+                panelFondo.Width = pnlFondo.Width;
+                panelFondo.Height = pnlFondo.Height;
+                panelFondo.BorderStyle = pnlFondo.BorderStyle;
                 panelFondo.Margin = new Padding(4);
-                //panelFondo.Tag = fila["IdReporte"];
+                panelFondo.Tag = fila["IdReporte"];
                 panelFondo.BackColor = modoEliminar
                     ? Color.FromArgb(220, 110, 110)
                     : Color.FromArgb(253, 241, 217);
 
                 Panel panelReportesInformacion = new Panel();
 
-                //panelReportesInformacion.Margin = new Padding(10);
                 panelReportesInformacion.Width = pnlReportesInfo.Width;
                 panelReportesInformacion.Height = pnlReportesInfo.Height;
-                panelReportesInformacion.BackColor = modoEliminar
-                    ? Color.FromArgb(220, 110, 110)
-                    : pnlReportesInfo.BackColor;
+                panelReportesInformacion.BackColor = modoEliminar? Color.FromArgb(220, 110, 110): pnlReportesInfo.BackColor;
                 panelReportesInformacion.BorderStyle = pnlReportesInfo.BorderStyle;
                 panelReportesInformacion.Location = pnlReportesInfo.Location;
 
@@ -222,6 +220,15 @@ namespace Vista.GerenteReportes
             }
         }
 
+        private void SuscribirClickRecursivo(Control control, EventHandler handler)
+        {
+            control.Click += handler;
+            foreach (Control hijo in control.Controls)
+            {
+                SuscribirClickRecursivo(hijo, handler);
+            }
+        }
+
         private void txtBuscaInve_TextChanged(object sender, EventArgs e)
         {
             try
@@ -231,13 +238,20 @@ namespace Vista.GerenteReportes
                 if (string.IsNullOrWhiteSpace(busqueda))
                 {
                     errorProvider.SetError(txtBuscaInve, "");
-                    CargarReportes();
+                    paginaActual = 1;
+                    CargarPagina(1);
                     return;
                 }
 
-                Reportes reportes = new Reportes();
-                DataTable reportesFiltrados = reportes.BuscarReporte(busqueda);
+                Reportes rep = new Reportes();
+                DataTable reportesFiltrados = rep.BuscarReporte(busqueda);
+
+                totalRegistros = reportesFiltrados?.Rows.Count ?? 0;
+                totalPaginas = 1;
+                paginaActual = 1;
+
                 CargarReportesPantalla(reportesFiltrados);
+                ActualizarControlesPaginacion();
             }
             catch (Exception ex)
             {
@@ -251,10 +265,22 @@ namespace Vista.GerenteReportes
         {
             try
             {
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
+
                 frmAgregarReportes abrir = new frmAgregarReportes();
                 abrir.ShowDialog();
 
-                CargarReportes();
+                CargarPagina(paginaActual);
+
+                fondo.Close();
+
+                if (totalPaginas > 1 && string.IsNullOrWhiteSpace(busquedaActual))
+                {
+                    CargarPagina(totalPaginas);
+                }
             }
             catch (Exception ex)
             {
@@ -269,7 +295,7 @@ namespace Vista.GerenteReportes
             {
                 modoEliminar = !modoEliminar;
 
-                CargarReportes();
+                CargarPagina(paginaActual);
 
                 if (modoEliminar)
                 {
@@ -306,7 +332,7 @@ namespace Vista.GerenteReportes
                 if (confirmacion != DialogResult.Yes)
                 {
                     modoEliminar = false;
-                    CargarReportes();
+                    CargarPagina(paginaActual); 
                     return;
                 }
 
@@ -331,14 +357,14 @@ namespace Vista.GerenteReportes
                 {
                     MessageBox.Show("No se pudo eliminar el reporte de la base de datos.",
                             "ERROR-ELIMINAR-015", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    CargarReportes();
+                    CargarPagina(paginaActual); 
                     return;
                 }
 
                 MessageBox.Show("Reporte eliminado correctamente.",
                         "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                CargarReportes();
+                CargarPagina(paginaActual);
             }
             catch (SqlException ex)
             {

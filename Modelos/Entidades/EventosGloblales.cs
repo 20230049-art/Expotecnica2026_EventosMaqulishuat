@@ -83,5 +83,18 @@ namespace Modelos.Entidades
         {
             EmpleadosEliminados?.Invoke(null, EventArgs.Empty);
         }
+
+        public static event EventHandler ReportesAgregados;
+        public static event EventHandler ReportesEliminados;
+
+        public static void EnReportesAgregados()
+        {
+            EmpleadosAgregados?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static void EnReportesEliminados()
+        {
+            EmpleadosActualizar?.Invoke(null, EventArgs.Empty);
+        }
     }
 }

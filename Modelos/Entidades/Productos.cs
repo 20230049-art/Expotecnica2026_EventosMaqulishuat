@@ -247,5 +247,99 @@ namespace Modelos.Entidades
 
             return dt;
         }
+
+        //MostrarProductos Pagina
+        public static DataTable MostrarProductosPagina(int pagina, int registrosPorPagina, int tipoFiltro, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("MostrarProductosPaginado", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+
+                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputTotal);
+
+                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                        {
+                            ad.Fill(dt);
+                        }
+
+                        totalRegistros = outputTotal.Value == DBNull.Value
+                            ? 0
+                            : Convert.ToInt32(outputTotal.Value);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al obtener los productos paginados: " + ex.Message,
+                                "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dt;
+        }
+
+        //Eliminar producto
+        public static bool EliminarProducto(int idProducto)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("EliminarProducto", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = idProducto;
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al eliminar el producto: " + ex.Message, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error inesperado al eliminar el producto: " + ex.Message, ex);
+            }
+        }
+
+        //Restaurar producto
+        public static bool RestaurarProducto(int idProducto)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("RestaurarProducto", conexion))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = idProducto;
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al restaurar el producto: " + ex.Message, ex);
+            }
+        }
     }
 }

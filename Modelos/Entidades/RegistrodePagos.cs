@@ -42,14 +42,17 @@ namespace Modelos.Entidades
         {
             SqlConnection con = ConexionDB.Conectar();
 
-            string consulta = @"UPDATE RegistroPago
-                        SET EstadoPago=@Estado
-                        WHERE idPago=@Id";
+            string consulta = @"UPDATE RegistoPago
+                        SET EstadoPago=@EstadoPago
+                        WHERE IdRegistroPago=@IdRegistroPago";
 
-            SqlCommand cmd = new SqlCommand(consulta, con);
+            using (SqlCommand cmd = new SqlCommand(consulta, con))
+            {
+                cmd.Parameters.AddWithValue("@EstadoPago", estado);
+                cmd.Parameters.AddWithValue("@IdRegistroPago", idpago);
 
-            cmd.Parameters.AddWithValue("@Estado", estado);
-            cmd.Parameters.AddWithValue("@Id", idpago);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         //Mostrar Registros de pagos proximos
@@ -92,24 +95,64 @@ namespace Modelos.Entidades
         }
 
         //Buscar registros
-        public DataTable BuscarReporte(string busqueda)
+        public DataTable BuscarRegistroPago(string busqueda)
         {
+            DataTable dt = new DataTable();
 
-            DataTable tabla = new DataTable();
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SqlConnection cn = ConexionDB.Conectar())
+            using (SqlCommand cmd = new SqlCommand("BuscarRegistroPago", cn))
             {
-                using (var command = new SqlCommand("BucarRegistro", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@busqueda", SqlDbType.VarChar).Value = busqueda ?? (object)DBNull.Value;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@busqueda", SqlDbType.VarChar).Value =
+                    string.IsNullOrWhiteSpace(busqueda) ? (object)DBNull.Value : busqueda;
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        adapter.Fill(tabla);
-                    }
+                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                {
+                    ad.Fill(dt);
                 }
             }
-            return tabla;
+
+            return dt;
+        }
+
+        //Regitros por paginas--
+        public static DataTable MostrarRegistroPagosPagina(int pagina, int registrosPorPagina, string estado, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            try
+            {
+                using (SqlConnection cn = ConexionDB.Conectar())
+                using (SqlCommand cmd = new SqlCommand("MostrarRegistroPagosPagina", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                    cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                    cmd.Parameters.Add("@Estado", SqlDbType.VarChar, 20).Value =
+                        string.IsNullOrWhiteSpace(estado) ? (object)DBNull.Value : estado;
+
+                    SqlParameter outTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outTotal);
+
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        ad.Fill(dt);
+                    }
+
+                    totalRegistros = outTotal.Value == DBNull.Value ? 0 : Convert.ToInt32(outTotal.Value);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error al obtener los pagos por paginas: " + ex.Message, ex);
+            }
+
+            return dt;
         }
     }
 }

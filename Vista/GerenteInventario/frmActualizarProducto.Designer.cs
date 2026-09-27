@@ -52,6 +52,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pnlDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProducto)).BeginInit();
             this.pnltituloNombre.SuspendLayout();
@@ -250,6 +251,7 @@
             this.btnSubirFoto.TabIndex = 1;
             this.btnSubirFoto.Text = "Subir";
             this.btnSubirFoto.UseVisualStyleBackColor = false;
+            this.btnSubirFoto.Click += new System.EventHandler(this.btnSubirFoto_Click);
             // 
             // pnltituloNombre
             // 
@@ -288,6 +290,7 @@
             this.btnActualizar.Text = "Actualizar";
             this.toolTip1.SetToolTip(this.btnActualizar, "Actualizar producto");
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnSalir
             // 
@@ -303,6 +306,7 @@
             this.btnSalir.Text = "Cerrar";
             this.toolTip1.SetToolTip(this.btnSalir, "Regresar");
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnCerrar
             // 
@@ -317,6 +321,10 @@
             this.btnCerrar.TabIndex = 41;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmActualizarProducto
             // 
@@ -369,5 +377,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

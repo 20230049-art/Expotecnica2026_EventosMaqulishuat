@@ -42,38 +42,22 @@
             this.flpNumerosPagina = new System.Windows.Forms.FlowLayoutPanel();
             this.btnPaginaSiguiente = new System.Windows.Forms.Button();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnRealizados = new System.Windows.Forms.Button();
-            this.btnTodoslosPagos = new System.Windows.Forms.Button();
-            this.btnNoPagado = new System.Windows.Forms.Button();
-            this.btnPendientes = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.flpRegistroPago = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlPlantilla = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblTituloFecha = new System.Windows.Forms.Label();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.lblCorreo = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.lblTituloPago = new System.Windows.Forms.Label();
-            this.lblPago = new System.Windows.Forms.Label();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.lblTituloTelefono = new System.Windows.Forms.Label();
-            this.lblServicio = new System.Windows.Forms.Label();
-            this.lblTituloEstado = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.lblTituloCorreo = new System.Windows.Forms.Label();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.lblApellidos = new System.Windows.Forms.Label();
-            this.lblTituloServicio = new System.Windows.Forms.Label();
-            this.lblTituloNombre = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.lblNombre = new System.Windows.Forms.Label();
+            this.flpRegistroVenta = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.pnlContenedorInfo = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlVistaResgistroVenta.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,10 +65,11 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.flpRegistroPago.SuspendLayout();
-            this.pnlPlantilla.SuspendLayout();
+            this.flpRegistroVenta.SuspendLayout();
+            this.pnlContenedor.SuspendLayout();
+            this.pnlContenedorInfo.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVistaResgistroVenta
@@ -130,7 +115,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 924F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,7 +135,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(67, 31);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(788, 80);
+            this.lblProductos.Size = new System.Drawing.Size(786, 80);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "REGISTRO DE VENTAS";
             // 
@@ -159,10 +144,10 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel7.Controls.Add(this.txtBarraBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(861, 34);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(859, 34);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.68627F));
@@ -180,7 +165,7 @@
             this.txtBarraBuscar.Location = new System.Drawing.Point(54, 12);
             this.txtBarraBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarraBuscar.Name = "txtBarraBuscar";
-            this.txtBarraBuscar.Size = new System.Drawing.Size(770, 38);
+            this.txtBarraBuscar.Size = new System.Drawing.Size(768, 38);
             this.txtBarraBuscar.TabIndex = 1;
             this.txtBarraBuscar.Text = "Buscar venta";
             // 
@@ -188,16 +173,15 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 162);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.05464F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.717916F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.22745F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.226175F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.016518F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.75731F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 808);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -205,10 +189,10 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 12;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7621337F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.466527F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.58577F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.098326F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.152719F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.8891214F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.06276F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.433054F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.38285F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.830544F));
@@ -223,11 +207,11 @@
             this.tableLayoutPanel3.Controls.Add(this.btnPaginaSiguiente, 9, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblTotalRegistros, 7, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 90);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1912, 39);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1912, 43);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // btnPaginaAnterior
@@ -237,21 +221,22 @@
             this.btnPaginaAnterior.FlatAppearance.BorderSize = 0;
             this.btnPaginaAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaginaAnterior.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPaginaAnterior.Location = new System.Drawing.Point(17, 3);
+            this.btnPaginaAnterior.Location = new System.Drawing.Point(24, 3);
             this.btnPaginaAnterior.Name = "btnPaginaAnterior";
-            this.btnPaginaAnterior.Size = new System.Drawing.Size(175, 33);
+            this.btnPaginaAnterior.Size = new System.Drawing.Size(169, 37);
             this.btnPaginaAnterior.TabIndex = 1;
             this.btnPaginaAnterior.Text = "Anterior";
             this.btnPaginaAnterior.UseVisualStyleBackColor = false;
+            this.btnPaginaAnterior.Click += new System.EventHandler(this.btnPaginaAnterior_Click);
             // 
             // lblInfoPagina
             // 
             this.lblInfoPagina.AutoSize = true;
             this.lblInfoPagina.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblInfoPagina.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoPagina.Location = new System.Drawing.Point(206, 0);
+            this.lblInfoPagina.Location = new System.Drawing.Point(216, 0);
             this.lblInfoPagina.Name = "lblInfoPagina";
-            this.lblInfoPagina.Size = new System.Drawing.Size(292, 39);
+            this.lblInfoPagina.Size = new System.Drawing.Size(282, 43);
             this.lblInfoPagina.TabIndex = 0;
             this.lblInfoPagina.Text = "label1";
             this.lblInfoPagina.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -262,7 +247,7 @@
             this.flpNumerosPagina.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpNumerosPagina.Location = new System.Drawing.Point(627, 3);
             this.flpNumerosPagina.Name = "flpNumerosPagina";
-            this.flpNumerosPagina.Size = new System.Drawing.Size(747, 33);
+            this.flpNumerosPagina.Size = new System.Drawing.Size(748, 37);
             this.flpNumerosPagina.TabIndex = 2;
             // 
             // btnPaginaSiguiente
@@ -272,141 +257,25 @@
             this.btnPaginaSiguiente.FlatAppearance.BorderSize = 0;
             this.btnPaginaSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaginaSiguiente.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPaginaSiguiente.Location = new System.Drawing.Point(1708, 3);
+            this.btnPaginaSiguiente.Location = new System.Drawing.Point(1709, 3);
             this.btnPaginaSiguiente.Name = "btnPaginaSiguiente";
-            this.btnPaginaSiguiente.Size = new System.Drawing.Size(175, 33);
+            this.btnPaginaSiguiente.Size = new System.Drawing.Size(175, 37);
             this.btnPaginaSiguiente.TabIndex = 0;
             this.btnPaginaSiguiente.Text = "Siguiente";
             this.btnPaginaSiguiente.UseVisualStyleBackColor = false;
+            this.btnPaginaSiguiente.Click += new System.EventHandler(this.btnPaginaSiguiente_Click);
             // 
             // lblTotalRegistros
             // 
             this.lblTotalRegistros.AutoSize = true;
             this.lblTotalRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTotalRegistros.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRegistros.Location = new System.Drawing.Point(1415, 0);
+            this.lblTotalRegistros.Location = new System.Drawing.Point(1416, 0);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(262, 39);
+            this.lblTotalRegistros.Size = new System.Drawing.Size(262, 43);
             this.lblTotalRegistros.TabIndex = 3;
             this.lblTotalRegistros.Text = "label1";
             this.lblTotalRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 15;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.202929F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.67304F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.83227F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5307856F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.09766F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.41841F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5838641F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.4246284F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.46072F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btnRealizados, 13, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnTodoslosPagos, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnNoPagado, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnPendientes, 9, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 11, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 7, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel4, 3, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.51685F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1912, 81);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // btnRealizados
-            // 
-            this.btnRealizados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
-            this.btnRealizados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRealizados.FlatAppearance.BorderSize = 0;
-            this.btnRealizados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRealizados.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRealizados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnRealizados.Location = new System.Drawing.Point(1421, 3);
-            this.btnRealizados.Name = "btnRealizados";
-            this.btnRealizados.Size = new System.Drawing.Size(429, 75);
-            this.btnRealizados.TabIndex = 19;
-            this.btnRealizados.Text = "Pagos realizados";
-            this.btnRealizados.UseVisualStyleBackColor = false;
-            // 
-            // btnTodoslosPagos
-            // 
-            this.btnTodoslosPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
-            this.btnTodoslosPagos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTodoslosPagos.FlatAppearance.BorderSize = 0;
-            this.btnTodoslosPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTodoslosPagos.Font = new System.Drawing.Font("Bookman Old Style", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTodoslosPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnTodoslosPagos.Location = new System.Drawing.Point(25, 3);
-            this.btnTodoslosPagos.Name = "btnTodoslosPagos";
-            this.btnTodoslosPagos.Size = new System.Drawing.Size(433, 75);
-            this.btnTodoslosPagos.TabIndex = 12;
-            this.btnTodoslosPagos.Text = "Todos los pagos";
-            this.btnTodoslosPagos.UseVisualStyleBackColor = false;
-            // 
-            // btnNoPagado
-            // 
-            this.btnNoPagado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
-            this.btnNoPagado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNoPagado.FlatAppearance.BorderSize = 0;
-            this.btnNoPagado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNoPagado.Font = new System.Drawing.Font("Bookman Old Style", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNoPagado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnNoPagado.Location = new System.Drawing.Point(485, 3);
-            this.btnNoPagado.Name = "btnNoPagado";
-            this.btnNoPagado.Size = new System.Drawing.Size(436, 75);
-            this.btnNoPagado.TabIndex = 13;
-            this.btnNoPagado.Text = "No pagado";
-            this.btnNoPagado.UseVisualStyleBackColor = false;
-            // 
-            // btnPendientes
-            // 
-            this.btnPendientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
-            this.btnPendientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPendientes.FlatAppearance.BorderSize = 0;
-            this.btnPendientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPendientes.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPendientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(33)))), ((int)(((byte)(18)))));
-            this.btnPendientes.Location = new System.Drawing.Point(950, 3);
-            this.btnPendientes.Name = "btnPendientes";
-            this.btnPendientes.Size = new System.Drawing.Size(441, 75);
-            this.btnPendientes.TabIndex = 14;
-            this.btnPendientes.Text = "Pagos pendientes";
-            this.btnPendientes.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(34)))), ((int)(((byte)(18)))));
-            this.panel1.Location = new System.Drawing.Point(1404, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 70);
-            this.panel1.TabIndex = 16;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(34)))), ((int)(((byte)(18)))));
-            this.panel2.Location = new System.Drawing.Point(934, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 70);
-            this.panel2.TabIndex = 17;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(34)))), ((int)(((byte)(18)))));
-            this.panel4.Location = new System.Drawing.Point(471, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 70);
-            this.panel4.TabIndex = 18;
             // 
             // tableLayoutPanel4
             // 
@@ -414,266 +283,186 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.150628F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.07113F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.778243F));
-            this.tableLayoutPanel4.Controls.Add(this.flpRegistroPago, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.flpRegistroVenta, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 135);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 60);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1912, 649);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1912, 724);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
-            // flpRegistroPago
+            // flpRegistroVenta
             // 
-            this.flpRegistroPago.AutoScroll = true;
-            this.flpRegistroPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
-            this.flpRegistroPago.Controls.Add(this.pnlPlantilla);
-            this.flpRegistroPago.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpRegistroPago.Location = new System.Drawing.Point(25, 3);
-            this.flpRegistroPago.Name = "flpRegistroPago";
-            this.flpRegistroPago.Size = new System.Drawing.Size(1850, 643);
-            this.flpRegistroPago.TabIndex = 32;
+            this.flpRegistroVenta.AutoScroll = true;
+            this.flpRegistroVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
+            this.flpRegistroVenta.Controls.Add(this.pnlContenedor);
+            this.flpRegistroVenta.Controls.Add(this.label38);
+            this.flpRegistroVenta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpRegistroVenta.Location = new System.Drawing.Point(25, 3);
+            this.flpRegistroVenta.Name = "flpRegistroVenta";
+            this.flpRegistroVenta.Size = new System.Drawing.Size(1850, 718);
+            this.flpRegistroVenta.TabIndex = 32;
             // 
-            // pnlPlantilla
+            // pnlContenedor
             // 
-            this.pnlPlantilla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
-            this.pnlPlantilla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlPlantilla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlPlantilla.Controls.Add(this.panel13);
-            this.pnlPlantilla.Controls.Add(this.lblFecha);
-            this.pnlPlantilla.Controls.Add(this.lblTituloFecha);
-            this.pnlPlantilla.Controls.Add(this.lblTelefono);
-            this.pnlPlantilla.Controls.Add(this.lblCorreo);
-            this.pnlPlantilla.Controls.Add(this.panel14);
-            this.pnlPlantilla.Controls.Add(this.lblTituloPago);
-            this.pnlPlantilla.Controls.Add(this.lblPago);
-            this.pnlPlantilla.Controls.Add(this.panel15);
-            this.pnlPlantilla.Controls.Add(this.lblTituloTelefono);
-            this.pnlPlantilla.Controls.Add(this.lblServicio);
-            this.pnlPlantilla.Controls.Add(this.lblTituloEstado);
-            this.pnlPlantilla.Controls.Add(this.cmbEstado);
-            this.pnlPlantilla.Controls.Add(this.lblTituloCorreo);
-            this.pnlPlantilla.Controls.Add(this.panel16);
-            this.pnlPlantilla.Controls.Add(this.panel17);
-            this.pnlPlantilla.Controls.Add(this.lblApellidos);
-            this.pnlPlantilla.Controls.Add(this.lblTituloServicio);
-            this.pnlPlantilla.Controls.Add(this.lblTituloNombre);
-            this.pnlPlantilla.Controls.Add(this.panel18);
-            this.pnlPlantilla.Controls.Add(this.lblNombre);
-            this.pnlPlantilla.Location = new System.Drawing.Point(3, 3);
-            this.pnlPlantilla.Name = "pnlPlantilla";
-            this.pnlPlantilla.Size = new System.Drawing.Size(1561, 130);
-            this.pnlPlantilla.TabIndex = 27;
-            this.pnlPlantilla.Visible = false;
+            this.pnlContenedor.Controls.Add(this.pnlContenedorInfo);
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlContenedor.Location = new System.Drawing.Point(3, 3);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(1642, 191);
+            this.pnlContenedor.TabIndex = 2;
+            this.pnlContenedor.Visible = false;
             // 
-            // panel13
+            // pnlContenedorInfo
             // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel13.Location = new System.Drawing.Point(955, 17);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1, 98);
-            this.panel13.TabIndex = 6;
+            this.pnlContenedorInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnlContenedorInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(237)))), ((int)(((byte)(182)))));
+            this.pnlContenedorInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlContenedorInfo.Controls.Add(this.panel1);
+            this.pnlContenedorInfo.Controls.Add(this.panel10);
+            this.pnlContenedorInfo.Controls.Add(this.label5);
+            this.pnlContenedorInfo.Controls.Add(this.label8);
+            this.pnlContenedorInfo.Controls.Add(this.panel5);
+            this.pnlContenedorInfo.Controls.Add(this.label32);
+            this.pnlContenedorInfo.Controls.Add(this.label33);
+            this.pnlContenedorInfo.Controls.Add(this.label34);
+            this.pnlContenedorInfo.Controls.Add(this.panel7);
+            this.pnlContenedorInfo.Location = new System.Drawing.Point(9, 10);
+            this.pnlContenedorInfo.Name = "pnlContenedorInfo";
+            this.pnlContenedorInfo.Size = new System.Drawing.Size(1616, 165);
+            this.pnlContenedorInfo.TabIndex = 39;
             // 
-            // lblFecha
+            // panel10
             // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(965, 65);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(185, 33);
-            this.lblFecha.TabIndex = 14;
-            this.lblFecha.Text = "31/10/2020";
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel10.Location = new System.Drawing.Point(817, 23);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1, 130);
+            this.panel10.TabIndex = 5;
             // 
-            // lblTituloFecha
+            // label5
             // 
-            this.lblTituloFecha.AutoSize = true;
-            this.lblTituloFecha.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloFecha.Location = new System.Drawing.Point(996, 23);
-            this.lblTituloFecha.Name = "lblTituloFecha";
-            this.lblTituloFecha.Size = new System.Drawing.Size(104, 40);
-            this.lblTituloFecha.TabIndex = 13;
-            this.lblTituloFecha.Text = "Fecha";
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
+            this.label5.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
+            this.label5.Location = new System.Drawing.Point(541, 89);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 43);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Correo: ";
             // 
-            // lblTelefono
+            // label8
             // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(681, 65);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(180, 33);
-            this.lblTelefono.TabIndex = 20;
-            this.lblTelefono.Text = "4757 - 9598";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
+            this.label8.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
+            this.label8.Location = new System.Drawing.Point(540, 117);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(324, 39);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "ejemplo@gmail.com";
             // 
-            // lblCorreo
+            // label13
             // 
-            this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorreo.Location = new System.Drawing.Point(418, 63);
-            this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(304, 37);
-            this.lblCorreo.TabIndex = 22;
-            this.lblCorreo.Text = "ejemplo@gmail.com";
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.White;
+            this.label13.Font = new System.Drawing.Font("Bookman Old Style", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
+            this.label13.Location = new System.Drawing.Point(186, 8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 41);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "100";
             // 
-            // panel14
+            // panel5
             // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel14.Location = new System.Drawing.Point(843, 17);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1, 98);
-            this.panel14.TabIndex = 4;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel5.Location = new System.Drawing.Point(526, 23);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1, 130);
+            this.panel5.TabIndex = 4;
             // 
-            // lblTituloPago
+            // label20
             // 
-            this.lblTituloPago.AutoSize = true;
-            this.lblTituloPago.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloPago.Location = new System.Drawing.Point(863, 23);
-            this.lblTituloPago.Name = "lblTituloPago";
-            this.lblTituloPago.Size = new System.Drawing.Size(90, 40);
-            this.lblTituloPago.TabIndex = 17;
-            this.lblTituloPago.Text = "Pago";
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.White;
+            this.label20.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
+            this.label20.Location = new System.Drawing.Point(7, 6);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(176, 43);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "N° Venta:";
             // 
-            // lblPago
+            // label32
             // 
-            this.lblPago.AutoSize = true;
-            this.lblPago.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPago.Location = new System.Drawing.Point(856, 65);
-            this.lblPago.Name = "lblPago";
-            this.lblPago.Size = new System.Drawing.Size(109, 33);
-            this.lblPago.TabIndex = 10;
-            this.lblPago.Text = "$45.50";
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
+            this.label32.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
+            this.label32.Location = new System.Drawing.Point(833, 83);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(210, 39);
+            this.label32.TabIndex = 25;
+            this.label32.Text = "01234567-8";
             // 
-            // panel15
+            // label33
             // 
-            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel15.Location = new System.Drawing.Point(408, 17);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1, 98);
-            this.panel15.TabIndex = 4;
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
+            this.label33.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
+            this.label33.Location = new System.Drawing.Point(820, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(248, 43);
+            this.label33.TabIndex = 24;
+            this.label33.Text = "Cliente Desde";
             // 
-            // lblTituloTelefono
+            // label34
             // 
-            this.lblTituloTelefono.AutoSize = true;
-            this.lblTituloTelefono.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloTelefono.Location = new System.Drawing.Point(695, 23);
-            this.lblTituloTelefono.Name = "lblTituloTelefono";
-            this.lblTituloTelefono.Size = new System.Drawing.Size(153, 40);
-            this.lblTituloTelefono.TabIndex = 19;
-            this.lblTituloTelefono.Text = "Teléfono";
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
+            this.label34.Font = new System.Drawing.Font("Book Antiqua", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
+            this.label34.Location = new System.Drawing.Point(836, 52);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(150, 39);
+            this.label34.TabIndex = 23;
+            this.label34.Text = "DUI/NIT";
             // 
-            // lblServicio
+            // panel7
             // 
-            this.lblServicio.AutoSize = true;
-            this.lblServicio.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServicio.Location = new System.Drawing.Point(252, 63);
-            this.lblServicio.Name = "lblServicio";
-            this.lblServicio.Size = new System.Drawing.Size(181, 37);
-            this.lblServicio.TabIndex = 18;
-            this.lblServicio.Text = "Decoración";
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel7.Location = new System.Drawing.Point(372, 23);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1, 130);
+            this.panel7.TabIndex = 2;
             // 
-            // lblTituloEstado
+            // label38
             // 
-            this.lblTituloEstado.AutoSize = true;
-            this.lblTituloEstado.Font = new System.Drawing.Font("Book Antiqua", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloEstado.Location = new System.Drawing.Point(1134, 21);
-            this.lblTituloEstado.Name = "lblTituloEstado";
-            this.lblTituloEstado.Size = new System.Drawing.Size(116, 39);
-            this.lblTituloEstado.TabIndex = 16;
-            this.lblTituloEstado.Text = "Estado";
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
+            this.label38.Font = new System.Drawing.Font("Bookman Old Style", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
+            this.label38.Location = new System.Drawing.Point(1651, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(155, 39);
+            this.label38.TabIndex = 26;
+            this.label38.Text = "16/5/28";
             // 
-            // cmbEstado
+            // panel1
             // 
-            this.cmbEstado.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Pagado",
-            "No pagado",
-            "-------"});
-            this.cmbEstado.Location = new System.Drawing.Point(1131, 62);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(121, 36);
-            this.cmbEstado.TabIndex = 15;
-            this.cmbEstado.TabStop = false;
-            // 
-            // lblTituloCorreo
-            // 
-            this.lblTituloCorreo.AutoSize = true;
-            this.lblTituloCorreo.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloCorreo.Location = new System.Drawing.Point(474, 23);
-            this.lblTituloCorreo.Name = "lblTituloCorreo";
-            this.lblTituloCorreo.Size = new System.Drawing.Size(120, 40);
-            this.lblTituloCorreo.TabIndex = 21;
-            this.lblTituloCorreo.Text = "Correo";
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel16.Location = new System.Drawing.Point(1121, 17);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1, 98);
-            this.panel16.TabIndex = 5;
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel17.Location = new System.Drawing.Point(672, 17);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(1, 98);
-            this.panel17.TabIndex = 3;
-            // 
-            // lblApellidos
-            // 
-            this.lblApellidos.AutoSize = true;
-            this.lblApellidos.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidos.Location = new System.Drawing.Point(18, 77);
-            this.lblApellidos.Name = "lblApellidos";
-            this.lblApellidos.Size = new System.Drawing.Size(221, 37);
-            this.lblApellidos.TabIndex = 12;
-            this.lblApellidos.Text = "Nolasco Rivas";
-            // 
-            // lblTituloServicio
-            // 
-            this.lblTituloServicio.AutoSize = true;
-            this.lblTituloServicio.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloServicio.Location = new System.Drawing.Point(260, 23);
-            this.lblTituloServicio.Name = "lblTituloServicio";
-            this.lblTituloServicio.Size = new System.Drawing.Size(140, 40);
-            this.lblTituloServicio.TabIndex = 8;
-            this.lblTituloServicio.Text = "Servicio";
-            // 
-            // lblTituloNombre
-            // 
-            this.lblTituloNombre.AutoSize = true;
-            this.lblTituloNombre.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloNombre.Location = new System.Drawing.Point(16, 15);
-            this.lblTituloNombre.Name = "lblTituloNombre";
-            this.lblTituloNombre.Size = new System.Drawing.Size(141, 40);
-            this.lblTituloNombre.TabIndex = 7;
-            this.lblTituloNombre.Text = "Nombre";
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel18.Location = new System.Drawing.Point(238, 17);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(1, 98);
-            this.panel18.TabIndex = 2;
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(17, 47);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(253, 37);
-            this.lblNombre.TabIndex = 1;
-            this.lblNombre.Text = "Camilo Orellana";
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Location = new System.Drawing.Point(13, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(277, 57);
+            this.panel1.TabIndex = 33;
             // 
             // frmRegistroVentas
             // 
@@ -693,11 +482,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.flpRegistroPago.ResumeLayout(false);
-            this.pnlPlantilla.ResumeLayout(false);
-            this.pnlPlantilla.PerformLayout();
+            this.flpRegistroVenta.ResumeLayout(false);
+            this.flpRegistroVenta.PerformLayout();
+            this.pnlContenedor.ResumeLayout(false);
+            this.pnlContenedorInfo.ResumeLayout(false);
+            this.pnlContenedorInfo.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -718,37 +510,21 @@
         private System.Windows.Forms.FlowLayoutPanel flpNumerosPagina;
         private System.Windows.Forms.Button btnPaginaSiguiente;
         private System.Windows.Forms.Label lblTotalRegistros;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnRealizados;
-        private System.Windows.Forms.Button btnTodoslosPagos;
-        private System.Windows.Forms.Button btnNoPagado;
-        private System.Windows.Forms.Button btnPendientes;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.FlowLayoutPanel flpRegistroPago;
-        private System.Windows.Forms.Panel pnlPlantilla;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.Label lblTituloFecha;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Label lblTituloPago;
-        private System.Windows.Forms.Label lblPago;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Label lblTituloTelefono;
-        private System.Windows.Forms.Label lblServicio;
-        private System.Windows.Forms.Label lblTituloEstado;
-        private System.Windows.Forms.ComboBox cmbEstado;
-        private System.Windows.Forms.Label lblTituloCorreo;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Label lblApellidos;
-        private System.Windows.Forms.Label lblTituloServicio;
-        private System.Windows.Forms.Label lblTituloNombre;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.FlowLayoutPanel flpRegistroVenta;
+        private System.Windows.Forms.Panel pnlContenedor;
+        private System.Windows.Forms.Panel pnlContenedorInfo;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Panel panel1;
     }
 }

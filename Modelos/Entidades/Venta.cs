@@ -209,5 +209,58 @@ namespace Modelos.Entidades
                 throw new Exception("Error al cancelar la venta.", ex);
             }
         }
+
+        //Paginas de 20
+        public static DataTable MostrarVentasPagina(int pagina, int registrosPorPagina, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            using (SqlConnection cn = ConexionDB.Conectar())
+            using (SqlCommand cmd = new SqlCommand("MostrarVentasPagina", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+
+                SqlParameter outTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outTotal);
+
+                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                {
+                    ad.Fill(dt);
+                }
+
+                totalRegistros = outTotal.Value == DBNull.Value
+                    ? 0
+                    : Convert.ToInt32(outTotal.Value);
+            }
+
+            return dt;
+        }
+
+        //Buuscar Venta
+        public DataTable BuscarVenta(string busqueda)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection cn = ConexionDB.Conectar())
+            using (SqlCommand cmd = new SqlCommand("BuscarVenta", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@busqueda", SqlDbType.VarChar).Value =
+                    string.IsNullOrWhiteSpace(busqueda) ? (object)DBNull.Value : busqueda;
+
+                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                {
+                    ad.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
     }
 }
