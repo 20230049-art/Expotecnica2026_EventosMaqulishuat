@@ -111,9 +111,9 @@
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 5;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.51073F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 924F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.738318F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.26168F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 895F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
@@ -133,9 +133,9 @@
             this.lblProductos.AutoSize = true;
             this.lblProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(67, 31);
+            this.lblProductos.Location = new System.Drawing.Point(36, 31);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(786, 80);
+            this.lblProductos.Size = new System.Drawing.Size(846, 80);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "REGISTRO DE VENTAS";
             // 
@@ -144,16 +144,16 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tableLayoutPanel7.Controls.Add(this.txtBarraBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(859, 34);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(888, 34);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.68627F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.31373F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(918, 74);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(889, 74);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // txtBarraBuscar
@@ -165,9 +165,10 @@
             this.txtBarraBuscar.Location = new System.Drawing.Point(54, 12);
             this.txtBarraBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarraBuscar.Name = "txtBarraBuscar";
-            this.txtBarraBuscar.Size = new System.Drawing.Size(768, 38);
+            this.txtBarraBuscar.Size = new System.Drawing.Size(772, 38);
             this.txtBarraBuscar.TabIndex = 1;
             this.txtBarraBuscar.Text = "Buscar venta";
+            this.txtBarraBuscar.TextChanged += new System.EventHandler(this.txtBarraBuscar_TextChanged);
             // 
             // tableLayoutPanel1
             // 

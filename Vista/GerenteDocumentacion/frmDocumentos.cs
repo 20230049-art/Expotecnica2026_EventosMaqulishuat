@@ -233,7 +233,7 @@ namespace Vista.GerenteDocumentacion
                 panelDocumento.Tag = fila["ArchivoDocumentacion"].ToString();
 
                 PictureBox pbDocumento = new PictureBox();
-                pbDocumento.Location = new Point(12, 8);
+                pbDocumento.Location = new Point(18, 12);
                 pbDocumento.Size = pbImgDocumento.Size;
                 pbDocumento.Image = pbImgDocumento.Image;
                 pbDocumento.SizeMode = pbImgDocumento.SizeMode;
@@ -241,7 +241,7 @@ namespace Vista.GerenteDocumentacion
                 Label lblTituloDocumento = new Label();
                 lblTituloDocumento.Text = fila["NombreDocumentacion"].ToString();
                 lblTituloDocumento.Text = AjustarTexto(lblTituloDocumento, lblTituloDocumento.Text);
-                lblTituloDocumento.Location = new Point(78, 25);
+                lblTituloDocumento.Location = new Point(78, 12);
                 lblTituloDocumento.Font = new Font("Book Antiqua", 18, FontStyle.Bold);
                 lblTituloDocumento.ForeColor = Color.FromArgb(64, 6, 6);
                 lblTituloDocumento.MaximumSize = new Size(280, 28);
@@ -250,7 +250,7 @@ namespace Vista.GerenteDocumentacion
                 Label lblFecha = new Label();
                 DateTime fecha = Convert.ToDateTime(fila["FechaDocumentacion"]);
                 lblFecha.Text = fecha.ToString("dd/MM/yyyy");
-                lblFecha.Location = new Point(78, 59);
+                lblFecha.Location = new Point(78, 42);
                 lblFecha.Font = new Font("Book Antiqua", 15, FontStyle.Regular);
                 lblFecha.AutoSize = true;
 

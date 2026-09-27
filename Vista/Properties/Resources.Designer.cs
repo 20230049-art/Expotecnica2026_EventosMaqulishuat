@@ -313,6 +313,26 @@ namespace Vista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_27_001639 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-27 001639", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_27_125324 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-27 125324", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Casa1 {
             get {
                 object obj = ResourceManager.GetObject("Casa1", resourceCulture);

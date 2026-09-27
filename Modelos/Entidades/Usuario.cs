@@ -250,5 +250,76 @@ namespace Modelos.Entidades
             }
 
         }
+
+        //Paginas
+        public static DataTable MostrarUsuariosPagina(int pagina, int registrosPorPagina, out int totalRegistros)
+        {
+            DataTable dt = new DataTable();
+            totalRegistros = 0;
+
+            using (SqlConnection cn = ConexionDB.Conectar())
+            using (SqlCommand cmd = new SqlCommand("MostrarUsuariosPagina", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+
+                SqlParameter outTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outTotal);
+
+                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                {
+                    ad.Fill(dt);
+                }
+
+                totalRegistros = outTotal.Value == DBNull.Value? 0 : Convert.ToInt32(outTotal.Value);
+            }
+
+            return dt;
+        }
+
+        //Elimianr Usuario
+        public static bool EliminarUsuario(int idUsuario)
+        {
+            try
+            {
+                using (SqlConnection cn = ConexionDB.Conectar())
+                using (SqlCommand cmd = new SqlCommand("EliminarUsuario", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@IdUsuario", SqlDbType.Int).Value = idUsuario;
+
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+        }
+
+        //Restaurar Usuario
+        public static bool RestaurarUsuario(int idUsuario)
+        {
+            try
+            {
+                using (SqlConnection cn = ConexionDB.Conectar())
+                using (SqlCommand cmd = new SqlCommand("RestaurarUsuario", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@IdUsuario", SqlDbType.Int).Value = idUsuario;
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+        }
     }
 }

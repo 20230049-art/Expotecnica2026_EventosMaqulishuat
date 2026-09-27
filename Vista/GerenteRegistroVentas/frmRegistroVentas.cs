@@ -389,5 +389,20 @@ namespace Vista.GerenteRegistroVentas
                 return null;
             }
         }
+
+        private void txtBarraBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                busquedaActual = txtBarraBuscar.Text.Trim();
+                CargarPagina(1);
+            }
+            catch (Exception ex)
+            {
+                errorProvider.SetError(txtBarraBuscar, "Error en la búsqueda.");
+                MessageBox.Show("Error al buscar ventas: " + ex.Message,
+                        "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ using Vista.GerenteRegistroPagos;
 using Vista.GerenteRegistroVentas;
 using Vista.GerenteReportes;
 using Vista.IniciarSesion;
+using Vista.UsuariosCreados;
 using Vista.Utilidades;
 
 namespace Vista.GerenteInicio
@@ -135,7 +136,7 @@ namespace Vista.GerenteInicio
 
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-            abrirForm(new frmAyuda());
+            abrirForm(new frmUsuarios());
             ActivarBoton(btnUsuario);
         }
 
@@ -182,6 +183,9 @@ namespace Vista.GerenteInicio
                 btnEmpleado.BackColor = Color.FromArgb(241, 206, 184);
                 btnProveedores.BackColor = Color.FromArgb(241, 206, 184);
                 btnUsuario.BackColor = Color.FromArgb(241, 206, 184);
+                btnAyyuda.BackColor = Color.FromArgb(241, 206, 184);
+                btnUsuario.BackColor = Color.FromArgb(241, 206, 184);
+                btnReportes.BackColor = Color.FromArgb(241, 206, 184);
             }
             catch (Exception ex)
             {
@@ -195,5 +199,13 @@ namespace Vista.GerenteInicio
 
             botones.BackColor = Color.FromArgb(253, 241, 217);
         }
+
+        private void btnAyyuda_Click(object sender, EventArgs e)
+        {
+            abrirForm(new frmAyuda());
+            ActivarBoton(btnAyyuda);
+        }
+
+
     }
 }
