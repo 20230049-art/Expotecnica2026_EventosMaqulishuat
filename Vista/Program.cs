@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.IniciarSesion;
+using Vista.PrimerUso;
 
 namespace Vista
 {
@@ -17,7 +18,7 @@ namespace Vista
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInicio());
+            Application.Run(new frmInicioBienvenida());
         }
     }
 }
