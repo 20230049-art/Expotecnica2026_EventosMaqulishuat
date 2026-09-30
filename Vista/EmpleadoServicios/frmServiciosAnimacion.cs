@@ -317,5 +317,22 @@ namespace Vista.EmpleadoServicios
                 MostrarProductos(new DataTable());
             }
         }
+
+        private void frmServiciosAnimacion_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
+        }
     }
 }

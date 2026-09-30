@@ -59,6 +59,7 @@
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
     </Reference>
@@ -81,6 +82,8 @@
     <Compile Include="Conexion_DB\ConexionDB.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\CuentaAbierta.cs" />
+    <Compile Include="Entidades\DatosEmpresa.cs" />
+    <Compile Include="Entidades\DatosInicioCompleto.cs" />
     <Compile Include="Entidades\DetalledeVenta.cs" />
     <Compile Include="Entidades\DocumentoPDF.cs" />
     <Compile Include="Entidades\Documentos.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Entidades\EstadoVentas.cs" />
     <Compile Include="Entidades\EventosGloblales.cs" />
     <Compile Include="Entidades\FacturaCompleta.cs" />
+    <Compile Include="Entidades\Fechas.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
     <Compile Include="Entidades\RegistrodePagos.cs" />
@@ -100,6 +104,7 @@
     <Compile Include="Entidades\TipoPagoVentas.cs" />
     <Compile Include="Entidades\TipoUsuarios.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\UsuarioActual.cs" />
     <Compile Include="Entidades\Venta.cs" />
     <Compile Include="Entidades\VentaActiva.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

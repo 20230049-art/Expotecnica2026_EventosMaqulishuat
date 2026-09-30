@@ -53,6 +53,8 @@ namespace Vista.GerenteInventario
                 ActivarBoton(btnClientesTotales); CargarPagina(1);
 
                 txtBarraBuscar.TextChanged += (s, e) => errorProvider.SetError(txtBarraBuscar, "");
+
+                EstilizarGrid();
             }
             catch (Exception ex)
             {
@@ -453,6 +455,53 @@ namespace Vista.GerenteInventario
             {
                 MessageBox.Show("Error al abrir el formulario de actualización: " + ex.Message,
                         "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EstilizarGrid()
+        {
+            try
+            {
+                dgvProductos.EnableHeadersVisualStyles = false;
+                dgvProductos.BorderStyle = BorderStyle.FixedSingle;
+                dgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                dgvProductos.GridColor = Color.FromArgb(200, 180, 160);
+                dgvProductos.BackgroundColor = Color.FromArgb(253, 241, 217);
+                dgvProductos.RowHeadersVisible = false;
+                dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvProductos.MultiSelect = false;
+                dgvProductos.ReadOnly = true;
+                dgvProductos.AllowUserToAddRows = false;
+                dgvProductos.AllowUserToDeleteRows = false;
+                dgvProductos.AllowUserToResizeRows = false;
+                dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgvProductos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(208, 112, 3);
+                dgvProductos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvProductos.ColumnHeadersDefaultCellStyle.Font = new Font("Book Antiqua", 12, FontStyle.Bold);
+                dgvProductos.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvProductos.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 0, 0, 0);
+                dgvProductos.ColumnHeadersHeight = 38;
+                dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+                dgvProductos.DefaultCellStyle.Font = new Font("Bookman Old Style", 11, FontStyle.Regular);
+                dgvProductos.DefaultCellStyle.ForeColor = Color.FromArgb(64, 6, 6);
+                dgvProductos.DefaultCellStyle.BackColor = Color.FromArgb(253, 241, 217);
+                dgvProductos.DefaultCellStyle.SelectionBackColor = Color.FromArgb(249, 190, 121);
+                dgvProductos.DefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 6, 6);
+                dgvProductos.DefaultCellStyle.Padding = new Padding(6, 0, 0, 0);
+                dgvProductos.RowTemplate.Height = 34;
+
+                dgvProductos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 228, 200);
+                dgvProductos.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(249, 190, 121);
+                dgvProductos.AlternatingRowsDefaultCellStyle.ForeColor = Color.FromArgb(64, 6, 6);
+
+                dgvProductos.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.Single;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al estilizar el grid: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

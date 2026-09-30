@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,6 +48,23 @@ namespace Vista.IniciarSesion
         private void tlpFondo_Click(object sender, EventArgs e)
         {
             abrirFormulario(new frmSeleccionarPefil());
+        }
+
+        private void frmInicio_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;   
+                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
         }
     }
 }

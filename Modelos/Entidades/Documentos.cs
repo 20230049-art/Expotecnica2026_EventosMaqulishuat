@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Modelos.Entidades
 {
@@ -17,6 +18,7 @@ namespace Modelos.Entidades
         private DateTime fechaUltimoAcceso;
         private bool tipoDocumentos;
         private string archivoDocumentacion;
+        private bool documentacionFavorita;
 
         public int IdDocumentacion { get => idDocumentacion; set => idDocumentacion = value; }
         public string NombreDocumentacion { get => nombreDocumentacion; set => nombreDocumentacion = value; }
@@ -24,6 +26,7 @@ namespace Modelos.Entidades
         public DateTime FechaUltimoAcceso { get => fechaUltimoAcceso; set => fechaUltimoAcceso = value; }
         public bool TipoDocumentos { get => tipoDocumentos; set => tipoDocumentos = value; }
         public string ArchivoDocumentacion { get => archivoDocumentacion; set => archivoDocumentacion = value; }
+        public bool DocumentacionFavorita { get => documentacionFavorita; set => documentacionFavorita = value; }
 
         public static DataTable MostrarDocumentos()
         {
@@ -187,6 +190,30 @@ namespace Modelos.Entidades
             catch (Exception ex)
             {
                 throw new Exception("Error inesperado al eliminar el documento: " + ex.Message, ex);
+            }
+        }
+
+        //Documento a favorito
+        public static bool CambiarFavorito(int idDocumentacion, bool documentacionFavorita)
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDB.Conectar())
+                using (SqlCommand cmd = new SqlCommand("CambiarFavoritoDocumento", conexion))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
+                    cmd.Parameters.Add("@DocumentacionFavorita", SqlDbType.Bit).Value = documentacionFavorita;
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+
+                    return filasAfectadas > 0;
+                }
+            }
+            catch (SqlException ex) { throw new Exception("No se pudo actualizar el estado del documento.", ex); 
+            }
+            catch (Exception ex) { throw new Exception("Ocurrió un error al cambiar el estado del documento.", ex);
             }
         }
     }

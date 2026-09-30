@@ -243,46 +243,46 @@ namespace Modelos.Entidades
         }
 
         //Paginas cliente :[
-        public static DataTable MostrarClientesPagina(int pagina, int registrosPorPagina, int tipoFiltro, out int totalRegistros)
-        {
-            DataTable dt = new DataTable();
-            totalRegistros = 0;
-
-            try
+            public static DataTable MostrarClientesPagina(int pagina, int registrosPorPagina, int tipoFiltro, out int totalRegistros)
             {
-                using (SqlConnection conexion = ConexionDB.Conectar())
+                DataTable dt = new DataTable();
+                totalRegistros = 0;
+
+                try
                 {
-                    using (SqlCommand cmd = new SqlCommand("MostrarClientesPaginas", conexion))
+                    using (SqlConnection conexion = ConexionDB.Conectar())
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
-                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
-
-                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        using (SqlCommand cmd = new SqlCommand("MostrarClientesPaginas", conexion))
                         {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(outputTotal);
+                            cmd.CommandType = CommandType.StoredProcedure;
 
-                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                        {
-                            ad.Fill(dt);
+                            cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                            cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                            cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+
+                            SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                            {
+                                Direction = ParameterDirection.Output
+                            };
+                            cmd.Parameters.Add(outputTotal);
+
+                            using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                            {
+                                ad.Fill(dt);
+                            }
+
+                            totalRegistros = outputTotal.Value == DBNull.Value
+                                ? 0
+                                : Convert.ToInt32(outputTotal.Value);
                         }
-
-                        totalRegistros = outputTotal.Value == DBNull.Value
-                            ? 0
-                            : Convert.ToInt32(outputTotal.Value);
                     }
                 }
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception("Error al obtener los clientes paginados: " + ex.Message, ex);
-            }
+                catch (SqlException ex)
+                {
+                    throw new Exception("Error al obtener los clientes paginados: " + ex.Message, ex);
+                }
 
-            return dt;
-        }
+                return dt;
+            }
     }
 }

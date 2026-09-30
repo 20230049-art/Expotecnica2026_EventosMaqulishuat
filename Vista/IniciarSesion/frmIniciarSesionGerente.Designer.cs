@@ -257,6 +257,7 @@
             this.btnRegresar.Text = "Regresar";
             this.toolTip1.SetToolTip(this.btnRegresar, "Regresar a la pantalla anterior");
             this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // label2
             // 

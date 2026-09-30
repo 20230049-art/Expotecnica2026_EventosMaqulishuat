@@ -59,10 +59,20 @@ namespace Vista.PrimerUso
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmConfiguracionInicial frm = new frmConfiguracionInicial();
-            frm.ShowDialog();
+            try
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "ERROR",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //frmConfiguracionInicial frm = new frmConfiguracionInicial();
+            //frm.ShowDialog();
 
-            this.Hide();
+            //this.Hide();
         }
     }
 }

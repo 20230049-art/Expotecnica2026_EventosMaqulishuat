@@ -199,111 +199,102 @@ namespace Vista.GerenteRegistroVentas
                 panelContenedor.Width = pnlContenedor.Width;
                 panelContenedor.Height = pnlContenedor.Height;
                 panelContenedor.BorderStyle = pnlContenedor.BorderStyle;
-                panelContenedor.BackColor = Color.FromArgb(253, 241, 217);
-                panelContenedor.Tag = fila["NombreEmpleado"];
+                panelContenedor.BackColor = pnlContenedor.BackColor;
+                panelContenedor.Margin = new Padding(10);
+                panelContenedor.Tag = fila["IdVenta"];
 
+                // ============================================
+                //   PANEL INTERNO (RECUADRO AMARILLO)
+                //   → Ocupa TODO el espacio disponible
+                // ============================================
                 Panel pnlContenedorInfoo = new Panel();
                 pnlContenedorInfoo.Width = pnlContenedorInfo.Width;
                 pnlContenedorInfoo.Height = pnlContenedorInfo.Height;
                 pnlContenedorInfoo.BackColor = pnlContenedorInfo.BackColor;
                 pnlContenedorInfoo.BorderStyle = pnlContenedorInfo.BorderStyle;
-                pnlContenedorInfoo.Margin = new Padding(10);
+                pnlContenedorInfoo.Location = pnlContenedorInfo.Location;
                 pnlContenedorInfoo.Tag = fila["IdVenta"];
 
+                // ✅ Ancho total del panel para distribución proporcional
+                int anchoTotal = pnlContenedorInfoo.Width;
+                int altoTotal = pnlContenedorInfoo.Height;
+
+                // ✅ Posiciones X de cada columna (4 columnas al 25% cada una)
+                int col1 = 20;                                     // N° Venta / Empleado
+                int col2 = (int)(anchoTotal * 0.25);               // Cliente / Estado
+                int col3 = (int)(anchoTotal * 0.50);               // Fechas
+                int col4 = (int)(anchoTotal * 0.75);               // Items / Total
+
+                // ✅ Anchos máximos de cada texto (para que no se solapen)
+                int anchoCol1 = col2 - col1 - 20;
+                int anchoCol2 = col3 - col2 - 20;
+                int anchoCol3 = col4 - col3 - 20;
+                int anchoCol4 = anchoTotal - col4 - 20;
+
+                // ============================================
+                //   COLUMNA 1: N° Venta / Empleado
+                // ============================================
                 Label lblVentaTitulo = new Label();
                 lblVentaTitulo.Text = "N° Venta";
                 lblVentaTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
-                lblVentaTitulo.Location = new Point(18, 19);
+                lblVentaTitulo.Location = new Point(col1, 15);
                 lblVentaTitulo.ForeColor = Color.FromArgb(64, 6, 6);
                 lblVentaTitulo.AutoSize = true;
 
+                // ✅ Panel blanco con el número de venta al lado del título
                 Panel pnlNOVenta = new Panel();
-                pnlNOVenta.BackColor = Color.FromArgb(255, 255, 255);
-                pnlNOVenta.Location = new Point(15, 15);
-                pnlNOVenta.Size = new Size(195, 39);
+                pnlNOVenta.BackColor = Color.White;
+                pnlNOVenta.Location = new Point(col1 + 105, 12);
+                pnlNOVenta.Size = new Size(80, 32);
                 pnlNOVenta.BorderStyle = BorderStyle.FixedSingle;
 
                 Label lblVenta = new Label();
                 lblVenta.Text = fila["IdVenta"].ToString();
-                lblVenta.Font = new Font("Bookman Old Style", 15, FontStyle.Regular);
-                lblVenta.Location = new Point(120, 12);
+                lblVenta.Font = new Font("Bookman Old Style", 15, FontStyle.Bold);
+                lblVenta.Location = new Point(20, 4);
                 lblVenta.AutoSize = true;
 
                 Label lblEmpleadoTitulo = new Label();
                 lblEmpleadoTitulo.Text = "Empleado";
                 lblEmpleadoTitulo.Font = new Font("Book Antiqua", 14, FontStyle.Bold);
-                lblEmpleadoTitulo.Location = new Point(15, 58);
+                lblEmpleadoTitulo.Location = new Point(col1, 55);
                 lblEmpleadoTitulo.ForeColor = Color.FromArgb(64, 6, 6);
                 lblEmpleadoTitulo.AutoSize = true;
 
                 Label lblEmpleado = new Label();
                 lblEmpleado.Text = fila["NombreEmpleado"].ToString();
-                lblEmpleado.Font = new Font("Bookman Old Style", 14, FontStyle.Regular);
-                lblEmpleado.Location = new Point(15, 82);
-                lblEmpleado.MaximumSize = new Size(215, 0);
+                lblEmpleado.Font = new Font("Bookman Old Style", 13, FontStyle.Regular);
+                lblEmpleado.Location = new Point(col1, 80);
+                lblEmpleado.MaximumSize = new Size(anchoCol1, 0);
                 lblEmpleado.AutoSize = true;
 
+                // ✅ Separador vertical
                 Panel pnlDec1 = new Panel();
-                pnlDec1.Size = new Size(1, 105);
-                pnlDec1.Location = new Point(242, 12);
+                pnlDec1.Size = new Size(1, altoTotal - 20);
+                pnlDec1.Location = new Point(col2 - 10, 10);
                 pnlDec1.BackColor = Color.Black;
 
+                // ============================================
+                //   COLUMNA 2: Cliente / Estado
+                // ============================================
                 Label lblClienteTitulo = new Label();
                 lblClienteTitulo.Text = "Cliente";
-                lblClienteTitulo.Font = new Font("Book Antiqua", 16, FontStyle.Bold);
-                lblClienteTitulo.Location = new Point(262, 18);
+                lblClienteTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
+                lblClienteTitulo.Location = new Point(col2, 15);
                 lblClienteTitulo.ForeColor = Color.FromArgb(64, 6, 6);
                 lblClienteTitulo.AutoSize = true;
 
                 Label lblCliente = new Label();
                 lblCliente.Text = fila["NombreCliente"].ToString() + " " + fila["ApellidoCliente"].ToString();
-                lblCliente.Font = new Font("Bookman Old Style", 16, FontStyle.Regular);
-                lblCliente.Location = new Point(262, 42);
-                lblCliente.MaximumSize = new Size(230, 0);
+                lblCliente.Font = new Font("Bookman Old Style", 14, FontStyle.Regular);
+                lblCliente.Location = new Point(col2, 40);
+                lblCliente.MaximumSize = new Size(anchoCol2, 0);
                 lblCliente.AutoSize = true;
-
-                Panel pnlDec2 = new Panel();
-                pnlDec2.Size = new Size(1, 105);
-                pnlDec2.Location = new Point(465, 12);
-                pnlDec2.BackColor = Color.Black;
-
-                Label lblFPedidoTitulo = new Label();
-                lblFPedidoTitulo.Text = "Fecha Pedido";
-                lblFPedidoTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
-                lblFPedidoTitulo.Location = new Point(470, 15);
-                lblFPedidoTitulo.ForeColor = Color.FromArgb(64, 6, 6);
-                lblFPedidoTitulo.AutoSize = true;
-
-                DateTime fPedido = Convert.ToDateTime(fila["Fechaventa"]);
-                Label lblFPedido = new Label();
-                lblFPedido.Text = fPedido.ToString("dd/MM/yyyy");
-                lblFPedido.Font = new Font("Bookman Old Style", 14, FontStyle.Regular);
-                lblFPedido.Location = new Point(470, 39);
-                lblFPedido.AutoSize = true;
-
-                Label lblFEntregaTitulo = new Label();
-                lblFEntregaTitulo.Text = "Fecha Entrega";
-                lblFEntregaTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
-                lblFEntregaTitulo.Location = new Point(472, 68);
-                lblFEntregaTitulo.ForeColor = Color.FromArgb(64, 6, 6);
-                lblFEntregaTitulo.AutoSize = true;
-
-                DateTime fUso = Convert.ToDateTime(fila["FechaUso"]);
-                Label lblFEntrega = new Label();
-                lblFEntrega.Text = fUso.ToString("dd/MM/yyyy");
-                lblFEntrega.Font = new Font("Bookman Old Style", 14, FontStyle.Regular);
-                lblFEntrega.Location = new Point(472, 92);
-                lblFEntrega.AutoSize = true;
-
-                Panel pnlDec3 = new Panel();
-                pnlDec3.Size = new Size(1, 105);
-                pnlDec3.Location = new Point(660, 12);
-                pnlDec3.BackColor = Color.Black;
 
                 Label lblEstadoTitulo = new Label();
                 lblEstadoTitulo.Text = "Estado";
                 lblEstadoTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
-                lblEstadoTitulo.Location = new Point(680, 17);
+                lblEstadoTitulo.Location = new Point(col2, 68);
                 lblEstadoTitulo.ForeColor = Color.FromArgb(64, 6, 6);
                 lblEstadoTitulo.AutoSize = true;
 
@@ -312,62 +303,111 @@ namespace Vista.GerenteRegistroVentas
                 lblEstado.Font = new Font("Bookman Old Style", 13, FontStyle.Regular);
                 lblEstado.BackColor = Color.White;
                 lblEstado.BorderStyle = BorderStyle.FixedSingle;
-                lblEstado.Location = new Point(680, 42);
-                lblEstado.Size = new Size(170, 24);
+                lblEstado.Location = new Point(col2, 92);
+                lblEstado.Size = new Size(anchoCol2 - 10, 24);
                 lblEstado.TextAlign = ContentAlignment.MiddleLeft;
                 lblEstado.Padding = new Padding(4, 0, 0, 0);
 
+                // ✅ Separador vertical
+                Panel pnlDec2 = new Panel();
+                pnlDec2.Size = new Size(1, altoTotal - 20);
+                pnlDec2.Location = new Point(col3 - 10, 10);
+                pnlDec2.BackColor = Color.Black;
+
+                // ============================================
+                //   COLUMNA 3: Fecha Pedido / Fecha Entrega
+                // ============================================
+                Label lblFPedidoTitulo = new Label();
+                lblFPedidoTitulo.Text = "Fecha Pedido";
+                lblFPedidoTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
+                lblFPedidoTitulo.Location = new Point(col3, 15);
+                lblFPedidoTitulo.ForeColor = Color.FromArgb(64, 6, 6);
+                lblFPedidoTitulo.AutoSize = true;
+
+                DateTime fPedido = Convert.ToDateTime(fila["Fechaventa"]);
+                Label lblFPedido = new Label();
+                lblFPedido.Text = fPedido.ToString("dd/MM/yyyy");
+                lblFPedido.Font = new Font("Bookman Old Style", 14, FontStyle.Regular);
+                lblFPedido.Location = new Point(col3, 40);
+                lblFPedido.AutoSize = true;
+
+                Label lblFEntregaTitulo = new Label();
+                lblFEntregaTitulo.Text = "Fecha Entrega";
+                lblFEntregaTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
+                lblFEntregaTitulo.Location = new Point(col3, 68);
+                lblFEntregaTitulo.ForeColor = Color.FromArgb(64, 6, 6);
+                lblFEntregaTitulo.AutoSize = true;
+
+                DateTime fUso = Convert.ToDateTime(fila["FechaUso"]);
+                Label lblFEntrega = new Label();
+                lblFEntrega.Text = fUso.ToString("dd/MM/yyyy");
+                lblFEntrega.Font = new Font("Bookman Old Style", 14, FontStyle.Regular);
+                lblFEntrega.Location = new Point(col3, 92);
+                lblFEntrega.AutoSize = true;
+
+                // ✅ Separador vertical
+                Panel pnlDec3 = new Panel();
+                pnlDec3.Size = new Size(1, altoTotal - 20);
+                pnlDec3.Location = new Point(col4 - 10, 10);
+                pnlDec3.BackColor = Color.Black;
+
+                // ============================================
+                //   COLUMNA 4: Items Vendidos / Total
+                // ============================================
                 Label lblItemsTitulo = new Label();
                 lblItemsTitulo.Text = "Items Vendidos";
                 lblItemsTitulo.Font = new Font("Book Antiqua", 15, FontStyle.Bold);
-                lblItemsTitulo.Location = new Point(680, 70);
+                lblItemsTitulo.Location = new Point(col4, 15);
                 lblItemsTitulo.ForeColor = Color.FromArgb(64, 6, 6);
                 lblItemsTitulo.AutoSize = true;
 
                 Label lblItems = new Label();
                 lblItems.Text = fila["ItemsVendidos"].ToString();
-                lblItems.Font = new Font("Bookman Old Style", 13, FontStyle.Bold);
-                lblItems.Location = new Point(695, 83);
+                lblItems.Font = new Font("Bookman Old Style", 15, FontStyle.Bold);
+                lblItems.Location = new Point(col4 + (anchoCol4 / 2) - 15, 42);
                 lblItems.AutoSize = true;
 
-                Panel pnlDec4 = new Panel();
-                pnlDec4.Size = new Size(1, 105);
-                pnlDec4.Location = new Point(820, 12);
-                pnlDec4.BackColor = Color.Black;
-
+                // ✅ Panel naranja del Total, ocupa todo el ancho de la columna
                 Panel pnlTotal = new Panel();
                 pnlTotal.BackColor = Color.FromArgb(249, 190, 121);
-                pnlTotal.Location = new Point(830, 68);
-                pnlTotal.Size = new Size(170, 42);
+                pnlTotal.Location = new Point(col4, 70);
+                pnlTotal.Size = new Size(anchoCol4, 45);
                 pnlTotal.BorderStyle = BorderStyle.FixedSingle;
 
                 Label lblTotal = new Label();
                 lblTotal.Text = "Total: " + Convert.ToDecimal(fila["TotalVenta"]).ToString("N2");
-                lblTotal.Font = new Font("Bookman Old Style", 13, FontStyle.Bold);
-                lblTotal.Location = new Point(8, 10);
+                lblTotal.Font = new Font("Bookman Old Style", 14, FontStyle.Bold);
+                lblTotal.Location = new Point(10, 12);
                 lblTotal.ForeColor = Color.FromArgb(64, 6, 6);
                 lblTotal.AutoSize = true;
 
-                //pnlTotal.Controls.Add(lblTotal);
-
+                // ============================================
+                //   ENSAMBLADO
+                // ============================================
                 panelContenedor.Controls.Add(pnlContenedorInfoo);
+
                 pnlContenedorInfoo.Controls.Add(lblVentaTitulo);
                 pnlContenedorInfoo.Controls.Add(pnlNOVenta);
                 pnlNOVenta.Controls.Add(lblVenta);
+
                 pnlContenedorInfoo.Controls.Add(lblEmpleadoTitulo);
                 pnlContenedorInfoo.Controls.Add(lblEmpleado);
+
                 pnlContenedorInfoo.Controls.Add(pnlDec1);
+
                 pnlContenedorInfoo.Controls.Add(lblClienteTitulo);
                 pnlContenedorInfoo.Controls.Add(lblCliente);
                 pnlContenedorInfoo.Controls.Add(lblEstadoTitulo);
                 pnlContenedorInfoo.Controls.Add(lblEstado);
+
                 pnlContenedorInfoo.Controls.Add(pnlDec2);
+
                 pnlContenedorInfoo.Controls.Add(lblFPedidoTitulo);
                 pnlContenedorInfoo.Controls.Add(lblFPedido);
                 pnlContenedorInfoo.Controls.Add(lblFEntregaTitulo);
                 pnlContenedorInfoo.Controls.Add(lblFEntrega);
-                pnlContenedorInfoo.Controls.Add(pnlDec3);
 
+                pnlContenedorInfoo.Controls.Add(pnlDec3);
 
                 pnlContenedorInfoo.Controls.Add(lblItemsTitulo);
                 pnlContenedorInfoo.Controls.Add(lblItems);

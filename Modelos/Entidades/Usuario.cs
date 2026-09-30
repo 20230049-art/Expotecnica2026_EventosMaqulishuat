@@ -32,6 +32,7 @@ namespace Modelos.Entidades
         public string ApellidoGerente { get => apellidoGerente; set => apellidoGerente = value; }
         public string CorreoGerente { get => correoGerente; set => correoGerente = value; }
 
+        public static Usuario Datos { get; set; }
 
         //Crear cuenta Gerente
         public bool RegistrarGerente()

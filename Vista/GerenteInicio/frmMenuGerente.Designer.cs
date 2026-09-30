@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
@@ -49,7 +49,6 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnReportes = new System.Windows.Forms.Button();
@@ -104,6 +103,7 @@
             this.chartProductosVendidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel9 = new System.Windows.Forms.Panel();
             this.chartEmpleadosVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -114,7 +114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -146,6 +145,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartProductosVendidos)).BeginInit();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmpleadosVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -307,16 +307,6 @@
             this.pictureBox6.TabIndex = 43;
             this.pictureBox6.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_104125;
-            this.pictureBox5.Location = new System.Drawing.Point(38, 320);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(41, 35);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 42;
-            this.pictureBox5.TabStop = false;
-            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Vista.Properties.Resources.Casa1;
@@ -407,7 +397,7 @@
             this.btnRegistroVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRegistroVentas.FlatAppearance.BorderSize = 0;
             this.btnRegistroVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistroVentas.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistroVentas.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistroVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnRegistroVentas.Location = new System.Drawing.Point(0, 516);
             this.btnRegistroVentas.Name = "btnRegistroVentas";
@@ -423,7 +413,7 @@
             this.btnRegisPagoGere.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRegisPagoGere.FlatAppearance.BorderSize = 0;
             this.btnRegisPagoGere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisPagoGere.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisPagoGere.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegisPagoGere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnRegisPagoGere.Location = new System.Drawing.Point(0, 465);
             this.btnRegisPagoGere.Name = "btnRegisPagoGere";
@@ -589,7 +579,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 547F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel6.Controls.Add(this.pictureBox15, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
@@ -606,7 +596,7 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox15.Location = new System.Drawing.Point(1333, 37);
+            this.pictureBox15.Location = new System.Drawing.Point(1331, 37);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(200, 79);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -620,7 +610,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(61, 34);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(719, 87);
+            this.lblProductos.Size = new System.Drawing.Size(717, 87);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "BIENVENIDO";
             // 
@@ -629,9 +619,9 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(786, 37);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(784, 37);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -691,7 +681,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.03306F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 317F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel3.Controls.Add(this.pictureBox16, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 3, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -709,7 +699,7 @@
             this.pictureBox16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox16.Location = new System.Drawing.Point(9, 17);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(150, 261);
+            this.pictureBox16.Size = new System.Drawing.Size(148, 261);
             this.pictureBox16.TabIndex = 0;
             this.pictureBox16.TabStop = false;
             // 
@@ -721,7 +711,7 @@
             this.tableLayoutPanel4.Controls.Add(this.btnReporteVentas, 0, 5);
             this.tableLayoutPanel4.Controls.Add(this.label10, 0, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(173, 17);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(171, 17);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 7;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.065134F));
@@ -763,6 +753,7 @@
             this.btnReporteVentas.TabIndex = 39;
             this.btnReporteVentas.Text = "Descargar reporte";
             this.btnReporteVentas.UseVisualStyleBackColor = false;
+            this.btnReporteVentas.Click += new System.EventHandler(this.btnReporteVentas_Click);
             // 
             // label10
             // 
@@ -794,16 +785,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartVentasMensuales.BackColor = System.Drawing.Color.SeaShell;
-            chartArea1.Name = "ChartArea1";
-            this.chartVentasMensuales.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartVentasMensuales.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chartVentasMensuales.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartVentasMensuales.Legends.Add(legend4);
             this.chartVentasMensuales.Location = new System.Drawing.Point(3, 3);
             this.chartVentasMensuales.Name = "chartVentasMensuales";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartVentasMensuales.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartVentasMensuales.Series.Add(series4);
             this.chartVentasMensuales.Size = new System.Drawing.Size(1010, 295);
             this.chartVentasMensuales.TabIndex = 1;
             this.chartVentasMensuales.Text = "chart2";
@@ -860,7 +851,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.03306F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 317F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel11.Controls.Add(this.pictureBox17, 1, 1);
             this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel12, 3, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -878,7 +869,7 @@
             this.pictureBox17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox17.Location = new System.Drawing.Point(7, 12);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(100, 174);
+            this.pictureBox17.Size = new System.Drawing.Size(98, 174);
             this.pictureBox17.TabIndex = 0;
             this.pictureBox17.TabStop = false;
             // 
@@ -890,7 +881,7 @@
             this.tableLayoutPanel12.Controls.Add(this.btnReporteTopProductos, 0, 5);
             this.tableLayoutPanel12.Controls.Add(this.label5, 0, 3);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(121, 12);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(119, 12);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 6;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.065134F));
@@ -931,6 +922,7 @@
             this.btnReporteTopProductos.TabIndex = 39;
             this.btnReporteTopProductos.Text = "Descargar reporte";
             this.btnReporteTopProductos.UseVisualStyleBackColor = false;
+            this.btnReporteTopProductos.Click += new System.EventHandler(this.btnReporteTopProductos_Click);
             // 
             // label5
             // 
@@ -963,7 +955,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.03306F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 317F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel9.Controls.Add(this.pictureBox18, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 3, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -981,7 +973,7 @@
             this.pictureBox18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox18.Location = new System.Drawing.Point(7, 12);
             this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(100, 177);
+            this.pictureBox18.Size = new System.Drawing.Size(98, 177);
             this.pictureBox18.TabIndex = 0;
             this.pictureBox18.TabStop = false;
             // 
@@ -993,7 +985,7 @@
             this.tableLayoutPanel10.Controls.Add(this.btnReportePagos, 0, 5);
             this.tableLayoutPanel10.Controls.Add(this.label3, 0, 3);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(121, 12);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(119, 12);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 6;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.065134F));
@@ -1034,6 +1026,7 @@
             this.btnReportePagos.TabIndex = 39;
             this.btnReportePagos.Text = "Descargar reporte";
             this.btnReportePagos.UseVisualStyleBackColor = false;
+            this.btnReportePagos.Click += new System.EventHandler(this.btnReportePagos_Click);
             // 
             // label3
             // 
@@ -1065,16 +1058,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartProductosVendidos.BackColor = System.Drawing.Color.SeaShell;
-            chartArea2.Name = "ChartArea1";
-            this.chartProductosVendidos.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartProductosVendidos.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.chartProductosVendidos.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartProductosVendidos.Legends.Add(legend5);
             this.chartProductosVendidos.Location = new System.Drawing.Point(3, 3);
             this.chartProductosVendidos.Name = "chartProductosVendidos";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartProductosVendidos.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartProductosVendidos.Series.Add(series5);
             this.chartProductosVendidos.Size = new System.Drawing.Size(500, 421);
             this.chartProductosVendidos.TabIndex = 1;
             this.chartProductosVendidos.Text = "chart4";
@@ -1095,19 +1088,29 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEmpleadosVentas.BackColor = System.Drawing.Color.SeaShell;
-            chartArea3.Name = "ChartArea1";
-            this.chartEmpleadosVentas.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartEmpleadosVentas.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.chartEmpleadosVentas.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartEmpleadosVentas.Legends.Add(legend6);
             this.chartEmpleadosVentas.Location = new System.Drawing.Point(4, 3);
             this.chartEmpleadosVentas.Name = "chartEmpleadosVentas";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartEmpleadosVentas.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartEmpleadosVentas.Series.Add(series6);
             this.chartEmpleadosVentas.Size = new System.Drawing.Size(506, 421);
             this.chartEmpleadosVentas.TabIndex = 1;
             this.chartEmpleadosVentas.Text = "chart3";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_07_07_104125;
+            this.pictureBox5.Location = new System.Drawing.Point(38, 320);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(41, 35);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 42;
+            this.pictureBox5.TabStop = false;
             // 
             // frmMenuGerente
             // 
@@ -1119,6 +1122,7 @@
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "frmMenuGerente";
             this.Text = "frmMenuGerente";
+            this.Load += new System.EventHandler(this.frmMenuGerente_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
@@ -1129,7 +1133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1162,6 +1165,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartProductosVendidos)).EndInit();
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartEmpleadosVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1186,7 +1190,6 @@
         private System.Windows.Forms.Button btnInicioGere;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
@@ -1235,5 +1238,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartProductosVendidos;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmpleadosVentas;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

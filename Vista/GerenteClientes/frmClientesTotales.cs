@@ -114,7 +114,7 @@ namespace Vista.GerenteClientes
             }
         }
 
-        private void ColorPanelCliente(Panel panelCliente, bool estadoCliente)
+        private void ColorPanelCliente(Panel panelCliente, bool clienteActivo)
         {
             try
             {
@@ -124,9 +124,9 @@ namespace Vista.GerenteClientes
                 {
                     panelCliente.BackColor = Color.FromArgb(220, 110, 110);   
                 }
-                else if (estadoCliente)
+                else if (clienteActivo)
                 {
-                    panelCliente.BackColor = pnlContenedorInfo.BackColor;
+                   panelCliente.BackColor = Color.FromArgb(250, 121, 61);
                 }
                 else
                 {
@@ -208,6 +208,7 @@ namespace Vista.GerenteClientes
                 filtroActual = 2;
                 paginaActual = 1;
                 CargarPagina(1);
+                
             }
             catch (Exception ex)
             {
@@ -220,6 +221,7 @@ namespace Vista.GerenteClientes
         {
             try
             {
+                ActivarBoton(btnClientesNoActivos);
                 filtroActual = 3;
                 paginaActual = 1;
                 CargarPagina(1);
@@ -302,9 +304,9 @@ namespace Vista.GerenteClientes
                 panelCliente.Tag = fila["IdCliente"];
                 Redondeo.RedondearFig(panelCliente, 10);
 
-                bool estadoCliente = Convert.ToBoolean(fila["EstadoCliente"]);
-                ColorPanelCliente(panelCliente, estadoCliente);
-
+                bool clienteActivo = Convert.ToBoolean(fila["ClienteActivo"]);
+                ColorPanelCliente(panelCliente, clienteActivo);
+                    
                 Label lblNombre = new Label();
 
                 lblNombre.Text = "Nombre: " + fila["NombreCliente"].ToString();
@@ -668,7 +670,7 @@ namespace Vista.GerenteClientes
         {
             try
             {
-                CargarPagina(paginaActual + 1);
+                CargarPagina(paginaActual - 1);
             }
             catch (Exception ex)
             {

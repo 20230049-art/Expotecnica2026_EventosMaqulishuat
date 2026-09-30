@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -165,6 +166,28 @@ namespace Vista.EmpleadoServicios
         private void lblTextoDecoracion_Click(object sender, EventArgs e)
         {
             abrirForm(new frmServiciosDecoracion());
+        }
+
+        private void pbLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmServicios_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
         }
     }
 }

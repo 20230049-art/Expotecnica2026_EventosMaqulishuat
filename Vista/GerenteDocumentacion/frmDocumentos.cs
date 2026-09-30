@@ -254,9 +254,59 @@ namespace Vista.GerenteDocumentacion
                 lblFecha.Font = new Font("Book Antiqua", 15, FontStyle.Regular);
                 lblFecha.AutoSize = true;
 
+                bool esFavorito = fila["DocumentacionFavorita"] != DBNull.Value
+                  && Convert.ToBoolean(fila["DocumentacionFavorita"]);
+
+                Button btnFavorito = new Button();
+                btnFavorito.Text = esFavorito ? "★" : "☆";
+                btnFavorito.Font = new Font("Segoe UI Symbol", 20, FontStyle.Bold);
+                btnFavorito.ForeColor = esFavorito ? Color.Gold : Color.Gray;
+                btnFavorito.BackColor = Color.Transparent;
+                btnFavorito.FlatStyle = FlatStyle.Flat;
+                btnFavorito.FlatAppearance.BorderSize = 0;
+                btnFavorito.Size = new Size(40, 40);
+                btnFavorito.Location = new Point(140, 65);
+                btnFavorito.Tag = fila["IdDocumentacion"];
+
+                btnFavorito.Click += (s, e) =>
+                {
+                    try
+                    {
+                        object tag = ((Button)s).Tag;
+
+                        int idDoc = Convert.ToInt32(tag);
+
+                        bool nuevoEstado = !esFavorito;
+
+                        bool ok = Documentos.CambiarFavorito(idDoc, nuevoEstado);
+
+                        MessageBox.Show("Estado actualizado correctamente", "PROCEDIMIENTO-EXITOSO",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (ok)
+                        {
+                            btnFavorito.Text = nuevoEstado ? "★" : "☆";
+                            btnFavorito.ForeColor = nuevoEstado ? Color.Gold : Color.Gray;
+                            esFavorito = nuevoEstado;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el favorito.",
+                                "ERROR-ACTUALIZAR-009", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cambiar favorito: " + ex.Message,
+                            "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                };
+
                 panelDocumento.Controls.Add(pbDocumento);
                 panelDocumento.Controls.Add(lblTituloDocumento);
                 panelDocumento.Controls.Add(lblFecha);
+                panelDocumento.Controls.Add(btnFavorito);
 
                 return panelDocumento;
             }

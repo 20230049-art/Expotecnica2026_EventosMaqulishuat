@@ -32,11 +32,11 @@
             this.pnlVistaInicio = new System.Windows.Forms.Panel();
             this.tlpFondo = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaInicio.SuspendLayout();
             this.tlpFondo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVistaInicio
@@ -60,7 +60,7 @@
             this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.89189F));
             this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.7027F));
             this.tlpFondo.Controls.Add(this.label1, 1, 1);
-            this.tlpFondo.Controls.Add(this.pictureBox1, 1, 2);
+            this.tlpFondo.Controls.Add(this.pbLogo, 1, 2);
             this.tlpFondo.Location = new System.Drawing.Point(0, 0);
             this.tlpFondo.Name = "tlpFondo";
             this.tlpFondo.RowCount = 4;
@@ -88,19 +88,19 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.label1, "Da click en cualquier lugar de la pantalla");
             // 
-            // pictureBox1
+            // pbLogo
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Vista.Properties.Resources.LogoInicio;
-            this.pictureBox1.Location = new System.Drawing.Point(588, 307);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(800, 400);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Da click en cualquier lugar de la pantalla");
+            this.pbLogo.Image = global::Vista.Properties.Resources.LogoInicio;
+            this.pbLogo.Location = new System.Drawing.Point(588, 307);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(800, 400);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 1;
+            this.pbLogo.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbLogo, "Da click en cualquier lugar de la pantalla");
             // 
             // frmInicio
             // 
@@ -110,10 +110,11 @@
             this.Controls.Add(this.pnlVistaInicio);
             this.Name = "frmInicio";
             this.Text = "frmInicio";
+            this.Load += new System.EventHandler(this.frmInicio_Load);
             this.pnlVistaInicio.ResumeLayout(false);
             this.tlpFondo.ResumeLayout(false);
             this.tlpFondo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,7 +124,7 @@
         private System.Windows.Forms.Panel pnlVistaInicio;
         private System.Windows.Forms.TableLayoutPanel tlpFondo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using Vista.ClientesEmpleado;
 using Vista.EmpleadoProducto;
 using Vista.EmpleadoServicios;
+using Vista.GerenteCalendario;
 using Vista.GerenteClientes;
 using Vista.IniciarSesion;
 using Vista.Utilidades;
@@ -44,6 +46,23 @@ namespace Vista.EmpleadoMenu
             lblTituloHorario.TextAlign = ContentAlignment.MiddleCenter;
 
             AjustarTitulo();
+
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+
+                    pbLogo1.Image = img;
+                    pbLogo1.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
 
         }
 
@@ -140,7 +159,7 @@ namespace Vista.EmpleadoMenu
 
         private void btnCalendario_Click(object sender, EventArgs e)
         {
-            abrirForm(new frmClientesTotales());
+            abrirForm(new frmCalendario());
             ActivarBoton(btnCalendario);
         }
 
@@ -163,6 +182,11 @@ namespace Vista.EmpleadoMenu
         private void btnCerrarSesionGere_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

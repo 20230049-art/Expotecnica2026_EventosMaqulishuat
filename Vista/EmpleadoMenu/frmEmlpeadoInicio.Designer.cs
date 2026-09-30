@@ -32,7 +32,7 @@
             this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -52,11 +52,12 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTituloHorario = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.pbLogo1 = new System.Windows.Forms.PictureBox();
             this.pnlVistaInicioEmpleado.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -69,6 +70,8 @@
             this.panel5.SuspendLayout();
             this.pnlTituloHora.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVistaInicioEmpleado
@@ -114,8 +117,8 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 885F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.Controls.Add(this.pictureBox12, 3, 1);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel6.Controls.Add(this.pbLogo, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
@@ -127,16 +130,16 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1918, 153);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
-            // pictureBox12
+            // pbLogo
             // 
-            this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox12.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox12.Location = new System.Drawing.Point(1684, 34);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(200, 73);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox12.TabIndex = 3;
-            this.pictureBox12.TabStop = false;
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLogo.Image = global::Vista.Properties.Resources.LgoColor;
+            this.pbLogo.Location = new System.Drawing.Point(1683, 34);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(200, 73);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 3;
+            this.pbLogo.TabStop = false;
             // 
             // label1
             // 
@@ -145,7 +148,7 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 40.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(62, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(731, 79);
+            this.label1.Size = new System.Drawing.Size(730, 79);
             this.label1.TabIndex = 2;
             this.label1.Text = "Bienvenido";
             // 
@@ -240,7 +243,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
             this.lblTitulo.Location = new System.Drawing.Point(241, 13);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(354, 48);
+            this.lblTitulo.Size = new System.Drawing.Size(349, 48);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Ventas Realizadas";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -276,7 +279,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
             this.label4.Location = new System.Drawing.Point(966, 7);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 40);
+            this.label4.Size = new System.Drawing.Size(71, 38);
             this.label4.TabIndex = 0;
             this.label4.Text = "100";
             // 
@@ -289,7 +292,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
             this.label3.Location = new System.Drawing.Point(11, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 40);
+            this.label3.Size = new System.Drawing.Size(118, 38);
             this.label3.TabIndex = 0;
             this.label3.Text = "Totales";
             // 
@@ -371,11 +374,21 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(204)))), ((int)(((byte)(177)))));
+            this.panel9.Controls.Add(this.pbLogo1);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 115);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(700, 666);
             this.panel9.TabIndex = 1;
+            // 
+            // pbLogo1
+            // 
+            this.pbLogo1.Location = new System.Drawing.Point(16, 12);
+            this.pbLogo1.Name = "pbLogo1";
+            this.pbLogo1.Size = new System.Drawing.Size(667, 642);
+            this.pbLogo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo1.TabIndex = 0;
+            this.pbLogo1.TabStop = false;
             // 
             // frmEmlpeadoInicio
             // 
@@ -386,12 +399,13 @@
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "frmEmlpeadoInicio";
             this.Text = "frmEmlpeadoInicio";
+            this.Load += new System.EventHandler(this.frmEmlpeadoInicio_Load);
             this.pnlVistaInicioEmpleado.ResumeLayout(false);
             this.tlpContenedorPrincipal.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -407,6 +421,8 @@
             this.pnlTituloHora.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,7 +433,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpContenedorPrincipal;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
@@ -437,5 +453,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lblTituloHorario;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.PictureBox pbLogo1;
     }
 }

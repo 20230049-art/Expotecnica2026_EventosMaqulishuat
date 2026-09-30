@@ -189,6 +189,36 @@
     <Compile Include="GerenteAyuda\frmAyuda.Designer.cs">
       <DependentUpon>frmAyuda.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerenteCalendario\CadaDia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GerenteCalendario\CadaDia.Designer.cs">
+      <DependentUpon>CadaDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendario.Designer.cs">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendarioActualizarEliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendarioActualizarEliminar.Designer.cs">
+      <DependentUpon>frmCalendarioActualizarEliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendarioAgregarCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendarioAgregarCitas.Designer.cs">
+      <DependentUpon>frmCalendarioAgregarCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendarioRecordatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteCalendario\frmCalendarioRecordatorios.Designer.cs">
+      <DependentUpon>frmCalendarioRecordatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="GerenteClientes\frmClientesAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +430,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteAyuda\frmAyuda.resx">
       <DependentUpon>frmAyuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteCalendario\CadaDia.resx">
+      <DependentUpon>CadaDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteCalendario\frmCalendario.resx">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteCalendario\frmCalendarioActualizarEliminar.resx">
+      <DependentUpon>frmCalendarioActualizarEliminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteCalendario\frmCalendarioAgregarCitas.resx">
+      <DependentUpon>frmCalendarioAgregarCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteCalendario\frmCalendarioRecordatorios.resx">
+      <DependentUpon>frmCalendarioRecordatorios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteClientes\frmClientesAgregar.resx">
       <DependentUpon>frmClientesAgregar.cs</DependentUpon>
