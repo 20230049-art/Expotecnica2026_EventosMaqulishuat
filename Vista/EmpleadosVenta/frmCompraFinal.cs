@@ -507,7 +507,7 @@ namespace Vista.EmpleadosVenta
         {
             try
             {
-                // Ocultar columnas que no aportan
+
                 if (dgv.Columns.Contains("IdDetalleVenta"))
                     dgv.Columns["IdDetalleVenta"].Visible = false;
 
@@ -517,7 +517,6 @@ namespace Vista.EmpleadosVenta
                 if (dgv.Columns.Contains("IdProducto"))
                     dgv.Columns["IdProducto"].Visible = false;
 
-                // Renombrar y formatear
                 if (dgv.Columns.Contains("NombreProducto"))
                 {
                     dgv.Columns["NombreProducto"].HeaderText = "Producto";

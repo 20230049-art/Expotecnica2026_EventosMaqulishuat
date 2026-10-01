@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.IniciarSesion;
 using Vista.PrimerUso;
+using QuestPDF.Infrastructure;
 
 namespace Vista
 {
@@ -17,8 +18,11 @@ namespace Vista
         [STAThread]
         static void Main()
         {
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             try
             {
                 var (existeUsuarios, existeConfiguracion) = DatosEmpresa.ExisteConfiguracion();

@@ -3,12 +3,10 @@ using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using Chunk = iTextSharp.text.Chunk;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using Document = QuestPDF.Fluent.Document;
 
 namespace Modelos.Entidades
 {
@@ -18,198 +16,316 @@ namespace Modelos.Entidades
         {
             try
             {
-                string carpetaFactura = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                if (factura == null)
+                    throw new ArgumentNullException(nameof(factura));
+
+                // ============================================
+                //   CARPETA Y NOMBRE DE ARCHIVO
+                // ============================================
+                string carpetaFactura = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                     "Facturas");
 
                 if (!Directory.Exists(carpetaFactura))
-                {
                     Directory.CreateDirectory(carpetaFactura);
-                }
 
                 string nombreArchivo = $"Factura_{factura.NumeroFactura}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
                 string rutaCompleta = Path.Combine(carpetaFactura, nombreArchivo);
 
-                Document documento = new Document(PageSize.A4, 50, 50, 50, 50);
-                PdfWriter writer = PdfWriter.GetInstance(documento, new FileStream(rutaCompleta, FileMode.Create));
+                // ============================================
+                //   DATOS DE LA EMPRESA (opcional)
+                // ============================================
+                var empresa = DatosEmpresa.Obtener();
 
-                documento.Open();
+                string nombreEmpresa = empresa?.NombreEmpresa ?? "Eventos y Alquileres Maquillishuat";
+                string direccionEmpresa = empresa?.DireccionEmpresa ?? "C. Berlin No.247, San Salvador";
+                string correoEmpresa = empresa?.CorreoEmpresa ?? "example@empresa.com";
+                string telefonoEmpresa = empresa?.TelefonoEmpresa ?? "+503 7123-4567";
+                string logoRuta = empresa?.LogoEmpresa;
 
-                //Titulo
-                Font tituloFont = FontFactory.GetFont("Arial", 22, Font.BOLD, BaseColor.BLACK);
-                Paragraph titulo = new Paragraph("FACTURA", tituloFont);
-                titulo.Alignment = Element.ALIGN_CENTER;
-                documento.Add(titulo);
-
-                documento.Add(new Paragraph("\n"));
-
-                //Datos de la empresa
-                Font empresaFont = FontFactory.GetFont("Arial", 18, Font.BOLD);
-                Paragraph empresa = new Paragraph("Eventos y Alquileres Maquillishuat", empresaFont);
-                empresa.Alignment = Element.ALIGN_CENTER;
-                documento.Add(empresa);
-
-                documento.Add(new Paragraph("C. Berlin No.247, San Salvador", FontFactory.GetFont("Arial", 10)));
-                documento.Add(new Paragraph("NRC: 4618", FontFactory.GetFont("Arial", 10)));
-                documento.Add(new Paragraph("Teléfono: +503 7123-4567", FontFactory.GetFont("Arial", 10)));
-                documento.Add(new Paragraph("\n"));
-
-                //Datos de la factura
-                PdfPTable tablaInfo = new PdfPTable(2);
-                tablaInfo.WidthPercentage = 100;
-                tablaInfo.SetWidths(new float[] { 1f, 1f });
-
-                // Columna Izquierda
-                PdfPCell ladoIzquierdo = new PdfPCell();
-                ladoIzquierdo.Border = Rectangle.NO_BORDER;
-
-                ladoIzquierdo.AddElement(new Paragraph($"N° Factura: {factura.NumeroFactura}", FontFactory.GetFont("Arial", 10)));
-                ladoIzquierdo.AddElement(new Paragraph($"N° Control: {factura.NumeroControlFactura}", FontFactory.GetFont("Arial", 10)));
-                ladoIzquierdo.AddElement(new Paragraph($"Sello: {factura.SelloRecepcion}", FontFactory.GetFont("Arial", 10)));
-                ladoIzquierdo.AddElement(new Paragraph($"Fecha: {factura.FechaFactura:dd/MM/yyyy}", FontFactory.GetFont("Arial", 10)));
-                ladoIzquierdo.AddElement(new Paragraph($"Hora: {factura.HoraFactura?.ToString(@"hh\:mm")}", FontFactory.GetFont("Arial", 10)));
-
-                // Columna Derecha
-                PdfPCell ladoDerecho = new PdfPCell();
-                ladoDerecho.Border = Rectangle.NO_BORDER;
-                ladoDerecho.HorizontalAlignment = Element.ALIGN_RIGHT;
-
-                ladoDerecho.AddElement(new Paragraph($"Tipo Documento: {factura.TipoDocumento}", FontFactory.GetFont("Arial", 10)));
-                ladoDerecho.AddElement(new Paragraph($"Sucursal: {factura.Sucursal}", FontFactory.GetFont("Arial", 10)));
-                ladoDerecho.AddElement(new Paragraph($"Vendedor: {factura.NombreEmpleado}", FontFactory.GetFont("Arial", 10)));
-                ladoDerecho.AddElement(new Paragraph($"Tipo Pago: {factura.TipoPago}", FontFactory.GetFont("Arial", 10)));
-                ladoDerecho.AddElement(new Paragraph($"Estado: {factura.EstadoVenta}", FontFactory.GetFont("Arial", 10)));
-
-                tablaInfo.AddCell(ladoIzquierdo);
-                tablaInfo.AddCell(ladoDerecho);
-                documento.Add(tablaInfo);
-
-                documento.Add(new Paragraph("\n"));
-
-                // Línea separadora
-                documento.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0f, 100f, BaseColor.BLACK, Element.ALIGN_CENTER, 1)));
-
-                //Datos del Cliente
-                Font clienteFont = FontFactory.GetFont("Arial", 12, Font.BOLD);
-                Paragraph clienteTitulo = new Paragraph("DATOS DEL CLIENTE", clienteFont);
-                clienteTitulo.Alignment = Element.ALIGN_LEFT;
-                documento.Add(clienteTitulo);
-
-                documento.Add(new Paragraph($"Cliente: {factura.NombreCliente} {factura.ApellidoCliente}", FontFactory.GetFont("Arial", 10)));
-                documento.Add(new Paragraph($"DUI: {factura.DuiCliente}", FontFactory.GetFont("Arial", 10)));
-                documento.Add(new Paragraph($"NIT: {factura.NitCliente}", FontFactory.GetFont("Arial", 10)));
-                documento.Add(new Paragraph($"Correo: {factura.CorreoCliente}", FontFactory.GetFont("Arial", 10)));
-                //documento.Add(new Paragraph($"Fecha de Uso: {factura.FechaUso:dd/MM/yyyy}", FontFactory.GetFont("Arial", 10)));
-
-                documento.Add(new Paragraph("\n"));
-
-                // Línea separadora
-                documento.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0f, 100f, BaseColor.BLACK, Element.ALIGN_CENTER, 1)));
-
-                documento.Add(new Paragraph("\n"));
-
-                //Productos Vendidos
-                PdfPTable tablaProductos = new PdfPTable(5);
-                tablaProductos.WidthPercentage = 100;
-                tablaProductos.SetWidths(new float[] { 4f, 1.5f, 2f, 2f, 2.5f });
-
-                // Encabezados
-                string[] headers = { "Producto", "Cantidad", "Precio Unit.", "Descuento", "Subtotal" };
-                foreach (string header in headers)
+                // ============================================
+                //   GENERAR PDF
+                // ============================================
+                Document.Create(container =>
                 {
-                    PdfPCell cell = new PdfPCell(new Phrase(header, FontFactory.GetFont("Arial", 10, Font.BOLD)));
-                    cell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    tablaProductos.AddCell(cell);
-                }
+                    container.Page(page =>
+                    {
+                        page.Size(PageSizes.A4);
+                        page.Margin(40);
+                        page.DefaultTextStyle(t => t.FontFamily("Lato").FontSize(10));
 
-                // Datos de los productos
-                foreach (var detalle in factura.Detalles)
-                {
-                    tablaProductos.AddCell(new PdfPCell(new Phrase(detalle.NombreProducto, FontFactory.GetFont("Arial", 10))));
-                    tablaProductos.AddCell(new PdfPCell(new Phrase(detalle.Cantidad.ToString(), FontFactory.GetFont("Arial", 10))) { HorizontalAlignment = Element.ALIGN_CENTER });
-                    tablaProductos.AddCell(new PdfPCell(new Phrase($"${detalle.PrecioUnitario:F2}", FontFactory.GetFont("Arial", 10))) { HorizontalAlignment = Element.ALIGN_RIGHT });
-                    tablaProductos.AddCell(new PdfPCell(new Phrase($"${detalle.Descuento:F2}", FontFactory.GetFont("Arial", 10))) { HorizontalAlignment = Element.ALIGN_RIGHT });
-                    tablaProductos.AddCell(new PdfPCell(new Phrase($"${detalle.TotalDetalleVenta:F2}", FontFactory.GetFont("Arial", 10))) { HorizontalAlignment = Element.ALIGN_RIGHT });
-                }
+                        // ============ HEADER ============
+                        page.Header().Column(col =>
+                        {
+                            // Título principal
+                            col.Item()
+                               .AlignCenter()
+                               .Text("FACTURA")
+                               .FontSize(24)
+                               .Bold()
+                               .FontColor(Colors.Brown.Darken4);
 
-                documento.Add(tablaProductos);
+                            col.Item().PaddingTop(8);
 
-                documento.Add(new Paragraph("\n"));
+                            // Logo + nombre empresa (si hay logo)
+                            if (!string.IsNullOrWhiteSpace(logoRuta))
+                            {
+                                string rutaLogo = Path.IsPathRooted(logoRuta)
+                                    ? logoRuta
+                                    : Path.Combine(System.Windows.Forms.Application.StartupPath, logoRuta);
 
-                //Totales
-                PdfPTable tablaTotales = new PdfPTable(2);
-                tablaTotales.WidthPercentage = 40;
-                tablaTotales.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.SetWidths(new float[] { 1f, 1.5f });
+                                if (File.Exists(rutaLogo))
+                                {
+                                    col.Item()
+                                       .AlignCenter()
+                                       .Height(60)
+                                       .Image(rutaLogo)
+                                       .FitArea();
+                                }
+                            }
 
-                // Subtotal
-                PdfPCell cellSubtotalLabel = new PdfPCell(new Phrase("SUBTOTAL:", FontFactory.GetFont("Arial", 11, Font.BOLD)));
-                cellSubtotalLabel.Border = Rectangle.NO_BORDER;
-                cellSubtotalLabel.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.AddCell(cellSubtotalLabel);
+                            col.Item()
+                               .PaddingTop(6)
+                               .AlignCenter()
+                               .Text(nombreEmpresa)
+                               .FontSize(16)
+                               .Bold()
+                               .FontColor(Colors.Brown.Darken3);
 
-                PdfPCell cellSubtotalValue = new PdfPCell(new Phrase($"${factura.SubtotalVenta:F2}", FontFactory.GetFont("Arial", 11)));
-                cellSubtotalValue.Border = Rectangle.NO_BORDER;
-                cellSubtotalValue.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.AddCell(cellSubtotalValue);
+                            col.Item()
+                               .PaddingTop(4)
+                               .AlignCenter()
+                               .Text(direccionEmpresa)
+                               .FontSize(10)
+                               .FontColor(Colors.Black);
 
-                // IVA
-                PdfPCell cellIvaLabel = new PdfPCell(new Phrase("IVA (13%):", FontFactory.GetFont("Arial", 11)));
-                cellIvaLabel.Border = Rectangle.NO_BORDER;
-                cellIvaLabel.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.AddCell(cellIvaLabel);
+                            col.Item()
+                               .AlignCenter()
+                               .Text($"Teléfono: {telefonoEmpresa}")
+                               .FontSize(10);
 
-                PdfPCell cellIvaValue = new PdfPCell(new Phrase($"${factura.IVA:F2}", FontFactory.GetFont("Arial", 11)));
-                cellIvaValue.Border = Rectangle.NO_BORDER;
-                cellIvaValue.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.AddCell(cellIvaValue);
+                            col.Item()
+                               .AlignCenter()
+                               .Text($"Correo: {correoEmpresa}")
+                               .FontSize(10);
 
-                // Descuento (si hay)
-                if (factura.DescuentoVenta > 0)
-                {
-                    PdfPCell cellDescLabel = new PdfPCell(new Phrase("DESCUENTO:", FontFactory.GetFont("Arial", 11)));
-                    cellDescLabel.Border = Rectangle.NO_BORDER;
-                    cellDescLabel.HorizontalAlignment = Element.ALIGN_RIGHT;
-                    tablaTotales.AddCell(cellDescLabel);
+                            col.Item().PaddingTop(15);
 
-                    PdfPCell cellDescValue = new PdfPCell(new Phrase($"-${factura.DescuentoVenta:F2}", FontFactory.GetFont("Arial", 11)));
-                    cellDescValue.Border = Rectangle.NO_BORDER;
-                    cellDescValue.HorizontalAlignment = Element.ALIGN_RIGHT;
-                    tablaTotales.AddCell(cellDescValue);
-                }
+                            // ============ DATOS DE LA FACTURA ============
+                            col.Item().Row(row =>
+                            {
+                                // Columna izquierda
+                                row.RelativeItem().Column(izq =>
+                                {
+                                    izq.Item().Text(t =>
+                                    {
+                                        t.Span("N° Factura: ").SemiBold();
+                                        t.Span(factura.NumeroFactura);
+                                    });
+                                    izq.Item().Text(t =>
+                                    {
+                                        t.Span("N° Control: ").SemiBold();
+                                        t.Span(factura.NumeroControlFactura?.ToString() ?? "N/A");
+                                    });
+                                    izq.Item().Text(t =>
+                                    {
+                                        t.Span("Sello: ").SemiBold();
+                                        t.Span(factura.SelloRecepcion ?? "");
+                                    });
+                                    izq.Item().Text(t =>
+                                    {
+                                        t.Span("Fecha: ").SemiBold();
+                                        t.Span(factura.FechaFactura.ToString("dd/MM/yyyy"));
+                                    });
+                                    izq.Item().Text(t =>
+                                    {
+                                        t.Span("Hora: ").SemiBold();
+                                        t.Span(factura.HoraFactura?.ToString(@"hh\:mm") ?? "");
+                                    });
+                                });
 
-                // TOTAL
-                PdfPCell cellTotalLabel = new PdfPCell(new Phrase("TOTAL:", FontFactory.GetFont("Arial", 14, Font.BOLD)));
-                cellTotalLabel.Border = Rectangle.NO_BORDER;
-                cellTotalLabel.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.AddCell(cellTotalLabel);
+                                // Columna derecha
+                                row.RelativeItem().Column(der =>
+                                {
+                                    der.Item().AlignRight().Text(t =>
+                                    {
+                                        t.Span("Tipo Documento: ").SemiBold();
+                                        t.Span(factura.TipoDocumento ?? "");
+                                    });
+                                    der.Item().AlignRight().Text(t =>
+                                    {
+                                        t.Span("Sucursal: ").SemiBold();
+                                        t.Span(factura.Sucursal ?? "");
+                                    });
+                                    der.Item().AlignRight().Text(t =>
+                                    {
+                                        t.Span("Vendedor: ").SemiBold();
+                                        t.Span(factura.NombreEmpleado ?? "");
+                                    });
+                                    der.Item().AlignRight().Text(t =>
+                                    {
+                                        t.Span("Tipo Pago: ").SemiBold();
+                                        t.Span(factura.TipoPago ?? "");
+                                    });
+                                    der.Item().AlignRight().Text(t =>
+                                    {
+                                        t.Span("Estado: ").SemiBold();
+                                        t.Span(factura.EstadoVenta ?? "");
+                                    });
+                                });
+                            });
 
-                PdfPCell cellTotalValue = new PdfPCell(new Phrase($"${factura.TotalVenta:F2}", FontFactory.GetFont("Arial", 14, Font.BOLD)));
-                cellTotalValue.Border = Rectangle.NO_BORDER;
-                cellTotalValue.HorizontalAlignment = Element.ALIGN_RIGHT;
-                tablaTotales.AddCell(cellTotalValue);
+                            // Línea separadora
+                            col.Item().PaddingTop(15)
+                               .LineHorizontal(1)
+                               .LineColor(Colors.Brown.Darken3);
+                        });
 
-                documento.Add(tablaTotales);
+                        // ============ CONTENIDO ============
+                        page.Content().PaddingTop(15).Column(col =>
+                        {
+                            // ============ DATOS DEL CLIENTE ============
+                            col.Item()
+                               .Text("DATOS DEL CLIENTE")
+                               .FontSize(12)
+                               .Bold()
+                               .FontColor(Colors.Brown.Darken3);
 
-                documento.Add(new Paragraph("\n"));
+                            col.Item().PaddingTop(6);
 
-                // Línea separadora
-                documento.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0f, 100f, BaseColor.BLACK, Element.ALIGN_CENTER, 1)));
+                            col.Item().Text(t =>
+                            {
+                                t.Span("Cliente: ").SemiBold();
+                                t.Span($"{factura.NombreCliente} {factura.ApellidoCliente}");
+                            });
+                            col.Item().Text(t =>
+                            {
+                                t.Span("DUI: ").SemiBold();
+                                t.Span(string.IsNullOrWhiteSpace(factura.DuiCliente) ? "No aplica" : factura.DuiCliente);
+                            });
+                            col.Item().Text(t =>
+                            {
+                                t.Span("NIT: ").SemiBold();
+                                t.Span(string.IsNullOrWhiteSpace(factura.NitCliente) ? "No aplica" : factura.NitCliente);
+                            });
+                            col.Item().Text(t =>
+                            {
+                                t.Span("Correo: ").SemiBold();
+                                t.Span(factura.CorreoCliente ?? "");
+                            });
 
-                //Pie de página
-                documento.Add(new Paragraph("\n"));
-                documento.Add(new Paragraph("¡Gracias por su compra!", FontFactory.GetFont("Arial", 12, Font.ITALIC)) { Alignment = Element.ALIGN_CENTER });
-                documento.Add(new Paragraph($"Factura generada: {DateTime.Now:dd/MM/yyyy HH:mm}", FontFactory.GetFont("Arial", 8)) { Alignment = Element.ALIGN_CENTER });
+                            col.Item().PaddingTop(15);
 
-                documento.Close();
-                writer.Close();
+                            // Línea separadora
+                            col.Item().LineHorizontal(1).LineColor(Colors.Brown.Darken3);
+
+                            col.Item().PaddingTop(15);
+
+                            // ============ TABLA DE PRODUCTOS ============
+                            col.Item().Table(tabla =>
+                            {
+                                tabla.ColumnsDefinition(c =>
+                                {
+                                    c.RelativeColumn(4);    // Producto
+                                    c.RelativeColumn(1.2f); // Cantidad
+                                    c.RelativeColumn(1.8f); // Precio Unit
+                                    c.RelativeColumn(1.6f); // Descuento
+                                    c.RelativeColumn(1.8f); // Subtotal
+                                });
+
+                                // Encabezados
+                                tabla.Header(h =>
+                                {
+                                    var headerStyle = TextStyle.Default
+                                        .SemiBold()
+                                        .FontColor(Colors.White)
+                                        .FontSize(10);
+
+                                    h.Cell().Background(Colors.Brown.Darken2).Padding(6).Text("Producto").Style(headerStyle);
+                                    h.Cell().Background(Colors.Brown.Darken2).Padding(6).AlignCenter().Text("Cantidad").Style(headerStyle);
+                                    h.Cell().Background(Colors.Brown.Darken2).Padding(6).AlignCenter().Text("Precio Unit.").Style(headerStyle);
+                                    h.Cell().Background(Colors.Brown.Darken2).Padding(6).AlignCenter().Text("Descuento").Style(headerStyle);
+                                    h.Cell().Background(Colors.Brown.Darken2).Padding(6).AlignCenter().Text("Subtotal").Style(headerStyle);
+                                });
+
+                                // Filas
+                                int idx = 0;
+                                foreach (var detalle in factura.Detalles)
+                                {
+                                    var fondo = (idx % 2 == 0) ? Colors.White : Colors.Brown.Lighten5;
+
+                                    tabla.Cell().Background(fondo).Padding(6).Text(detalle.NombreProducto);
+                                    tabla.Cell().Background(fondo).Padding(6).AlignCenter().Text(detalle.Cantidad.ToString());
+                                    tabla.Cell().Background(fondo).Padding(6).AlignRight().Text($"${detalle.PrecioUnitario:F2}");
+                                    tabla.Cell().Background(fondo).Padding(6).AlignRight().Text($"${detalle.Descuento:F2}");
+                                    tabla.Cell().Background(fondo).Padding(6).AlignRight().Text($"${detalle.TotalDetalleVenta:F2}");
+
+                                    idx++;
+                                }
+                            });
+
+                            col.Item().PaddingTop(20);
+
+                            // ============ TOTALES ============
+                            col.Item().AlignRight().Width(250).Column(tot =>
+                            {
+                                tot.Item().Row(r =>
+                                {
+                                    r.RelativeItem().AlignRight().Text("SUBTOTAL:").SemiBold().FontSize(11);
+                                    r.ConstantItem(90).AlignRight().Text($"${factura.SubtotalVenta:F2}").FontSize(11);
+                                });
+
+                                tot.Item().Row(r =>
+                                {
+                                    r.RelativeItem().AlignRight().Text("IVA (13%):").FontSize(11);
+                                    r.ConstantItem(90).AlignRight().Text($"${factura.IVA:F2}").FontSize(11);
+                                });
+
+                                if (factura.DescuentoVenta > 0)
+                                {
+                                    tot.Item().Row(r =>
+                                    {
+                                        r.RelativeItem().AlignRight().Text("DESCUENTO:").FontSize(11);
+                                        r.ConstantItem(90).AlignRight().Text($"-${factura.DescuentoVenta:F2}").FontSize(11);
+                                    });
+                                }
+
+                                tot.Item().PaddingTop(6).LineHorizontal(1).LineColor(Colors.Brown.Darken3);
+
+                                tot.Item().PaddingTop(4).Row(r =>
+                                {
+                                    r.RelativeItem().AlignRight().Text("TOTAL:").Bold().FontSize(14).FontColor(Colors.Brown.Darken4);
+                                    r.ConstantItem(90).AlignRight().Text($"${factura.TotalVenta:F2}").Bold().FontSize(14).FontColor(Colors.Brown.Darken4);
+                                });
+                            });
+                        });
+
+                        // ============ FOOTER ============
+                        page.Footer().Column(col =>
+                        {
+                            col.Item().PaddingTop(20).LineHorizontal(1).LineColor(Colors.Brown.Darken3);
+
+                            col.Item().PaddingTop(10)
+                               .AlignCenter()
+                               .Text("¡Gracias por su compra!")
+                               .FontSize(12)
+                               .Italic()
+                               .FontColor(Colors.Brown.Darken3);
+
+                            col.Item().PaddingTop(4)
+                               .AlignCenter()
+                               .Text($"Factura generada: {DateTime.Now:dd/MM/yyyy HH:mm}")
+                               .FontSize(8)
+                               .FontColor(Colors.Grey.Darken1);
+                        });
+                    });
+                }).GeneratePdf(rutaCompleta);
 
                 return rutaCompleta;
-
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al generar PDF: {ex.Message}");
+                throw new Exception($"Error al generar PDF: {ex.Message}", ex);
             }
         }
     }
