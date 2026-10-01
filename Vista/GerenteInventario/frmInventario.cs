@@ -36,13 +36,6 @@ namespace Vista.GerenteInventario
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
 
-                btnPaginaAnterior.Click += btnPaginaAnterior_Click;
-                btnPaginaSiguiente.Click += btnPaginaSiguiente_Click;
-
-                btnClientesTotales.Click += btnClientesTotales_Click;
-                btnClientesActivos.Click += btnClientesActivos_Click;
-                btnProductosAgotados.Click += btnProductosAgotados_Click;
-
                 Redondeo.RedondearFig(txtBarraBuscar, 10);
                 Redondeo.RedondearFig(btnClientesTotales, 16);
                 Redondeo.RedondearFig(btnClientesActivos, 16);

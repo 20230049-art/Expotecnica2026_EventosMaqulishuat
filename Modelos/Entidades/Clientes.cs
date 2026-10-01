@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Modelos.Entidades
 {
@@ -76,43 +77,57 @@ namespace Modelos.Entidades
         //Agregar Clientes a la base de Datos
         public static (string resultado, int idCliente) AgregarCliente(Clientes nuevoCliente)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
+            try
             {
-                using (SqlCommand command = new SqlCommand("IngresarCliente", connection))
+                using (SqlConnection connection = ConexionDB.Conectar())
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.Add("@NombreCliente", SqlDbType.VarChar).Value = nuevoCliente.NombreCliente;
-                    command.Parameters.Add("@ApellidoCliente", SqlDbType.VarChar).Value = nuevoCliente.ApellidoCliente;
-
-                    command.Parameters.Add("@NCRCliente", SqlDbType.VarChar);
-                    command.Parameters["@NCRCliente"].Value =
-                        string.IsNullOrWhiteSpace(nuevoCliente.NCRCliente) ? (object)DBNull.Value : nuevoCliente.NCRCliente;
-
-                    command.Parameters.Add("@DUICliente", SqlDbType.VarChar);
-                    command.Parameters["@DUICliente"].Value =
-                        string.IsNullOrWhiteSpace(nuevoCliente.DUICliente) ? (object)DBNull.Value : nuevoCliente.DUICliente;
-
-                    command.Parameters.Add("@NITCliente", SqlDbType.VarChar);
-                    command.Parameters["@NITCliente"].Value =
-                        string.IsNullOrWhiteSpace(nuevoCliente.NITCliente) ? (object)DBNull.Value : nuevoCliente.NITCliente;
-
-                    command.Parameters.Add("@TelefonoCliente", SqlDbType.VarChar).Value = nuevoCliente.TelefonoCliente;
-                    command.Parameters.Add("@CorreoCliente", SqlDbType.VarChar).Value = nuevoCliente.CorreoCliente;
-                    command.Parameters.Add("@IdTipoCliente", SqlDbType.Int).Value = nuevoCliente.IdTipoCliente;
-
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand("IngresarCliente", connection))
                     {
-                        if (reader.Read())
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@NombreCliente", SqlDbType.VarChar).Value = nuevoCliente.NombreCliente;
+                        command.Parameters.Add("@ApellidoCliente", SqlDbType.VarChar).Value = nuevoCliente.ApellidoCliente;
+
+                        command.Parameters.Add("@NCRCliente", SqlDbType.VarChar);
+                        command.Parameters["@NCRCliente"].Value =
+                            string.IsNullOrWhiteSpace(nuevoCliente.NCRCliente) ? (object)DBNull.Value : nuevoCliente.NCRCliente;
+
+                        command.Parameters.Add("@DUICliente", SqlDbType.VarChar);
+                        command.Parameters["@DUICliente"].Value =
+                            string.IsNullOrWhiteSpace(nuevoCliente.DUICliente) ? (object)DBNull.Value : nuevoCliente.DUICliente;
+
+                        command.Parameters.Add("@NITCliente", SqlDbType.VarChar);
+                        command.Parameters["@NITCliente"].Value =
+                            string.IsNullOrWhiteSpace(nuevoCliente.NITCliente) ? (object)DBNull.Value : nuevoCliente.NITCliente;
+
+                        command.Parameters.Add("@TelefonoCliente", SqlDbType.VarChar).Value = nuevoCliente.TelefonoCliente;
+                        command.Parameters.Add("@CorreoCliente", SqlDbType.VarChar).Value = nuevoCliente.CorreoCliente;
+                        command.Parameters.Add("@IdTipoCliente", SqlDbType.Int).Value = nuevoCliente.IdTipoCliente;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            string resultado = reader["Resultado"].ToString();
-                            int idCliente = Convert.ToInt32(reader["IdCliente"]);
-                            return (resultado, idCliente);
+                            if (reader.Read())
+                            {
+                                string resultado = reader["Resultado"].ToString();
+                                int idCliente = Convert.ToInt32(reader["IdCliente"]);
+                                return (resultado, idCliente);
+                            }
                         }
                     }
                 }
             }
-            return ("ERROR", 0);
+            catch (Exception ex)
+            {
+                // 👇 CAMBIA ESTO: muestra el error en vez de devolver "ERROR"
+                MessageBox.Show("ERROR REAL en AgregarCliente:\n\n" +
+                                "Tipo: " + ex.GetType().Name + "\n" +
+                                "Mensaje: " + ex.Message + "\n\n" +
+                                "StackTrace:\n" + ex.StackTrace,
+                                "DEBUG-AGREGARCLIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;   // 👈 vuelve a lanzar la excepción para no ocultarla
+            }
+
+            return ("", 0);
         }
 
         //Actualizar Cliente de la base de Datos

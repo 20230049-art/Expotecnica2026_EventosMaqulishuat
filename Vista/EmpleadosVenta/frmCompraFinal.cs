@@ -112,6 +112,8 @@ namespace Vista.EmpleadosVenta
                 Venta venta = new Venta();
 
                 DataTable dtVenta = Venta.ObtenerVentaPorId(idVentaActiva);
+
+
                 if (dtVenta == null || dtVenta.Rows.Count == 0)
                 {
                     MessageBox.Show("No se encontró la venta seleccionada.",
@@ -140,6 +142,8 @@ namespace Vista.EmpleadosVenta
                 List<DetalledeVenta> productoDetalle = detalleVenta.ObtenerDetalleVenta(idVentaActiva);
                 dgvDetallesVenta.DataSource = productoDetalle;
 
+                EstilizarGridDetalle(dgvDetallesVenta);
+                ConfigurarColumnasDetalle(dgvDetallesVenta);
                 var totales = venta.ObtenerTotalesVenta(idVentaActiva);
 
                 lblSubtotal.Text = "$" + totales.Subtotal.ToString("F2");
@@ -441,6 +445,125 @@ namespace Vista.EmpleadosVenta
             {
                 MessageBox.Show($"Error al cancelar la compra: {ex.Message}",
                 "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EstilizarGridDetalle(DataGridView dgv)
+        {
+            try
+            {
+                dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgv.MultiSelect = false;
+                dgv.ReadOnly = true;
+                dgv.AllowUserToAddRows = false;
+                dgv.AllowUserToDeleteRows = false;
+                dgv.AllowUserToResizeRows = false;
+                dgv.RowHeadersVisible = false;
+                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv.BorderStyle = BorderStyle.FixedSingle;
+                dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                dgv.GridColor = Color.FromArgb(220, 200, 180);
+
+                dgv.BackgroundColor = Color.FromArgb(255, 251, 234);   // beige muy claro
+                dgv.ForeColor = Color.FromArgb(64, 6, 6);        // marrón oscuro
+                dgv.Font = new Font("Book Antiqua", 11, FontStyle.Regular);
+
+                dgv.EnableHeadersVisualStyles = false;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(210, 170, 130);  
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);  
+                dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(210, 170, 130);
+                dgv.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+                dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Book Antiqua", 11, FontStyle.Bold);
+                dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 0, 6, 0);
+                dgv.ColumnHeadersHeight = 34;
+                dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+                dgv.RowsDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 234);
+                dgv.RowsDefaultCellStyle.ForeColor = Color.FromArgb(64, 6, 6);
+                dgv.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(208, 112, 3);   
+                dgv.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+                dgv.RowsDefaultCellStyle.Padding = new Padding(6, 0, 6, 0);
+                dgv.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(249, 235, 205);
+                dgv.AlternatingRowsDefaultCellStyle.ForeColor = Color.FromArgb(64, 6, 6);
+                dgv.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(208, 112, 3);
+                dgv.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.White;
+                dgv.AlternatingRowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgv.RowTemplate.Height = 32;
+
+                foreach (DataGridViewColumn col in dgv.Columns)
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al estilizar grid: " + ex.Message);
+            }
+        }
+
+        private void ConfigurarColumnasDetalle(DataGridView dgv)
+        {
+            try
+            {
+                // Ocultar columnas que no aportan
+                if (dgv.Columns.Contains("IdDetalleVenta"))
+                    dgv.Columns["IdDetalleVenta"].Visible = false;
+
+                if (dgv.Columns.Contains("IdVenta"))
+                    dgv.Columns["IdVenta"].Visible = false;
+
+                if (dgv.Columns.Contains("IdProducto"))
+                    dgv.Columns["IdProducto"].Visible = false;
+
+                // Renombrar y formatear
+                if (dgv.Columns.Contains("NombreProducto"))
+                {
+                    dgv.Columns["NombreProducto"].HeaderText = "Producto";
+                    dgv.Columns["NombreProducto"].FillWeight = 200;
+                    dgv.Columns["NombreProducto"].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleLeft;
+                }
+
+                if (dgv.Columns.Contains("Cantidad"))
+                {
+                    dgv.Columns["Cantidad"].HeaderText = "Cantidad";
+                    dgv.Columns["Cantidad"].FillWeight = 70;
+                    dgv.Columns["Cantidad"].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                if (dgv.Columns.Contains("PrecioUnitario"))
+                {
+                    dgv.Columns["PrecioUnitario"].HeaderText = "Precio Unit.";
+                    dgv.Columns["PrecioUnitario"].FillWeight = 100;
+                    dgv.Columns["PrecioUnitario"].DefaultCellStyle.Format = "N2";
+                    dgv.Columns["PrecioUnitario"].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleRight;
+                }
+
+                if (dgv.Columns.Contains("Descuento"))
+                {
+                    dgv.Columns["Descuento"].HeaderText = "Descuento";
+                    dgv.Columns["Descuento"].FillWeight = 90;
+                    dgv.Columns["Descuento"].DefaultCellStyle.Format = "N2";
+                    dgv.Columns["Descuento"].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleRight;
+                }
+
+                if (dgv.Columns.Contains("TotalDetalleVenta"))
+                {
+                    dgv.Columns["TotalDetalleVenta"].HeaderText = "Total";
+                    dgv.Columns["TotalDetalleVenta"].FillWeight = 100;
+                    dgv.Columns["TotalDetalleVenta"].DefaultCellStyle.Format = "N2";
+                    dgv.Columns["TotalDetalleVenta"].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleRight;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al configurar columnas: " + ex.Message);
             }
         }
     }

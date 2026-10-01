@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Utilidades;
 
 namespace Vista.EmpleadoServicios
 {
@@ -121,6 +122,10 @@ namespace Vista.EmpleadoServicios
                 pbProducto.BorderStyle = BorderStyle.None;
                 pbProducto.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbProducto.BackColor = Color.White;
+
+                    string rutaImagen = (fila.Table.Columns.Contains("ImagenProducto") && fila["ImagenProducto"] != DBNull.Value) ? fila["ImagenProducto"].ToString() : "";
+
+                    ImagenVista.AsignarImagen(pbProducto, rutaImagen);
 
                 Label lblTituloNombre = new Label();
                 lblTituloNombre.Text = "Nombre".ToString();
@@ -246,6 +251,23 @@ namespace Vista.EmpleadoServicios
                                 "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 MostrarProductos(new DataTable());
+            }
+        }
+
+        private void frmServiciosInmoviliarios_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
             }
         }
     }

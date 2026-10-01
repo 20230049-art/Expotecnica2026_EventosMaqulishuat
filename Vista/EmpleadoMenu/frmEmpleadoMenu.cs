@@ -181,12 +181,39 @@ namespace Vista.EmpleadoMenu
 
         private void btnCerrarSesionGere_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Está seguro que desea cerrar sesión?",
+                   "INFO-CERRAR-SESION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (respuesta != DialogResult.Yes) return;
+
+                this.Close();
+
+                activeForm = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar sesión: " + ex.Message,
+                        "ERROR-CERRARSESION-014", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        public void BloquearNavegacion(bool bloquear)
         {
-
+            try
+            {
+                btnInicioGere.Enabled = !bloquear;
+                btnInventarioGere.Enabled = !bloquear;
+                btnServicios.Enabled = !bloquear;
+                btnClienteEmpleado.Enabled = !bloquear;
+                btnCalendario.Enabled = !bloquear;
+                btnCerrarSesionGere.Enabled = !bloquear;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al bloquear navegación: " + ex.Message);
+            }
         }
     }
 }

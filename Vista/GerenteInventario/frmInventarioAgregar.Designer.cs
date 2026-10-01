@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInventarioAgregar));
             this.pnltituloNombre = new System.Windows.Forms.Panel();
             this.lblInformCliente = new System.Windows.Forms.Label();
             this.pbProducto = new System.Windows.Forms.PictureBox();
@@ -322,6 +323,7 @@
             this.Controls.Add(this.btnSubirFoto);
             this.Controls.Add(this.pnltituloNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmInventarioAgregar";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -29,8 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductos));
             this.pnlVistaProducto = new System.Windows.Forms.Panel();
             this.tlpContenedorPrincipal = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPaginaAnterior = new System.Windows.Forms.Button();
+            this.lblInfoPagina = new System.Windows.Forms.Label();
+            this.flpNumerosPagina = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPaginaSiguiente = new System.Windows.Forms.Button();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.pbLogo = new System.Windows.Forms.PictureBox();
@@ -60,6 +67,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVistaProducto.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -88,6 +96,7 @@
             // 
             this.tlpContenedorPrincipal.ColumnCount = 1;
             this.tlpContenedorPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpContenedorPrincipal.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tlpContenedorPrincipal.Controls.Add(this.panel3, 0, 0);
             this.tlpContenedorPrincipal.Controls.Add(this.tableLayoutPanel1, 0, 2);
             this.tlpContenedorPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -95,10 +104,101 @@
             this.tlpContenedorPrincipal.Name = "tlpContenedorPrincipal";
             this.tlpContenedorPrincipal.RowCount = 3;
             this.tlpContenedorPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.44399F));
-            this.tlpContenedorPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.027749F));
-            this.tlpContenedorPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.63103F));
+            this.tlpContenedorPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.830421F));
+            this.tlpContenedorPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.82837F));
             this.tlpContenedorPrincipal.Size = new System.Drawing.Size(1924, 973);
             this.tlpContenedorPrincipal.TabIndex = 0;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 12;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.303441F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.2805F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5230126F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.06276F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.433054F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.97071F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.569038F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.48745F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.202929F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.25105F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.098326F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.6605158F));
+            this.tableLayoutPanel5.Controls.Add(this.btnPaginaAnterior, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblInfoPagina, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.flpNumerosPagina, 5, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnPaginaSiguiente, 9, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblTotalRegistros, 7, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 162);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1918, 40);
+            this.tableLayoutPanel5.TabIndex = 6;
+            // 
+            // btnPaginaAnterior
+            // 
+            this.btnPaginaAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(190)))), ((int)(((byte)(180)))));
+            this.btnPaginaAnterior.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPaginaAnterior.FlatAppearance.BorderSize = 0;
+            this.btnPaginaAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPaginaAnterior.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaginaAnterior.Location = new System.Drawing.Point(28, 3);
+            this.btnPaginaAnterior.Name = "btnPaginaAnterior";
+            this.btnPaginaAnterior.Size = new System.Drawing.Size(172, 34);
+            this.btnPaginaAnterior.TabIndex = 1;
+            this.btnPaginaAnterior.Text = "Anterior";
+            this.btnPaginaAnterior.UseVisualStyleBackColor = false;
+            this.btnPaginaAnterior.Click += new System.EventHandler(this.btnPaginaAnterior_Click);
+            // 
+            // lblInfoPagina
+            // 
+            this.lblInfoPagina.AutoSize = true;
+            this.lblInfoPagina.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInfoPagina.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoPagina.Location = new System.Drawing.Point(216, 0);
+            this.lblInfoPagina.Name = "lblInfoPagina";
+            this.lblInfoPagina.Size = new System.Drawing.Size(283, 40);
+            this.lblInfoPagina.TabIndex = 0;
+            this.lblInfoPagina.Text = "label1";
+            this.lblInfoPagina.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // flpNumerosPagina
+            // 
+            this.flpNumerosPagina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
+            this.flpNumerosPagina.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpNumerosPagina.Location = new System.Drawing.Point(628, 3);
+            this.flpNumerosPagina.Name = "flpNumerosPagina";
+            this.flpNumerosPagina.Size = new System.Drawing.Size(723, 34);
+            this.flpNumerosPagina.TabIndex = 2;
+            // 
+            // btnPaginaSiguiente
+            // 
+            this.btnPaginaSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(190)))), ((int)(((byte)(180)))));
+            this.btnPaginaSiguiente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPaginaSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnPaginaSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPaginaSiguiente.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaginaSiguiente.Location = new System.Drawing.Point(1688, 3);
+            this.btnPaginaSiguiente.Name = "btnPaginaSiguiente";
+            this.btnPaginaSiguiente.Size = new System.Drawing.Size(190, 34);
+            this.btnPaginaSiguiente.TabIndex = 0;
+            this.btnPaginaSiguiente.Text = "Siguiente";
+            this.btnPaginaSiguiente.UseVisualStyleBackColor = false;
+            this.btnPaginaSiguiente.Click += new System.EventHandler(this.btnPaginaSiguiente_Click);
+            // 
+            // lblTotalRegistros
+            // 
+            this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTotalRegistros.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRegistros.Location = new System.Drawing.Point(1387, 0);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(272, 40);
+            this.lblTotalRegistros.TabIndex = 3;
+            this.lblTotalRegistros.Text = "label1";
+            this.lblTotalRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -117,7 +217,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel6.Controls.Add(this.pbLogo, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
@@ -135,7 +235,7 @@
             // 
             this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbLogo.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pbLogo.Location = new System.Drawing.Point(1651, 36);
+            this.pbLogo.Location = new System.Drawing.Point(1647, 36);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(200, 79);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -147,9 +247,9 @@
             this.lblProductos.AutoSize = true;
             this.lblProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(55, 33);
+            this.lblProductos.Location = new System.Drawing.Point(54, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(637, 85);
+            this.lblProductos.Size = new System.Drawing.Size(634, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "PRODUCTOS";
             // 
@@ -161,7 +261,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel7.Controls.Add(this.txtBuscar, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(698, 36);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(694, 36);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -192,12 +292,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.4692388F));
             this.tableLayoutPanel1.Controls.Add(this.flpProductos, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 171);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 208);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 98.87359F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.126408F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 799);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1918, 762);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // flpProductos
@@ -207,7 +307,7 @@
             this.flpProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpProductos.Location = new System.Drawing.Point(15, 3);
             this.flpProductos.Name = "flpProductos";
-            this.flpProductos.Size = new System.Drawing.Size(1890, 784);
+            this.flpProductos.Size = new System.Drawing.Size(1890, 747);
             this.flpProductos.TabIndex = 0;
             // 
             // pnlPlantilla
@@ -444,12 +544,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 973);
             this.Controls.Add(this.pnlVistaProducto);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "frmProductos";
             this.Text = "frmProductos";
             this.Load += new System.EventHandler(this.frmProductos_Load);
             this.pnlVistaProducto.ResumeLayout(false);
             this.tlpContenedorPrincipal.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
@@ -502,5 +605,11 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button btnPaginaAnterior;
+        private System.Windows.Forms.Label lblInfoPagina;
+        private System.Windows.Forms.FlowLayoutPanel flpNumerosPagina;
+        private System.Windows.Forms.Button btnPaginaSiguiente;
+        private System.Windows.Forms.Label lblTotalRegistros;
     }
 }

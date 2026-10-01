@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Utilidades;
 
 namespace Vista.EmpleadoServicios
 {
@@ -118,7 +119,10 @@ namespace Vista.EmpleadoServicios
                 pbProducto.Location = new Point(38, 14);
                 pbProducto.BorderStyle = BorderStyle.None;
                 pbProducto.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbProducto.BackColor = Color.White;
+
+                    string rutaImagen = (fila.Table.Columns.Contains("ImagenProducto") && fila["ImagenProducto"] != DBNull.Value) ? fila["ImagenProducto"].ToString() : "";
+
+                    ImagenVista.AsignarImagen(pbProducto, rutaImagen);
 
                 Label lblTituloNombre = new Label();
                 lblTituloNombre.Text = "Nombre".ToString();

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.EmpleadosVenta;
+using Vista.Utilidades;
 
 namespace Vista.EmpleadoServicios
 {
@@ -123,7 +124,11 @@ namespace Vista.EmpleadoServicios
                 pbProducto.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbProducto.BackColor = Color.White;
 
-                Label lblTituloNombre = new Label();
+                string rutaImagen = (fila.Table.Columns.Contains("ImagenProducto") && fila["ImagenProducto"] != DBNull.Value) ? fila["ImagenProducto"].ToString() : "";
+
+                ImagenVista.AsignarImagen(pbProducto, rutaImagen);
+
+                    Label lblTituloNombre = new Label();
                 lblTituloNombre.Text = "Nombre".ToString();
                 lblTituloNombre.Font = new Font("Book Antiqua", 19, FontStyle.Bold);
                 lblTituloNombre.Location = new Point(168, 22);

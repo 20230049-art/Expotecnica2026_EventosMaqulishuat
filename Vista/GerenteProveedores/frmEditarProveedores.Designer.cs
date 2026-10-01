@@ -132,7 +132,7 @@
             this.tlpProveePerfil.ColumnCount = 3;
             this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7582939F));
             this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 99.24171F));
-            this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tlpProveePerfil.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tlpProveePerfil.Controls.Add(this.pnlPerfilPro, 1, 1);
             this.tlpProveePerfil.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpProveePerfil.Location = new System.Drawing.Point(0, 0);
@@ -159,7 +159,7 @@
             this.pnlPerfilPro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPerfilPro.Location = new System.Drawing.Point(11, 14);
             this.pnlPerfilPro.Name = "pnlPerfilPro";
-            this.pnlPerfilPro.Size = new System.Drawing.Size(1058, 207);
+            this.pnlPerfilPro.Size = new System.Drawing.Size(1057, 207);
             this.pnlPerfilPro.TabIndex = 0;
             // 
             // mtbTelefono
@@ -318,6 +318,7 @@
             this.Controls.Add(this.pnlProveeAnadir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditarProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmEditarProveedores";
             this.pnlProveeAnadir.ResumeLayout(false);
             this.tlpAnadirProvee.ResumeLayout(false);

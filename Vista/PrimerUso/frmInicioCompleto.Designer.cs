@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicioCompleto));
             this.pnlVistaInicioCompleto = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -210,6 +211,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(1156, 621);
             this.Controls.Add(this.pnlVistaInicioCompleto);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1174, 668);
             this.MinimumSize = new System.Drawing.Size(1174, 668);
             this.Name = "frmInicioCompleto";

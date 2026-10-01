@@ -14,6 +14,7 @@ namespace Vista.GerenteEmpleados
 {
     public partial class frmEmpleadosGerente : Form
     {
+
         private bool modoEliminar = false;
         private ErrorProvider errorProvider;
 

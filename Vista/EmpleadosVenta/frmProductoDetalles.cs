@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Vista.EmpleadosVenta
         private string nombreProducto;
         private int productoDisponible;
         private decimal precioUnitario;
+        private string rutaFotoRelativa = "";
 
         public frmProductoDetalles(int idProducto, int idVenta)
         {
@@ -35,6 +37,8 @@ namespace Vista.EmpleadosVenta
             controlesBloqueo.BloquearControlesMTXT(mtbSubTotal);
             controlesBloqueo.BloquearControlesMTXT(mtbTotal);
             controlesBloqueo.BloquearControlesNUD(nudCantidad);
+
+                //Redondeo.RedondearFormulario(frmProductoDetalles, 8);
             }
             catch (Exception ex)
             {
@@ -54,6 +58,33 @@ namespace Vista.EmpleadosVenta
                     MessageBox.Show("No se encontró el producto seleccionado.",
                             "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
+                }
+
+                string rutaBD = dt.Rows[0]["ImagenProducto"] != DBNull.Value
+                 ? dt.Rows[0]["ImagenProducto"].ToString()
+                 : "";
+
+                if (!string.IsNullOrWhiteSpace(rutaBD))
+                {
+                    string rutaCompleta = Path.IsPathRooted(rutaBD)
+                        ? rutaBD
+                        : Path.Combine(Application.StartupPath, rutaBD);
+
+                    if (File.Exists(rutaCompleta))
+                    {
+                        using (var stream = new FileStream(rutaCompleta, FileMode.Open, FileAccess.Read))
+                        {
+                            pbProducto.Image = Image.FromStream(stream);
+                        }
+                        pbProducto.SizeMode = PictureBoxSizeMode.StretchImage;
+                        rutaFotoRelativa = rutaBD;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("No se encontró la imagen: " + rutaCompleta);
+                        pbProducto.Image = null;
+                        pbProducto.BackColor = Color.LightGray;
+                    }
                 }
 
                 nombreProducto = dt.Rows[0]["NombreProducto"].ToString();
@@ -283,6 +314,11 @@ namespace Vista.EmpleadosVenta
             {
                 System.Diagnostics.Debug.WriteLine("Error al recalcular totales (KeyUp): " + ex.Message);
             }
+        }
+
+        private void frmProductoDetalles_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

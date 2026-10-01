@@ -408,8 +408,15 @@ namespace Vista.GerenteProveedores
 
                 int idProveedor = Convert.ToInt32(panelProveedor.Tag);
 
+                frmFondoNegro fondo = new frmFondoNegro();
+                fondo.StartPosition = FormStartPosition.CenterParent;
+                fondo.WindowState = FormWindowState.Maximized;
+                fondo.Show();
+
                 frmEditarProveedores abrir = new frmEditarProveedores(idProveedor);
                 abrir.ShowDialog();
+
+                fondo.Close();
 
                 CargarPagina(paginaActual);
             }

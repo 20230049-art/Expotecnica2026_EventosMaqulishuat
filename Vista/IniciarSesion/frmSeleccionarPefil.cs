@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,19 +21,37 @@ namespace Vista.IniciarSesion
         {
             InitializeComponent();
             this.Resize += frmEmpleadoTitulo_Resize;
+
+            Redondeo.RedondearFig(panel1, 12);
+            Redondeo.RedondearFig(panel3, 7);
+            Redondeo.RedondearFig(panel4, 5);
+            Redondeo.RedondearFig(panel6, 5);
+            Redondeo.RedondearFig(btnSeleccionarGerente, 6);
+            Redondeo.RedondearFig(btnSeleccionarEmpleado, 6);
         }
 
         private void frmSeleccionarPefil_Load(object sender, EventArgs e)
         {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
+
             tamañoOriginalFormulario = this.ClientSize;
 
             tamañoFuenteOriginal = lblTituloGerente.Font.Size;
 
             lblTituloGerente.Dock = DockStyle.Fill;
             lblTituloGerente.TextAlign = ContentAlignment.MiddleCenter;
-
-            //lblTituloHorario.Dock = DockStyle.Fill;
-            //lblTituloHorario.TextAlign = ContentAlignment.MiddleCenter;
 
             AjustarTitulo();
         }

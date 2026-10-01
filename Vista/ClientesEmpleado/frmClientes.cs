@@ -18,19 +18,28 @@ namespace Vista.ClientesEmpleado
 {
     public partial class frmClientes : Form
     {
+        private const int REGISTROS_POR_PAGINA = 20;
+        private readonly int filtroActual;
+        private int paginaActual = 1;
+        private int totalPaginas = 1;
+        private int totalRegistros = 0;
+        private string busquedaActual = "";
+        private ErrorProvider errorProvider;
         public frmClientes()
         {
             try
             {
                 InitializeComponent();
-                DataTable clientes = Clientes.MostrarClientes();
-                CargarClientesEnPantalla(clientes);
+                errorProvider = new ErrorProvider(); 
+                errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+                errorProvider.ContainerControl = this;
+                CargarPagina(1);
 
                 Redondeo.RedondearFig(btnAgregar, 7);
                 ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
 
                 EventosGloblales.ClienteAgregado += RegarcarPanelCliente;
-            EventosGloblales.ClienteActualizado += RegarcarPanelCliente;
+                 EventosGloblales.ClienteActualizado += RegarcarPanelCliente;
 
             }
             catch (Exception ex)
@@ -424,13 +433,29 @@ namespace Vista.ClientesEmpleado
         {
             try
             {
-                string busqueda = txtBuscar.Text.Trim();
-            Clientes clientes = new Clientes();
-            DataTable clientesFiltrados = clientes.BuscarCliente(busqueda);
-            CargarClientesEnPantalla(clientesFiltrados);
+                busquedaActual = txtBuscar.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(busquedaActual))
+                {
+                    errorProvider?.SetError(txtBuscar, "");
+                    paginaActual = 1;
+                    CargarPagina(1);
+                    return;
+                }
+
+                Clientes clientes = new Clientes();
+                DataTable clientesFiltrados = clientes.BuscarCliente(busquedaActual);
+
+                totalRegistros = clientesFiltrados?.Rows.Count ?? 0;
+                totalPaginas = 1;
+                paginaActual = 1;
+
+                CargarClientesEnPantalla(clientesFiltrados);
+                ActualizarControlesPaginacion();
             }
             catch (Exception ex)
             {
+                errorProvider?.SetError(txtBuscar, "Error en la búsqueda.");
                 MessageBox.Show("Error al realizar la búsqueda de clientes: " + ex.Message,
                         "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -468,6 +493,129 @@ namespace Vista.ClientesEmpleado
             {
                 MessageBox.Show("Error al abrir el formulario de agregarn: " + ex.Message,
                         "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarPagina(int pagina)
+        {
+            try
+            {
+                if (pagina < 1) pagina = 1;
+                if (pagina > totalPaginas && totalPaginas > 0) pagina = totalPaginas;
+
+                DataTable clientes;
+
+                if (string.IsNullOrWhiteSpace(busquedaActual))
+                {
+                    Clientes cli = new Clientes();
+                    clientes = cli.BuscarCliente(busquedaActual);
+                    totalRegistros = clientes?.Rows.Count ?? 0;
+                    totalPaginas = 1;
+                }
+                else
+                {
+                    clientes = Clientes.MostrarClientesPagina(pagina, REGISTROS_POR_PAGINA, filtroActual, out totalRegistros);
+                }
+
+                paginaActual = pagina;
+                totalPaginas = (int)Math.Ceiling((double)totalRegistros / REGISTROS_POR_PAGINA);
+                if (totalPaginas < 1) totalPaginas = 1;
+
+                CargarClientesEnPantalla(clientes);
+                ActualizarControlesPaginacion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la página: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarControlesPaginacion()
+        {
+            try
+            {
+                lblInfoPagina.Text = $"Página {paginaActual} de {totalPaginas}";
+                lblTotalRegistros.Text = $"Total: {totalRegistros} registro(s)";
+
+                btnPaginaAnterior.Enabled = paginaActual > 1;
+                btnPaginaSiguiente.Enabled = paginaActual < totalPaginas;
+
+                GenerarBotonesNumeros();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al actualizar paginación: " + ex.Message);
+            }
+        }
+
+        private void GenerarBotonesNumeros()
+        {
+            try
+            {
+                flpNumerosPagina.Controls.Clear();
+
+                int inicio = Math.Max(1, paginaActual - 3);
+                int fin = Math.Min(totalPaginas, inicio + 6);
+                if (fin - inicio < 6) inicio = Math.Max(1, fin - 6);
+
+                for (int i = inicio; i <= fin; i++)
+                {
+                    Button btnPagina = new Button();
+                    btnPagina.Text = i.ToString();
+                    btnPagina.Width = 35;
+                    btnPagina.Height = 32;
+                    btnPagina.FlatStyle = FlatStyle.Flat;
+                    btnPagina.FlatAppearance.BorderSize = 0;
+                    btnPagina.Font = new Font("Book Antiqua", 12, FontStyle.Bold);
+                    btnPagina.Margin = new Padding(1);
+
+                    if (i == paginaActual)
+                    {
+                        btnPagina.BackColor = Color.FromArgb(208, 112, 3);
+                        btnPagina.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        btnPagina.BackColor = Color.FromArgb(206, 183, 175);
+                        btnPagina.ForeColor = Color.Black;
+                    }
+
+                    int paginaBoton = i;
+                    btnPagina.Click += (s, e) => CargarPagina(paginaBoton);
+
+                    flpNumerosPagina.Controls.Add(btnPagina);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al generar botones de página: " + ex.Message);
+            }
+        }
+
+        private void btnPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarPagina(paginaActual - 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ir a la página siguiente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPaginaSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarPagina(paginaActual + 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ir a la página siguiente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

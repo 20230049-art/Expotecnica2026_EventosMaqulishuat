@@ -166,6 +166,50 @@ namespace Modelos.Entidades
 
         }
 
+        public static DataTable BuscarDocumentosPagina(string busqueda, int pagina, int registrosPorPagina, int tipoFiltro, out int totalRegistros)
+        {
+            totalRegistros = 0;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection cn = ConexionDB.Conectar())
+                {
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand("BuscarDocumentosPagina", cn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@Busqueda", SqlDbType.VarChar, 180).Value = busqueda ?? "";
+                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+
+                        SqlParameter totalParam = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(totalParam);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dt);
+                        }
+
+                        if (totalParam.Value != DBNull.Value)
+                            totalRegistros = Convert.ToInt32(totalParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar documentos paginados: " + ex.Message,
+                    "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dt;
+        }
+
+
         //Eliminar Documento permanentemente
         public static bool EliminarDocumentoPermanente(int idDocumentacion)
         {
@@ -215,6 +259,53 @@ namespace Modelos.Entidades
             }
             catch (Exception ex) { throw new Exception("Ocurrió un error al cambiar el estado del documento.", ex);
             }
+        }
+
+
+        //Paginas 20 x 20
+        public static DataTable MostrarDocumentosPagina(int pagina, int registrosPorPagina, int tipoFiltro, out int totalRegistros)
+        {
+            totalRegistros = 0;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = ConexionDB.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("MostrarDocumentosPagina", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
+                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+
+                        SqlParameter totalParam = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(totalParam);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dt);
+                        }
+
+                        if (totalParam.Value != DBNull.Value)
+                            totalRegistros = Convert.ToInt32(totalParam.Value);
+
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al paginar documentos: " + ex.Message,
+                    "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            return dt;
         }
     }
 }

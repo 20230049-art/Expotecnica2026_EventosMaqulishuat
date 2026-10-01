@@ -17,6 +17,7 @@ namespace Vista.GerenteDocumentacion
 {
     public partial class frmDocumentos : Form
     {
+
         private bool modoEliminar = false;
         private bool modoRestaurar = false;
         private bool modoEliminarPermanentemente = false;
@@ -25,6 +26,13 @@ namespace Vista.GerenteDocumentacion
         private Form activeForm = null;
 
         private ErrorProvider errorProvider;
+
+        private const int REGISTROS_POR_PAGINA = 20;
+        private int paginaActual = 1;
+        private int totalPaginas = 1;
+        private int totalRegistros = 0;
+        private int tipoFiltroActual = 1;   // 1=Mis docs, 2=Favoritos, 3=Papelera
+        private string busquedaActual = "";
         public frmDocumentos()
         {
             try
@@ -35,9 +43,6 @@ namespace Vista.GerenteDocumentacion
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
 
-                DataTable documentos = Documentos.MostrarDocumentos();
-                CargarDocumentosEnPantalla(documentos);
-
                 btnEliminarSiempre.Hide();
                 btnRestaurarDocumento.Hide();
 
@@ -47,11 +52,19 @@ namespace Vista.GerenteDocumentacion
 
                 try
                 {
-                    Redondeo.RedondearFig(pnlVistaMisDocumentos, 15);
-                    Redondeo.RedondearFig(pnlContenedor, 15);
-                    Redondeo.RedondearFig(panel14, 15);
-                    Redondeo.RedondearFig(panel5, 15);
-                    Redondeo.RedondearFig(panel13, 15);
+                    Redondeo.RedondearFig(pnlContenedor, 17);
+                    Redondeo.RedondearFig(panel14, 17);
+                    Redondeo.RedondearFig(panel5, 17);
+                    Redondeo.RedondearFig(panel13, 17);
+                    Redondeo.RedondearFig(btnMisDocumentos, 9);
+                    Redondeo.RedondearFig(btnDocumentosFavoritos, 9);
+                    Redondeo.RedondearFig(btnDocumentosPapelera,9);
+                    Redondeo.RedondearFig(btnAgregar, 5);
+                    Redondeo.RedondearFig(btnEliminar, 5);
+                    Redondeo.RedondearFig(btnEliminarSiempre, 5);
+                    Redondeo.RedondearFig(btnRestaurarDocumento, 5);
+                    Redondeo.RedondearFig(btnPaginaAnterior, 3);
+                    Redondeo.RedondearFig(btnPaginaSiguiente, 3);
                 }
                 catch (Exception exResize)
                 {
@@ -59,6 +72,9 @@ namespace Vista.GerenteDocumentacion
                 }
 
                 txtBarraBuscar.TextChanged += (s, e) => errorProvider.SetError(txtBarraBuscar, "");
+
+                ActivarBoton(btnMisDocumentos);
+                CargarPagina(1);
             }
             catch (Exception ex)
             {
@@ -900,18 +916,12 @@ namespace Vista.GerenteDocumentacion
         {
             try
             {
-                string busqueda = txtBarraBuscar.Text.Trim();
+                errorProvider.SetError(txtBarraBuscar, "");
 
-                if (string.IsNullOrWhiteSpace(busqueda))
-                {
-                    errorProvider.SetError(txtBarraBuscar, "");
-                    RecargarDocumentos();
-                    return;
-                }
+                busquedaActual = txtBarraBuscar.Text.Trim();
+                paginaActual = 1;
 
-                Documentos documentos = new Documentos();
-                DataTable documentosFiltrados = documentos.BuscarDocumentos(busqueda);
-                CargarDocumentosEnPantalla(documentosFiltrados);
+                CargarPagina(1);
             }
             catch (Exception ex)
             {
@@ -919,6 +929,122 @@ namespace Vista.GerenteDocumentacion
                 MessageBox.Show("Error al buscar documentos: " + ex.Message,
                         "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CargarPagina(int pagina)
+        {
+            try
+            {
+                if (pagina < 1) pagina = 1;
+                if (pagina > totalPaginas && totalPaginas > 0) pagina = totalPaginas;
+
+                DataTable documentos;
+
+                if (string.IsNullOrWhiteSpace(busquedaActual))
+                {
+                    documentos = Documentos.MostrarDocumentosPagina(
+                        pagina, REGISTROS_POR_PAGINA, tipoFiltroActual, out totalRegistros);
+                }
+                else
+                {
+                    documentos = Documentos.BuscarDocumentosPagina(busquedaActual, pagina, REGISTROS_POR_PAGINA, tipoFiltroActual, out totalRegistros);
+                }
+
+                paginaActual = pagina;
+                totalPaginas = (int)Math.Ceiling((double)totalRegistros / REGISTROS_POR_PAGINA);
+                if (totalPaginas < 1) totalPaginas = 1;
+
+                CargarDocumentosEnPantalla(documentos);
+                ActualizarControlesPaginacion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la página: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarControlesPaginacion()
+        {
+            try
+            {
+                lblInfoPagina.Text = $"Página {paginaActual} de {totalPaginas}";
+                lblTotalRegistros.Text = $"Total: {totalRegistros} registro(s)";
+
+                btnPaginaAnterior.Enabled = paginaActual > 1;
+                btnPaginaSiguiente.Enabled = paginaActual < totalPaginas;
+
+                GenerarBotonesNumeros();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error al actualizar paginación: " + ex.Message);
+            }
+        }
+
+        private void GenerarBotonesNumeros()
+        {
+            try
+            {
+                flpNumerosPagina.Controls.Clear();
+
+                int inicio = Math.Max(1, paginaActual - 3);
+                int fin = Math.Min(totalPaginas, inicio + 6);
+                if (fin - inicio < 6) inicio = Math.Max(1, fin - 6);
+
+                for (int i = inicio; i <= fin; i++)
+                {
+                    Button btnPagina = new Button();
+                    btnPagina.Text = i.ToString();
+                    btnPagina.Width = 35;
+                    btnPagina.Height = 32;
+                    btnPagina.FlatStyle = FlatStyle.Flat;
+                    btnPagina.FlatAppearance.BorderSize = 0;
+                    btnPagina.Font = new Font("Book Antiqua", 12, FontStyle.Bold);
+                    btnPagina.Margin = new Padding(1);
+
+                    if (i == paginaActual)
+                    {
+                        btnPagina.BackColor = Color.FromArgb(208, 112, 3);
+                        btnPagina.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        btnPagina.BackColor = Color.FromArgb(206, 183, 175);
+                        btnPagina.ForeColor = Color.Black;
+                    }
+
+                    int paginaBoton = i;
+                    btnPagina.Click += (s, e) => CargarPagina(paginaBoton);
+
+                    flpNumerosPagina.Controls.Add(btnPagina);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error al generar botones de página: " + ex.Message);
+            }
+        }
+
+        private void btnPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            try { CargarPagina(paginaActual - 1); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ir a la página anterior: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPaginaSiguiente_Click(object sender, EventArgs e)
+        {
+            try { CargarPagina(paginaActual + 1); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ir a la página siguiente: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Utilidades;
 
 namespace Vista.GerenteCalendario
 {
@@ -26,6 +27,8 @@ namespace Vista.GerenteCalendario
             this.BackColor = Color.Transparent;
             panel1.BackColor = Color.FromArgb(230, 220, 205);
             checkBox1.Hide();
+
+            Redondeo.RedondearFig(panel1, 4);
         }
 
         public CadaDia(DateTime fecha) : this()

@@ -16,7 +16,6 @@ namespace Vista.IniciarSesion
 {
     public partial class frmfrmIniciarSesionEmpleado : Form
     {
-        private Usuario usuario = new Usuario();
         private ErrorProvider errorProvider = new ErrorProvider();
         public frmfrmIniciarSesionEmpleado()
         {
@@ -134,14 +133,16 @@ namespace Vista.IniciarSesion
                     return;
                 }
 
-                Usuario EmpleadoUsuario = new Usuario();
-                Usuario EmpleadoValido = usuario.ValidarLoginEmpleado(nombreUsuario, contrasena);
+                Usuario usuario = new Usuario();
+                Usuario EmpleadoValido = usuario.ValidarLoginGerente(nombreUsuario, contrasena); ;
 
 
                 if (EmpleadoValido != null)
                 {
                     if (EmpleadoValido.IdTipoUsuario == 2)
                     {
+                        UsuarioActual.Datos = EmpleadoValido;
+
                         MessageBox.Show($"¡Bienvenido {EmpleadoValido.NombreUsuario}!", "USUARIO-ACTIVO-1", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         int idEmpleado = EmpleadoValido.IdEmpleado.Value;
@@ -177,6 +178,25 @@ namespace Vista.IniciarSesion
                 MessageBox.Show("Error al regresar al formulario anterior: " + ex.Message,
                         "ERROR-NAVANTERIOR-104", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblRecuperarContrasena_Click(object sender, EventArgs e)
+        {
+            frmFondoNegro fondo = new frmFondoNegro();
+            fondo.StartPosition = FormStartPosition.CenterParent;
+            fondo.WindowState = FormWindowState.Maximized;
+            fondo.Show();
+
+            frmRecuperarContrasena formulario = new frmRecuperarContrasena();
+
+            formulario.ShowDialog();
+
+            fondo.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

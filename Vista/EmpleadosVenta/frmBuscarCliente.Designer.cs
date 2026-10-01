@@ -150,7 +150,7 @@
             this.pictureBox1.Image = global::Vista.Properties.Resources.botonRegresar;
             this.pictureBox1.Location = new System.Drawing.Point(3, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(73, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -185,7 +185,7 @@
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContenedor.Location = new System.Drawing.Point(3, 3);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(1195, 194);
+            this.pnlContenedor.Size = new System.Drawing.Size(1173, 180);
             this.pnlContenedor.TabIndex = 2;
             this.pnlContenedor.Visible = false;
             // 
@@ -194,17 +194,17 @@
             this.pnlAgregarCompra.BackColor = System.Drawing.Color.SandyBrown;
             this.pnlAgregarCompra.Controls.Add(this.pbImg);
             this.pnlAgregarCompra.Controls.Add(this.btnAgregarCompra);
-            this.pnlAgregarCompra.Location = new System.Drawing.Point(1000, 6);
+            this.pnlAgregarCompra.Location = new System.Drawing.Point(995, 10);
             this.pnlAgregarCompra.Name = "pnlAgregarCompra";
-            this.pnlAgregarCompra.Size = new System.Drawing.Size(168, 162);
+            this.pnlAgregarCompra.Size = new System.Drawing.Size(152, 153);
             this.pnlAgregarCompra.TabIndex = 40;
             // 
             // pbImg
             // 
             this.pbImg.Image = global::Vista.Properties.Resources.Persona;
-            this.pbImg.Location = new System.Drawing.Point(39, 18);
+            this.pbImg.Location = new System.Drawing.Point(25, 18);
             this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(96, 73);
+            this.pbImg.Size = new System.Drawing.Size(90, 68);
             this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImg.TabIndex = 1;
             this.pbImg.TabStop = false;
@@ -243,9 +243,9 @@
             this.pnlContenedorInfo.Controls.Add(this.label37);
             this.pnlContenedorInfo.Controls.Add(this.panel7);
             this.pnlContenedorInfo.Controls.Add(this.label38);
-            this.pnlContenedorInfo.Location = new System.Drawing.Point(8, 6);
+            this.pnlContenedorInfo.Location = new System.Drawing.Point(8, 10);
             this.pnlContenedorInfo.Name = "pnlContenedorInfo";
-            this.pnlContenedorInfo.Size = new System.Drawing.Size(949, 162);
+            this.pnlContenedorInfo.Size = new System.Drawing.Size(974, 153);
             this.pnlContenedorInfo.TabIndex = 39;
             // 
             // panel10

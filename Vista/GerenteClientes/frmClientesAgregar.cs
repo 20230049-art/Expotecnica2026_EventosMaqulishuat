@@ -163,8 +163,13 @@ namespace Vista.GerenteClientes
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo procesar el cliente. Resultado inesperado: " + resultado,
-                                "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+        "No se pudo registrar el cliente. Por favor, verifique los datos ingresados " +
+        "e intente nuevamente.\n\n" +
+        "Si el problema persiste, contacte al administrador del sistema.",
+        "ERROR-REGISTRO-CLIENTE",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Error);
                     }
                 }
                 catch (SqlException ex)
@@ -200,8 +205,11 @@ namespace Vista.GerenteClientes
 
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar el cliente: " + ex.Message,
-                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al agregar el cliente:\n\n" +
+                    "Tipo: " + ex.GetType().Name + "\n" +
+                    "Mensaje: " + ex.Message + "\n\n" +
+                    "StackTrace:\n" + ex.StackTrace,
+                    "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

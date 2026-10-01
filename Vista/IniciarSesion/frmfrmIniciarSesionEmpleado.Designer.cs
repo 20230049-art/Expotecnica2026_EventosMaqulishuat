@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmfrmIniciarSesionEmpleado));
             this.pnlVistaIniciarEmpleado = new System.Windows.Forms.Panel();
             this.tlpFondo = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,13 +45,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnIngresarEmpleado = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblRecuperarContrasena = new System.Windows.Forms.Label();
             this.pnlcontenedor = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlVistaIniciarEmpleado.SuspendLayout();
             this.tlpFondo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -85,6 +87,7 @@
             this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.24948F));
             this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.0499F));
             this.tlpFondo.Controls.Add(this.panel1, 1, 1);
+            this.tlpFondo.Controls.Add(this.button1, 2, 2);
             this.tlpFondo.Location = new System.Drawing.Point(0, 0);
             this.tlpFondo.Name = "tlpFondo";
             this.tlpFondo.RowCount = 3;
@@ -215,7 +218,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.43614F));
             this.tableLayoutPanel1.Controls.Add(this.btnIngresarEmpleado, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnRegresar, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblRecuperarContrasena, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 305);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -260,19 +263,20 @@
             this.btnRegresar.UseVisualStyleBackColor = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // label2
+            // lblRecuperarContrasena
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(30)))), ((int)(((byte)(15)))));
-            this.label2.Location = new System.Drawing.Point(518, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "¿Olvidaste tu contraseña?";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.toolTip1.SetToolTip(this.label2, "Recuperar contraseña");
+            this.lblRecuperarContrasena.AutoSize = true;
+            this.lblRecuperarContrasena.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblRecuperarContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecuperarContrasena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(30)))), ((int)(((byte)(15)))));
+            this.lblRecuperarContrasena.Location = new System.Drawing.Point(518, 72);
+            this.lblRecuperarContrasena.Name = "lblRecuperarContrasena";
+            this.lblRecuperarContrasena.Size = new System.Drawing.Size(244, 18);
+            this.lblRecuperarContrasena.TabIndex = 3;
+            this.lblRecuperarContrasena.Text = "¿Olvidaste tu contraseña?";
+            this.lblRecuperarContrasena.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTip1.SetToolTip(this.lblRecuperarContrasena, "Recuperar contraseña");
+            this.lblRecuperarContrasena.Click += new System.EventHandler(this.lblRecuperarContrasena_Click);
             // 
             // pnlcontenedor
             // 
@@ -333,12 +337,28 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1521, 895);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(400, 75);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Cerrar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmfrmIniciarSesionEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 973);
             this.Controls.Add(this.pnlVistaIniciarEmpleado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "frmfrmIniciarSesionEmpleado";
             this.Text = "frmfrmIniciarSesionEmpleado";
@@ -378,7 +398,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.Button btnIngresarEmpleado;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblRecuperarContrasena;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlcontenedor;
         private System.Windows.Forms.Button btnRegresar;
@@ -386,5 +406,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button1;
     }
 }

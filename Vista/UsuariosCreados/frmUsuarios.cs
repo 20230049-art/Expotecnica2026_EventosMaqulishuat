@@ -38,6 +38,8 @@ namespace Vista.UsuariosCreados
                 Redondeo.RedondearFig(btnGuardar, 6);
                 Redondeo.RedondearFig(btnEliminar, 6);
                 Redondeo.RedondearFig(panel2, 10);
+                Redondeo.RedondearFig(btnPaginaAnterior, 4);
+                Redondeo.RedondearFig(btnPaginaSiguiente, 4);
                 CargarRoles();
 
                 CargarPagina(1);
@@ -135,9 +137,6 @@ namespace Vista.UsuariosCreados
         {
             try
             {
-                lblInfoPagina.Text = $"Página {paginaActual} de {totalPaginas}";
-                lblTotalRegistros.Text = $"Total: {totalRegistros} registro(s)";
-
                 btnPaginaAnterior.Enabled = paginaActual > 1;
                 btnPaginaSiguiente.Enabled = paginaActual < totalPaginas;
             }

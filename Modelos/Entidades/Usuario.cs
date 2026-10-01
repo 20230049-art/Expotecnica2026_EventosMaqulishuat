@@ -21,6 +21,7 @@ namespace Modelos.Entidades
         private string nombreGerente;
         private string apellidoGerente;
         private string correoGerente;
+        private int nuevaContrasena;
 
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
@@ -33,6 +34,7 @@ namespace Modelos.Entidades
         public string CorreoGerente { get => correoGerente; set => correoGerente = value; }
 
         public static Usuario Datos { get; set; }
+        public int NuevaContrasena { get => nuevaContrasena; set => nuevaContrasena = value; }
 
         //Crear cuenta Gerente
         public bool RegistrarGerente()
@@ -319,6 +321,75 @@ namespace Modelos.Entidades
             }
             catch (SqlException)
             {
+                return false;
+            }
+        }
+
+        //Verifica si el correo existe y guarda codigo
+        public bool GuardarCodigoRecuperacion(string NombreUsuario, string codigo)
+        {
+            try
+            {
+                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SqlCommand command = new SqlCommand("GuardarCodigoRecuperacion", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@NombreUsuario", SqlDbType.VarChar).Value = NombreUsuario;
+                    command.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = codigo;
+
+                    object resultado = command.ExecuteScalar();
+                    return resultado != null && Convert.ToInt32(resultado) == 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar código: " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool ValidarCodigoRecuperacion(string NombreUsuario, string codigo)
+        {
+            try
+            {
+                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SqlCommand command = new SqlCommand("ValidarCodigoRecuperacion", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@NombreUsuario", SqlDbType.VarChar).Value = NombreUsuario;
+                    command.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = codigo;
+
+                    int cantidad = Convert.ToInt32(command.ExecuteScalar());
+                    return cantidad > 0;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ActualizarContrasenaRecuperacion(string NombreUsuario, string nuevaContrasena)
+        {
+            try
+            {
+                string hash = BCrypt.Net.BCrypt.HashPassword(nuevaContrasena);
+
+                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SqlCommand command = new SqlCommand("ActualizarContrasenaRecuperacion", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@NombreUsuario", SqlDbType.VarChar).Value = NombreUsuario;
+                    command.Parameters.Add("@NuevaContrasena", SqlDbType.VarChar).Value = hash;
+
+
+                    int cantidad = Convert.ToInt32(command.ExecuteScalar());
+                    return cantidad > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar contraseña: " + ex.Message);
                 return false;
             }
         }

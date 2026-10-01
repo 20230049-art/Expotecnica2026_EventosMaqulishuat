@@ -1,4 +1,5 @@
 ﻿using Microsoft.Web.WebView2.WinForms;
+using Modelos.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,74 +10,145 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Utilidades;
 
 namespace Vista.GerenteAyuda
 {
     public partial class frmAyuda : Form
     {
-        private WebView2 visorPdf;
-
         public frmAyuda()
         {
             InitializeComponent();
+
+            Redondeo.RedondearFig(panel1, 8);
+            Redondeo.RedondearFig(panel4, 8);
+            Redondeo.RedondearFig(panel2, 6);
+            Redondeo.RedondearFig(panel3, 6);
+            Redondeo.RedondearFig(button5, 5);
+            Redondeo.RedondearFig(button1, 5);
         }
 
-        private async void InicializarVisorPdf()
+        private void AbrirUrl(string url)
         {
             try
             {
-                if (visorPdf != null) return; // ya está inicializado
-
-                visorPdf = new WebView2
+                if (string.IsNullOrWhiteSpace(url))
                 {
-                    Dock = DockStyle.Fill
-                };
+                    MessageBox.Show("No hay un enlace configurado.",
+                            "ERROR-CAMVACIO-001", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                pnlVisorPdf.Controls.Add(visorPdf);
-                await visorPdf.EnsureCoreWebView2Async(null);
-
-                // Opciones del visor
-                visorPdf.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-                visorPdf.CoreWebView2.Settings.AreDevToolsEnabled = false;
-                visorPdf.CoreWebView2.Settings.IsZoomControlEnabled = true;
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir el navegador: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo inicializar el visor de PDF: " + ex.Message,
-                        "ERROR-VISOR-PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al abrir el enlace: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void MostrarPdfEnPanel(string rutaRelativa)
+        private void frmAyuda_Load(object sender, EventArgs e)
         {
             try
             {
-                if (visorPdf == null)
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
                 {
-                    MessageBox.Show("El visor aún no está listo, intenta de nuevo.",
-                            "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+
                 }
-
-                string rutaCompleta = Path.IsPathRooted(rutaRelativa)
-                    ? rutaRelativa
-                    : Path.Combine(Application.StartupPath, rutaRelativa);
-
-                if (!File.Exists(rutaCompleta))
-                {
-                    MessageBox.Show("No se encontró el archivo PDF en:\n" + rutaCompleta,
-                            "ERROR-NODATO-007", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // El truco: WebView2 renderiza PDFs nativamente usando el motor de Edge
-                visorPdf.Source = new Uri(rutaCompleta);
-                pnlVisorPdf.Visible = true;
-                pnlVisorPdf.BringToFront();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar el PDF: " + ex.Message,
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/folders/1YkG44-1j2Mhz9Dr5XbnV_ubzIiF0E-tj?usp=drive_link");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/folders/1YkG44-1j2Mhz9Dr5XbnV_ubzIiF0E-tj?usp=drive_link");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/folders/1YkG44-1j2Mhz9Dr5XbnV_ubzIiF0E-tj?usp=drive_link");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/folders/1YkG44-1j2Mhz9Dr5XbnV_ubzIiF0E-tj?usp=drive_link");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/folders/1YkG44-1j2Mhz9Dr5XbnV_ubzIiF0E-tj?usp=drive_link");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnVerTuTorialRecuperar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/folders/1YkG44-1j2Mhz9Dr5XbnV_ubzIiF0E-tj?usp=drive_link");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

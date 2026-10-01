@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmActualizarInfo));
             this.pnlVistaAgregarCliente = new System.Windows.Forms.Panel();
             this.tlpVistaClientes = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTitulo = new System.Windows.Forms.Panel();
@@ -518,6 +519,7 @@
             this.ClientSize = new System.Drawing.Size(1280, 680);
             this.Controls.Add(this.pnlVistaAgregarCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1280, 718);
             this.MinimumSize = new System.Drawing.Size(1280, 680);
             this.Name = "frmActualizarInfo";

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompraFinal));
             this.pnlVistaCompraFinal = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -160,11 +161,11 @@
             // 
             this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
             this.tableLayoutPanel6.ColumnCount = 5;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.84993F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.15007F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.95954F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.04046F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1135F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -183,9 +184,9 @@
             this.lblProductos.AutoSize = true;
             this.lblProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(196, 20);
+            this.lblProductos.Location = new System.Drawing.Point(237, 20);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(494, 108);
+            this.lblProductos.Size = new System.Drawing.Size(450, 108);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "VENTA FINAL";
             this.lblProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -195,10 +196,10 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 323F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326F));
             this.tableLayoutPanel7.Controls.Add(this.btnCancelarVenta, 2, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(696, 23);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(693, 23);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -215,9 +216,9 @@
             this.btnCancelarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarVenta.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.btnCancelarVenta.Location = new System.Drawing.Point(808, 20);
+            this.btnCancelarVenta.Location = new System.Drawing.Point(805, 20);
             this.btnCancelarVenta.Name = "btnCancelarVenta";
-            this.btnCancelarVenta.Size = new System.Drawing.Size(318, 56);
+            this.btnCancelarVenta.Size = new System.Drawing.Size(321, 56);
             this.btnCancelarVenta.TabIndex = 12;
             this.btnCancelarVenta.Text = "Cancelar Compra";
             this.toolTip1.SetToolTip(this.btnCancelarVenta, "Elimianr Compra");
@@ -227,9 +228,9 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.85714F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.14286F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.49289F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.50711F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
             this.tableLayoutPanel2.Controls.Add(this.pbRegresar, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
@@ -238,16 +239,16 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.27957F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.72043F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(187, 102);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(228, 102);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // pbRegresar
             // 
             this.pbRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbRegresar.Image = global::Vista.Properties.Resources.botonRegresar;
-            this.pbRegresar.Location = new System.Drawing.Point(83, 20);
+            this.pbRegresar.Location = new System.Drawing.Point(79, 20);
             this.pbRegresar.Name = "pbRegresar";
-            this.pbRegresar.Size = new System.Drawing.Size(84, 70);
+            this.pbRegresar.Size = new System.Drawing.Size(126, 70);
             this.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbRegresar.TabIndex = 0;
             this.pbRegresar.TabStop = false;
@@ -330,8 +331,8 @@
             this.tableLayoutPanel4.ColumnCount = 4;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.86757F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.74035F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.42023F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.971846F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.24505F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.303441F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel8, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -355,7 +356,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.71875F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.03125F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1158, 656);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1157, 656);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // pnlContenedorInfo
@@ -379,7 +380,7 @@
             this.pnlContenedorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenedorInfo.Location = new System.Drawing.Point(3, 3);
             this.pnlContenedorInfo.Name = "pnlContenedorInfo";
-            this.pnlContenedorInfo.Size = new System.Drawing.Size(1152, 169);
+            this.pnlContenedorInfo.Size = new System.Drawing.Size(1151, 169);
             this.pnlContenedorInfo.TabIndex = 40;
             this.toolTip1.SetToolTip(this.pnlContenedorInfo, "Datos del cliente");
             // 
@@ -550,7 +551,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 191);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1152, 462);
+            this.panel4.Size = new System.Drawing.Size(1151, 462);
             this.panel4.TabIndex = 42;
             // 
             // dgvDetallesVenta
@@ -576,7 +577,7 @@
             this.dgvDetallesVenta.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetallesVenta.RowHeadersWidth = 51;
             this.dgvDetallesVenta.RowTemplate.Height = 24;
-            this.dgvDetallesVenta.Size = new System.Drawing.Size(1117, 441);
+            this.dgvDetallesVenta.Size = new System.Drawing.Size(1116, 441);
             this.dgvDetallesVenta.TabIndex = 41;
             this.toolTip1.SetToolTip(this.dgvDetallesVenta, "Productos de la compra ");
             // 
@@ -587,11 +588,11 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.8504F));
             this.tableLayoutPanel8.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(1221, 3);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(1220, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(635, 656);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(668, 656);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // panel3
@@ -637,13 +638,14 @@
             this.panel3.Controls.Add(this.label34);
             this.panel3.Controls.Add(this.lblNumeroFactura);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(22, 3);
+            this.panel3.Location = new System.Drawing.Point(24, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(610, 650);
+            this.panel3.Size = new System.Drawing.Size(641, 650);
             this.panel3.TabIndex = 1;
             // 
             // panel16
             // 
+            this.panel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(45)))), ((int)(((byte)(23)))));
             this.panel16.Location = new System.Drawing.Point(34, 493);
             this.panel16.Name = "panel16";
@@ -660,7 +662,7 @@
             this.btnFacturaGenerar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
             this.btnFacturaGenerar.Location = new System.Drawing.Point(213, 594);
             this.btnFacturaGenerar.Name = "btnFacturaGenerar";
-            this.btnFacturaGenerar.Size = new System.Drawing.Size(133, 36);
+            this.btnFacturaGenerar.Size = new System.Drawing.Size(164, 36);
             this.btnFacturaGenerar.TabIndex = 2;
             this.btnFacturaGenerar.Text = "PDF";
             this.toolTip1.SetToolTip(this.btnFacturaGenerar, "Generar factura");
@@ -676,7 +678,7 @@
             this.dtpFechaUso.Font = new System.Drawing.Font("Bookman Old Style", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaUso.Location = new System.Drawing.Point(196, 543);
             this.dtpFechaUso.Name = "dtpFechaUso";
-            this.dtpFechaUso.Size = new System.Drawing.Size(320, 27);
+            this.dtpFechaUso.Size = new System.Drawing.Size(351, 27);
             this.dtpFechaUso.TabIndex = 55;
             this.toolTip1.SetToolTip(this.dtpFechaUso, "Seleccionar fecha de uso");
             // 
@@ -704,7 +706,7 @@
             this.cmbTipoPago.FormattingEnabled = true;
             this.cmbTipoPago.Location = new System.Drawing.Point(251, 504);
             this.cmbTipoPago.Name = "cmbTipoPago";
-            this.cmbTipoPago.Size = new System.Drawing.Size(172, 31);
+            this.cmbTipoPago.Size = new System.Drawing.Size(203, 31);
             this.cmbTipoPago.TabIndex = 53;
             this.toolTip1.SetToolTip(this.cmbTipoPago, "Seleccionar forma de pago");
             // 
@@ -909,7 +911,7 @@
             this.panel17.Controls.Add(this.panel18);
             this.panel17.Location = new System.Drawing.Point(40, 583);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(535, 0);
+            this.panel17.Size = new System.Drawing.Size(566, 0);
             this.panel17.TabIndex = 37;
             this.panel17.Visible = false;
             // 
@@ -938,25 +940,21 @@
             // 
             // panel15
             // 
-            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(45)))), ((int)(((byte)(23)))));
             this.panel15.Location = new System.Drawing.Point(31, 360);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(535, 1);
+            this.panel15.Size = new System.Drawing.Size(566, 1);
             this.panel15.TabIndex = 10;
             // 
             // panel19
             // 
-            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(45)))), ((int)(((byte)(23)))));
             this.panel19.Controls.Add(this.panel20);
             this.panel19.Location = new System.Drawing.Point(31, 494);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(535, 0);
+            this.panel19.Size = new System.Drawing.Size(566, 0);
             this.panel19.TabIndex = 36;
             // 
             // panel20
@@ -999,14 +997,12 @@
             // 
             // panel13
             // 
-            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(45)))), ((int)(((byte)(23)))));
             this.panel13.Controls.Add(this.panel14);
             this.panel13.Location = new System.Drawing.Point(31, 320);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(535, 1);
+            this.panel13.Size = new System.Drawing.Size(566, 1);
             this.panel13.TabIndex = 8;
             // 
             // panel14
@@ -1107,13 +1103,11 @@
             // 
             // panel12
             // 
-            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(45)))), ((int)(((byte)(23)))));
             this.panel12.Location = new System.Drawing.Point(31, 133);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(535, 1);
+            this.panel12.Size = new System.Drawing.Size(566, 1);
             this.panel12.TabIndex = 7;
             // 
             // label10
@@ -1163,13 +1157,11 @@
             // 
             // panel11
             // 
-            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(45)))), ((int)(((byte)(23)))));
             this.panel11.Location = new System.Drawing.Point(29, 63);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(535, 1);
+            this.panel11.Size = new System.Drawing.Size(566, 1);
             this.panel11.TabIndex = 6;
             // 
             // label34
@@ -1208,6 +1200,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 973);
             this.Controls.Add(this.pnlVistaCompraFinal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1942, 1020);
             this.Name = "frmCompraFinal";
             this.ShowInTaskbar = false;
             this.Text = "frmCompraFinal";

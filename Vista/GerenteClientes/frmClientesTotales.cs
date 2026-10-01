@@ -287,6 +287,40 @@ namespace Vista.GerenteClientes
             }
         }
 
+        private bool ObtenerEstadoCliente(DataRow fila)
+        {
+            try
+            {
+                if (fila == null)
+                    return false;
+
+                if (fila.Table.Columns.Contains("ClienteActivo"))
+                {
+                    if (fila["ClienteActivo"] == DBNull.Value)
+                        return false;
+
+                    return Convert.ToBoolean(fila["ClienteActivo"]);
+                }
+
+                if (fila.Table.Columns.Contains("EstadoCliente"))
+                {
+                    if (fila["EstadoCliente"] == DBNull.Value)
+                        return false;
+
+                    return Convert.ToBoolean(fila["EstadoCliente"]);
+                }
+
+                throw new Exception(
+                    "Los datos del cliente no contienen las columnas " +
+                    "'ClienteActivo' ni 'EstadoCliente'.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "No se pudo determinar el estado del cliente: " + ex.Message, ex);
+            }
+        }
+
         private Panel MostrarClientes(DataRow fila)
         {
             try
@@ -304,7 +338,7 @@ namespace Vista.GerenteClientes
                 panelCliente.Tag = fila["IdCliente"];
                 Redondeo.RedondearFig(panelCliente, 10);
 
-                bool clienteActivo = Convert.ToBoolean(fila["ClienteActivo"]);
+                bool clienteActivo = ObtenerEstadoCliente(fila);
                 ColorPanelCliente(panelCliente, clienteActivo);
                     
                 Label lblNombre = new Label();
@@ -535,8 +569,8 @@ namespace Vista.GerenteClientes
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo eliminar el cliente de la base de datos.",
-                            "ERROR-ELIMINAR-015", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cliente eliminado permanentemente.", "PROCEDIMIENTO-EXITOSO",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 }
             }
             catch (System.Data.SqlClient.SqlException ex)

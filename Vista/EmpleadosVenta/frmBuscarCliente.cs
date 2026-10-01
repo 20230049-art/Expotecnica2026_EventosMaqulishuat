@@ -80,65 +80,65 @@ namespace Vista.EmpleadosVenta
             Label lblTituloNombre = new Label();
 
             lblTituloNombre.Text = "Nombre".ToString();
-            lblTituloNombre.Font = new Font("Book Antiqua", 22, FontStyle.Bold);
+            lblTituloNombre.Font = new Font("Book Antiqua", 19, FontStyle.Bold);
             lblTituloNombre.ForeColor = Color.FromArgb(64, 6, 6);
-            lblTituloNombre.Location = new Point(28, 21);
+            lblTituloNombre.Location = new Point(20, 18 );
             lblTituloNombre.AutoSize = true;
 
             Label lblNombre = new Label();
 
             lblNombre.Text = fila["NombreCliente"].ToString();
-            lblNombre.Font = new Font("Book Antiqua", 20, FontStyle.Regular);
-            lblNombre.Location = new Point(28, 52);
+            lblNombre.Font = new Font("Book Antiqua", 17, FontStyle.Regular);
+            lblNombre.Location = new Point(20, 52);
             lblNombre.AutoSize = true;
 
             Label lblApellido = new Label();
 
             lblApellido.Text = fila["ApellidoCliente"].ToString();
-            lblApellido.Font = new Font("Book Antiqua", 20, FontStyle.Regular);
-            lblApellido.Location = new Point(28, 84);
+            lblApellido.Font = new Font("Book Antiqua", 17, FontStyle.Regular);
+            lblApellido.Location = new Point(20, 80);
             lblApellido.AutoSize = true;
 
             Label lblDocumento = new Label();
             lblDocumento.Text = "DUI: " + fila["DUICliente"].ToString();
-            lblDocumento.Font = new Font("Book Antiqua", 21, FontStyle.Regular);
-            lblDocumento.Location = new Point(324, 30);
+            lblDocumento.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
+            lblDocumento.Location = new Point(255, 32);
             lblDocumento.AutoSize = true;
 
             Label lblTipoCliente = new Label();
             lblTipoCliente.Text = "Tipo de Cliente: " + fila["TipoCliente"].ToString();
-            lblTipoCliente.Font = new Font("Book Antiqua", 21, FontStyle.Regular);
-            lblTipoCliente.Location = new Point(324, 72);
+            lblTipoCliente.Font = new Font("Book Antiqua", 18, FontStyle.Regular);
+            lblTipoCliente.Location = new Point(255, 74);
             lblTipoCliente.AutoSize = true;
 
             Label lblContacto = new Label();
             lblContacto.Text = "Contacto".ToString();
-            lblContacto.Font = new Font("Book Antiqua", 22, FontStyle.Bold);
+            lblContacto.Font = new Font("Book Antiqua", 20, FontStyle.Bold);
             lblContacto.ForeColor = Color.FromArgb(64, 6, 6);
-            lblContacto.Location = new Point(674, 21);
+            lblContacto.Location = new Point(545, 21);
             lblContacto.AutoSize = true;
 
             Label lblTelefono = new Label();
             lblTelefono.Text = fila["TelefonoCliente"].ToString();
-            lblTelefono.Font = new Font("Book Antiqua", 19, FontStyle.Regular);
-            lblTelefono.Location = new Point(674, 52);
+            lblTelefono.Font = new Font("Book Antiqua", 17, FontStyle.Regular);
+            lblTelefono.Location = new Point(545, 52);
             lblTelefono.AutoSize = true;
 
             Label lblCorreo = new Label();
             lblCorreo.Text = fila["CorreoCliente"].ToString();
-            lblCorreo.Font = new Font("Book Antiqua", 19, FontStyle.Regular);
-            lblCorreo.Location = new Point(674, 83);
+            lblCorreo.Font = new Font("Book Antiqua", 17, FontStyle.Regular);
+            lblCorreo.Location = new Point(545, 83);
             lblCorreo.MaximumSize = new Size(400, 0);
             lblCorreo.AutoSize = true;
 
             Panel pnlDecoracion = new Panel();
-            pnlDecoracion.Size = new Size(1, 105);
-            pnlDecoracion.Location = new Point(310, 18);
+            pnlDecoracion.Size = new Size(1, 85);
+            pnlDecoracion.Location = new Point(240, 18);
             pnlDecoracion.BackColor = Color.Black;
 
             Panel pnlDecoracion1 = new Panel();
-            pnlDecoracion1.Size = new Size(1, 105);
-            pnlDecoracion1.Location = new Point(654, 18);
+            pnlDecoracion1.Size = new Size(1, 85);
+            pnlDecoracion1.Location = new Point(532, 18);
             pnlDecoracion1.BackColor = Color.Black;
 
             Button btnCompra = new Button();
@@ -155,7 +155,7 @@ namespace Vista.EmpleadosVenta
             btnCompra.Click += BtnCompra_Click;
 
             PictureBox pbLogo = new PictureBox();
-            pbLogo.Location = new Point(38, 12);
+            pbLogo.Location = new Point(30, 12);
             pbLogo.Size = pbImg.Size;
             pbLogo.Image = pbImg.Image;
 
