@@ -1,33 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
 
-namespace Modelos.Conexion_DB
-{
-    internal class ConexionDB
+    namespace Modelos.Conexion_DB
     {
-        private static string servidor = "DESKTOP-S8LD4U5\\SQLEXPRESS";
-        private static string baseDatos = "AlquileresMaquilishuat";
-
-        public static SqlConnection Conectar()
+        internal class ConexionDB
         {
-            try
-            {
-                string cadena = $"Data Source={servidor}; Initial Catalog={baseDatos}; Integrated Security=True";
-                SqlConnection conection = new SqlConnection(cadena);
-                conection.Open();
+            private static string servidor = "DESKTOP-S8LD4U5\\SQLEXPRESS";
+            private static string baseDatos = "AlquileresMaquilishuat";
 
-                return conection;
-            }
-            catch (Exception ex)
+            public static SqlConnection Conectar()
             {
-                MessageBox.Show($"No se pudo conectar al servidor{servidor}", "Error:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                try
+                {
+                    string cadena = $"Data Source={servidor}; Initial Catalog={baseDatos}; Integrated Security=True";
+                    SqlConnection conection = new SqlConnection(cadena);
+                    conection.Open();
+
+                    return conection;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"No se pudo conectar al servidor{servidor}", "Error:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
             }
         }
     }
-}

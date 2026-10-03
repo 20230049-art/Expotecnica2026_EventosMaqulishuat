@@ -28,7 +28,7 @@ namespace Vista.GerenteCalendario
             panel1.BackColor = Color.FromArgb(230, 220, 205);
             checkBox1.Hide();
 
-            Redondeo.RedondearFig(panel1, 4);
+            Redondeo.RedondearFig(panel1, 8);
         }
 
         public CadaDia(DateTime fecha) : this()

@@ -73,7 +73,7 @@
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(180)))), ((int)(((byte)(141)))));
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Font = new System.Drawing.Font("Book Antiqua", 22.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Font = new System.Drawing.Font("Book Antiqua", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Location = new System.Drawing.Point(438, 520);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(190, 46);
@@ -95,11 +95,11 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 28.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTitle.Location = new System.Drawing.Point(38, 5);
+            this.lblTitle.Location = new System.Drawing.Point(41, 7);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(342, 65);
+            this.lblTitle.Size = new System.Drawing.Size(301, 57);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Recordatorios";
             // 
@@ -258,10 +258,10 @@
             this.btnAnadirRecordatorio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAnadirRecordatorio.FlatAppearance.BorderSize = 0;
             this.btnAnadirRecordatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnadirRecordatorio.Font = new System.Drawing.Font("Book Antiqua", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnadirRecordatorio.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnadirRecordatorio.Location = new System.Drawing.Point(694, 13);
             this.btnAnadirRecordatorio.Name = "btnAnadirRecordatorio";
-            this.btnAnadirRecordatorio.Size = new System.Drawing.Size(187, 55);
+            this.btnAnadirRecordatorio.Size = new System.Drawing.Size(202, 55);
             this.btnAnadirRecordatorio.TabIndex = 12;
             this.btnAnadirRecordatorio.Text = "Añadir nuevo recordatorio";
             this.btnAnadirRecordatorio.UseVisualStyleBackColor = false;

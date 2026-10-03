@@ -24,6 +24,13 @@ namespace Vista.IniciarSesion
         {
             InitializeComponent();
 
+            Redondeo.RedondearFormulario(this, 12);
+            ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
+            ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
+            ControlesBloqueo.LimitarTextBox(txtCodigo, 6);
+            ControlesBloqueo.LimitarTextBox(txtNuevaContrasena, 180);
+            ControlesBloqueo.LimitarTextBox(txtConfirmarContrasena, 180);
+
             errorProvider = new ErrorProvider();
             errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider.ContainerControl = this;
@@ -276,6 +283,11 @@ namespace Vista.IniciarSesion
         }
 
         private void frmRecuperarContrasena_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtConfirmarContrasena_TextChanged(object sender, EventArgs e)
         {
 
         }

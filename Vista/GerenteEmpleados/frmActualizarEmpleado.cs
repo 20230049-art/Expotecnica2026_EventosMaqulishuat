@@ -26,6 +26,11 @@ namespace Vista.GerenteEmpleados
             {
                 InitializeComponent();
 
+                Redondeo.RedondearFormulario(this, 14);
+                Redondeo.RedondearFig(pnlTitulo, 7);
+                Redondeo.RedondearFig(btnActualizar, 6);
+                Redondeo.RedondearFig(btnCerrar, 6);
+
                 errorProvider = new ErrorProvider();
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
@@ -39,6 +44,13 @@ namespace Vista.GerenteEmpleados
                 }
 
                 MostrarInformacionEmpleado();
+
+                ControlesBloqueo.LimitarTextBox(txtNombre, 180);
+                ControlesBloqueo.LimitarTextBox(txtApellido, 180);
+                ControlesBloqueo.LimitarTextBox(txtDui, 10);
+                ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
+                ControlesBloqueo.LimitarTextBox(txtCargo, 45);
+                ControlesBloqueo.LimitarTextBox(txtCuentaBancaria, 45);
 
                 ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
                 controlesBloqueo.BloquearControlesTXT(txtNombre);

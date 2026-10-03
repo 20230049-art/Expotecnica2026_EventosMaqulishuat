@@ -19,9 +19,6 @@ namespace Modelos.Entidades
                 if (factura == null)
                     throw new ArgumentNullException(nameof(factura));
 
-                // ============================================
-                //   CARPETA Y NOMBRE DE ARCHIVO
-                // ============================================
                 string carpetaFactura = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                     "Facturas");

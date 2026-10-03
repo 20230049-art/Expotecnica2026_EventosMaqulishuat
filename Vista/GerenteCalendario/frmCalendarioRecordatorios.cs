@@ -19,6 +19,11 @@ namespace Vista.GerenteCalendario
         public frmCalendarioRecordatorios()
         {
             InitializeComponent();
+
+            Redondeo.RedondearFormulario(this, 14);
+            Redondeo.RedondearFig(panel4, 6);
+            Redondeo.RedondearFig(btnAnadirRecordatorio, 4);
+            Redondeo.RedondearFig(btnCerrar, 4);
         }
 
         public frmCalendarioRecordatorios(DateTime fecha) : this()

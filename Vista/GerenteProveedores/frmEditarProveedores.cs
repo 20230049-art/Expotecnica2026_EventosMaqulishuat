@@ -25,6 +25,7 @@ namespace Vista.GerenteProveedores
         {
             try
             {
+
                 InitializeComponent();
                 errorProvider = new ErrorProvider();
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;

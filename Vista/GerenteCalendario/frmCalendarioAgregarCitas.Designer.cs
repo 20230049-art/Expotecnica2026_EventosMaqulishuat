@@ -32,8 +32,11 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlNombreRecordatorio = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlDatos = new System.Windows.Forms.Panel();
+            this.dtpHora = new System.Windows.Forms.DateTimePicker();
+            this.dtpDia = new System.Windows.Forms.DateTimePicker();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
             this.txtAsunto = new System.Windows.Forms.TextBox();
@@ -42,9 +45,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.dtpDia = new System.Windows.Forms.DateTimePicker();
-            this.dtpHora = new System.Windows.Forms.DateTimePicker();
             this.pnlVistaCalendarioActualizar.SuspendLayout();
             this.pnlNombreRecordatorio.SuspendLayout();
             this.pnlDatos.SuspendLayout();
@@ -60,7 +60,7 @@
             this.pnlVistaCalendarioActualizar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaCalendarioActualizar.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaCalendarioActualizar.Name = "pnlVistaCalendarioActualizar";
-            this.pnlVistaCalendarioActualizar.Size = new System.Drawing.Size(1086, 602);
+            this.pnlVistaCalendarioActualizar.Size = new System.Drawing.Size(1131, 629);
             this.pnlVistaCalendarioActualizar.TabIndex = 2;
             // 
             // btnCerrar
@@ -70,7 +70,7 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Bookman Old Style", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnCerrar.Location = new System.Drawing.Point(379, 473);
+            this.btnCerrar.Location = new System.Drawing.Point(405, 498);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(338, 57);
             this.btnCerrar.TabIndex = 9;
@@ -85,7 +85,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Bookman Old Style", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button1.Location = new System.Drawing.Point(276, 421);
+            this.button1.Location = new System.Drawing.Point(302, 446);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(559, 66);
             this.button1.TabIndex = 6;
@@ -99,10 +99,21 @@
             this.pnlNombreRecordatorio.Controls.Add(this.lblTitle);
             this.pnlNombreRecordatorio.Controls.Add(this.textBox2);
             this.pnlNombreRecordatorio.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pnlNombreRecordatorio.Location = new System.Drawing.Point(286, 33);
+            this.pnlNombreRecordatorio.Location = new System.Drawing.Point(312, 58);
             this.pnlNombreRecordatorio.Name = "pnlNombreRecordatorio";
             this.pnlNombreRecordatorio.Size = new System.Drawing.Size(473, 96);
             this.pnlNombreRecordatorio.TabIndex = 7;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTitle.Location = new System.Drawing.Point(38, 19);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(393, 54);
+            this.lblTitle.TabIndex = 7;
+            this.lblTitle.Text = "Nuevo recordatorio";
             // 
             // textBox2
             // 
@@ -127,10 +138,27 @@
             this.pnlDatos.Controls.Add(this.label5);
             this.pnlDatos.Controls.Add(this.lblHora);
             this.pnlDatos.Controls.Add(this.label6);
-            this.pnlDatos.Location = new System.Drawing.Point(39, 75);
+            this.pnlDatos.Location = new System.Drawing.Point(65, 100);
             this.pnlDatos.Name = "pnlDatos";
             this.pnlDatos.Size = new System.Drawing.Size(980, 375);
             this.pnlDatos.TabIndex = 8;
+            // 
+            // dtpHora
+            // 
+            this.dtpHora.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHora.Location = new System.Drawing.Point(31, 131);
+            this.dtpHora.Name = "dtpHora";
+            this.dtpHora.Size = new System.Drawing.Size(200, 33);
+            this.dtpHora.TabIndex = 14;
+            // 
+            // dtpDia
+            // 
+            this.dtpDia.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDia.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDia.Location = new System.Drawing.Point(698, 232);
+            this.dtpDia.Name = "dtpDia";
+            this.dtpDia.Size = new System.Drawing.Size(250, 33);
+            this.dtpDia.TabIndex = 13;
             // 
             // cmbCliente
             // 
@@ -216,39 +244,11 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Cliente";
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTitle.Location = new System.Drawing.Point(23, 18);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(416, 57);
-            this.lblTitle.TabIndex = 7;
-            this.lblTitle.Text = "Nuevo recordatorio";
-            // 
-            // dtpDia
-            // 
-            this.dtpDia.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDia.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDia.Location = new System.Drawing.Point(698, 232);
-            this.dtpDia.Name = "dtpDia";
-            this.dtpDia.Size = new System.Drawing.Size(250, 33);
-            this.dtpDia.TabIndex = 13;
-            // 
-            // dtpHora
-            // 
-            this.dtpHora.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpHora.Location = new System.Drawing.Point(31, 131);
-            this.dtpHora.Name = "dtpHora";
-            this.dtpHora.Size = new System.Drawing.Size(200, 33);
-            this.dtpHora.TabIndex = 14;
-            // 
             // frmCalendarioAgregarCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 602);
+            this.ClientSize = new System.Drawing.Size(1131, 629);
             this.Controls.Add(this.pnlVistaCalendarioActualizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCalendarioAgregarCitas";

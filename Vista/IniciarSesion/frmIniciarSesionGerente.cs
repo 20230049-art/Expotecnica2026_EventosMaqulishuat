@@ -10,14 +10,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.EmpleadoMenu;
 using Vista.GerenteInicio;
+using Vista.Utilidades;
 
 namespace Vista.IniciarSesion
 {
     public partial class frmIniciarSesionGerente : Form
     {
+        private ErrorProvider errorProvider = new ErrorProvider();
         public frmIniciarSesionGerente()
         {
             InitializeComponent();
+
+            Redondeo.RedondearFig(panel1, 10);
+            Redondeo.RedondearFig(btnIngresarEmpleado, 6);
+            Redondeo.RedondearFig(btnRegresar, 6);
+
+            errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider.ContainerControl = this;
+
+            txtNombreUsuario.TextChanged += (s, e) => errorProvider.SetError(txtNombreUsuario, "");
+            txtContrasena.TextChanged += (s, e) => errorProvider.SetError(txtContrasena, "");
         }
 
         //Cambio de formualrios
@@ -56,8 +68,20 @@ namespace Vista.IniciarSesion
 
         private void btnIngresarEmpleado_Click(object sender, EventArgs e)
         {
+            errorProvider.Clear();
+
             string nombreUsuario = txtNombreUsuario.Text.Trim();
             string contrasena = txtContrasena.Text;
+
+            if (string.IsNullOrEmpty(nombreUsuario))
+            {
+                errorProvider.SetError(txtNombreUsuario, "Por favor ingrese el usuario.");
+            }
+
+            if (string.IsNullOrEmpty(contrasena))
+            {
+                errorProvider.SetError(txtContrasena, "Por favor ingrese la contraseña.");
+            }
 
             if (string.IsNullOrEmpty(nombreUsuario) || string.IsNullOrEmpty(contrasena))
             {
@@ -85,6 +109,9 @@ namespace Vista.IniciarSesion
             }
             else
             {
+                errorProvider.SetError(txtNombreUsuario, "Usuario o contraseña incorrectos.");
+                errorProvider.SetError(txtContrasena, "Usuario o contraseña incorrectos.");
+
                 MessageBox.Show("Usuario o contraseña incorrectos.",
                     "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -118,6 +145,25 @@ namespace Vista.IniciarSesion
             {
                 System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            frmFondoNegro fondo = new frmFondoNegro();
+            fondo.StartPosition = FormStartPosition.CenterParent;
+            fondo.WindowState = FormWindowState.Maximized;
+            fondo.Show();
+
+            frmRecuperarContrasena formulario = new frmRecuperarContrasena();
+
+            formulario.ShowDialog();
+
+            fondo.Close();
         }
     }
 }

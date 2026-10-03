@@ -25,9 +25,20 @@ namespace Vista.GerenteInventario
             {
                 InitializeComponent();
 
+                Redondeo.RedondearFormulario(this, 14);
+                Redondeo.RedondearFig(pnltituloNombre, 8);
+                Redondeo.RedondearFig(btnAgregar, 6);
+                Redondeo.RedondearFig(btnCerrar, 6);
+
                 errorProvider = new ErrorProvider();
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
+
+                ControlesBloqueo.LimitarTextBox(txtNombreProducto, 180);
+                ControlesBloqueo.LimitarTextBox(txtCantidad, 10);
+                ControlesBloqueo.LimitarTextBox(txtCosto, 10);
+                ControlesBloqueo.LimitarTextBox(txtPrecioAlquiler, 10);
+                ControlesBloqueo.LimitarTextBox(txtPrecioPerdida, 10);
 
                 ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
                 controlesBloqueo.BloquearControlesTXT(txtNombreProducto);

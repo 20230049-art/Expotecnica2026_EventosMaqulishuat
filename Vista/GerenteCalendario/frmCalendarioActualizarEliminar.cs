@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.Utilidades;
 
 namespace Vista.GerenteCalendario
 {
@@ -18,11 +19,29 @@ namespace Vista.GerenteCalendario
         public frmCalendarioActualizarEliminar()
         {
             InitializeComponent();
+
+            Redondeo.RedondearFormulario(this, 14);
+            Redondeo.RedondearFig(btnElimiar, 4);
+            Redondeo.RedondearFig(btnActualizar, 4);
+            Redondeo.RedondearFig(btnCerrar, 4);
+            Redondeo.RedondearFig(panel4, 6);
+
+            ControlesBloqueo.LimitarTextBox(txtAsunto, 250);
+            ControlesBloqueo.LimitarTextBox(txtUbicacion, 250);
         }
 
         public frmCalendarioActualizarEliminar(int idFecha) : this()
         {
             _idFecha = idFecha;
+
+            Redondeo.RedondearFormulario(this, 14);
+            Redondeo.RedondearFig(btnElimiar, 4);
+            Redondeo.RedondearFig(btnActualizar, 4);
+            Redondeo.RedondearFig(btnCerrar, 4);
+            Redondeo.RedondearFig(panel4, 6);
+
+            ControlesBloqueo.LimitarTextBox(txtAsunto, 250);
+            ControlesBloqueo.LimitarTextBox(txtUbicacion, 250);
         }
 
         private void frmCalendarioActualizarEliminar_Load(object sender, EventArgs e)

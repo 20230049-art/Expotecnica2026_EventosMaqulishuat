@@ -22,12 +22,25 @@ namespace Vista.GerenteEmpleados
         public frmAnadirEmpleado()
         {
             try
-            {
+            {   
                 InitializeComponent();
+
+                Redondeo.RedondearFormulario(this, 14);
+                Redondeo.RedondearFig(pnlActualizadorCliente, 7);
+                Redondeo.RedondearFig(btnAgregar, 6);
+                Redondeo.RedondearFig(btnCerrar, 6);
 
                 errorProvider = new ErrorProvider();
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
+
+                ControlesBloqueo.LimitarTextBox(txtNombre, 180);
+                ControlesBloqueo.LimitarTextBox(txtApellido, 180);
+                ControlesBloqueo.LimitarTextBox(txtDui, 10);
+                ControlesBloqueo.LimitarTextBox(txtTelefono, 9);
+                ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
+                ControlesBloqueo.LimitarTextBox(txtCargo, 45);
+                ControlesBloqueo.LimitarTextBox(txtCuentaBancaria, 45);
 
                 ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
 

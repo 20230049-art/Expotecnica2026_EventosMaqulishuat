@@ -30,6 +30,10 @@ namespace Vista.GerenteProveedores
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
 
+                ControlesBloqueo.LimitarTextBox(txtNombre, 180);
+                ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
+
+
                 ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
                 controlesBloqueo.BloquearControlesTXT(txtNombre);
                 controlesBloqueo.BloquearControlesTXT(txtCorreo);

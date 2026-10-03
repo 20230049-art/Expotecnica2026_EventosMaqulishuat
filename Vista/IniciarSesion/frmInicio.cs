@@ -66,5 +66,10 @@ namespace Vista.IniciarSesion
                 System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

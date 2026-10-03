@@ -198,5 +198,22 @@ namespace Vista.IniciarSesion
         {
             Application.Exit();
         }
+
+        private void frmfrmIniciarSesionEmpleado_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
+        }
     }
 }

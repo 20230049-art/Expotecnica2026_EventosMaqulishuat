@@ -30,11 +30,8 @@ namespace Vista.GerenteRegistroVentas
                 errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
                 errorProvider.ContainerControl = this;
 
-                //txtBarraBuscar.TextChanged += txtBarraBuscar_TextChanged;
                 txtBarraBuscar.TextChanged += (s, e) => errorProvider.SetError(txtBarraBuscar, "");
 
-                //btnPaginaAnterior.Click += btnPaginaAnterior_Click;
-                //btnPaginaSiguiente.Click += btnPaginaSiguiente_Click;
 
                 CargarPagina(1);
             }
@@ -195,9 +192,6 @@ namespace Vista.GerenteRegistroVentas
             {
                 if (fila == null) return null;
 
-                // ============================================
-                //   CONTENEDOR EXTERNO
-                // ============================================
                 Panel panelContenedor = new Panel();
                 panelContenedor.Width = pnlContenedor.Width;
                 panelContenedor.Height = pnlContenedor.Height;
@@ -206,9 +200,6 @@ namespace Vista.GerenteRegistroVentas
                 panelContenedor.Margin = new Padding(10);
                 panelContenedor.Tag = fila["IdVenta"];
 
-                // ============================================
-                //   PANEL DE INFORMACIÓN
-                // ============================================
                 Panel pnlContenedorInfoo = new Panel();
                 pnlContenedorInfoo.Width = pnlContenedorInfo.Width;
                 pnlContenedorInfoo.Height = pnlContenedorInfo.Height;
@@ -220,9 +211,6 @@ namespace Vista.GerenteRegistroVentas
                 int anchoTotal = pnlContenedorInfoo.Width;
                 int altoTotal = pnlContenedorInfoo.Height;
 
-                // ============================================
-                //   POSICIONES FIJAS DE LAS 4 COLUMNAS
-                // ============================================
                 int col1 = 20;
                 int col2 = (int)(anchoTotal * 0.22);
                 int col3 = (int)(anchoTotal * 0.46);
@@ -233,9 +221,6 @@ namespace Vista.GerenteRegistroVentas
                 int anchoCol3 = col4 - col3 - 20;
                 int anchoCol4 = anchoTotal - col4 - 20;
 
-                // ============================================
-                //   FUENTES UNIFORMES (MÁS GRANDES)
-                // ============================================
                 Font fuenteTitulo = new Font("Book Antiqua", 16, FontStyle.Bold);
                 Font fuenteDato = new Font("Bookman Old Style", 14, FontStyle.Regular);
                 Font fuenteDatoBold = new Font("Bookman Old Style", 15, FontStyle.Bold);
@@ -243,9 +228,6 @@ namespace Vista.GerenteRegistroVentas
                 Color colorTitulo = Color.FromArgb(64, 6, 6);
                 Color colorDato = Color.FromArgb(50, 30, 20);
 
-                // ============================================
-                //   COLUMNA 1: N° Venta / Empleado
-                // ============================================
                 Label lblVentaTitulo = new Label();
                 lblVentaTitulo.Text = "N° Venta";
                 lblVentaTitulo.Font = fuenteTitulo;
@@ -255,7 +237,7 @@ namespace Vista.GerenteRegistroVentas
 
                 Panel pnlNOVenta = new Panel();
                 pnlNOVenta.BackColor = Color.White;
-                pnlNOVenta.Location = new Point(col1 + 105, 9);      // ajustado por fuente más grande
+                pnlNOVenta.Location = new Point(col1 + 105, 9);     
                 pnlNOVenta.Size = new Size(80, 32);
                 pnlNOVenta.BorderStyle = BorderStyle.FixedSingle;
 
@@ -281,9 +263,6 @@ namespace Vista.GerenteRegistroVentas
                 lblEmpleado.MaximumSize = new Size(anchoCol1 + 15, 0);
                 lblEmpleado.AutoSize = true;
 
-                // ============================================
-                //   COLUMNA 2: Cliente / Estado (subido 10px)
-                // ============================================
                 Label lblClienteTitulo = new Label();
                 lblClienteTitulo.Text = "Cliente";
                 lblClienteTitulo.Font = fuenteTitulo;
@@ -295,13 +274,13 @@ namespace Vista.GerenteRegistroVentas
                 lblCliente.Text = fila["NombreCliente"].ToString() + " " + fila["ApellidoCliente"].ToString();
                 lblCliente.Font = fuenteDato;
                 lblCliente.Location = new Point(col2, 40);
-                lblCliente.MaximumSize = new Size(anchoCol2 + 20, 45);
+                lblCliente.MaximumSize = new Size(235, 235);
                 lblCliente.AutoSize = true;
 
                 Label lblEstadoTitulo = new Label();
                 lblEstadoTitulo.Text = "Estado";
                 lblEstadoTitulo.Font = fuenteTitulo;
-                lblEstadoTitulo.Location = new Point(col2, 84);      // antes 80
+                lblEstadoTitulo.Location = new Point(col2, 84);      
                 lblEstadoTitulo.ForeColor = colorTitulo;
                 lblEstadoTitulo.AutoSize = true;
 
@@ -310,14 +289,11 @@ namespace Vista.GerenteRegistroVentas
                 lblEstado.Font = fuenteDato;
                 lblEstado.BackColor = Color.White;
                 lblEstado.BorderStyle = BorderStyle.FixedSingle;
-                lblEstado.Location = new Point(col2, 112);           // antes 105
-                lblEstado.Size = new Size(anchoCol2, 24);            // 28 en lugar de 24 (fuente más grande)
+                lblEstado.Location = new Point(col2, 112);           
+                lblEstado.Size = new Size(anchoCol2, 24);            
                 lblEstado.TextAlign = ContentAlignment.MiddleLeft;
                 lblEstado.Padding = new Padding(5, 0, 0, 0);
 
-                // ============================================
-                //   COLUMNA 3: Fechas (también subidas)
-                // ============================================
                 Label lblFPedidoTitulo = new Label();
                 lblFPedidoTitulo.Text = "Fecha Pedido";
                 lblFPedidoTitulo.Font = fuenteTitulo;
@@ -335,7 +311,7 @@ namespace Vista.GerenteRegistroVentas
                 Label lblFEntregaTitulo = new Label();
                 lblFEntregaTitulo.Text = "Fecha Entrega";
                 lblFEntregaTitulo.Font = fuenteTitulo;
-                lblFEntregaTitulo.Location = new Point(col3, 68);    // antes 80
+                lblFEntregaTitulo.Location = new Point(col3, 68);    
                 lblFEntregaTitulo.ForeColor = colorTitulo;
                 lblFEntregaTitulo.AutoSize = true;
 
@@ -343,12 +319,9 @@ namespace Vista.GerenteRegistroVentas
                 DateTime fUso = Convert.ToDateTime(fila["FechaUso"]);
                 lblFEntrega.Text = fUso.ToString("dd/MM/yyyy");
                 lblFEntrega.Font = fuenteDato;
-                lblFEntrega.Location = new Point(col3, 99);         // antes 105
+                lblFEntrega.Location = new Point(col3, 99);         
                 lblFEntrega.AutoSize = true;
 
-                // ============================================
-                //   COLUMNA 4: Items / Total (también subidos)
-                // ============================================
                 Label lblItemsTitulo = new Label();
                 lblItemsTitulo.Text = "Items Vendidos";
                 lblItemsTitulo.Font = fuenteTitulo;
@@ -377,9 +350,6 @@ namespace Vista.GerenteRegistroVentas
 
                 pnlTotal.Controls.Add(lblTotal);
 
-                // ============================================
-                //   SEPARADORES VERTICALES
-                // ============================================
                 Panel pnlDec1 = new Panel();
                 pnlDec1.Size = new Size(1, altoTotal - 20);
                 pnlDec1.Location = new Point(col2 - 10, 10);
@@ -395,9 +365,6 @@ namespace Vista.GerenteRegistroVentas
                 pnlDec3.Location = new Point(col4 - 10, 10);
                 pnlDec3.BackColor = Color.Black;
 
-                // ============================================
-                //   ENSAMBLADO
-                // ============================================
                 panelContenedor.Controls.Add(pnlContenedorInfoo);
 
                 pnlContenedorInfoo.Controls.Add(lblVentaTitulo);

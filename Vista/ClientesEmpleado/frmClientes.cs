@@ -131,27 +131,25 @@ namespace Vista.ClientesEmpleado
             {
                 flpClientes.Controls.Clear();
 
-            if (clientes == null || clientes.Rows.Count == 0)
-            {
-                MessageBox.Show("No se encontraron clientes que coincidan con la búsqueda.", "ERROR-NODATO-007",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
+                if (clientes == null || clientes.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron clientes que coincidan con la búsqueda.", "ERROR-NODATO-007",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information
+                    );
 
-                return;
-            }
+                    return;
+                }
 
-            foreach (DataRow fila in clientes.Rows)
-            {
-                    Panel panelCliente = MostrarCliente(fila);
+                foreach (DataRow fila in clientes.Rows)
+                {
+                    Panel panelContenedor = MostrarCliente(fila);
 
-                    if (panelCliente == null)
+                    if (panelContenedor == null)
                     {
                         continue;
                     }
 
-                    panelCliente.Click += AbrirFormularioActualizar_Click;
-
-                    flpClientes.Controls.Add(panelCliente);
+                    flpClientes.Controls.Add(panelContenedor);
                 }
             }
             catch (Exception ex)
@@ -293,8 +291,11 @@ namespace Vista.ClientesEmpleado
             panelCliente.Controls.Add(pnlDecoracion);
             panelCliente.Controls.Add(pnlDecoracion1);
 
-            panelCompra.Controls.Add(btnCompra);
+                panelCliente.Click += AbrirFormularioActualizar_Click;
+
+                panelCompra.Controls.Add(btnCompra);
             panelCompra.Controls.Add(pbLogo);
+
 
             return panelContenedor;
             }

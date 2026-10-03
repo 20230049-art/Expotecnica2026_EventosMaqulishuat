@@ -54,7 +54,7 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSubirFoto = new System.Windows.Forms.Button();
             this.pctEmpleado = new System.Windows.Forms.PictureBox();
-            this.pnlActualizadorCliente = new System.Windows.Forms.Panel();
+            this.pnlTitulo = new System.Windows.Forms.Panel();
             this.lblInformCliente = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -66,7 +66,7 @@
             this.panel1.SuspendLayout();
             this.pnlNombre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctEmpleado)).BeginInit();
-            this.pnlActualizadorCliente.SuspendLayout();
+            this.pnlTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
@@ -361,16 +361,16 @@
             this.pctEmpleado.TabIndex = 53;
             this.pctEmpleado.TabStop = false;
             // 
-            // pnlActualizadorCliente
+            // pnlTitulo
             // 
-            this.pnlActualizadorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(184)))), ((int)(((byte)(153)))));
-            this.pnlActualizadorCliente.Controls.Add(this.lblInformCliente);
-            this.pnlActualizadorCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.pnlActualizadorCliente.Location = new System.Drawing.Point(136, 45);
-            this.pnlActualizadorCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlActualizadorCliente.Name = "pnlActualizadorCliente";
-            this.pnlActualizadorCliente.Size = new System.Drawing.Size(993, 55);
-            this.pnlActualizadorCliente.TabIndex = 52;
+            this.pnlTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(184)))), ((int)(((byte)(153)))));
+            this.pnlTitulo.Controls.Add(this.lblInformCliente);
+            this.pnlTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.pnlTitulo.Location = new System.Drawing.Point(136, 45);
+            this.pnlTitulo.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlTitulo.Name = "pnlTitulo";
+            this.pnlTitulo.Size = new System.Drawing.Size(993, 55);
+            this.pnlTitulo.TabIndex = 52;
             // 
             // lblInformCliente
             // 
@@ -405,7 +405,7 @@
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnSubirFoto);
             this.Controls.Add(this.pctEmpleado);
-            this.Controls.Add(this.pnlActualizadorCliente);
+            this.Controls.Add(this.pnlTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1262, 668);
             this.MinimumSize = new System.Drawing.Size(1262, 668);
@@ -428,8 +428,8 @@
             this.pnlNombre.ResumeLayout(false);
             this.pnlNombre.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctEmpleado)).EndInit();
-            this.pnlActualizadorCliente.ResumeLayout(false);
-            this.pnlActualizadorCliente.PerformLayout();
+            this.pnlTitulo.ResumeLayout(false);
+            this.pnlTitulo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -460,7 +460,7 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnSubirFoto;
         private System.Windows.Forms.PictureBox pctEmpleado;
-        private System.Windows.Forms.Panel pnlActualizadorCliente;
+        private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Label lblInformCliente;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.MaskedTextBox mtxbTelefono;

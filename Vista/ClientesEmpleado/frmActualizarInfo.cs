@@ -31,7 +31,15 @@ namespace Vista.ClientesEmpleado
             Redondeo.RedondearFig(btnActualizar, 6);
             Redondeo.RedondearFig(btnSalir, 6);
 
-            ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
+
+            ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
+            ControlesBloqueo.LimitarTextBox(txtNombre, 180);
+                ControlesBloqueo.LimitarTextBox(txtApellido, 180);
+                ControlesBloqueo.LimitarTextBox(txtNcr, 180);
+                ControlesBloqueo.LimitarTextBox(txtDui, 180);
+                ControlesBloqueo.LimitarTextBox(txtNit, 180);
+
+                ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
             controlesBloqueo.BloquearControlesTXT(txtNombre);
             controlesBloqueo.BloquearControlesTXT(txtApellido);
             controlesBloqueo.BloquearControlesTXT(txtNcr);
@@ -39,8 +47,9 @@ namespace Vista.ClientesEmpleado
             controlesBloqueo.BloquearControlesTXT(txtNit);
             controlesBloqueo.BloquearControlesMTXT(mtxbTelefono);
             controlesBloqueo.BloquearControlesTXT(txtCorreo);
+                  
 
-            txtDui.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
+                txtDui.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
             txtNcr.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
             txtNit.KeyPress += (s, e) => controlesBloqueo.ValidarSoloNumeros((TextBox)s, e);
 

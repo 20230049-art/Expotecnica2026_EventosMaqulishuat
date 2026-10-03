@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista.EmpleadoProducto;
 using Vista.Utilidades;
 
 namespace Vista.EmpleadoServicios
@@ -193,8 +194,9 @@ namespace Vista.EmpleadoServicios
                 btnCompra.Size = new Size(170, 68);
                 btnCompra.MaximumSize = new Size(250, 68);
                 btnCompra.AutoSize = true;
+                    btnCompra.Click += btnCompra_Click;
 
-                panelPrincipal.Controls.Add(pbProducto);
+                    panelPrincipal.Controls.Add(pbProducto);
                 panelPrincipal.Controls.Add(lblTituloNombre);
                 panelPrincipal.Controls.Add(lblNombre);
                 panelPrincipal.Controls.Add(lblTituloCantidad);
@@ -216,6 +218,28 @@ namespace Vista.EmpleadoServicios
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnCompra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button panelProducto = (Button)sender;
+
+                abrirForm(new frmProductos());
+
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El identificador del producto no tiene el formato correcto: " + ex.Message,
+                        "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el detalle del producto: " + ex.Message,
+                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {

@@ -19,6 +19,14 @@ namespace Vista.GerenteCalendario
         public frmCalendarioAgregarCitas()
         {
             InitializeComponent();
+            
+            Redondeo.RedondearFormulario(this, 15);
+            Redondeo.RedondearFig(pnlNombreRecordatorio, 7);
+            Redondeo.RedondearFig(button1, 4);
+            Redondeo.RedondearFig(btnCerrar, 4);
+
+            ControlesBloqueo.LimitarTextBox(txtAsunto, 250);
+            ControlesBloqueo.LimitarTextBox(txtUbicacion, 200);
         }
 
         public frmCalendarioAgregarCitas(DateTime fecha) : this()

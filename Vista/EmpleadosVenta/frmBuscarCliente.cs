@@ -17,6 +17,9 @@ namespace Vista.EmpleadosVenta
     {
         public frmBuscarCliente()
         {
+
+            Redondeo.RedondearFormulario(this, 12);
+
             InitializeComponent();
             DataTable clientes = Clientes.MostrarClientes();
             CargarClientesEnPantalla(clientes);

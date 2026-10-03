@@ -133,7 +133,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.77892F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel6.Controls.Add(this.pictureBox12, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,7 +150,7 @@
             // 
             this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox12.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox12.Location = new System.Drawing.Point(1544, 34);
+            this.pictureBox12.Location = new System.Drawing.Point(1543, 34);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(199, 68);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -164,7 +164,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(52, 31);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(1486, 74);
+            this.lblProductos.Size = new System.Drawing.Size(1485, 74);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "USUARIOS ";
             // 
@@ -362,8 +362,8 @@
             // 
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.271829F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.17298F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.555189F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.52554F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.20264F));
             this.tableLayoutPanel9.Controls.Add(this.lblDatosParaUsuario, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.panel3, 1, 3);
             this.tableLayoutPanel9.Controls.Add(this.panel4, 1, 5);
@@ -400,7 +400,7 @@
             this.lblDatosParaUsuario.Location = new System.Drawing.Point(34, 20);
             this.lblDatosParaUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDatosParaUsuario.Name = "lblDatosParaUsuario";
-            this.lblDatosParaUsuario.Size = new System.Drawing.Size(513, 52);
+            this.lblDatosParaUsuario.Size = new System.Drawing.Size(503, 52);
             this.lblDatosParaUsuario.TabIndex = 0;
             this.lblDatosParaUsuario.Text = "Crear un nuevo usuario";
             this.lblDatosParaUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -412,7 +412,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(35, 90);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(511, 63);
+            this.panel3.Size = new System.Drawing.Size(501, 63);
             this.panel3.TabIndex = 1;
             // 
             // lblRol
@@ -435,7 +435,7 @@
             this.cmbRol.FormattingEnabled = true;
             this.cmbRol.Location = new System.Drawing.Point(6, 23);
             this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(500, 34);
+            this.cmbRol.Size = new System.Drawing.Size(490, 34);
             this.cmbRol.TabIndex = 1;
             this.toolTip1.SetToolTip(this.cmbRol, "Selecciona el rol del usuario");
             this.cmbRol.SelectedIndexChanged += new System.EventHandler(this.cmbRol_SelectedIndexChanged);
@@ -446,7 +446,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(35, 167);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(511, 58);
+            this.panel4.Size = new System.Drawing.Size(501, 58);
             this.panel4.TabIndex = 2;
             // 
             // txtNombre
@@ -457,7 +457,7 @@
             this.txtNombre.Location = new System.Drawing.Point(6, 25);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(500, 27);
+            this.txtNombre.Size = new System.Drawing.Size(490, 27);
             this.txtNombre.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtNombre, "Nombre gerente");
             // 
@@ -466,7 +466,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(35, 239);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(511, 59);
+            this.panel5.Size = new System.Drawing.Size(501, 59);
             this.panel5.TabIndex = 3;
             // 
             // panel6
@@ -474,7 +474,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(35, 312);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(511, 58);
+            this.panel6.Size = new System.Drawing.Size(501, 58);
             this.panel6.TabIndex = 4;
             // 
             // panel7
@@ -482,7 +482,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(35, 385);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(511, 69);
+            this.panel7.Size = new System.Drawing.Size(501, 69);
             this.panel7.TabIndex = 5;
             // 
             // tableLayoutPanel10
@@ -499,7 +499,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.58242F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.92308F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.58242F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(511, 180);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(501, 180);
             this.tableLayoutPanel10.TabIndex = 6;
             // 
             // panel8
@@ -509,7 +509,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(505, 61);
+            this.panel8.Size = new System.Drawing.Size(495, 61);
             this.panel8.TabIndex = 0;
             // 
             // txtContrasena
@@ -521,7 +521,7 @@
             this.txtContrasena.Margin = new System.Windows.Forms.Padding(2);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '.';
-            this.txtContrasena.Size = new System.Drawing.Size(500, 27);
+            this.txtContrasena.Size = new System.Drawing.Size(490, 27);
             this.txtContrasena.TabIndex = 6;
             this.txtContrasena.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.txtContrasena, "Ingresa contraseña");
@@ -554,7 +554,7 @@
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(505, 42);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(495, 42);
             this.tableLayoutPanel11.TabIndex = 35;
             // 
             // btnEliminar
@@ -564,10 +564,10 @@
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(282, 2);
+            this.btnEliminar.Location = new System.Drawing.Point(276, 2);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(156, 38);
+            this.btnEliminar.Size = new System.Drawing.Size(152, 38);
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.toolTip1.SetToolTip(this.btnEliminar, "Elimianr Usuario");
@@ -581,10 +581,10 @@
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(50, 2);
+            this.btnGuardar.Location = new System.Drawing.Point(49, 2);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(162, 38);
+            this.btnGuardar.Size = new System.Drawing.Size(158, 38);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.toolTip1.SetToolTip(this.btnGuardar, "Guardar usuario");

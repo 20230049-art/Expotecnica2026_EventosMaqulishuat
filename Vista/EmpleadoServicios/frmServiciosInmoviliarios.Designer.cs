@@ -119,7 +119,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 953F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel6.Controls.Add(this.pbLogo, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel3, 2, 1);
@@ -137,7 +137,7 @@
             // 
             this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbLogo.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pbLogo.Location = new System.Drawing.Point(1647, 36);
+            this.pbLogo.Location = new System.Drawing.Point(1645, 36);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(200, 79);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,7 +151,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(54, 33);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(634, 85);
+            this.lblProductos.Size = new System.Drawing.Size(632, 85);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "SERVICIOS";
             // 
@@ -163,7 +163,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel3.Controls.Add(this.txtBuscar, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(694, 36);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(692, 36);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -315,7 +315,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.18293F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7317073F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.37805F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel5.Controls.Add(this.lblInmobiliariaInfo, 3, 1);
             this.tableLayoutPanel5.Controls.Add(this.panel4, 1, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -333,7 +333,7 @@
             this.lblInmobiliariaInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblInmobiliariaInfo.AutoSize = true;
             this.lblInmobiliariaInfo.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInmobiliariaInfo.Location = new System.Drawing.Point(706, 38);
+            this.lblInmobiliariaInfo.Location = new System.Drawing.Point(705, 38);
             this.lblInmobiliariaInfo.Margin = new System.Windows.Forms.Padding(30);
             this.lblInmobiliariaInfo.Name = "lblInmobiliariaInfo";
             this.lblInmobiliariaInfo.Size = new System.Drawing.Size(789, 119);
@@ -346,7 +346,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(30, 11);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(632, 173);
+            this.panel4.Size = new System.Drawing.Size(631, 173);
             this.panel4.TabIndex = 0;
             // 
             // pictureBox2
@@ -357,7 +357,7 @@
             this.pictureBox2.Image = global::Vista.Properties.Resources.Captura_de_pantalla_2026_09_16_194836;
             this.pictureBox2.Location = new System.Drawing.Point(27, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(587, 173);
+            this.pictureBox2.Size = new System.Drawing.Size(586, 173);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;

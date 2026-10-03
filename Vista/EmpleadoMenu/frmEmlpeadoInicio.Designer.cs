@@ -43,13 +43,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.pnlTituloHora = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblTituloHorario = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.pbLogo1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
@@ -75,6 +68,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pnlVisorPdf = new System.Windows.Forms.Panel();
             this.btnDescargarManualUsuario = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnlTituloHora = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTituloHorario = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.pbLogo1 = new System.Windows.Forms.PictureBox();
             this.pnlVistaInicioEmpleado.SuspendLayout();
             this.tlpContenedorPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -87,12 +87,6 @@
             this.pnlContenedorTitulo.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.pnlTituloHora.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo1)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
             this.panel12.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -106,6 +100,12 @@
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.pnlTituloHora.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlVistaInicioEmpleado
@@ -151,7 +151,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.48927F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 885F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel6.Controls.Add(this.pbLogo, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -168,7 +168,7 @@
             // 
             this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbLogo.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pbLogo.Location = new System.Drawing.Point(1681, 34);
+            this.pbLogo.Location = new System.Drawing.Point(1678, 34);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(200, 73);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -182,7 +182,7 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 40.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(62, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(728, 79);
+            this.label1.Size = new System.Drawing.Size(725, 79);
             this.label1.TabIndex = 2;
             this.label1.Text = "Bienvenido";
             // 
@@ -256,9 +256,9 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.54223F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.48592F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.97185F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7239819F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.64706F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.719457F));
             this.tableLayoutPanel3.Controls.Add(this.lblTitulo, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
@@ -273,13 +273,14 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitulo.Font = new System.Drawing.Font("Cambria", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTitulo.Location = new System.Drawing.Point(241, 13);
+            this.lblTitulo.Location = new System.Drawing.Point(10, 13);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(349, 48);
+            this.lblTitulo.Size = new System.Drawing.Size(1072, 48);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Ventas Realizadas";
+            this.lblTitulo.Text = "Ayuda";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
@@ -290,91 +291,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1147, 645);
             this.panel7.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panel9, 0, 2);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(1195, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.85714F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 671F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(706, 784);
-            this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.pnlTituloHora);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(700, 98);
-            this.panel5.TabIndex = 0;
-            // 
-            // pnlTituloHora
-            // 
-            this.pnlTituloHora.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlTituloHora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
-            this.pnlTituloHora.Controls.Add(this.tableLayoutPanel5);
-            this.pnlTituloHora.Location = new System.Drawing.Point(16, 16);
-            this.pnlTituloHora.Name = "pnlTituloHora";
-            this.pnlTituloHora.Size = new System.Drawing.Size(667, 65);
-            this.pnlTituloHora.TabIndex = 0;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.09295F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.11395F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.94303F));
-            this.tableLayoutPanel5.Controls.Add(this.lblTituloHorario, 1, 1);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.17172F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.60606F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(667, 65);
-            this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // lblTituloHorario
-            // 
-            this.lblTituloHorario.AutoSize = true;
-            this.lblTituloHorario.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.lblTituloHorario.Location = new System.Drawing.Point(96, 11);
-            this.lblTituloHorario.Name = "lblTituloHorario";
-            this.lblTituloHorario.Size = new System.Drawing.Size(367, 39);
-            this.lblTituloHorario.TabIndex = 1;
-            this.lblTituloHorario.Text = "Horario:  7:00 - 5:00";
-            this.lblTituloHorario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(204)))), ((int)(((byte)(177)))));
-            this.panel9.Controls.Add(this.pbLogo1);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(3, 115);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(700, 666);
-            this.panel9.TabIndex = 1;
-            // 
-            // pbLogo1
-            // 
-            this.pbLogo1.Location = new System.Drawing.Point(16, 12);
-            this.pbLogo1.Name = "pbLogo1";
-            this.pbLogo1.Size = new System.Drawing.Size(667, 642);
-            this.pbLogo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo1.TabIndex = 0;
-            this.pbLogo1.TabStop = false;
             // 
             // tableLayoutPanel7
             // 
@@ -475,6 +391,7 @@
             this.button3.TabIndex = 35;
             this.button3.Text = "Ver";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label3
             // 
@@ -591,6 +508,7 @@
             this.button1.TabIndex = 35;
             this.button1.Text = "Ver";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -707,6 +625,7 @@
             this.button5.TabIndex = 35;
             this.button5.Text = "Ver";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label5
             // 
@@ -720,7 +639,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(528, 40);
             this.label5.TabIndex = 34;
-            this.label5.Text = "Agreagr Recordatorio";
+            this.label5.Text = "Agreagar Recordatorio";
             // 
             // pnlVisorPdf
             // 
@@ -745,6 +664,91 @@
             this.btnDescargarManualUsuario.TabIndex = 34;
             this.btnDescargarManualUsuario.Text = "Descargar Manual";
             this.btnDescargarManualUsuario.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel9, 0, 2);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1195, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.85714F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 671F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(706, 784);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.pnlTituloHora);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(700, 98);
+            this.panel5.TabIndex = 0;
+            // 
+            // pnlTituloHora
+            // 
+            this.pnlTituloHora.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTituloHora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(220)))), ((int)(((byte)(197)))));
+            this.pnlTituloHora.Controls.Add(this.tableLayoutPanel5);
+            this.pnlTituloHora.Location = new System.Drawing.Point(16, 16);
+            this.pnlTituloHora.Name = "pnlTituloHora";
+            this.pnlTituloHora.Size = new System.Drawing.Size(667, 65);
+            this.pnlTituloHora.TabIndex = 0;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.09295F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.11395F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.94303F));
+            this.tableLayoutPanel5.Controls.Add(this.lblTituloHorario, 1, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.17172F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.60606F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(667, 65);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // lblTituloHorario
+            // 
+            this.lblTituloHorario.AutoSize = true;
+            this.lblTituloHorario.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.lblTituloHorario.Location = new System.Drawing.Point(96, 11);
+            this.lblTituloHorario.Name = "lblTituloHorario";
+            this.lblTituloHorario.Size = new System.Drawing.Size(367, 39);
+            this.lblTituloHorario.TabIndex = 1;
+            this.lblTituloHorario.Text = "Horario:  7:00 - 5:00";
+            this.lblTituloHorario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(204)))), ((int)(((byte)(177)))));
+            this.panel9.Controls.Add(this.pbLogo1);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(3, 115);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(700, 666);
+            this.panel9.TabIndex = 1;
+            // 
+            // pbLogo1
+            // 
+            this.pbLogo1.Location = new System.Drawing.Point(16, 12);
+            this.pbLogo1.Name = "pbLogo1";
+            this.pbLogo1.Size = new System.Drawing.Size(667, 642);
+            this.pbLogo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo1.TabIndex = 0;
+            this.pbLogo1.TabStop = false;
             // 
             // frmEmlpeadoInicio
             // 
@@ -771,13 +775,6 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel7.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.pnlTituloHora.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo1)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
@@ -794,6 +791,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.pnlTituloHora.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo1)).EndInit();
             this.ResumeLayout(false);
 
         }

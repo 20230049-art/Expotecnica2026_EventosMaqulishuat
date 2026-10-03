@@ -69,7 +69,7 @@
             this.pnlVistaCalendarioActualiza.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaCalendarioActualiza.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaCalendarioActualiza.Name = "pnlVistaCalendarioActualiza";
-            this.pnlVistaCalendarioActualiza.Size = new System.Drawing.Size(1162, 674);
+            this.pnlVistaCalendarioActualiza.Size = new System.Drawing.Size(1178, 689);
             this.pnlVistaCalendarioActualiza.TabIndex = 3;
             this.pnlVistaCalendarioActualiza.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlVistaCalendarioActualiza_Paint);
             // 
@@ -78,7 +78,7 @@
             this.panel4.BackColor = System.Drawing.Color.LightCoral;
             this.panel4.Controls.Add(this.lblTitle);
             this.panel4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel4.Location = new System.Drawing.Point(424, 12);
+            this.panel4.Location = new System.Drawing.Point(417, 30);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(370, 65);
             this.panel4.TabIndex = 17;
@@ -99,7 +99,7 @@
             this.pnlDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(219)))), ((int)(((byte)(201)))));
             this.pnlDatos.Controls.Add(this.panel3);
             this.pnlDatos.Controls.Add(this.panel2);
-            this.pnlDatos.Location = new System.Drawing.Point(75, 44);
+            this.pnlDatos.Location = new System.Drawing.Point(68, 62);
             this.pnlDatos.Name = "pnlDatos";
             this.pnlDatos.Size = new System.Drawing.Size(1047, 579);
             this.pnlDatos.TabIndex = 18;
@@ -180,9 +180,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
             this.label9.Location = new System.Drawing.Point(15, 15);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(127, 46);
+            this.label9.Size = new System.Drawing.Size(167, 46);
             this.label9.TabIndex = 15;
-            this.label9.Text = "Hora: ";
+            this.label9.Text = "Asunto: ";
             // 
             // panel7
             // 
@@ -325,7 +325,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 674);
+            this.ClientSize = new System.Drawing.Size(1178, 689);
             this.Controls.Add(this.pnlVistaCalendarioActualiza);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCalendarioActualizarEliminar";

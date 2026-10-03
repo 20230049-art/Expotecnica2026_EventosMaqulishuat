@@ -50,9 +50,10 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlVistaIniciarEmpleado.SuspendLayout();
             this.tlpFondo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,7 +64,8 @@
             this.pnlcontenedor.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVistaIniciarEmpleado
@@ -87,7 +89,7 @@
             this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.24948F));
             this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.0499F));
             this.tlpFondo.Controls.Add(this.panel1, 1, 1);
-            this.tlpFondo.Controls.Add(this.button1, 2, 2);
+            this.tlpFondo.Controls.Add(this.tableLayoutPanel2, 2, 2);
             this.tlpFondo.Location = new System.Drawing.Point(0, 0);
             this.tlpFondo.Name = "tlpFondo";
             this.tlpFondo.RowCount = 3;
@@ -320,37 +322,58 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(11, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(145, 100);
             this.panel2.TabIndex = 2;
             // 
-            // pictureBox1
+            // pbLogo
             // 
-            this.pictureBox1.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbLogo.Image = global::Vista.Properties.Resources.LgoColor;
+            this.pbLogo.Location = new System.Drawing.Point(11, 10);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(100, 50);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1521, 895);
+            this.button1.Location = new System.Drawing.Point(110, 85);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(400, 75);
+            this.button1.Size = new System.Drawing.Size(195, 65);
             this.button1.TabIndex = 1;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(39)))), ((int)(((byte)(3)))));
+            this.tableLayoutPanel2.BackgroundImage = global::Vista.Properties.Resources.Fondo2;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.75F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23F));
+            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1521, 755);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.13953F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.02325F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.37209F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(400, 215);
+            this.tableLayoutPanel2.TabIndex = 5;
             // 
             // frmfrmIniciarSesionEmpleado
             // 
@@ -362,6 +385,7 @@
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "frmfrmIniciarSesionEmpleado";
             this.Text = "frmfrmIniciarSesionEmpleado";
+            this.Load += new System.EventHandler(this.frmfrmIniciarSesionEmpleado_Load);
             this.pnlVistaIniciarEmpleado.ResumeLayout(false);
             this.tlpFondo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -377,7 +401,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -391,7 +416,7 @@
         private System.Windows.Forms.TextBox txtTituloUsuario;
         private System.Windows.Forms.Panel pnlUsuario;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.TextBox txtNombreUsuario;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panlContraseña;
@@ -407,5 +432,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

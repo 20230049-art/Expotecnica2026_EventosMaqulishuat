@@ -52,11 +52,11 @@ namespace Vista.EmpleadoMenu
                 var img = DatosEmpresa.ObtenerLogo();
                 if (img != null)
                 {
-                    pbLogo.Image = img;
-                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
-
                     pbLogo1.Image = img;
-                    pbLogo1.SizeMode = PictureBoxSizeMode.Zoom;
+                    pbLogo1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
             catch (Exception ex)
@@ -213,6 +213,74 @@ namespace Vista.EmpleadoMenu
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Error al bloquear navegación: " + ex.Message);
+            }
+        }
+
+        private void AbrirUrl(string url)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(url))
+                {
+                    MessageBox.Show("No hay un enlace configurado.",
+                            "ERROR-CAMVACIO-001", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir el navegador: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el enlace: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/u/2/folders/1_Mno_JF-QkwBpZ_EfwF8ZmGM-gqGk7wU");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/u/2/folders/1_Mno_JF-QkwBpZ_EfwF8ZmGM-gqGk7wU");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirUrl("https://drive.google.com/drive/u/2/folders/1_Mno_JF-QkwBpZ_EfwF8ZmGM-gqGk7wU");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el manual: " + ex.Message,
+                        "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

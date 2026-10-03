@@ -20,15 +20,27 @@ namespace Vista.GerenteClientes
             try
             {
                 InitializeComponent();
+
+                Redondeo.RedondearFormulario(this, 14);
+                Redondeo.RedondearFig(pnlTitulo, 7);
+                Redondeo.RedondearFig(btnAgregar, 6);
+                Redondeo.RedondearFig(btnSalir, 6); 
+
                 ControlesBloqueo controlesBloqueo = new ControlesBloqueo();
 
                 controlesBloqueo.BloquearControlesTXT(txtNombre);
                 controlesBloqueo.BloquearControlesTXT(txtApellido);
                 controlesBloqueo.BloquearControlesTXT(txtNcr);
-                //controlesBloqueo.BloquearControlesTXT(txtDui);
                 controlesBloqueo.BloquearControlesTXT(txtNit);
                 controlesBloqueo.BloquearControlesMTXT(mtxbTelefono);
                 controlesBloqueo.BloquearControlesTXT(txtCorreo);
+
+                ControlesBloqueo.LimitarTextBox(txtNombre, 150);
+                ControlesBloqueo.LimitarTextBox(txtApellido, 150);
+                ControlesBloqueo.LimitarTextBox(txtNcr, 20);
+                ControlesBloqueo.LimitarTextBox(txtDui, 10);
+                ControlesBloqueo.LimitarTextBox(txtNit, 17);
+                ControlesBloqueo.LimitarTextBox(txtCorreo, 180);
 
                 txtNombre.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
                 txtApellido.KeyPress += (s, e) => controlesBloqueo.ValidarSoloLetras(e);
