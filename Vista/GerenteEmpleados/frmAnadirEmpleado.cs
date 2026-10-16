@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Vista.GerenteEmpleados
         public frmAnadirEmpleado()
         {
             try
-            {   
+            {
                 InitializeComponent();
 
                 Redondeo.RedondearFormulario(this, 14);
@@ -221,14 +221,8 @@ namespace Vista.GerenteEmpleados
                                 "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                catch (SqlException ex)
+                catch (SQLiteException ex)
                 {
-                    if (ex.Number == 2627 || ex.Number == 2601)
-                    {
-                        MessageBox.Show("Ya existe un empleado con esos datos (DUI o correo duplicado).",
-                                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
                     {
                         MessageBox.Show("Error de base de datos al agregar el empleado: " + ex.Message,
                                 "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -252,20 +246,19 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Uno de los valores no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
-                // ✅ Si SQL detecta duplicado (DUI, correo), el número de error es 2627 o 2601
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    errorProvider.SetError(txtDui, "Ya existe un empleado con ese DUI o correo.");
-                    MessageBox.Show("Ya existe un empleado con esos datos (DUI o correo duplicado).",
-                            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Error de base de datos al agregar el empleado: " + ex.Message,
-                            "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //if (ex.Number == 2627 || ex.Number == 2601)
+                //{
+                //    errorProvider.SetError(txtDui, "Ya existe un empleado con ese DUI o correo.");
+                //    MessageBox.Show("Ya existe un empleado con esos datos (DUI o correo duplicado).",
+                //            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Error de base de datos al agregar el empleado: " + ex.Message,
+                //            "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
             catch (Exception ex)
             {
@@ -296,7 +289,11 @@ namespace Vista.GerenteEmpleados
                         return;
                     }
 
-                    string carpetaFotos = Path.Combine(Application.StartupPath, "FotosEmpleados");
+                    string carpetaBase = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "SistemaEventos"
+                    );
+                    string carpetaFotos = Path.Combine(carpetaBase, "FotosEmpleados");
                     if (!Directory.Exists(carpetaFotos))
                     {
                         Directory.CreateDirectory(carpetaFotos);
@@ -308,7 +305,7 @@ namespace Vista.GerenteEmpleados
 
                     File.Copy(archivoOrigen, rutaDestino, true);
 
-                    rutaFotoRelativa = Path.Combine("FotosEmpleados", nombreUnico);
+                    rutaFotoRelativa = rutaDestino;
 
                     using (var stream = new FileStream(rutaDestino, FileMode.Open, FileAccess.Read))
                     {
@@ -334,5 +331,6 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Error al cargar la foto: " + ex.Message,
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-    }   }
+        }
+    }
 }

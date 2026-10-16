@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +25,9 @@ namespace Modelos.Entidades
         //Mostrar Reportes
         public static DataTable MostrarReportes()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             string comando = "SELECT * FROM VistaReporteGerente;";
-            SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+            SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
             DataTable dt = new DataTable();
             ad.Fill(dt);
             return dt;
@@ -36,19 +36,21 @@ namespace Modelos.Entidades
         //Agregar Reportes
         public static void IngresarReporte(Reportes nuevoReporte)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                using (SqlCommand command = new SqlCommand("AgregarReporte", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    INSERT INTO Reporte
+                        (NombreReporte, DescripcionReporte, FechaReporte, IdGerente)
+                    VALUES
+                        (@NombreReporte, @DescripcionReporte, @FechaReporte, 1);";
 
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
                     command.Parameters.AddWithValue("@NombreReporte", nuevoReporte.NombreReporte1);
                     command.Parameters.AddWithValue("@DescripcionReporte", nuevoReporte.DescripciónReporte1);
-                    command.Parameters.AddWithValue("@FechaReporte", nuevoReporte.FechaReporte1);
+                    command.Parameters.AddWithValue("@FechaReporte", nuevoReporte.FechaReporte1.ToString("yyyy-MM-dd"));
 
                     command.ExecuteNonQuery();
-                    connection.Close();
-
                 }
             }
         }
@@ -58,18 +60,18 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SQLiteConnection connection = ConexionDB.Conectar())
                 {
-                    using (SqlCommand command = new SqlCommand("EliminarReporte", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@IdReporte", SqlDbType.Int).Value = idReporte;
+                    string sql = "DELETE FROM Reporte WHERE IdReporte = @IdReporte;";
 
+                    using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.Add("@IdReporte", DbType.Int32).Value = idReporte;
                         return command.ExecuteNonQuery() > 0;
                     }
                 }
             }
-            catch (SqlException)
+            catch (SQLiteException)
             {
                 return false;
             }
@@ -84,14 +86,30 @@ namespace Modelos.Entidades
         {
 
             DataTable tabla = new DataTable();
-            using (SqlConnection connection = ConexionDB.Conectar())
-            {
-                using (var command = new SqlCommand("BuscarReporte", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@busqueda", SqlDbType.VarChar).Value = busqueda ?? (object)DBNull.Value;
+            busqueda = (busqueda ?? "").Trim();
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            using (SQLiteConnection connection = ConexionDB.Conectar())
+            {
+                string sql;
+                if (string.IsNullOrEmpty(busqueda))
+                {
+                    sql = "SELECT * FROM VistaReporteGerente;";
+                }
+                else
+                {
+                    sql = @"SELECT IdReporte, NombreReporte, DescripcionReporte, FechaReporte
+                            FROM Reporte
+                            WHERE NombreReporte LIKE @q;";
+                }
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    if (!string.IsNullOrEmpty(busqueda))
+                    {
+                        command.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+                    }
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
                     {
                         adapter.Fill(tabla);
                     }
@@ -99,6 +117,7 @@ namespace Modelos.Entidades
             }
             return tabla;
         }
+
         //Reportes pagina
         public static DataTable MostrarReportesPagina(int pagina, int registrosPorPagina, out int totalRegistros)
         {
@@ -107,33 +126,35 @@ namespace Modelos.Entidades
 
             try
             {
-                using (SqlConnection conexion = ConexionDB.Conectar())
+                using (SQLiteConnection conexion = ConexionDB.Conectar())
                 {
-                    using (SqlCommand cmd = new SqlCommand("MostrarReportesPagina", conexion))
+                    using (SQLiteCommand cmdTotal = new SQLiteCommand(
+                        "SELECT COUNT(*) FROM Reporte;", conexion))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        totalRegistros = Convert.ToInt32(cmdTotal.ExecuteScalar());
+                    }
 
-                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                    int offset = (pagina - 1) * registrosPorPagina;
 
-                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(outputTotal);
+                    string sql = @"
+                        SELECT IdReporte, NombreReporte, DescripcionReporte, FechaReporte
+                        FROM Reporte
+                        ORDER BY IdReporte
+                        LIMIT @limit OFFSET @offset;";
 
-                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conexion))
+                    {
+                        cmd.Parameters.Add("@limit", DbType.Int32).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@offset", DbType.Int32).Value = offset;
+
+                        using (SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd))
                         {
                             ad.Fill(dt);
                         }
-
-                        totalRegistros = outputTotal.Value == DBNull.Value
-                            ? 0
-                            : Convert.ToInt32(outputTotal.Value);
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 throw new Exception("Error al obtener los reportes paginados: " + ex.Message, ex);
             }

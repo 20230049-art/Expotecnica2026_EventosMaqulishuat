@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +20,9 @@ namespace Modelos.Entidades
         //Mostrar en Estado empleado
         public static DataTable MostrarEstadoEmpleado()
         {
-            SqlConnection conexion = ConexionDB.Conectar();
+            SQLiteConnection conexion = ConexionDB.Conectar();
             string consulta = "SELECT IdEstadoEmpleado, EstadoEmpleado FROM EstadoEmpleado";
-            SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
+            SQLiteDataAdapter da = new SQLiteDataAdapter(consulta, conexion);
             DataTable tabla = new DataTable();
             da.Fill(tabla);
             conexion.Close();
@@ -31,12 +31,15 @@ namespace Modelos.Entidades
 
         public static void ActualizarEstadoEmpleado(int idEmpleado, int idEstadoEmpleado)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                using (SqlCommand cmd = new SqlCommand("ActualizarEstadoEmpleado", conexion))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    UPDATE Empleado
+                    SET IdEstadoEmpleado = @IdEstadoEmpleado
+                    WHERE IdEmpleado = @IdEmpleado;";
 
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexion))
+                {
                     cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
                     cmd.Parameters.AddWithValue("@IdEstadoEmpleado", idEstadoEmpleado);
 

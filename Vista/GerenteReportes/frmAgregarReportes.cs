@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -127,15 +127,15 @@ namespace Vista.GerenteReportes
                 MessageBox.Show("El formato de la fecha no es correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    errorProvider.SetError(txtNombre, "Ya existe un reporte con ese nombre.");
-                    MessageBox.Show("Ya existe un reporte con esos datos.",
-                            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
+                //if (ex.Number == 2627 || ex.Number == 2601)
+                //{
+                //    errorProvider.SetError(txtNombre, "Ya existe un reporte con ese nombre.");
+                //    MessageBox.Show("Ya existe un reporte con esos datos.",
+                //            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
                 {
                     MessageBox.Show("Error de base de datos al agregar el reporte: " + ex.Message,
                             "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -556,9 +557,9 @@ namespace Vista.GerenteClientes
         {
             try
             {
-                bool exito = Clientes.EliminarCliente(idCliente);
+                int exito = Clientes.EliminarCliente(idCliente);
 
-                if (exito)
+                if (exito == 1)
                 {
                     MessageBox.Show("Cliente eliminado permanentemente.", "PROCEDIMIENTO-EXITOSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -573,7 +574,7 @@ namespace Vista.GerenteClientes
                             MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 }
             }
-            catch (System.Data.SqlClient.SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al eliminar el cliente: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

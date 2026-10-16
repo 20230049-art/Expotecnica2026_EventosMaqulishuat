@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +20,9 @@ namespace Modelos.Entidades
         //Mostrar TIpo de pago en Registro Pago y Ventas
         public static DataTable MostrarTipoPago()
         {
-            SqlConnection conexion = ConexionDB.Conectar();
+            SQLiteConnection conexion = ConexionDB.Conectar();
             string consulta = "SELECT IdTipoPago, TipoPago FROM TipoPago";
-            SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
+            SQLiteDataAdapter da = new SQLiteDataAdapter(consulta, conexion);
             DataTable tabla = new DataTable();
             da.Fill(tabla);
             conexion.Close();

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -54,7 +54,7 @@ namespace Vista.GerenteProveedores
         }
 
         private void btnSubir_Click(object sender, EventArgs e)
-        {
+            {
             try
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
@@ -75,7 +75,11 @@ namespace Vista.GerenteProveedores
                         return;
                     }
 
-                    string carpetaFotos = Path.Combine(Application.StartupPath, "FotosProveedores");
+                    string carpetaBase = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "SistemaEventos"
+                    );
+                    string carpetaFotos = Path.Combine(carpetaBase, "FotosProveedores");
                     if (!Directory.Exists(carpetaFotos))
                     {
                         Directory.CreateDirectory(carpetaFotos);
@@ -87,7 +91,7 @@ namespace Vista.GerenteProveedores
 
                     File.Copy(archivoOrigen, rutaDestino, true);
 
-                    rutaFotoRelativa = Path.Combine("FotosProveedores", nombreUnico);
+                    rutaFotoRelativa = rutaDestino;
 
                     using (var stream = new FileStream(rutaDestino, FileMode.Open, FileAccess.Read))
                     {
@@ -220,16 +224,16 @@ namespace Vista.GerenteProveedores
                 MessageBox.Show("Uno de los valores no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
 
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    errorProvider.SetError(txtCorreo, "Ya existe un proveedor con ese correo o teléfono.");
-                    MessageBox.Show("Ya existe un proveedor con esos datos (correo o teléfono duplicado).",
-                            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
+                //if (ex.Number == 2627 || ex.Number == 2601)
+                //{
+                //    errorProvider.SetError(txtCorreo, "Ya existe un proveedor con ese correo o teléfono.");
+                //    MessageBox.Show("Ya existe un proveedor con esos datos (correo o teléfono duplicado).",
+                //            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
                 {
                     MessageBox.Show("Error de base de datos al agregar el proveedor: " + ex.Message,
                             "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);   

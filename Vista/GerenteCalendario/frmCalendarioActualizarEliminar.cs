@@ -50,7 +50,7 @@ namespace Vista.GerenteCalendario
             {
                 dtpHora.Format = DateTimePickerFormat.Time;
                 dtpHora.ShowUpDown = true;
-                dtpDia.MinDate = DateTime.Today;
+                dtpDia.MinDate = DateTime.Today.Date;
 
                 CargarClientes();
                 CargarFecha();
@@ -85,8 +85,14 @@ namespace Vista.GerenteCalendario
                 if (dt.Rows.Count == 0) return;
 
                 DataRow fila = dt.Rows[0];
-                dtpDia.Value = Convert.ToDateTime(fila["DiaFecha"]);
-                dtpHora.Value = DateTime.Today.Add((TimeSpan)fila["HoraFecha"]);
+                DateTime dia = Convert.ToDateTime(fila["DiaFecha"]).Date;
+
+                TimeSpan hora;
+                if (!TimeSpan.TryParse(Convert.ToString(fila["HoraFecha"]), out hora))
+                    hora = TimeSpan.Zero;
+
+                dtpHora.Value = DateTime.Today.Add(hora);
+
                 txtAsunto.Text = fila["AsuntoFecha"].ToString();
                 txtUbicacion.Text = fila["LugarFecha"].ToString();
                 cmbCliente.SelectedValue = Convert.ToInt32(fila["IdCliente"]);
@@ -116,7 +122,7 @@ namespace Vista.GerenteCalendario
                     IdFecha = _idFecha,
                     DiaFecha = dtpDia.Value.Date,
                     HoraFecha = dtpHora.Value.TimeOfDay,
-                    AsusntoFecha = txtAsunto.Text.Trim(),
+                    AsuntoFecha = txtAsunto.Text.Trim(),
                     LugarFecha = txtUbicacion.Text.Trim(),
                     IdCliente = Convert.ToInt32(cmbCliente.SelectedValue)
                 };

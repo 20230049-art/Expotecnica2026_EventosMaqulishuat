@@ -1,7 +1,7 @@
 ﻿using Modelos.Conexion_DB;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +20,9 @@ namespace Modelos.Entidades
         public List<TipoPagos> ObtenerTipoPago()
         {
             var tipoPago = new List<TipoPagos>();
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                var commandd = new SqlCommand("SELECT * FROM TipoPago ORDER BY IdTipoPago", connection);
-                //connection.Open();
+                var commandd = new SQLiteCommand("SELECT * FROM TipoPago ORDER BY IdTipoPago", connection);
                 using (var reader = commandd.ExecuteReader())
                 {
                     while (reader.Read())

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -149,7 +149,7 @@ namespace Vista.GerenteInventario
                 MessageBox.Show("Una columna esperada no existe en los datos del producto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al cargar el producto: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -240,7 +240,11 @@ namespace Vista.GerenteInventario
                         return;
                     }
 
-                    string carpetaFotos = Path.Combine(Application.StartupPath, "FotosProductos");
+                    string carpetaBase = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "SistemaEventos"
+                    );
+                    string carpetaFotos = Path.Combine(carpetaBase, "FotosProductos");
                     if (!Directory.Exists(carpetaFotos))
                     {
                         Directory.CreateDirectory(carpetaFotos);
@@ -252,7 +256,7 @@ namespace Vista.GerenteInventario
 
                     File.Copy(archivoOrigen, rutaDestino, true);
 
-                    rutaFotoRelativa = Path.Combine("FotosProductos", nombreUnico);
+                    rutaFotoRelativa = rutaDestino;
 
                     using (var stream = new FileStream(rutaDestino, FileMode.Open, FileAccess.Read))
                     {
@@ -368,15 +372,15 @@ namespace Vista.GerenteInventario
                 MessageBox.Show("Uno de los valores no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    errorProvider.SetError(txtNombreProducto, "Ya existe un producto con ese nombre.");
-                    MessageBox.Show("Ya existe un producto con esos datos.",
-                            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
+                //if (ex.Number == 2627 || ex.Number == 2601)
+                //{
+                //    errorProvider.SetError(txtNombreProducto, "Ya existe un producto con ese nombre.");
+                //    MessageBox.Show("Ya existe un producto con esos datos.",
+                //            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
                 {
                     MessageBox.Show("Error de base de datos al actualizar el producto: " + ex.Message,
                             "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

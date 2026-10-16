@@ -18,6 +18,16 @@ namespace Vista.IniciarSesion
         {
             InitializeComponent();
 
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer
+                        | ControlStyles.AllPaintingInWmPaint
+                        | ControlStyles.UserPaint, true);
+
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.MinimumSize = new Size(1000, 620);
+
+            
+
         }
 
         private Form activeForm = null;
@@ -70,6 +80,11 @@ namespace Vista.IniciarSesion
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void rediseñoImagen1_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new frmSeleccionarPefil());
         }
     }
 }

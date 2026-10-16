@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -184,14 +184,14 @@ namespace Vista.GerenteClientes
         MessageBoxIcon.Error);
                     }
                 }
-                catch (SqlException ex)
+                catch (SQLiteException ex)
                 {
-                    if (ex.Number == 2627 || ex.Number == 2601)
-                    {
-                        MessageBox.Show("Ya existe un cliente con esos datos (DUI, NIT o NCR duplicado).",
-                                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
+                    //if (ex.Number == 2627 || ex.Number == 2601)
+                    //{
+                    //    MessageBox.Show("Ya existe un cliente con esos datos (DUI, NIT o NCR duplicado).",
+                    //            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+                    //else
                     {
                         MessageBox.Show("Error de base de datos al agregar el cliente: " + ex.Message,
                                 "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

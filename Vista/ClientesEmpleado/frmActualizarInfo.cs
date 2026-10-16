@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -122,7 +122,7 @@ namespace Vista.ClientesEmpleado
                 MessageBox.Show("El tipo de cliente seleccionado no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error al actualizar el cliente en la base de datos: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

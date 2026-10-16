@@ -23,7 +23,6 @@ namespace Vista.PrimerUso
         {
             try
             {
-                // ===== Validaciones básicas =====
                 if (string.IsNullOrWhiteSpace(txtNombreEmpresa.Text) ||
                     string.IsNullOrWhiteSpace(txtCorreoEmpresa.Text) ||
                     string.IsNullOrWhiteSpace(txtTelefonoEmpresa.Text) ||
@@ -52,7 +51,6 @@ namespace Vista.PrimerUso
                     return;
                 }
 
-                // ===== 1) Guardar la configuración de la empresa =====
                 var config = new DatosEmpresa
                 {
                     NombreEmpresa = txtNombreEmpresa.Text.Trim(),
@@ -88,8 +86,6 @@ namespace Vista.PrimerUso
                     return;
                 }
 
-                // ===== 3) Pasar al siguiente form =====
-                // Guardamos datos para que frmInicioCompleto los muestre
                 DatosInicioCompleto.UsuarioGerente = txtUsuario.Text.Trim();
                 DatosInicioCompleto.ContrasenaGerente = txtContrasena.Text;
                 DatosInicioCompleto.LogoRuta = rutaLogoRelativa;
@@ -99,7 +95,7 @@ namespace Vista.PrimerUso
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al finalizar la configuración: " + ex.Message, "ERROR",
+                MessageBox.Show("Error al finalizar la configuración: " + ex.ToString(), "ERROR",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -123,8 +119,13 @@ namespace Vista.PrimerUso
                         return;
                     }
 
-                    // Carpeta destino: bin\Debug\Empresa
-                    string carpeta = System.IO.Path.Combine(Application.StartupPath, "Empresa");
+                    // ✅ NUEVA RUTA: guardar en AppData del usuario
+                    string carpetaBase = System.IO.Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "SistemaEventos"
+                    );
+                    string carpeta = System.IO.Path.Combine(carpetaBase, "Empresa");
+
                     if (!System.IO.Directory.Exists(carpeta))
                         System.IO.Directory.CreateDirectory(carpeta);
 
@@ -134,7 +135,8 @@ namespace Vista.PrimerUso
 
                     System.IO.File.Copy(ofd.FileName, rutaDestino, true);
 
-                    rutaLogoRelativa = System.IO.Path.Combine("Empresa", nombreUnico);
+                    // Guardamos la ruta completa (no relativa) para que siempre se encuentre
+                    rutaLogoRelativa = rutaDestino;
 
                     // Mostrar preview
                     using (var stream = new System.IO.FileStream(rutaDestino,

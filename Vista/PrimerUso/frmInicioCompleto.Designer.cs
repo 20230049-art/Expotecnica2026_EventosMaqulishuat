@@ -215,7 +215,8 @@
             this.MaximumSize = new System.Drawing.Size(1174, 668);
             this.MinimumSize = new System.Drawing.Size(1174, 668);
             this.Name = "frmInicioCompleto";
-            this.Text = "frmInicioCompleto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Inicio Completo";
             this.Load += new System.EventHandler(this.frmInicioCompleto_Load);
             this.pnlVistaInicioCompleto.ResumeLayout(false);
             this.pnlVistaInicioCompleto.PerformLayout();

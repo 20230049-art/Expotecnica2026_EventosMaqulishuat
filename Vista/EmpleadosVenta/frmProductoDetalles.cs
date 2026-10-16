@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -255,14 +255,14 @@ namespace Vista.EmpleadosVenta
                 MessageBox.Show("Uno de los valores numéricos no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al agregar el producto: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar el producto: " + ex.Message,
+                MessageBox.Show("Error al agregar el producto: " + ex.ToString(),
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -3,7 +3,7 @@ using Org.BouncyCastle.Asn1.Cms;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ namespace Modelos.Entidades
         private DateTime diaFecha;
         private string lugarFecha;
         private TimeSpan horaFecha;
-        private string asusntoFecha;
+        private string asuntoFecha;
         private int idCliente;
         private int idUsuario;
 
@@ -24,81 +24,142 @@ namespace Modelos.Entidades
         public DateTime DiaFecha { get => diaFecha; set => diaFecha = value; }
         public string LugarFecha { get => lugarFecha; set => lugarFecha = value; }
         public TimeSpan HoraFecha { get => horaFecha; set => horaFecha = value; }
-        public string AsusntoFecha { get => asusntoFecha; set => asusntoFecha = value; }
+        public string AsuntoFecha { get => asuntoFecha; set => asuntoFecha = value; }
         public int IdCliente { get => idCliente; set => idCliente = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
 
         public static DataTable ContarPorMes(int anio, int mes)
         {
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("ContarEventosPorDiaMes", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Anio", SqlDbType.Int).Value = anio;
-                cmd.Parameters.Add("@Mes", SqlDbType.Int).Value = mes;
+                // strftime('%Y', DiaFecha) = año como texto
+                // strftime('%m', DiaFecha) = mes como texto de 2 dígitos
+                string sql = @"
+                    SELECT 
+                        DiaFecha AS Dia,
+                        COUNT(*) AS TotalEventos
+                    FROM Fecha
+                    WHERE strftime('%Y', DiaFecha) = @Anio
+                      AND strftime('%m', DiaFecha) = @Mes
+                    GROUP BY DiaFecha;";
 
-                SqlDataAdapter ad = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                ad.Fill(dt);
-                return dt;
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                {
+                    cmd.Parameters.Add("@Anio", DbType.String).Value = anio.ToString("D4");
+                    cmd.Parameters.Add("@Mes", DbType.String).Value = mes.ToString("D2");
+
+                    SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ad.Fill(dt);
+                    return dt;
+                }
             }
         }
 
         // Eventos de un día específico
         public static DataTable MostrarPorDia(DateTime dia)
         {
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("MostrarFechasPorDia", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Dia", SqlDbType.Date).Value = dia.Date;
+                string sql = @"
+            SELECT 
+                F.IdFecha,
+                F.DiaFecha,
+                F.HoraFecha,
+                F.LugarFecha,
+                F.AsuntoFecha,
+                F.IdCliente,
+                C.NombreCliente || ' ' || C.ApellidoCliente AS NombreCliente,
+                C.CorreoCliente,
+                C.TelefonoCliente
+            FROM Fecha F
+            LEFT JOIN Cliente C ON F.IdCliente = C.IdCliente
+            WHERE date(F.DiaFecha) = @Dia
+            ORDER BY F.HoraFecha;";
 
-                SqlDataAdapter ad = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                ad.Fill(dt);
-                return dt;
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                {
+                    cmd.Parameters.Add("@Dia", DbType.String).Value = dia.ToString("yyyy-MM-dd");
+
+                    SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ad.Fill(dt);
+                    return dt;
+                }
             }
         }
 
         // Obtener por Id
         public static DataTable ObtenerPorId(int idFecha)
         {
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("ObtenerFechaPorId", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@IdFecha", SqlDbType.Int).Value = idFecha;
+                string sql = @"
+                    SELECT IdFecha, DiaFecha, HoraFecha, LugarFecha,
+                           AsuntoFecha, IdCliente, IdUsuario
+                    FROM Fecha
+                    WHERE IdFecha = @IdFecha;";
 
-                SqlDataAdapter ad = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                ad.Fill(dt);
-                return dt;
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                {
+                    cmd.Parameters.Add("@IdFecha", DbType.Int32).Value = idFecha;
+
+                    SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ad.Fill(dt);
+                    return dt;
+                }
             }
         }
 
-        // Agregar
         public static bool Agregar(Fechas fecha)
         {
             try
             {
-                using (SqlConnection cn = ConexionDB.Conectar())
-                using (SqlCommand cmd = new SqlCommand("AgregarFecha", cn))
+                using (SQLiteConnection cn = ConexionDB.Conectar())
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (fecha.DiaFecha.Date < DateTime.Today)
+                    {
+                        System.Windows.Forms.MessageBox.Show("La fecha no puede ser anterior a hoy.",
+                                "No se puede guardar", System.Windows.Forms.MessageBoxButtons.OK,
+                                System.Windows.Forms.MessageBoxIcon.Warning);
+                        return false;
+                    }
 
-                    cmd.Parameters.Add("@DiaFecha", SqlDbType.Date).Value = fecha.DiaFecha.Date;
-                    cmd.Parameters.Add("@HoraFecha", SqlDbType.Time).Value = fecha.HoraFecha;
-                    cmd.Parameters.Add("@LugarFecha", SqlDbType.VarChar).Value = fecha.LugarFecha;
-                    cmd.Parameters.Add("@AsuntoFecha", SqlDbType.VarChar).Value = fecha.AsusntoFecha;
-                    cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = fecha.IdCliente;
-                    cmd.Parameters.Add("@IdUsuario", SqlDbType.Int).Value = fecha.IdUsuario;
+                    using (SQLiteCommand cmdCheck = new SQLiteCommand(
+                        "SELECT COUNT(*) FROM Fecha WHERE date(DiaFecha) = @Dia;", cn))
+                    {
+                        cmdCheck.Parameters.Add("@Dia", DbType.String).Value = fecha.DiaFecha.ToString("yyyy-MM-dd");
+                        if (Convert.ToInt32(cmdCheck.ExecuteScalar()) >= 20)
+                        {
+                            System.Windows.Forms.MessageBox.Show("Máximo 20 recordatorios por día.",
+                                    "No se puede guardar", System.Windows.Forms.MessageBoxButtons.OK,
+                                    System.Windows.Forms.MessageBoxIcon.Warning);
+                            return false;
+                        }
+                    }
 
+                    string sql = @"
+                INSERT INTO Fecha
+                    (DiaFecha, HoraFecha, LugarFecha, AsuntoFecha, IdCliente, IdUsuario)
+                VALUES
+                    (@DiaFecha, @HoraFecha, @LugarFecha, @AsuntoFecha, @IdCliente, @IdUsuario);";
 
-                    cmd.ExecuteNonQuery();
-                    return true;
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.Add("@DiaFecha", DbType.String).Value = fecha.DiaFecha.ToString("yyyy-MM-dd");
+                        cmd.Parameters.Add("@HoraFecha", DbType.String).Value = fecha.HoraFecha.ToString(@"hh\:mm\:ss");
+                        cmd.Parameters.Add("@LugarFecha", DbType.String).Value = fecha.LugarFecha;
+                        cmd.Parameters.Add("@AsuntoFecha", DbType.String).Value = fecha.AsuntoFecha;
+                        cmd.Parameters.Add("@IdCliente", DbType.Int32).Value = fecha.IdCliente;
+                        cmd.Parameters.Add("@IdUsuario", DbType.Int32).Value = fecha.IdUsuario;
+
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message,
                         "No se puede guardar", System.Windows.Forms.MessageBoxButtons.OK,
@@ -112,23 +173,40 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection cn = ConexionDB.Conectar())
-                using (SqlCommand cmd = new SqlCommand("ActualizarFecha", cn))
+                using (SQLiteConnection cn = ConexionDB.Conectar())
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (fecha.DiaFecha.Date < DateTime.Today)
+                    {
+                        System.Windows.Forms.MessageBox.Show("La fecha no puede ser anterior a hoy.",
+                                "No se puede actualizar", System.Windows.Forms.MessageBoxButtons.OK,
+                                System.Windows.Forms.MessageBoxIcon.Warning);
+                        return false;
+                    }
 
-                    cmd.Parameters.Add("@IdFecha", SqlDbType.Int).Value = fecha.IdFecha;
-                    cmd.Parameters.Add("@DiaFecha", SqlDbType.Date).Value = fecha.DiaFecha.Date;
-                    cmd.Parameters.Add("@HoraFecha", SqlDbType.Time).Value = fecha.HoraFecha;
-                    cmd.Parameters.Add("@LugarFecha", SqlDbType.VarChar).Value = fecha.LugarFecha;
-                    cmd.Parameters.Add("@AsuntoFecha", SqlDbType.VarChar).Value = fecha.AsusntoFecha;
-                    cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = fecha.IdCliente;
+                    string sql = @"
+                        UPDATE Fecha
+                        SET DiaFecha    = @DiaFecha,
+                            HoraFecha   = @HoraFecha,
+                            LugarFecha  = @LugarFecha,
+                            AsuntoFecha = @AsuntoFecha,
+                            IdCliente   = @IdCliente
+                        WHERE IdFecha = @IdFecha;";
 
-                    cmd.ExecuteNonQuery();
-                    return true;
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.Add("@IdFecha", DbType.Int32).Value = fecha.IdFecha;
+                        cmd.Parameters.Add("@DiaFecha", DbType.Date).Value = fecha.DiaFecha.ToString("yyyy-MM-dd");
+                        cmd.Parameters.Add("@HoraFecha", DbType.Time).Value = fecha.HoraFecha.ToString(@"hh\:mm\:ss");
+                        cmd.Parameters.Add("@LugarFecha", DbType.String).Value = fecha.LugarFecha;
+                        cmd.Parameters.Add("@AsuntoFecha", DbType.String).Value = fecha.AsuntoFecha;
+                        cmd.Parameters.Add("@IdCliente", DbType.Int32).Value = fecha.IdCliente;
+
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message,
                         "No se puede actualizar", System.Windows.Forms.MessageBoxButtons.OK,
@@ -142,18 +220,20 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection cn = ConexionDB.Conectar())
-                using (SqlCommand cmd = new SqlCommand("EliminarFecha", cn))
+                using (SQLiteConnection cn = ConexionDB.Conectar())
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@IdFecha", SqlDbType.Int).Value = idFecha;
+                    string sql = "DELETE FROM Fecha WHERE IdFecha = @IdFecha;";
 
-                    cmd.ExecuteNonQuery();
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.Add("@IdFecha", DbType.Int32).Value = idFecha;
+                        cmd.ExecuteNonQuery();
+                    }
 
                     return true;
                 }
             }
-            catch (SqlException)
+            catch (SQLiteException)
             {
                 return false;
             }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -540,7 +540,7 @@ namespace Vista.GerenteProveedores
                     CargarPagina(paginaActual - 1);
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show(ex.Message,
                         "No se puede eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);

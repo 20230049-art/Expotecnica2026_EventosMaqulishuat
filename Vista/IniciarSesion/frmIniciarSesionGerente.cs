@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,8 @@ namespace Vista.IniciarSesion
             InitializeComponent();
 
             Redondeo.RedondearFig(panel1, 10);
-            Redondeo.RedondearFig(btnIngresarEmpleado, 6);
-            Redondeo.RedondearFig(btnRegresar, 6);
+            Redondeo.RedondearFig(btnIngresarEmpleado, 2);
+            Redondeo.RedondearFig(btnRegresar, 2);
 
             errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider.ContainerControl = this;
@@ -32,102 +33,30 @@ namespace Vista.IniciarSesion
             txtContrasena.TextChanged += (s, e) => errorProvider.SetError(txtContrasena, "");
         }
 
-        //Cambio de formualrios
+        //Cmbio de formularios 
         private Form activeForm = null;
         private void abrirFormulario(Form formularioAbrir)
         {
-            try
+            if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
             {
-                if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
-                {
-                    return;
-                }
-
-                if (activeForm != null)
-                {
-                    activeForm.Close();
-                    pnlVistaIniciarEmpleado.Controls.Remove(activeForm);
-                    activeForm.Dispose();
-                }
-
-                activeForm = formularioAbrir;
-                formularioAbrir.TopLevel = false;
-                formularioAbrir.FormBorderStyle = FormBorderStyle.None;
-                formularioAbrir.Dock = DockStyle.Fill;
-
-                pnlVistaIniciarEmpleado.Controls.Add(formularioAbrir);
-                formularioAbrir.BringToFront();
-                formularioAbrir.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cambiar de formulario: " + ex.Message,
-                        "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnIngresarEmpleado_Click(object sender, EventArgs e)
-        {
-            errorProvider.Clear();
-
-            string nombreUsuario = txtNombreUsuario.Text.Trim();
-            string contrasena = txtContrasena.Text;
-
-            if (string.IsNullOrEmpty(nombreUsuario))
-            {
-                errorProvider.SetError(txtNombreUsuario, "Por favor ingrese el usuario.");
-            }
-
-            if (string.IsNullOrEmpty(contrasena))
-            {
-                errorProvider.SetError(txtContrasena, "Por favor ingrese la contraseña.");
-            }
-
-            if (string.IsNullOrEmpty(nombreUsuario) || string.IsNullOrEmpty(contrasena))
-            {
-                MessageBox.Show("Por favor ingrese usuario y contraseña.",
-                    "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Usuario usuario = new Usuario();
-            Usuario usuarioValidado = usuario.ValidarLoginGerente(nombreUsuario, contrasena);
-
-            if (usuarioValidado != null && usuarioValidado.IdTipoUsuario == 1)
+            if (activeForm != null)
             {
-                UsuarioActual.Datos = usuarioValidado;
+                activeForm.Close();
+                pnlVistaIniciarEmpleado1.Controls.Remove(activeForm);
+                activeForm.Dispose();
+            }
 
-                MessageBox.Show($"¡Bienvenido {usuarioValidado.NombreUsuario}!",
-                    "Login exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            activeForm = formularioAbrir;
+            formularioAbrir.TopLevel = false;
+            formularioAbrir.FormBorderStyle = FormBorderStyle.None;
+            formularioAbrir.Dock = DockStyle.Fill;
 
-                abrirFormulario(new frmMenuGerente());
-            }
-            else if (usuarioValidado != null && usuarioValidado.IdTipoUsuario != 1)
-            {
-                MessageBox.Show("El usuario no tiene permisos de gerente.",
-                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                errorProvider.SetError(txtNombreUsuario, "Usuario o contraseña incorrectos.");
-                errorProvider.SetError(txtContrasena, "Usuario o contraseña incorrectos.");
-
-                MessageBox.Show("Usuario o contraseña incorrectos.",
-                    "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                abrirFormulario(new frmSeleccionarPefil());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al regresar al formulario anterior: " + ex.Message,
-                        "ERROR-NAVANTERIOR-104", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            pnlVistaIniciarEmpleado1.Controls.Add(formularioAbrir);
+            formularioAbrir.BringToFront();
+            formularioAbrir.Show();
         }
 
         private void frmIniciarSesionGerente_Load(object sender, EventArgs e)
@@ -147,9 +76,108 @@ namespace Vista.IniciarSesion
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label2_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            frmFondoNegro fondo = new frmFondoNegro();
+            fondo.StartPosition = FormStartPosition.CenterParent;
+            fondo.WindowState = FormWindowState.Maximized;
+            fondo.Show();
+
+            frmRecuperarContrasena formulario = new frmRecuperarContrasena();
+
+            formulario.ShowDialog();
+
+            fondo.Close();
+        }
+
+       
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                using (var frm = new frmSeleccionarPefil())
+                {
+                    frm.Show();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al regresar al formulario anterior: " + ex.Message,
+                        "ERROR-NAVANTERIOR-104", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnIngresarEmpleado_Click(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+
+            string nombreUsuario = txtNombreUsuario.Text.Trim();
+            string contrasena = txtContrasena.Text;
+
+            bool hayError = false;
+
+            if (string.IsNullOrEmpty(nombreUsuario))
+            {
+                errorProvider.SetError(txtNombreUsuario, "Por favor ingrese el usuario.");
+                hayError = true;
+            }
+
+            if (string.IsNullOrEmpty(contrasena))
+            {
+                errorProvider.SetError(txtContrasena, "Por favor ingrese la contraseña.");
+                hayError = true;
+            }
+
+            if (hayError)
+            {
+                MessageBox.Show("Por favor ingrese usuario y contraseña.",
+                    "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Usuario usuarioValidado;
+            try
+            {
+                usuarioValidado = new Usuario().ValidarLoginGerente(nombreUsuario, contrasena);
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error de conexión con la base de datos: " + ex.Message,
+                    "ERROR-SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error inesperado al iniciar sesión: " + ex.Message,
+                    "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (usuarioValidado == null)
+            {
+                errorProvider.SetError(txtNombreUsuario, "Usuario o contraseña incorrectos.");
+                errorProvider.SetError(txtContrasena, "Usuario o contraseña incorrectos.");
+
+                MessageBox.Show("Usuario o contraseña incorrectos.",
+                    "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (usuarioValidado.IdTipoUsuario != 1)
+            {
+                MessageBox.Show("El usuario no tiene permisos de gerente.",
+                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            UsuarioActual.Datos = usuarioValidado;
+
+            MessageBox.Show($"¡Bienvenido {usuarioValidado.NombreUsuario}!",
+                "Login exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            abrirFormulario(new frmMenuGerente());
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -164,6 +192,16 @@ namespace Vista.IniciarSesion
             formulario.ShowDialog();
 
             fondo.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void txtContrasena_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

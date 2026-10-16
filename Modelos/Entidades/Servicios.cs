@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +21,9 @@ namespace Modelos.Entidades
         //Para aregar productos
         public static DataTable ObtenerServicios()
         {
-            SqlConnection conexion = ConexionDB.Conectar();
+            SQLiteConnection conexion = ConexionDB.Conectar();
             string consulta = "SELECT idServicio, NombreServicio FROM Servicio";
-            SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
+            SQLiteDataAdapter da = new SQLiteDataAdapter(consulta, conexion);
             DataTable tabla = new DataTable();
             da.Fill(tabla);
             conexion.Close();

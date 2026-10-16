@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -280,7 +280,7 @@ namespace Vista.UsuariosCreados
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -329,15 +329,25 @@ namespace Vista.UsuariosCreados
                     return;
                 }
 
+                // 2. Obtener datos del usuario seleccionado
                 int idUsuario = Convert.ToInt32(row.Cells["IdUsuario"].Value);
                 string rol = row.Cells["Rol"].Value?.ToString() ?? "";
                 string usuario = row.Cells["NombreUsuario"].Value?.ToString() ?? "";
 
+                // 3. Validación temprana: bloquear al usuario principal (defensa en profundidad)
+                if (idUsuario == 1)
+                {
+                    MessageBox.Show("No se puede eliminar el usuario principal del sistema (Gerente).",
+                            "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+
+                // 4. Confirmación del usuario
                 DialogResult confirmacion = MessageBox.Show(
                     $"¿Estás seguro de eliminar este usuario?\n\n" +
                     $"Usuario: \"{usuario}\"\n" +
                     $"Rol: {rol}\n\n" +
-                    "El usuario dejará de aparecer en la lista, pero sus datos se conservan.",
+                    "El usuario dejará de aparecer en la lista y no podrá iniciar sesión.",
                     "Confirmar eliminación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning,
@@ -345,30 +355,48 @@ namespace Vista.UsuariosCreados
 
                 if (confirmacion != DialogResult.Yes) return;
 
-                bool exito = Usuario.EliminarUsuario(idUsuario);
+                // 5. Llamar al SP que devuelve un código de resultado
+                //    1  = éxito
+                //    0  = no permitido (usuario principal)
+                //   -1  = no existe o ya estaba eliminado
+                int resultado = Usuario.EliminarUsuario(idUsuario);
 
-                if (exito)
+                if (resultado == 0)
                 {
-                    MessageBox.Show("Usuario eliminado correctamente.",
-                            "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No se puede eliminar el usuario principal del sistema (Gerente).",
+                            "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
 
+                if (resultado == -1)
+                {
+                    MessageBox.Show("El usuario no existe o ya había sido eliminado.",
+                            "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     CargarPagina(paginaActual);
+                    return;
+                }
 
-                    if (dgvUsuarios.Rows.Count == 0 && paginaActual > 1)
-                    {
-                        CargarPagina(paginaActual - 1);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo eliminar el usuario.",
-                            "ERROR-ELIMINAR-015", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                // resultado == 1 → éxito
+                MessageBox.Show("Usuario eliminado correctamente.",
+                        "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarPagina(paginaActual);
+
+                if (dgvUsuarios.Rows.Count == 0 && paginaActual > 1)
+                    CargarPagina(paginaActual - 1);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Error de base de datos al eliminar: " + ex.Message,
-                        "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //if (ex.Number == 50000)
+                //{
+                //    MessageBox.Show(ex.Message,
+                //            "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                //}
+                //else
+                {
+                    MessageBox.Show("Error de base de datos al eliminar: " + ex.Message,
+                            "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -434,9 +462,6 @@ namespace Vista.UsuariosCreados
         {
             try
             {
-                //// Ocultar IdUsuario
-                //if (dgvUsuarios.Columns.Contains("IdUsuario"))
-                //    dgvUsuarios.Columns["IdUsuario"].Visible = false;
 
                 if (dgvUsuarios.Columns.Contains("Rol"))
                 {
@@ -470,6 +495,28 @@ namespace Vista.UsuariosCreados
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Error al estilizar columnas: " + ex.Message);
+            }
+        }
+
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmUsuarios_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
             }
         }
     }

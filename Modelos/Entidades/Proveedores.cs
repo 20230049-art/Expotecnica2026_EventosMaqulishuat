@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +28,9 @@ namespace Modelos.Entidades
         //Mostrar Proveedores
         public static DataTable MostrarProvedores()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             string comando = "SELECT * FROM VistaProveedorGerente;";
-            SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+            SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
             DataTable dt = new DataTable();
             ad.Fill(dt);
             return dt;
@@ -39,9 +39,9 @@ namespace Modelos.Entidades
         //Mostrar Proveedores en un cmbox
         public static DataTable ObtnerProveedor()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             string comando = "SELECT idProveedor, NombreProveedor FROM Proveedor;";
-            SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+            SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
             DataTable dt = new DataTable();
             ad.Fill(dt);
             return dt;
@@ -50,46 +50,106 @@ namespace Modelos.Entidades
         //Añadir Proveedor
         public static int IngresarProveedor(Proveedores nuevoProveedor)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                using (SqlCommand command = new SqlCommand("AgregarProveedor", connection))
+                int idExistente = -1;
+                int eliminado = 0;
+
+                string sqlBuscar = @"
+                    SELECT IdProveedor, EliminadoProveedor
+                    FROM Proveedor
+                    WHERE CorreoProveedor   = @Correo
+                       OR NombreProveedor   = @Nombre
+                       OR TelefonoProveedor = @Telefono
+                    LIMIT 1;";
+
+                using (SQLiteCommand cmdBuscar = new SQLiteCommand(sqlBuscar, connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
+                    cmdBuscar.Parameters.Add("@Correo", DbType.String).Value = nuevoProveedor.CorreoProveedor;
+                    cmdBuscar.Parameters.Add("@Nombre", DbType.String).Value = nuevoProveedor.NombreProveedor;
+                    cmdBuscar.Parameters.Add("@Telefono", DbType.String).Value = nuevoProveedor.TelefonoProveedor;
 
-                    command.Parameters.Add("@NombreProveedor", SqlDbType.VarChar).Value = nuevoProveedor.NombreProveedor;
-                    command.Parameters.Add("@CorreoProveedor", SqlDbType.VarChar).Value = nuevoProveedor.CorreoProveedor;
-                    command.Parameters.Add("@TelefonoProveedor", SqlDbType.VarChar).Value = nuevoProveedor.TelefonoProveedor;
-                    command.Parameters.Add("@FotoProveedor", SqlDbType.VarChar).Value = nuevoProveedor.FotoProveedor;
-
-                    SqlParameter resultado = new SqlParameter("@Resultado", SqlDbType.Int)
+                    using (SQLiteDataReader reader = cmdBuscar.ExecuteReader())
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    command.Parameters.Add(resultado);
-
-                    command.ExecuteNonQuery();
-
-                    return resultado.Value == DBNull.Value ? -1 : Convert.ToInt32(resultado.Value);
+                        if (reader.Read())
+                        {
+                            idExistente = Convert.ToInt32(reader["IdProveedor"]);
+                            eliminado = Convert.ToInt32(reader["EliminadoProveedor"]);
+                        }
+                    }
                 }
+
+                if (idExistente != -1 && eliminado == 0)
+                    return 2;
+
+                if (idExistente != -1 && eliminado == 1)
+                {
+                    string sqlUpdate = @"
+                        UPDATE Proveedor
+                        SET NombreProveedor   = @Nombre,
+                            CorreoProveedor   = @Correo,
+                            TelefonoProveedor = @Telefono,
+                            FotoProveedor     = @Foto,
+                            EliminadoProveedor = 0
+                        WHERE IdProveedor = @Id;";
+
+                    using (SQLiteCommand cmdUpdate = new SQLiteCommand(sqlUpdate, connection))
+                    {
+                        cmdUpdate.Parameters.Add("@Id", DbType.Int32).Value = idExistente;
+                        cmdUpdate.Parameters.Add("@Nombre", DbType.String).Value = nuevoProveedor.NombreProveedor;
+                        cmdUpdate.Parameters.Add("@Correo", DbType.String).Value = nuevoProveedor.CorreoProveedor;
+                        cmdUpdate.Parameters.Add("@Telefono", DbType.String).Value = nuevoProveedor.TelefonoProveedor;
+                        cmdUpdate.Parameters.Add("@Foto", DbType.String).Value =
+                            string.IsNullOrWhiteSpace(nuevoProveedor.FotoProveedor) ? (object)DBNull.Value : nuevoProveedor.FotoProveedor;
+
+                        cmdUpdate.ExecuteNonQuery();
+                    }
+                    return 1;
+                }
+
+                string sqlInsert = @"
+                    INSERT INTO Proveedor
+                        (NombreProveedor, CorreoProveedor, TelefonoProveedor, FotoProveedor, IdGerente, EliminadoProveedor)
+                    VALUES
+                        (@Nombre, @Correo, @Telefono, @Foto, 1, 0);";
+
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(sqlInsert, connection))
+                {
+                    cmdInsert.Parameters.Add("@Nombre", DbType.String).Value = nuevoProveedor.NombreProveedor;
+                    cmdInsert.Parameters.Add("@Correo", DbType.String).Value = nuevoProveedor.CorreoProveedor;
+                    cmdInsert.Parameters.Add("@Telefono", DbType.String).Value = nuevoProveedor.TelefonoProveedor;
+                    cmdInsert.Parameters.Add("@Foto", DbType.String).Value =
+                        string.IsNullOrWhiteSpace(nuevoProveedor.FotoProveedor) ? (object)DBNull.Value : nuevoProveedor.FotoProveedor;
+
+                    cmdInsert.ExecuteNonQuery();
+                }
+                return 0;
             }
         }
 
         //Actualizar Proveedor
         public static void ActualizarProveedor(Proveedores actualizarProveedor)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                using (SqlCommand command = new SqlCommand("ActualizarProveedor", connection))
+                string sql = @"
+                    UPDATE Proveedor
+                    SET NombreProveedor   = @Nombre,
+                        CorreoProveedor   = @Correo,
+                        TelefonoProveedor = @Telefono,
+                        FotoProveedor     = @Foto
+                    WHERE IdProveedor = @Id;";
+
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@IdProveedor", SqlDbType.Int).Value = actualizarProveedor.IdProveedor;
-                    command.Parameters.Add("@NombreProveedor", SqlDbType.VarChar).Value = actualizarProveedor.NombreProveedor;
-                    command.Parameters.Add("@CorreoProveedor", SqlDbType.VarChar).Value = actualizarProveedor.CorreoProveedor;
-                    command.Parameters.Add("@TelefonoProveedor", SqlDbType.VarChar).Value = actualizarProveedor.TelefonoProveedor;
-                    command.Parameters.Add("@FotoProveedor", SqlDbType.VarChar).Value = actualizarProveedor.FotoProveedor;
+                    command.Parameters.Add("@Id", DbType.Int32).Value = actualizarProveedor.IdProveedor;
+                    command.Parameters.Add("@Nombre", DbType.String).Value = actualizarProveedor.NombreProveedor;
+                    command.Parameters.Add("@Correo", DbType.String).Value = actualizarProveedor.CorreoProveedor;
+                    command.Parameters.Add("@Telefono", DbType.String).Value = actualizarProveedor.TelefonoProveedor;
+                    command.Parameters.Add("@Foto", DbType.String).Value =
+                        string.IsNullOrWhiteSpace(actualizarProveedor.FotoProveedor) ? (object)DBNull.Value : actualizarProveedor.FotoProveedor;
 
                     command.ExecuteNonQuery();
-                    connection.Close();
                 }
             }
         }
@@ -98,19 +158,19 @@ namespace Modelos.Entidades
         public static DataTable ObtenerProveedorId(int idProveedor)
         {
 
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                using (SqlCommand command = new SqlCommand("ProveedorId", connection))
+                string sql = "SELECT * FROM Proveedor WHERE IdProveedor = @Id;";
+
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@IdProveedor", SqlDbType.Int).Value = idProveedor;
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    command.Parameters.Add("@Id", DbType.Int32).Value = idProveedor;
+
                     DataTable dt = new DataTable();
-                    using (SqlDataAdapter ad = new SqlDataAdapter(command))
+                    using (SQLiteDataAdapter ad = new SQLiteDataAdapter(command))
                     {
                         ad.Fill(dt);
                     }
-
                     return dt;
                 }
             }
@@ -120,9 +180,9 @@ namespace Modelos.Entidades
         //Proveedorer nombre
         public static DataTable ObtenerNombreProveedor()
         {
-            SqlConnection conexion = ConexionDB.Conectar();
+            SQLiteConnection conexion = ConexionDB.Conectar();
             string consulta = "SELECT IdProveedor, NombreProveedor FROM Proveedor";
-            SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
+            SQLiteDataAdapter da = new SQLiteDataAdapter(consulta, conexion);
             DataTable tabla = new DataTable();
             da.Fill(tabla);
             conexion.Close();
@@ -134,14 +194,31 @@ namespace Modelos.Entidades
         {
 
             DataTable tablaProveedor = new DataTable();
-            using (SqlConnection connection = ConexionDB.Conectar())
-            {
-                using (var command = new SqlCommand("BuscarProveedor", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@busqueda", SqlDbType.VarChar).Value = busqueda ?? (object)DBNull.Value;
+            busqueda = (busqueda ?? "").Trim();
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            using (SQLiteConnection connection = ConexionDB.Conectar())
+            {
+                string sql;
+                if (string.IsNullOrEmpty(busqueda))
+                {
+                    sql = "SELECT * FROM VistaProveedorGerente;";
+                }
+                else
+                {
+                    sql = @"SELECT * FROM VistaProveedorGerente
+                            WHERE NombreProveedor   LIKE @q
+                               OR CorreoProveedor   LIKE @q
+                               OR TelefonoProveedor LIKE @q;";
+                }
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    if (!string.IsNullOrEmpty(busqueda))
+                    {
+                        command.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+                    }
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
                     {
                         adapter.Fill(tablaProveedor);
                     }
@@ -158,33 +235,37 @@ namespace Modelos.Entidades
 
             try
             {
-                using (SqlConnection conexion = ConexionDB.Conectar())
+                using (SQLiteConnection conexion = ConexionDB.Conectar())
                 {
-                    using (SqlCommand cmd = new SqlCommand("MostrarProveedoresPagina", conexion))
+                    // Total
+                    using (SQLiteCommand cmdTotal = new SQLiteCommand(
+                        "SELECT COUNT(*) FROM Proveedor WHERE EliminadoProveedor = 0;", conexion))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        totalRegistros = Convert.ToInt32(cmdTotal.ExecuteScalar());
+                    }
 
-                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
+                    int offset = (pagina - 1) * registrosPorPagina;
 
-                        SqlParameter outputTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(outputTotal);
+                    string sql = @"
+                        SELECT IdProveedor, NombreProveedor, CorreoProveedor, TelefonoProveedor, FotoProveedor
+                        FROM Proveedor
+                        WHERE EliminadoProveedor = 0
+                        ORDER BY IdProveedor
+                        LIMIT @limit OFFSET @offset;";
 
-                        using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conexion))
+                    {
+                        cmd.Parameters.Add("@limit", DbType.Int32).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@offset", DbType.Int32).Value = offset;
+
+                        using (SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd))
                         {
                             ad.Fill(dt);
                         }
-
-                        totalRegistros = outputTotal.Value == DBNull.Value
-                            ? 0
-                            : Convert.ToInt32(outputTotal.Value);
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 throw new Exception("Error al obtener los proveedores paginados: " + ex.Message, ex);
             }
@@ -197,18 +278,18 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SQLiteConnection connection = ConexionDB.Conectar())
                 {
-                    using (SqlCommand command = new SqlCommand("EliminarProveedor", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@IdProveedor", SqlDbType.Int).Value = idProveedor;
+                    string sql = "UPDATE Proveedor SET EliminadoProveedor = 1 WHERE IdProveedor = @Id;";
 
+                    using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.Add("@Id", DbType.Int32).Value = idProveedor;
                         return command.ExecuteNonQuery() > 0;
                     }
                 }
             }
-            catch (SqlException)
+            catch (SQLiteException)
             {
                 return false;
             }
@@ -219,18 +300,18 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SQLiteConnection connection = ConexionDB.Conectar())
                 {
-                    using (SqlCommand command = new SqlCommand("RestaurarProveedor", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@IdProveedor", SqlDbType.Int).Value = idProveedor;
+                    string sql = "UPDATE Proveedor SET EliminadoProveedor = 0 WHERE IdProveedor = @Id;";
 
+                    using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.Add("@Id", DbType.Int32).Value = idProveedor;
                         return command.ExecuteNonQuery() > 0;
                     }
                 }
             }
-            catch (SqlException)
+            catch (SQLiteException)
             {
                 return false;
             }

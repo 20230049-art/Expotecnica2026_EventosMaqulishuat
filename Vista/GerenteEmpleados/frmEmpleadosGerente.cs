@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -487,7 +487,7 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Estado del empleado actualizado correctamente.",
                         "PROCEDIMIENTO-EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al actualizar el estado: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -690,7 +690,7 @@ namespace Vista.GerenteEmpleados
                     CargarPagina(paginaActual - 1);
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show(ex.Message,
                         "No se puede eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);

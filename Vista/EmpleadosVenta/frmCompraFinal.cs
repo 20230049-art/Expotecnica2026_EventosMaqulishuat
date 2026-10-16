@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -175,14 +175,14 @@ namespace Vista.EmpleadosVenta
                 MessageBox.Show("Un dato de la venta no tiene el formato esperado: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al cargar la venta: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar datos de la venta: " + ex.Message,
+                MessageBox.Show("Error al cargar datos de la venta: " + ex.ToString(),
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -191,14 +191,20 @@ namespace Vista.EmpleadosVenta
         {
             try
             {
-                lblNumeroFactura.Text = "Pendiente";
-                lblTipoDocumento.Text = "Pendiente";
-                lblFechaVenta.Text = "Pendiente";
-                lblHora.Text = "Pendiente";
-                lblSello.Text = "Pendiente";
+                DatosEmpresa empresa = DatosEmpresa.Obtener();
 
-                lblDireccion.Text = "C. Berlin No.247, San Salvador";
-                lblFACCorreo.Text = "example@empresa.com";
+                if (empresa != null)
+                {
+                    lblEmpresas.Text = empresa.NombreEmpresa;
+                    lblDireccion.Text = empresa.DireccionEmpresa;
+                    lblFACCorreo.Text = empresa.CorreoEmpresa;
+                }
+                else
+                {
+                    lblEmpresas.Text = "Nombre empresa";
+                    lblDireccion.Text = "C. Berlin No.247, San Salvador";
+                    lblFACCorreo.Text = "example@empresa.com";
+                }
                 lblNombreEmpleado.Text = "Vendedor";
 
                 lblSubtotal.Text = "$" + totales.Subtotal.ToString("F2");
@@ -235,8 +241,21 @@ namespace Vista.EmpleadosVenta
                 lblHora.Text = factura.HoraFactura?.ToString(@"hh\:mm") ?? "";
                 lblSello.Text = factura.SelloRecepcion;
 
-                lblDireccion.Text = factura.Sucursal ?? "C. Berlin No.247, San Salvador";
-                lblFACCorreo.Text = factura.CorreoCliente ?? "example@empresa.com";
+                DatosEmpresa empresa = DatosEmpresa.Obtener();
+
+                if (empresa != null)
+                {
+                    lblEmpresas.Text = empresa.NombreEmpresa;
+                    lblDireccion.Text = empresa.DireccionEmpresa;
+                    lblFACCorreo.Text = empresa.CorreoEmpresa;
+                }
+                else
+                {
+                    lblEmpresas.Text = "Eventos y Alquileres";
+                    lblDireccion.Text = "C. Berlin No.247, San Salvador";
+                    lblFACCorreo.Text = "example@empresa.com";
+                }
+
                 lblNombreEmpleado.Text = factura.NombreEmpleado ?? "Vendedor";
 
                 lblSubtotal.Text = "$" + factura.SubtotalVenta.ToString("F2");
@@ -352,7 +371,7 @@ namespace Vista.EmpleadosVenta
                 MessageBox.Show("El tipo de pago seleccionado no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al finalizar la venta: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

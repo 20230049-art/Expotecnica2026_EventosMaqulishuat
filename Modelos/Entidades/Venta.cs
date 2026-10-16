@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,15 +46,24 @@ namespace Modelos.Entidades
         //Ingresar Venta
         public int IngresarVenta(int idEmpleado, int idCliente, DateTime fechaUso, int idTipoPago)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                using (SqlCommand command = new SqlCommand("IngresarVenta", conexion))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    INSERT INTO Venta
+                        (IdEmpleado, IdCliente, FechaVenta, FechaUso,
+                         SubtotalVenta, IVA, DescuentoVenta, TotalVenta,
+                         IdEstadoVenta, IdTipoPago)
+                    VALUES
+                        (@IdEmpleado, @IdCliente, date('now','localtime'), @FechaUso,
+                         0, 0, 0, 0,
+                         1, @IdTipoPago);
+                    SELECT last_insert_rowid();";
 
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
+                {
                     command.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
                     command.Parameters.AddWithValue("@IdCliente", idCliente);
-                    command.Parameters.AddWithValue("@FechaUso", fechaUso.Date);
+                    command.Parameters.AddWithValue("@FechaUso", fechaUso.ToString("yyyy-MM-dd"));
                     command.Parameters.AddWithValue("@IdTipoPago", idTipoPago);
 
                     var result = command.ExecuteScalar();
@@ -67,25 +76,33 @@ namespace Modelos.Entidades
         public (decimal Subtotal, decimal Iva, decimal Descuento, decimal Total, string TipoPago, string EstadoVenta)
     ObtenerTotalesVenta(int idVenta)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("ObtenerTotalesVenta", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    SELECT V.SubtotalVenta, V.IVA, V.DescuentoVenta, V.TotalVenta,
+                           TP.TipoPago, EV.EstadoVenta
+                    FROM Venta V
+                    INNER JOIN TipoPago   TP ON V.IdTipoPago   = TP.IdTipoPago
+                    INNER JOIN EstadoVenta EV ON V.IdEstadoVenta = EV.IdEstadoVenta
+                    WHERE V.IdVenta = @IdVenta;";
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
                 {
-                    if (reader.Read())
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        return (
-                            Subtotal: (decimal)reader["SubtotalVenta"],
-                            Iva: (decimal)reader["Iva"],
-                            Descuento: reader["DescuentoVenta"] != DBNull.Value ? (decimal)reader["DescuentoVenta"] : 0,
-                            Total: (decimal)reader["TotalVenta"],
-                            TipoPago: reader["TipoPago"].ToString(),
-                            EstadoVenta: reader["EstadoVenta"].ToString()
-                        );
+                        if (reader.Read())
+                        {
+                            return (
+                                Subtotal: (decimal)reader["SubtotalVenta"],
+                                Iva: (decimal)reader["IVA"],
+                                Descuento: reader["DescuentoVenta"] != DBNull.Value ? (decimal)reader["DescuentoVenta"] : 0,
+                                Total: (decimal)reader["TotalVenta"],
+                                TipoPago: reader["TipoPago"].ToString(),
+                                EstadoVenta: reader["EstadoVenta"].ToString()
+                            );
+                        }
                     }
                 }
             }
@@ -96,16 +113,29 @@ namespace Modelos.Entidades
         //Descuento en la Venta
         public void AplicarDescuentoVenta(int idVenta, decimal descuento)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("AplicarDescuentoVenta", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                decimal subtotal;
+                using (SQLiteCommand cmdSub = new SQLiteCommand(
+                    "SELECT SubtotalVenta FROM Venta WHERE IdVenta = @IdVenta;", conexion))
+                {
+                    cmdSub.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                    object result = cmdSub.ExecuteScalar();
+                    subtotal = result == null || result == DBNull.Value ? 0 : Convert.ToDecimal(result);
+                }
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                command.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = descuento;
+                if (descuento > subtotal)
+                {
+                    throw new Exception("El descuento no puede ser mayor al subtotal.");
+                }
 
-                command.ExecuteNonQuery();
-                conexion.Close();
+                string sql = "UPDATE Venta SET DescuentoVenta = @Descuento WHERE IdVenta = @IdVenta;";
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
+                {
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                    command.Parameters.Add("@Descuento", DbType.Decimal).Value = descuento;
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -113,26 +143,32 @@ namespace Modelos.Entidades
         public List<Venta> VentasPorFechaUso(DateTime fechaVenta, DateTime fechaUso)
         {
             List<Venta> ventas = new List<Venta>();
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("ObtenerVentasFechaUso", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    SELECT V.IdVenta, V.FechaVenta, V.FechaUso, V.TotalVenta
+                    FROM Venta V
+                    WHERE V.FechaUso BETWEEN @FechaInicio AND @FechaFin
+                      AND V.IdEstadoVenta = 2
+                    ORDER BY V.FechaUso ASC;";
 
-                command.Parameters.Add("FechaVenta", SqlDbType.Date).Value = fechaVenta;
-                command.Parameters.Add("FechaUso", SqlDbType.Date).Value = fechaUso;
-
-                //connection.Open();
-                using (var reader = command.ExecuteReader())
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
                 {
-                    while (reader.Read())
+                    command.Parameters.Add("@FechaInicio", DbType.String).Value = fechaVenta.ToString("yyyy-MM-dd");
+                    command.Parameters.Add("@FechaFin", DbType.String).Value = fechaUso.ToString("yyyy-MM-dd");
+
+                    using (var reader = command.ExecuteReader())
                     {
-                        ventas.Add(new Venta
+                        while (reader.Read())
                         {
-                            IdVenta = (int)reader["IdVenta"],
-                            FechaVenta = (DateTime)reader["FechaVenta"],
-                            FechaUso = (DateTime)reader["FechaUso"],
-                            TotalVenta = (decimal)reader["TotalVenta"]
-                        });
+                            ventas.Add(new Venta
+                            {
+                                IdVenta = (int)reader["IdVenta"],
+                                FechaVenta = Convert.ToDateTime(reader["FechaVenta"]),
+                                FechaUso = Convert.ToDateTime(reader["FechaUso"]),
+                                TotalVenta = (decimal)reader["TotalVenta"]
+                            });
+                        }
                     }
                 }
             }
@@ -144,16 +180,33 @@ namespace Modelos.Entidades
         {
             DataTable dt = new DataTable();
 
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("VentaPorId", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    SELECT V.IdVenta, V.FechaVenta, V.FechaUso,
+                           V.SubtotalVenta, V.IVA, V.DescuentoVenta, V.TotalVenta,
+                           V.IdEstadoVenta, V.IdTipoPago,
+                           C.IdCliente, C.NombreCliente, C.ApellidoCliente,
+                           C.DUICliente, C.NITCliente, C.TelefonoCliente,
+                           C.CorreoCliente, C.EstadoCliente,
+                           TC.TipoCliente, TP.TipoPago, EV.EstadoVenta,
+                           E.NombreEmpleado, E.ApellidoEmpleado
+                    FROM Venta V
+                    INNER JOIN Cliente     C  ON V.IdCliente      = C.IdCliente
+                    INNER JOIN TipoCliente TC ON C.IdTipoCliente  = TC.IdTipoCliente
+                    INNER JOIN TipoPago    TP ON V.IdTipoPago     = TP.IdTipoPago
+                    INNER JOIN EstadoVenta EV ON V.IdEstadoVenta  = EV.IdEstadoVenta
+                    INNER JOIN Empleado    E  ON V.IdEmpleado     = E.IdEmpleado
+                    WHERE V.IdVenta = @IdVenta;";
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
                 {
-                    adapter.Fill(dt);
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    {
+                        adapter.Fill(dt);
+                    }
                 }
             }
             return dt;
@@ -162,32 +215,32 @@ namespace Modelos.Entidades
         //Fecha de Uso / En venta
         public void SubirFechaUsoVenta(int idVenta, DateTime fechaUso)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("SubirFechaUso", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = "UPDATE Venta SET FechaUso = @FechaUso WHERE IdVenta = @IdVenta;";
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                command.Parameters.Add("@FechaUso", SqlDbType.DateTime).Value = fechaUso.Date;
-
-                command.ExecuteNonQuery();
-                conexion.Close();
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
+                {
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                    command.Parameters.Add("@FechaUso", DbType.String).Value = fechaUso.ToString("yyyy-MM-dd");
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
         //Tipo de Pago / En venta
         public void SubirTipoPagoVenta(int idVenta, int idTipoPago)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("SubirTipoPago", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = "UPDATE Venta SET IdTipoPago = @IdTipoPago WHERE IdVenta = @IdVenta;";
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                command.Parameters.Add("@IdTipoPago", SqlDbType.Decimal).Value = idTipoPago;
-
-                command.ExecuteNonQuery();
-                conexion.Close();
+                using (SQLiteCommand command = new SQLiteCommand(sql, conexion))
+                {
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                    command.Parameters.Add("@IdTipoPago", DbType.Int32).Value = idTipoPago;
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -196,12 +249,57 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SQLiteConnection connection = ConexionDB.Conectar())
                 {
-                    SqlCommand command = new SqlCommand("CancelarVenta", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                    command.ExecuteNonQuery();
+                    using (SQLiteTransaction tx = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            string sqlDevolver = @"
+                                UPDATE Producto
+                                SET CantidadProducto = CantidadProducto + (
+                                    SELECT DV.Cantidad FROM DetalleVenta DV
+                                    WHERE DV.IdProducto = Producto.IdProducto
+                                      AND DV.IdVenta = @IdVenta
+                                )
+                                WHERE IdProducto IN (
+                                    SELECT IdProducto FROM DetalleVenta WHERE IdVenta = @IdVenta
+                                );";
+                            using (SQLiteCommand cmd = new SQLiteCommand(sqlDevolver, connection, tx))
+                            {
+                                cmd.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(
+                                "DELETE FROM DetalleVenta WHERE IdVenta = @IdVenta;", connection, tx))
+                            {
+                                cmd.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(
+                                "DELETE FROM Factura WHERE IdVenta = @IdVenta;", connection, tx))
+                            {
+                                cmd.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(
+                                "DELETE FROM Venta WHERE IdVenta = @IdVenta;", connection, tx))
+                            {
+                                cmd.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            tx.Commit();
+                        }
+                        catch
+                        {
+                            tx.Rollback();
+                            throw;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -216,27 +314,31 @@ namespace Modelos.Entidades
             DataTable dt = new DataTable();
             totalRegistros = 0;
 
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("MostrarVentasPagina", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
-
-                SqlParameter outTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                using (SQLiteCommand cmdTotal = new SQLiteCommand(
+                    "SELECT COUNT(*) FROM VistaRegistroVentaGerente;", cn))
                 {
-                    Direction = ParameterDirection.Output
-                };
-                cmd.Parameters.Add(outTotal);
-
-                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                {
-                    ad.Fill(dt);
+                    totalRegistros = Convert.ToInt32(cmdTotal.ExecuteScalar());
                 }
 
-                totalRegistros = outTotal.Value == DBNull.Value
-                    ? 0
-                    : Convert.ToInt32(outTotal.Value);
+                int offset = (pagina - 1) * registrosPorPagina;
+
+                string sql = @"
+                    SELECT * FROM VistaRegistroVentaGerente
+                    ORDER BY IdVenta DESC
+                    LIMIT @limit OFFSET @offset;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                {
+                    cmd.Parameters.Add("@limit", DbType.Int32).Value = registrosPorPagina;
+                    cmd.Parameters.Add("@offset", DbType.Int32).Value = offset;
+
+                    using (SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd))
+                    {
+                        ad.Fill(dt);
+                    }
+                }
             }
 
             return dt;
@@ -246,17 +348,37 @@ namespace Modelos.Entidades
         public DataTable BuscarVenta(string busqueda)
         {
             DataTable dt = new DataTable();
+            busqueda = (busqueda ?? "").Trim();
 
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("BuscarVenta", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@busqueda", SqlDbType.VarChar).Value =
-                    string.IsNullOrWhiteSpace(busqueda) ? (object)DBNull.Value : busqueda;
-
-                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                string sql;
+                if (string.IsNullOrEmpty(busqueda))
                 {
-                    ad.Fill(dt);
+                    sql = "SELECT * FROM VistaRegistroVentaGerente ORDER BY IdVenta DESC;";
+                }
+                else
+                {
+                    sql = @"SELECT * FROM VistaRegistroVentaGerente
+                            WHERE IdVenta         LIKE @q
+                               OR NombreCliente   LIKE @q
+                               OR ApellidoCliente LIKE @q
+                               OR NombreEmpleado  LIKE @q
+                               OR EstadoVenta     LIKE @q
+                            ORDER BY IdVenta DESC;";
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                {
+                    if (!string.IsNullOrEmpty(busqueda))
+                    {
+                        cmd.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+                    }
+
+                    using (SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd))
+                    {
+                        ad.Fill(dt);
+                    }
                 }
             }
 

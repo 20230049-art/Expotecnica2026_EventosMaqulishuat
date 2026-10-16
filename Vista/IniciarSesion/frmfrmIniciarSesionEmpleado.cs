@@ -29,8 +29,8 @@ namespace Vista.IniciarSesion
             Redondeo.RedondearFig(panel1, 10);
             Redondeo.RedondearFig(panlContraseña, 4);
             Redondeo.RedondearFig(pnlUsuario, 4);
-            Redondeo.RedondearFig(btnIngresarEmpleado, 5);
-            Redondeo.RedondearFig(btnRegresar, 5);
+            Redondeo.RedondearFig(btnIngresarEmpleado, 2);
+                Redondeo.RedondearFig(button2, 2);
 
             ControlesBloqueo.LimitarTextBox(txtContrasena, 55);
             ControlesBloqueo.LimitarTextBox(txtNombreUsuario, 180);
@@ -61,7 +61,7 @@ namespace Vista.IniciarSesion
             if (activeForm != null)
             {
                 activeForm.Close();
-                pnlVistaIniciarEmpleado.Controls.Remove(activeForm);
+                pnlVista.Controls.Remove(activeForm);
                 activeForm.Dispose();
             }
 
@@ -70,7 +70,7 @@ namespace Vista.IniciarSesion
             formularioAbrir.FormBorderStyle = FormBorderStyle.None;
             formularioAbrir.Dock = DockStyle.Fill;
 
-            pnlVistaIniciarEmpleado.Controls.Add(formularioAbrir);
+            pnlVista.Controls.Add(formularioAbrir);
             formularioAbrir.BringToFront();
             formularioAbrir.Show();
             }
@@ -101,7 +101,24 @@ namespace Vista.IniciarSesion
             }
         }
 
-        private void btnIngresarEmpleado_Click(object sender, EventArgs e)
+        private void frmfrmIniciarSesionEmpleado_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = DatosEmpresa.ObtenerLogo();
+                if (img != null)
+                {
+                    pbLogo.Image = img;
+                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
+            }
+        }
+
+        private void btnIngresarEmpleado_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -114,8 +131,8 @@ namespace Vista.IniciarSesion
 
                 if (string.IsNullOrEmpty(nombreUsuario))
                 {
-                    errorProvider.SetError(txtNombreUsuario,"Ingrese su usuario.");
-          
+                    errorProvider.SetError(txtNombreUsuario, "Ingrese su usuario.");
+
                     valido = false;
                 }
 
@@ -128,7 +145,7 @@ namespace Vista.IniciarSesion
 
                 if (!valido)
                 {
-                    MessageBox.Show( "Por favor ingrese usuario y contraseña.", "ERROR-CAMVACIO-001",
+                    MessageBox.Show("Por favor ingrese usuario y contraseña.", "ERROR-CAMVACIO-001",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -167,11 +184,23 @@ namespace Vista.IniciarSesion
             }
         }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+           Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                abrirFormulario(new frmSeleccionarPefil());
+
+                using (var frm = new frmSeleccionarPefil())
+                {
+                    frm.Show();
+                    this.Close();
+                }
+
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -180,7 +209,7 @@ namespace Vista.IniciarSesion
             }
         }
 
-        private void lblRecuperarContrasena_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
             frmFondoNegro fondo = new frmFondoNegro();
             fondo.StartPosition = FormStartPosition.CenterParent;
@@ -192,28 +221,6 @@ namespace Vista.IniciarSesion
             formulario.ShowDialog();
 
             fondo.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void frmfrmIniciarSesionEmpleado_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                var img = DatosEmpresa.ObtenerLogo();
-                if (img != null)
-                {
-                    pbLogo.Image = img;
-                    pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
-            }
         }
     }
 }

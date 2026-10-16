@@ -61,7 +61,7 @@ namespace Vista
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al iniciar la aplicación:\n" + ex.Message,
+                MessageBox.Show("Error al iniciar la aplicación:\n" + ex.ToString(),
                         "ERROR-INICIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

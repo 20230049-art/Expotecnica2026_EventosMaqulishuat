@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,28 +33,38 @@ namespace Modelos.Entidades
         public List<DetalledeVenta> ObtenerDetalleVenta(int idVenta)
         {
             List<DetalledeVenta> detalles = new List<DetalledeVenta>();
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("ObtenerDetalleVenta", connection);
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    SELECT DV.IdDetalleVenta,
+                           P.NombreProducto,
+                           DV.Cantidad,
+                           DV.PrecioUnitario,
+                           DV.Descuento,
+                           DV.TotalDetalleventa
+                    FROM DetalleVenta DV
+                    INNER JOIN Producto P ON DV.IdProducto = P.IdProducto
+                    WHERE DV.IdVenta = @IdVenta;";
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                //command.Connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    while (reader.Read())
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        DetalledeVenta detalle = new DetalledeVenta
+                        while (reader.Read())
                         {
-                            IdDetalleVenta = reader.GetInt32(reader.GetOrdinal("IdDetalleVenta")),
-                            NombreProducto = reader.GetString(reader.GetOrdinal("NombreProducto")),
-                            Cantidad = reader.GetInt32(reader.GetOrdinal("Cantidad")),
-                            PrecioUnitario = reader.GetDecimal(reader.GetOrdinal("PrecioUnitario")),
-                            Descuento = reader["Descuento"] != DBNull.Value ? reader.GetDecimal(reader.GetOrdinal("Descuento")) : 0,
-                            TotalDetalleVenta = reader.GetDecimal(reader.GetOrdinal("TotalDetalleventa"))
-                        };
-                        detalles.Add(detalle);
+                            DetalledeVenta detalle = new DetalledeVenta
+                            {
+                                IdDetalleVenta = reader.GetInt32(reader.GetOrdinal("IdDetalleVenta")),
+                                NombreProducto = reader.GetString(reader.GetOrdinal("NombreProducto")),
+                                Cantidad = reader.GetInt32(reader.GetOrdinal("Cantidad")),
+                                PrecioUnitario = Convert.ToDecimal(reader["PrecioUnitario"]),
+                                Descuento = reader["Descuento"] != DBNull.Value ? Convert.ToDecimal(reader["Descuento"]) : 0,
+                                TotalDetalleVenta = Convert.ToDecimal(reader["TotalDetalleventa"])
+                            };
+                            detalles.Add(detalle);
+                        }
                     }
                 }
                 return detalles;
@@ -64,17 +74,66 @@ namespace Modelos.Entidades
         //Agregar Producto a la Venta
         public void AgregarProductosVenta(int idVenta, int idProducto, int cantidad)
         {
-            using (SqlConnection conexion = ConexionDB.Conectar())
+            using (SQLiteConnection conexion = ConexionDB.Conectar())
+            using (SQLiteTransaction tx = conexion.BeginTransaction())
             {
-                SqlCommand command = new SqlCommand("AgregarProductosVenta", conexion);
-                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    decimal precioAlquiler;
+                    int inventarioActual;
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                command.Parameters.Add("@IdProducto", SqlDbType.Decimal).Value = idProducto;
-                command.Parameters.Add("@IdCantidad", SqlDbType.Decimal).Value = cantidad;
+                    using (SQLiteCommand cmdSel = new SQLiteCommand(
+                        "SELECT PrecioALquilerProducto, CantidadProducto FROM Producto WHERE IdProducto = @Id;",
+                        conexion, tx))
+                    {
+                        cmdSel.Parameters.Add("@Id", DbType.Int32).Value = idProducto;
+                        using (var reader = cmdSel.ExecuteReader())
+                        {
+                            if (!reader.Read())
+                                throw new Exception("Producto no encontrado.");
 
-                command.ExecuteNonQuery();
-                conexion.Close();
+                            precioAlquiler = Convert.ToDecimal(reader["PrecioALquilerProducto"]);
+                            inventarioActual = Convert.ToInt32(reader["CantidadProducto"]);
+
+                        }
+                    }
+
+                    if (inventarioActual < cantidad)
+                        throw new Exception("Producto insuficiente.");
+
+                    decimal totalDetalle = precioAlquiler * cantidad;
+
+                    using (SQLiteCommand cmdIns = new SQLiteCommand(@"
+                        INSERT INTO DetalleVenta
+                            (IdVenta, IdProducto, Cantidad, PrecioUnitario, Descuento, TotalDetalleventa)
+                        VALUES
+                            (@IdVenta, @IdProducto, @Cantidad, @PrecioUnitario, 0, @TotalDetalle);",
+                        conexion, tx))
+                    {
+                        cmdIns.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                        cmdIns.Parameters.Add("@IdProducto", DbType.Int32).Value = idProducto;
+                        cmdIns.Parameters.Add("@Cantidad", DbType.Int32).Value = cantidad;
+                        cmdIns.Parameters.Add("@PrecioUnitario", DbType.Double).Value = precioAlquiler;
+                        cmdIns.Parameters.Add("@TotalDetalle", DbType.Double).Value = totalDetalle;
+                        cmdIns.ExecuteNonQuery();
+                    }
+
+                    using (SQLiteCommand cmdUpd = new SQLiteCommand(
+                        "UPDATE Producto SET CantidadProducto = CantidadProducto - @Cantidad WHERE IdProducto = @Id;",
+                        conexion, tx))
+                    {
+                        cmdUpd.Parameters.Add("@Cantidad", DbType.Int32).Value = cantidad;
+                        cmdUpd.Parameters.Add("@Id", DbType.Int32).Value = idProducto;
+                        cmdUpd.ExecuteNonQuery();
+                    }
+
+                    tx.Commit();
+                }
+                catch
+                {
+                    tx.Rollback();
+                    throw;
+                }
             }
         }
     }

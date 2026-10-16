@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +30,10 @@ namespace Modelos.Entidades
 
         public static DataTable MostrarDocumentos()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             {
                 string comando = "SELECT * FROM VistaDocumentacionGerente;";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(comando, conection))
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(comando, conection))
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -45,15 +45,20 @@ namespace Modelos.Entidades
         //AgregarDocumentos
         public static void AgregarDocumentos(Documentos nuevoDocumento)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                using (SqlCommand command = new SqlCommand("AgregarDocumento", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+                string sql = @"
+                    INSERT INTO Documentacion
+                        (FechaDocumentacion, NombreDocumentacion, ArchivoDocumentacion, IdGerente)
+                    VALUES
+                        (@FechaDocumentacion, @NombreDocumentacion, @ArchivoDocumentacion, 1);";
 
-                    command.Parameters.Add("@NombreDocumentacion", SqlDbType.VarChar).Value = nuevoDocumento.NombreDocumentacion;
-                    command.Parameters.Add("@FechaDocumentacion", SqlDbType.DateTime).Value = nuevoDocumento.FechaDocumentacion;
-                    command.Parameters.Add("@ArchivoDocumentacion", SqlDbType.VarChar).Value = nuevoDocumento.ArchivoDocumentacion;
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
+
+                    command.Parameters.Add("@NombreDocumentacion", DbType.String).Value = nuevoDocumento.NombreDocumentacion;
+                    command.Parameters.Add("@FechaDocumentacion", DbType.DateTime).Value = nuevoDocumento.FechaDocumentacion;
+                    command.Parameters.Add("@ArchivoDocumentacion", DbType.String).Value = nuevoDocumento.ArchivoDocumentacion;
 
                     command.ExecuteNonQuery();
                     connection.Close();
@@ -64,10 +69,10 @@ namespace Modelos.Entidades
         //Mostrar Documentos Favoritos
         public static DataTable MostrarDocumentosFavoritos()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             {
                 string comando = "SELECT * FROM VistaDocumentosFavoritos;";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(comando, conection))
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(comando, conection))
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -80,10 +85,10 @@ namespace Modelos.Entidades
         //Mostrar Documentos en Papelera
         public static DataTable MostrarDocumentosPapelera()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             {
                 string comando = "SELECT * FROM VistaDocumentosPapelera;";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(comando, conection))
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(comando, conection))
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -95,51 +100,48 @@ namespace Modelos.Entidades
         //Mandar Documento a Papelera
         public static bool PapeleraDocumentos(int idDocumentacion)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
-
-            using (SqlCommand command = new SqlCommand("DocumentoPapelera", connection))
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = "UPDATE Documentacion SET DocumentacionPapelera = 1 WHERE IdDocumentacion = @Id;";
 
-                command.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
-
-                command.ExecuteNonQuery();
-                connection.Close();
-                return true;
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.Add("@Id", DbType.Int32).Value = idDocumentacion;
+                    command.ExecuteNonQuery();
+                    return true;
+                }
             }
         }
 
         //Restaurar Documento
         public static bool DocumentosRestaurar(int idDocumentacion)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
-
-            using (SqlCommand command = new SqlCommand("RestaurarDocumento", connection))
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = "UPDATE Documentacion SET DocumentacionPapelera = 0 WHERE IdDocumentacion = @Id;";
 
-                command.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
-
-                command.ExecuteNonQuery();
-                connection.Close();
-                return true;
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.Add("@Id", DbType.Int32).Value = idDocumentacion;
+                    command.ExecuteNonQuery();
+                    return true;
+                }
             }
         }
 
         //Eliminar Documento
         public static bool DocumentosEliminar(int idDocumentacion)
         {
-            using (SqlConnection connection = ConexionDB.Conectar())
-
-            using (SqlCommand command = new SqlCommand("EliminarDocumento", connection))
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                command.CommandType = CommandType.StoredProcedure;
+                string sql = "UPDATE Documentacion SET DocumentacionPapelera = 0 WHERE IdDocumentacion = @Id;";
 
-                command.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
-
-                command.ExecuteNonQuery();
-                connection.Close();
-                return true;
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.Add("@Id", DbType.Int32).Value = idDocumentacion;
+                    command.ExecuteNonQuery();
+                    return true;
+                }
             }
         }
 
@@ -149,14 +151,29 @@ namespace Modelos.Entidades
         {
 
             DataTable tabla = new DataTable();
-            using (SqlConnection connection = ConexionDB.Conectar())
-            {
-                using (var command = new SqlCommand("BuscarDocumentos", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@busqueda", SqlDbType.VarChar).Value = busqueda ?? (object)DBNull.Value;
+            busqueda = (busqueda ?? "").Trim();
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            using (SQLiteConnection connection = ConexionDB.Conectar())
+            {
+                string sql;
+                if (string.IsNullOrEmpty(busqueda))
+                {
+                    sql = "SELECT * FROM VistaDocumentacionGerente;";
+                }
+                else
+                {
+                    sql = @"SELECT * FROM VistaDocumentacionGerente
+                            WHERE NombreDocumentacion LIKE @q;";
+                }
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    if (!string.IsNullOrEmpty(busqueda))
+                    {
+                        command.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+                    }
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
                     {
                         adapter.Fill(tabla);
                     }
@@ -170,33 +187,63 @@ namespace Modelos.Entidades
         {
             totalRegistros = 0;
             DataTable dt = new DataTable();
+            busqueda = (busqueda ?? "").Trim();
 
             try
             {
-                using (SqlConnection cn = ConexionDB.Conectar())
+                using (SQLiteConnection cn = ConexionDB.Conectar())
                 {
-                    cn.Open();
-                    using (SqlCommand cmd = new SqlCommand("BuscarDocumentosPagina", cn))
+                    bool conBusqueda = !string.IsNullOrEmpty(busqueda);
+
+                    string filtroTipo;
+                    switch (tipoFiltro)
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@Busqueda", SqlDbType.VarChar, 180).Value = busqueda ?? "";
-                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
-                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+                        case 2:
+                            filtroTipo = "AND DocumentacionFavorita = 1";
+                            break;
+                        case 3:
+                            filtroTipo = "AND DocumentacionPapelera = 1";
+                            break;
+                        default:
+                            filtroTipo = "AND DocumentacionPapelera = 0";
+                            break;
+                    }
 
-                        SqlParameter totalParam = new SqlParameter("@TotalRegistros", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(totalParam);
+                    string whereBase = "WHERE 1=1 " + filtroTipo;
+                    if (conBusqueda) whereBase += " AND NombreDocumentacion LIKE @q";
 
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    string sqlCount = "SELECT COUNT(*) FROM Documentacion " + whereBase;
+
+                    using (SQLiteCommand cmdTotal = new SQLiteCommand(sqlCount, cn))
+                    {
+                        if (conBusqueda)
+                            cmdTotal.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+
+                        totalRegistros = Convert.ToInt32(cmdTotal.ExecuteScalar());
+                    }
+
+                    int offset = (pagina - 1) * registrosPorPagina;
+
+                    string sqlDatos = @"
+                SELECT IdDocumentacion, NombreDocumentacion, FechaDocumentacion,
+                       FechaUltimoAcceso, ArchivoDocumentacion,
+                       DocumentacionFavorita, DocumentacionPapelera
+                FROM Documentacion " + whereBase + @"
+                ORDER BY IdDocumentacion DESC
+                LIMIT @limit OFFSET @offset;";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(sqlDatos, cn))
+                    {
+                        if (conBusqueda)
+                            cmd.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+
+                        cmd.Parameters.Add("@limit", DbType.Int32).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@offset", DbType.Int32).Value = offset;
+
+                        using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
                         {
                             da.Fill(dt);
                         }
-
-                        if (totalParam.Value != DBNull.Value)
-                            totalRegistros = Convert.ToInt32(totalParam.Value);
                     }
                 }
             }
@@ -209,25 +256,24 @@ namespace Modelos.Entidades
             return dt;
         }
 
-
         //Eliminar Documento permanentemente
         public static bool EliminarDocumentoPermanente(int idDocumentacion)
         {
             try
             {
-                using (SqlConnection conexion = ConexionDB.Conectar())
+                using (SQLiteConnection conexion = ConexionDB.Conectar())
                 {
-                    using (SqlCommand cmd = new SqlCommand("EliminarPermanenteDocumento", conexion))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
+                    string sql = "DELETE FROM Documentacion WHERE IdDocumentacion = @Id;";
 
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conexion))
+                    {
+                        cmd.Parameters.Add("@Id", DbType.Int32).Value = idDocumentacion;
                         int filasAfectadas = cmd.ExecuteNonQuery();
                         return filasAfectadas > 0;
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 throw new Exception("Error al eliminar el documento permanentemente: " + ex.Message, ex);
             }
@@ -242,20 +288,21 @@ namespace Modelos.Entidades
         {
             try
             {
-                using (SqlConnection conexion = ConexionDB.Conectar())
-                using (SqlCommand cmd = new SqlCommand("CambiarFavoritoDocumento", conexion))
+                using (SQLiteConnection conexion = ConexionDB.Conectar())
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    string sql = "UPDATE Documentacion SET DocumentacionFavorita = @Fav WHERE IdDocumentacion = @Id;";
 
-                    cmd.Parameters.Add("@IdDocumentacion", SqlDbType.Int).Value = idDocumentacion;
-                    cmd.Parameters.Add("@DocumentacionFavorita", SqlDbType.Bit).Value = documentacionFavorita;
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conexion))
+                    {
+                        cmd.Parameters.Add("@Id", DbType.Int32).Value = idDocumentacion;
+                        cmd.Parameters.Add("@Fav", DbType.Boolean).Value = documentacionFavorita ? 1 : 0;
 
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-
-                    return filasAfectadas > 0;
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
                 }
             }
-            catch (SqlException ex) { throw new Exception("No se pudo actualizar el estado del documento.", ex); 
+            catch (SQLiteException ex) { throw new Exception("No se pudo actualizar el estado del documento.", ex); 
             }
             catch (Exception ex) { throw new Exception("Ocurrió un error al cambiar el estado del documento.", ex);
             }
@@ -270,32 +317,54 @@ namespace Modelos.Entidades
 
             try
             {
-                using (SqlConnection connection = ConexionDB.Conectar())
+                using (SQLiteConnection connection = ConexionDB.Conectar())
                 {
-                    using (SqlCommand cmd = new SqlCommand("MostrarDocumentosPagina", connection))
+                    string sqlCount;
+                    switch (tipoFiltro)
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                        cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
-                        cmd.Parameters.Add("@TipoFiltro", SqlDbType.Int).Value = tipoFiltro;
+                        case 2:
+                            sqlCount = "SELECT COUNT(*) FROM Documentacion WHERE DocumentacionPapelera = 0 AND DocumentacionFavorita = 1;";
+                            break;
+                        case 3:
+                            sqlCount = "SELECT COUNT(*) FROM Documentacion WHERE DocumentacionPapelera = 1;";
+                            break;
+                        default:
+                            sqlCount = "SELECT COUNT(*) FROM Documentacion WHERE DocumentacionPapelera = 0;";
+                            break;
+                    }
 
-                        SqlParameter totalParam = new SqlParameter("@TotalRegistros", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(totalParam);
+                    using (SQLiteCommand cmdTotal = new SQLiteCommand(sqlCount, connection))
+                    {
+                        totalRegistros = Convert.ToInt32(cmdTotal.ExecuteScalar());
+                    }
 
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    int offset = (pagina - 1) * registrosPorPagina;
+
+                    string sqlDatos = @"
+                        SELECT IdDocumentacion, NombreDocumentacion, FechaDocumentacion,
+                               FechaUltimoAcceso, ArchivoDocumentacion,
+                               DocumentacionFavorita, DocumentacionPapelera
+                        FROM Documentacion
+                        WHERE (
+                                (@TipoFiltro = 1 AND DocumentacionPapelera = 0)
+                                OR (@TipoFiltro = 2 AND DocumentacionPapelera = 0 AND DocumentacionFavorita = 1)
+                                OR (@TipoFiltro = 3 AND DocumentacionPapelera = 1)
+                                OR (@TipoFiltro NOT IN (1,2,3) AND DocumentacionPapelera = 0)
+                              )
+                        ORDER BY IdDocumentacion DESC
+                        LIMIT @limit OFFSET @offset;";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(sqlDatos, connection))
+                    {
+                        cmd.Parameters.Add("@TipoFiltro", DbType.Int32).Value = tipoFiltro;
+                        cmd.Parameters.Add("@limit", DbType.Int32).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@offset", DbType.Int32).Value = offset;
+
+                        using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
                         {
                             da.Fill(dt);
                         }
-
-                        if (totalParam.Value != DBNull.Value)
-                            totalRegistros = Convert.ToInt32(totalParam.Value);
-
                     }
-
-                    connection.Close();
                 }
             }
             catch (Exception ex)

@@ -23,8 +23,8 @@ namespace Vista.PrimerUso
             try
             {
                 // Mostrar datos del gerente
-                lblUsuario.Text = "Usuario: " + DatosInicioCompleto.UsuarioGerente;
-                lblContrasena.Text = "Contraseña: " + DatosInicioCompleto.ContrasenaGerente;
+                lblUsuario.Text = DatosInicioCompleto.UsuarioGerente;
+                lblContrasena.Text =  DatosInicioCompleto.ContrasenaGerente;
 
                 // Mostrar logo
                 var img = DatosEmpresa.ObtenerLogo();

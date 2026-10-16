@@ -187,7 +187,7 @@
             this.MinimumSize = new System.Drawing.Size(1174, 668);
             this.Name = "frmInicioBienvenida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmInicioBienvenida";
+            this.Text = "Inicio Bienvenida";
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

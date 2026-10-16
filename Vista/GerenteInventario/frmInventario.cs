@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -43,7 +43,7 @@ namespace Vista.GerenteInventario
                 Redondeo.RedondearFig(btnAgregar, 8);
                 Redondeo.RedondearFig(btnEliminar, 8);
 
-                ActivarBoton(btnClientesTotales); CargarPagina(1);
+                //ActivarBoton(btnClientesTotales); CargarPagina(1);
 
                 txtBarraBuscar.TextChanged += (s, e) => errorProvider.SetError(txtBarraBuscar, "");
 
@@ -337,11 +337,18 @@ namespace Vista.GerenteInventario
 
                 if (confirmacion != DialogResult.Yes) return;
 
-                bool exito = Productos.EliminarProducto(idProducto);
+                int resultado = Productos.EliminarProducto(idProducto);
 
-                if (!exito)
+                if (resultado == -1)
                 {
-                    MessageBox.Show("No se pudo eliminar el producto de la base de datos.",
+                    MessageBox.Show("No se puede eliminar el producto porque está asociado a una venta activa (Pendiente o Pagada).",
+                            "ERROR-ELIMINAR-EN-USO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+
+                if (resultado == 0)
+                {
+                    MessageBox.Show("No se pudo eliminar el producto. Es posible que ya haya sido eliminado o no exista.",
                             "ERROR-ELIMINAR-015", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -351,7 +358,7 @@ namespace Vista.GerenteInventario
 
                 CargarPagina(paginaActual);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show(
                     "Error de base de datos al eliminar el producto: " + ex.Message,
@@ -496,6 +503,11 @@ namespace Vista.GerenteInventario
                 MessageBox.Show("Error al estilizar el grid: " + ex.Message,
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -19,11 +19,11 @@ namespace Vista.GerenteCalendario
         public frmCalendarioAgregarCitas()
         {
             InitializeComponent();
-            
-            Redondeo.RedondearFormulario(this, 15);
+
+            Redondeo.RedondearFormulario(this, 18);
             Redondeo.RedondearFig(pnlNombreRecordatorio, 7);
-            Redondeo.RedondearFig(button1, 4);
-            Redondeo.RedondearFig(btnCerrar, 4);
+            Redondeo.RedondearFig(button1, 8);
+            Redondeo.RedondearFig(btnCerrar, 8);
 
             ControlesBloqueo.LimitarTextBox(txtAsunto, 250);
             ControlesBloqueo.LimitarTextBox(txtUbicacion, 200);
@@ -42,11 +42,11 @@ namespace Vista.GerenteCalendario
                 dtpHora.Format = DateTimePickerFormat.Time;
                 dtpHora.ShowUpDown = true;
 
-                dtpDia.MinDate = DateTime.Today;
+                dtpDia.MinDate = DateTime.Today.Date;
 
                 CargarClientes();
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 MessageBox.Show("Error al inicializar: " + ex.Message,
                         "ERROR-FORMULARIO-101", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,7 +96,7 @@ namespace Vista.GerenteCalendario
                 {
                     DiaFecha = dtpDia.Value.Date,
                     HoraFecha = dtpHora.Value.TimeOfDay,
-                    AsusntoFecha = txtAsunto.Text.Trim(),
+                    AsuntoFecha = txtAsunto.Text.Trim(),
                     LugarFecha = txtUbicacion.Text.Trim(),
                     IdCliente = Convert.ToInt32(cmbCliente.SelectedValue),
                     IdUsuario = UsuarioActual.Datos.IdUsuario

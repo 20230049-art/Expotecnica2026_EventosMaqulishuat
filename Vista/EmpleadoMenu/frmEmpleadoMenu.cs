@@ -25,8 +25,8 @@ namespace Vista.EmpleadoMenu
 
         public frmEmpleadoMenu()
         {
-            InitializeComponent();
-            this.Resize += frmEmpleadoMenu_Resize;
+            InitializeComponent(); 
+            Responsive.Apply(this);
 
             Redondeo.RedondearFig(btnCerrarSesionGere, 6);
             Redondeo.RedondearFig(pnlTituloHora, 6);
@@ -45,8 +45,6 @@ namespace Vista.EmpleadoMenu
             lblTituloHorario.Dock = DockStyle.Fill;
             lblTituloHorario.TextAlign = ContentAlignment.MiddleCenter;
 
-            AjustarTitulo();
-
             try
             {
                 var img = DatosEmpresa.ObtenerLogo();
@@ -64,44 +62,6 @@ namespace Vista.EmpleadoMenu
                 System.Diagnostics.Debug.WriteLine("Error al cargar logo: " + ex.Message);
             }
 
-        }
-
-        private void frmEmpleadoMenu_Resize(object sender, EventArgs e)
-        {
-            AjustarTitulo();
-        }
-
-        private void AjustarTitulo()
-        {
-            if (tamañoOriginalFormulario.Width <= 0 ||
-                tamañoOriginalFormulario.Height <= 0)
-                return;
-
-            // Calculamos cuánto cambió el formulario horizontalmente
-            float escalaX =(float)this.ClientSize.Width /
-                tamañoOriginalFormulario.Width;
-
-            // Calculamos cuánto cambió verticalmente
-            float escalaY =(float)this.ClientSize.Height /
-                tamañoOriginalFormulario.Height;
-
-            // Utilizamos la escala menor para mantener la proporción
-            float escala = Math.Min(escalaX, escalaY);
-
-            // Calculamos el nuevo tamaño de la letra
-            float nuevoTamaño =tamañoFuenteOriginal * escala;
-
-            // Límites para evitar que la letra sea demasiado pequeña
-            // o demasiado grande
-            nuevoTamaño = Math.Max(14, nuevoTamaño);
-            nuevoTamaño = Math.Min(40, nuevoTamaño);
-
-            // Aplicamos el nuevo tamaño
-            lblTitulo.Font = new Font(
-                lblTitulo.Font.FontFamily,
-                nuevoTamaño,
-                lblTitulo.Font.Style
-            );
         }
 
         //Cambio de formularios
@@ -282,6 +242,11 @@ namespace Vista.EmpleadoMenu
                 MessageBox.Show("Error al abrir el manual: " + ex.Message,
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void tlpContenedorPrincipal_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

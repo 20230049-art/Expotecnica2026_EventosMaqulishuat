@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -143,7 +143,7 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Una columna esperada no existe en los datos del empleado: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al cargar el empleado: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -252,20 +252,20 @@ namespace Vista.GerenteEmpleados
                 MessageBox.Show("Uno de los valores no tiene el formato correcto: " + ex.Message,
                         "ERROR-CARGADATOS-008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    errorProvider.SetError(txtDui, "Ya existe un empleado con ese DUI.");
-                    MessageBox.Show("Ya existe un empleado con esos datos (DUI o correo duplicado).",
-                            "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Error de base de datos al actualizar el empleado: " + ex.Message,
-                            "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            //catch (SQLiteException ex)
+            //{
+            //    if (ex.Number == 2627 || ex.Number == 2601)
+            //    {
+            //        errorProvider.SetError(txtDui, "Ya existe un empleado con ese DUI.");
+            //        MessageBox.Show("Ya existe un empleado con esos datos (DUI o correo duplicado).",
+            //                "ERROR-DADUPLICADO-002", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Error de base de datos al actualizar el empleado: " + ex.Message,
+            //                "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
             catch (Exception ex)
             {
                 MessageBox.Show("Error al actualizar el empleado: " + ex.Message,
@@ -295,7 +295,11 @@ namespace Vista.GerenteEmpleados
                         return;
                     }
 
-                    string carpetaFotos = Path.Combine(Application.StartupPath, "FotosEmpleados");
+                    string carpetaBase = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "SistemaEventos"
+                    );
+                    string carpetaFotos = Path.Combine(carpetaBase, "FotosEmpleados");
                     if (!Directory.Exists(carpetaFotos))
                     {
                         Directory.CreateDirectory(carpetaFotos);
@@ -307,7 +311,7 @@ namespace Vista.GerenteEmpleados
 
                     File.Copy(archivoOrigen, rutaDestino, true);
 
-                    rutaFotoRelativa = Path.Combine("FotosEmpleados", nombreUnico);
+                    rutaFotoRelativa = rutaDestino;
 
                     pctEmpleado.Image = Image.FromFile(rutaDestino);
                     pctEmpleado.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -327,7 +331,7 @@ namespace Vista.GerenteEmpleados
             {
                 MessageBox.Show("Error al cargar la foto: " + ex.Message,
                         "ERROR-EXCEPCION-102", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
         }
     }
 }

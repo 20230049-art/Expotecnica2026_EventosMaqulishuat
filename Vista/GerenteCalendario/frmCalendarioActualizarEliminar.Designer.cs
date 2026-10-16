@@ -133,7 +133,7 @@
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(184)))), ((int)(((byte)(153)))));
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Font = new System.Drawing.Font("Bookman Old Style", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Font = new System.Drawing.Font("Bookman Old Style", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnCerrar.Location = new System.Drawing.Point(696, 187);
             this.btnCerrar.Name = "btnCerrar";
@@ -148,7 +148,7 @@
             this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnActualizar.FlatAppearance.BorderSize = 0;
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.Font = new System.Drawing.Font("Bookman Old Style", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Font = new System.Drawing.Font("Bookman Old Style", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnActualizar.Location = new System.Drawing.Point(696, 125);
             this.btnActualizar.Name = "btnActualizar";
@@ -163,7 +163,7 @@
             this.btnElimiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.btnElimiar.FlatAppearance.BorderSize = 0;
             this.btnElimiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnElimiar.Font = new System.Drawing.Font("Bookman Old Style", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElimiar.Font = new System.Drawing.Font("Bookman Old Style", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnElimiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnElimiar.Location = new System.Drawing.Point(696, 69);
             this.btnElimiar.Name = "btnElimiar";
@@ -176,11 +176,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Book Antiqua", 22.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Book Antiqua", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
             this.label9.Location = new System.Drawing.Point(15, 15);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(167, 46);
+            this.label9.Size = new System.Drawing.Size(153, 43);
             this.label9.TabIndex = 15;
             this.label9.Text = "Asunto: ";
             // 
@@ -224,7 +224,7 @@
             // txtUbicacion
             // 
             this.txtUbicacion.Font = new System.Drawing.Font("Leelawadee", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(654, 11);
+            this.txtUbicacion.Location = new System.Drawing.Point(654, 12);
             this.txtUbicacion.Multiline = true;
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(282, 34);
@@ -233,11 +233,11 @@
             // cmbCliente
             // 
             this.cmbCliente.BackColor = System.Drawing.Color.White;
-            this.cmbCliente.Font = new System.Drawing.Font("Leelawadee", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCliente.Font = new System.Drawing.Font("Leelawadee", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCliente.FormattingEnabled = true;
-            this.cmbCliente.Location = new System.Drawing.Point(153, 22);
+            this.cmbCliente.Location = new System.Drawing.Point(138, 17);
             this.cmbCliente.Name = "cmbCliente";
-            this.cmbCliente.Size = new System.Drawing.Size(322, 23);
+            this.cmbCliente.Size = new System.Drawing.Size(322, 28);
             this.cmbCliente.TabIndex = 18;
             // 
             // dtpDia
@@ -252,18 +252,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.label1.Location = new System.Drawing.Point(482, 53);
+            this.label1.Location = new System.Drawing.Point(483, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 40);
+            this.label1.Size = new System.Drawing.Size(73, 35);
             this.label1.TabIndex = 16;
             this.label1.Text = "Dia:";
             // 
             // dtpHora
             // 
             this.dtpHora.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpHora.Location = new System.Drawing.Point(116, 64);
+            this.dtpHora.Location = new System.Drawing.Point(116, 60);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.Size = new System.Drawing.Size(360, 29);
             this.dtpHora.TabIndex = 15;
@@ -271,33 +271,33 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Book Antiqua", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.label5.Location = new System.Drawing.Point(481, 11);
+            this.label5.Location = new System.Drawing.Point(481, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(182, 39);
+            this.label5.Size = new System.Drawing.Size(168, 35);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ubicación: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.label3.Location = new System.Drawing.Point(15, 52);
+            this.label3.Location = new System.Drawing.Point(13, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 40);
+            this.label3.Size = new System.Drawing.Size(100, 35);
             this.label3.TabIndex = 10;
             this.label3.Text = "Hora: ";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Book Antiqua", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
-            this.label27.Location = new System.Drawing.Point(16, 11);
+            this.label27.Location = new System.Drawing.Point(7, 14);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(144, 40);
+            this.label27.Size = new System.Drawing.Size(131, 35);
             this.label27.TabIndex = 2;
             this.label27.Text = "Cliente: ";
             // 

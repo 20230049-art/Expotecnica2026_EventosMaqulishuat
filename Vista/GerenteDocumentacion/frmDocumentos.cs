@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -451,7 +451,12 @@ namespace Vista.GerenteDocumentacion
                     }
 
                     string nombreDocumento = Path.GetFileName(archivoOrigen);
-                    string carpetaDocumentos = Path.Combine(Application.StartupPath, "Documentos");
+
+                    string carpetaBase = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        "SistemaEventos"
+                    );
+                    string carpetaDocumentos = Path.Combine(carpetaBase, "Documentos");
 
                     if (!Directory.Exists(carpetaDocumentos))
                     {
@@ -465,7 +470,7 @@ namespace Vista.GerenteDocumentacion
                     {
                         NombreDocumentacion = nombreDocumento,
                         FechaDocumentacion = DateTime.Now.Date,
-                        ArchivoDocumentacion = rutaDestino
+                        ArchivoDocumentacion = rutaDestino   
                     };
 
                     Documentos.AgregarDocumentos(nuevoDocumento);
@@ -486,7 +491,7 @@ namespace Vista.GerenteDocumentacion
                 MessageBox.Show("No tiene permisos para escribir en la carpeta de documentos: " + ex.Message,
                         "ERROR-PERMISO-161", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al registrar el documento: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -657,7 +662,7 @@ namespace Vista.GerenteDocumentacion
                             "ERROR-ACTUALIZAR-009", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al eliminar el documento: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -774,7 +779,7 @@ namespace Vista.GerenteDocumentacion
                             "ERROR-ACTUALIZAR-009", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al restaurar el documento: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -893,7 +898,7 @@ namespace Vista.GerenteDocumentacion
 
                 RecargarDocumentos();
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 MessageBox.Show("Error de base de datos al eliminar el documento: " + ex.Message,
                         "ERROR-SQL-100", MessageBoxButtons.OK, MessageBoxIcon.Error);

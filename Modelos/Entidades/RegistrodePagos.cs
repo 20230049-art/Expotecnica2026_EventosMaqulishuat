@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +29,9 @@ namespace Modelos.Entidades
         //Mostrar Registro de Pagos - Gerente
         public static DataTable RegistosdePagos()
         {
-            SqlConnection conection = ConexionDB.Conectar();
+            SQLiteConnection conection = ConexionDB.Conectar();
             string comando = "SELECT * FROM VistaRegistroPagoGerente;";
-            SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+            SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
             DataTable dt = new DataTable();
             ad.Fill(dt);
             return dt;
@@ -40,13 +40,13 @@ namespace Modelos.Entidades
 
         public static void ActualizaEstado(int idpago, string estado)
         {
-            SqlConnection con = ConexionDB.Conectar();
+            SQLiteConnection con = ConexionDB.Conectar();
 
             string consulta = @"UPDATE RegistoPago
                         SET EstadoPago=@EstadoPago
                         WHERE IdRegistroPago=@IdRegistroPago";
 
-            using (SqlCommand cmd = new SqlCommand(consulta, con))
+            using (SQLiteCommand cmd = new SQLiteCommand(consulta, con))
             {
                 cmd.Parameters.AddWithValue("@EstadoPago", estado);
                 cmd.Parameters.AddWithValue("@IdRegistroPago", idpago);
@@ -58,10 +58,10 @@ namespace Modelos.Entidades
         //Mostrar Registros de pagos proximos
         public static DataTable MostrarRegistroPagoNoPagados()
         {
-            using (SqlConnection conection = ConexionDB.Conectar())
+            using (SQLiteConnection conection = ConexionDB.Conectar())
             {
                 string comando = "SELECT * FROM VistaRegistroPagoGerente WHERE EstadoPago = 'No Pagado';";
-                SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+                SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
                 return dt;
@@ -71,10 +71,10 @@ namespace Modelos.Entidades
         //Mostrar Registros de pagos pendientes
         public static DataTable MostrarRegistroPagosPendientes()
         {
-            using (SqlConnection conection = ConexionDB.Conectar())
+            using (SQLiteConnection conection = ConexionDB.Conectar())
             {
                 string comando = "SELECT * FROM VistaRegistroPagoGerente WHERE EstadoPago = 'Pendiente';";
-                SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+                SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
                 return dt;
@@ -84,10 +84,10 @@ namespace Modelos.Entidades
         //Mostrar Registros de pagos realizados
         public static DataTable MostrarRegistroPagosRealizados()
         {
-            using (SqlConnection conection = ConexionDB.Conectar())
+            using (SQLiteConnection conection = ConexionDB.Conectar())
             {
                 string comando = "SELECT * FROM VistaRegistroPagoGerente WHERE EstadoPago = 'Pagado';";
-                SqlDataAdapter ad = new SqlDataAdapter(comando, conection);
+                SQLiteDataAdapter ad = new SQLiteDataAdapter(comando, conection);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
                 return dt;
@@ -98,17 +98,37 @@ namespace Modelos.Entidades
         public DataTable BuscarRegistroPago(string busqueda)
         {
             DataTable dt = new DataTable();
+            busqueda = (busqueda ?? "").Trim();
 
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("BuscarRegistroPago", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@busqueda", SqlDbType.VarChar).Value =
-                    string.IsNullOrWhiteSpace(busqueda) ? (object)DBNull.Value : busqueda;
-
-                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                string sql;
+                if (string.IsNullOrEmpty(busqueda))
                 {
-                    ad.Fill(dt);
+                    sql = "SELECT * FROM VistaRegistroPagoGerente ORDER BY IdRegistroPago;";
+                }
+                else
+                {
+                    sql = @"SELECT * FROM VistaRegistroPagoGerente
+                            WHERE NombreCliente   LIKE @q
+                               OR ApellidoCliente LIKE @q
+                               OR NombreServicio  LIKE @q
+                               OR CorreoCliente   LIKE @q
+                               OR TelefonoCliente LIKE @q
+                            ORDER BY IdRegistroPago;";
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                {
+                    if (!string.IsNullOrEmpty(busqueda))
+                    {
+                        cmd.Parameters.Add("@q", DbType.String).Value = "%" + busqueda + "%";
+                    }
+
+                    using (SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd))
+                    {
+                        ad.Fill(dt);
+                    }
                 }
             }
 
@@ -123,31 +143,49 @@ namespace Modelos.Entidades
 
             try
             {
-                using (SqlConnection cn = ConexionDB.Conectar())
-                using (SqlCommand cmd = new SqlCommand("MostrarRegistroPagosPagina", cn))
+                using (SQLiteConnection cn = ConexionDB.Conectar())
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    bool conFiltro = !string.IsNullOrWhiteSpace(estado);
 
-                    cmd.Parameters.Add("@Pagina", SqlDbType.Int).Value = pagina;
-                    cmd.Parameters.Add("@RegistrosPorPagina", SqlDbType.Int).Value = registrosPorPagina;
-                    cmd.Parameters.Add("@Estado", SqlDbType.VarChar, 20).Value =
-                        string.IsNullOrWhiteSpace(estado) ? (object)DBNull.Value : estado;
+                    string sqlCount = conFiltro
+                        ? "SELECT COUNT(*) FROM VistaRegistroPagoGerente WHERE EstadoPago = @Estado;"
+                        : "SELECT COUNT(*) FROM VistaRegistroPagoGerente;";
 
-                    SqlParameter outTotal = new SqlParameter("@TotalRegistros", SqlDbType.Int)
+                    using (SQLiteCommand cmdTotal = new SQLiteCommand(sqlCount, cn))
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(outTotal);
+                        if (conFiltro)
+                            cmdTotal.Parameters.Add("@Estado", DbType.String).Value = estado;
 
-                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                    {
-                        ad.Fill(dt);
+                        totalRegistros = Convert.ToInt32(cmdTotal.ExecuteScalar());
                     }
 
-                    totalRegistros = outTotal.Value == DBNull.Value ? 0 : Convert.ToInt32(outTotal.Value);
+                    int offset = (pagina - 1) * registrosPorPagina;
+
+                    string sql = conFiltro
+                        ? @"SELECT * FROM VistaRegistroPagoGerente
+                            WHERE EstadoPago = @Estado
+                            ORDER BY IdRegistroPago
+                            LIMIT @limit OFFSET @offset;"
+                        : @"SELECT * FROM VistaRegistroPagoGerente
+                            ORDER BY IdRegistroPago
+                            LIMIT @limit OFFSET @offset;";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                    {
+                        if (conFiltro)
+                            cmd.Parameters.Add("@Estado", DbType.String).Value = estado;
+
+                        cmd.Parameters.Add("@limit", DbType.Int32).Value = registrosPorPagina;
+                        cmd.Parameters.Add("@offset", DbType.Int32).Value = offset;
+
+                        using (SQLiteDataAdapter ad = new SQLiteDataAdapter(cmd))
+                        {
+                            ad.Fill(dt);
+                        }
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (SQLiteException ex)
             {
                 throw new Exception("Error al obtener los pagos por paginas: " + ex.Message, ex);
             }

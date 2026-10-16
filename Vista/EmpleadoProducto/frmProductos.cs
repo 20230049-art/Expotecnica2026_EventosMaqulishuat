@@ -109,39 +109,6 @@ namespace Vista.EmpleadoProducto
             }
         }
 
-        private Form activeForm = null;
-
-        private void abrirForm(Form formularioAbrir)
-        {
-            try
-            {
-                if (activeForm != null && activeForm.GetType() == formularioAbrir.GetType())
-                {
-                    return;
-                }
-
-                if (activeForm != null)
-                {
-                    activeForm.Hide();
-                    pnlVistaProducto.Controls.Remove(activeForm);
-                }
-
-                activeForm = formularioAbrir;
-                formularioAbrir.TopLevel = false;
-                formularioAbrir.FormBorderStyle = FormBorderStyle.None;
-                formularioAbrir.Dock = DockStyle.Fill;
-
-                pnlVistaProducto.Controls.Add(formularioAbrir);
-                formularioAbrir.BringToFront();
-                formularioAbrir.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir el formulario: " + ex.Message, "ERROR-CAMBIO-103",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void BotonVenta()
         {
             try
@@ -193,19 +160,10 @@ namespace Vista.EmpleadoProducto
 
                 string nombreUsar = VentaActiva.HayVentaActiva ? VentaActiva.NombreCliente : nombreCliente;
 
-               // menu?.BloquearNavegacion(false);
-
                 if (btnCarrito != null)
                 {
                     btnCarrito.Visible = false;
                 }
-                //if (activeForm != null)
-                //{
-                //    activeForm.Close();
-                //    pnlVistaProducto.Controls.Remove(activeForm);
-                //    activeForm.Dispose();
-                //    activeForm = null;
-                //}
 
                 frmCompraFinal frmCompraFinal = new frmCompraFinal(idVentaActiva, nombreCliente);
                 frmCompraFinal.StartPosition = FormStartPosition.CenterScreen;
@@ -462,7 +420,7 @@ namespace Vista.EmpleadoProducto
                 lblTituloPrecio.AutoSize = true;
 
                 Label lblPrecio = new Label();
-                decimal precio = Convert.ToDecimal(fila["PrecioAlquilerProducto"]);
+                decimal precio = Convert.ToDecimal(fila["PrecioALquilerProducto"]);
                 lblPrecio.Text = precio.ToString("F2");
                 lblPrecio.Font = new Font("Bookman Old Style", 20, FontStyle.Regular);
                 lblPrecio.Location = new Point(765, 57);

@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Modelos.Entidades
 {
@@ -67,95 +68,77 @@ namespace Modelos.Entidades
             FacturaCompleta factura = new FacturaCompleta();
             factura.Detalles = new List<DetalledeVenta>();
 
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
+            using (SQLiteTransaction tx = connection.BeginTransaction())
             {
-                SqlCommand command = new SqlCommand("FinalizarVenta", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
+                    int idCliente;
+                    int correlativo;
+                    int numeroControl;
+
+                    using (SQLiteCommand cmdCli = new SQLiteCommand(
+                        "SELECT IdCliente FROM Venta WHERE IdVenta = @IdVenta;", connection, tx))
                     {
-                        factura.NumeroFactura = reader["NumeroFactura"]?.ToString() ?? "N/A";
-                        factura.NumeroControlFactura = reader["NumeroControlFactura"] != DBNull.Value
-                            ? Convert.ToInt32(reader["NumeroControlFactura"])
-                            : (int?)null;
-                        factura.SelloRecepcion = reader["SelloRecepcion"]?.ToString() ?? "";
-                        factura.FechaFactura = reader["FechaFactura"] != DBNull.Value
-                            ? Convert.ToDateTime(reader["FechaFactura"])
-                            : DateTime.Now;
-                        factura.HoraFactura = reader["HoraFactura"] != DBNull.Value
-                            ? TimeSpan.Parse(reader["HoraFactura"].ToString())
-                            : (TimeSpan?)null;
-                        factura.TipoDocumento = reader["TipoDocumento"]?.ToString() ?? "";
-                        factura.Sucursal = reader["Sucursal"]?.ToString() ?? "";
-
-                        factura.IdVenta = reader["IdVenta"] != DBNull.Value
-                            ? Convert.ToInt32(reader["IdVenta"])
-                            : 0;
-                        factura.FechaVenta = reader["FechaVenta"] != DBNull.Value
-                            ? Convert.ToDateTime(reader["FechaVenta"])
-                            : DateTime.Now;
-                        factura.FechaUso = reader["FechaUso"] != DBNull.Value
-                            ? Convert.ToDateTime(reader["FechaUso"])
-                            : DateTime.Now;
-                        factura.EstadoVenta = reader["EstadoVenta"]?.ToString() ?? "";
-
-                        factura.NombreCliente = reader["NombreCliente"]?.ToString() ?? "";
-                        factura.ApellidoCliente = reader["ApellidoCliente"]?.ToString() ?? "";
-                        factura.DuiCliente = reader["DUICliente"]?.ToString() ?? "";
-                        factura.NitCliente = reader["NITCliente"]?.ToString() ?? "";
-                        factura.CorreoCliente = reader["CorreoCliente"]?.ToString() ?? "";
-                        factura.NombreEmpleado = reader["NombreEmpleado"]?.ToString() ?? "";
-
-                        factura.SubtotalVenta = reader["SubtotalVenta"] != DBNull.Value
-                            ? Convert.ToDecimal(reader["SubtotalVenta"])
-                            : 0;
-                        factura.IVA = reader["IVA"] != DBNull.Value
-                            ? Convert.ToDecimal(reader["IVA"])
-                            : 0;
-                        factura.DescuentoVenta = reader["DescuentoVenta"] != DBNull.Value
-                            ? Convert.ToDecimal(reader["DescuentoVenta"])
-                            : 0;
-                        factura.TotalVenta = reader["TotalVenta"] != DBNull.Value
-                            ? Convert.ToDecimal(reader["TotalVenta"])
-                            : 0;
-
-                        factura.TipoPago = reader["TipoPago"]?.ToString() ?? "";
-                        factura.EstadoVenta = reader["EstadoVenta"]?.ToString() ?? "";
-
-                        factura.IdFactura = reader["IdFactura"] != DBNull.Value
-                            ? Convert.ToInt32(reader["IdFactura"])
-                            : 0;
+                        cmdCli.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                        idCliente = Convert.ToInt32(cmdCli.ExecuteScalar());
                     }
 
-                    if (reader.NextResult())
+                    using (SQLiteCommand cmdCorr = new SQLiteCommand(
+                        "SELECT IFNULL(MAX(IdFactura), 0) + 1 FROM Factura;", connection, tx))
                     {
-                        while (reader.Read())
-                        {
-                            factura.Detalles.Add(new DetalledeVenta
-                            {
-                                NombreProducto = reader["NombreProducto"]?.ToString() ?? "",
-                                Cantidad = reader["Cantidad"] != DBNull.Value
-                                    ? Convert.ToInt32(reader["Cantidad"])
-                                    : 0,
-                                PrecioUnitario = reader["PrecioUnitario"] != DBNull.Value
-                                    ? Convert.ToDecimal(reader["PrecioUnitario"])
-                                    : 0,
-                                Descuento = reader["Descuento"] != DBNull.Value
-                                    ? Convert.ToDecimal(reader["Descuento"])
-                                    : 0,
-                                TotalDetalleVenta = reader["SubTotal"] != DBNull.Value
-                                    ? Convert.ToDecimal(reader["SubTotal"])
-                                    : 0
-                            });
-                        }
+                        correlativo = Convert.ToInt32(cmdCorr.ExecuteScalar());
                     }
 
+                    using (SQLiteCommand cmdCtrl = new SQLiteCommand(
+                        "SELECT IFNULL(MAX(NumeroControlFactura), 0) + 1 FROM Factura;", connection, tx))
+                    {
+                        numeroControl = Convert.ToInt32(cmdCtrl.ExecuteScalar());
+                    }
+
+                    string numeroFactura = "FAC" + DateTime.Now.Year + correlativo.ToString("D6");
+                    Random rnd = new Random();
+                    string selloRecepcion = "S" + rnd.Next(100000000, 999999999).ToString();
+                    string fechaHoy = DateTime.Now.ToString("yyyy-MM-dd");
+                    string horaAhora = DateTime.Now.ToString("HH:mm:ss");
+
+                    using (SQLiteCommand cmdIns = new SQLiteCommand(@"
+                        INSERT INTO Factura
+                            (NumeroFactura, NumeroControlFactura, SelloRecepcion,
+                             Fecha, Hora, TipoDocumento, Sucursal, IdVenta)
+                        VALUES
+                            (@NumeroFactura, @NumeroControl, @Sello,
+                             @Fecha, @Hora, 'Factura', 'Nombre Sucursal', @IdVenta);
+                        SELECT last_insert_rowid();", connection, tx))
+                    {
+                        cmdIns.Parameters.Add("@NumeroFactura", DbType.String).Value = numeroFactura;
+                        cmdIns.Parameters.Add("@NumeroControl", DbType.Int32).Value = numeroControl;
+                        cmdIns.Parameters.Add("@Sello", DbType.String).Value = selloRecepcion;
+                        cmdIns.Parameters.Add("@Fecha", DbType.String).Value = fechaHoy;
+                        cmdIns.Parameters.Add("@Hora", DbType.String).Value = horaAhora;
+                        cmdIns.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+
+                        factura.IdFactura = Convert.ToInt32(cmdIns.ExecuteScalar());
+                    }
+
+                    using (SQLiteCommand cmdUpd = new SQLiteCommand(
+                        "UPDATE Venta SET IdEstadoVenta = 2 WHERE IdVenta = @IdVenta;", connection, tx))
+                    {
+                        cmdUpd.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                        cmdUpd.ExecuteNonQuery();
+                    }
+
+                    tx.Commit();
+                }
+                catch
+                {
+                    tx.Rollback();
+                    throw;
                 }
             }
-            return factura;
+            Productos.ActualizarTotalesVenta(idVenta);
+            RegistrarPagoAutomatico(idVenta);
+            return MostrarFacturaCompleta(idVenta);
         }
 
         //Mostrar Vista de la Factura Completa
@@ -164,71 +147,140 @@ namespace Modelos.Entidades
             FacturaCompleta factura = new FacturaCompleta();
             factura.Detalles = new List<DetalledeVenta>();
 
-            using (SqlConnection connection = ConexionDB.Conectar())
+            using (SQLiteConnection connection = ConexionDB.Conectar())
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM VistaFactura WHERE IdVenta = @IdVenta;", connection);
+                string sqlFactura = "SELECT * FROM VistaFactura WHERE IdVenta = @IdVenta;";
 
-                command.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-
-                //connection.Open();
-                using (SqlDataReader leer = command.ExecuteReader())
+                using (SQLiteCommand command = new SQLiteCommand(sqlFactura, connection))
                 {
-                    if (leer.Read())
+                    command.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+
+                    using (SQLiteDataReader leer = command.ExecuteReader())
                     {
-                        factura.IdFactura = (int)leer["IdFactura"];
-                        factura.NumeroFactura = leer["NumeroFactura"].ToString();
-                        factura.NumeroControlFactura = (int)(leer["NumeroControlFactura"] != DBNull.Value ? (int)leer["NumeroControlFactura"] : (int?)null);
-                        factura.SelloRecepcion = leer["SelleRecepcion"].ToString();
-                        factura.FechaFactura = (DateTime)leer["FechaFactura"];
-                        factura.HoraFactura = factura.HoraFactura = (TimeSpan)(leer.IsDBNull(leer.GetOrdinal("HoraFactura")) ? (TimeSpan?)null : leer.GetTimeSpan(leer.GetOrdinal("HoraFactura")));
-                        factura.TipoDocumento = leer["TipoDocumento"].ToString();
-                        factura.Sucursal = leer["Sucursal"].ToString();
+                        if (leer.Read())
+                        {
+                            factura.IdFactura = Convert.ToInt32(leer["IdFactura"]);
+                            factura.NumeroFactura = leer["NumeroFactura"].ToString();
+                            factura.NumeroControlFactura = leer["NumeroControlFactura"] != DBNull.Value
+                                ? (int?)Convert.ToInt32(leer["NumeroControlFactura"])
+                                : null;
+                            factura.SelloRecepcion = leer["SelloRecepcion"] != DBNull.Value
+                                ? leer["SelloRecepcion"].ToString() : "";
+                            factura.FechaFactura = Convert.ToDateTime(leer["FechaFactura"]);
 
-                        factura.IdVenta = (int)leer["IdVenta"];
-                        factura.FechaVenta = (DateTime)leer["FechaVenta"];
-                        factura.FechaUso = (DateTime)leer["FechaUso"];
-                        factura.EstadoVenta = leer["EstadoVenta"].ToString();
+                            factura.HoraFactura = leer["HoraFactura"] != DBNull.Value
+                                ? TimeSpan.Parse(leer["HoraFactura"].ToString())
+                                : (TimeSpan?)null;
 
-                        factura.NombreCliente = leer["NombreCliente"].ToString();
-                        factura.ApellidoCliente = leer["ApellidoCliente"].ToString();
-                        factura.DuiCliente = leer["DUICliente"] != DBNull.Value ? leer["DUICliente"].ToString() : "";
-                        factura.NitCliente = leer["NITCliente"] != DBNull.Value ? leer["DUICliente"].ToString() : "";
-                        factura.CorreoCliente = leer["CorreoCliente"].ToString();
+                            factura.TipoDocumento = leer["TipoDocumento"].ToString();
+                            factura.Sucursal = leer["Sucursal"] != DBNull.Value
+                                ? leer["Sucursal"].ToString() : "";
 
-                        factura.NombreEmpleado = leer["NombreEmpleado"].ToString();
+                            factura.IdVenta = Convert.ToInt32(leer["IdVenta"]);
+                            factura.FechaVenta = Convert.ToDateTime(leer["FechaVenta"]);
+                            factura.FechaUso = Convert.ToDateTime(leer["FechaUso"]);
+                            factura.EstadoVenta = leer["EstadoVenta"].ToString();
 
-                        factura.SubtotalVenta = (decimal)leer["SubtotalVenta"];
-                        factura.IVA = (decimal)leer["IVA"];
-                        factura.DescuentoVenta = leer["DescuentoVenta"] != DBNull.Value ? (decimal)leer["DescuentoVenta"] : 0;
-                        factura.TotalVenta = (decimal)leer["TotalVenta"];
+                            factura.NombreCliente = leer["NombreCliente"].ToString();
+                            factura.ApellidoCliente = leer["ApellidoCliente"].ToString();
+                            factura.DuiCliente = leer["DUICliente"] != DBNull.Value ? leer["DUICliente"].ToString() : "";
+                            factura.NitCliente = leer["NITCliente"] != DBNull.Value ? leer["NITCliente"].ToString() : "";
+                            factura.CorreoCliente = leer["CorreoCliente"].ToString();
 
-                        factura.TipoPago = leer["TipoPago"].ToString();
-                        factura.EstadoVenta = leer["EstadoVenta"].ToString();
+                            factura.NombreEmpleado = leer["NombreEmpleado"].ToString();
+
+                            factura.SubtotalVenta = Convert.ToDecimal(leer["SubtotalVenta"]);
+                            factura.IVA = Convert.ToDecimal(leer["IVA"]);
+                            factura.DescuentoVenta = leer["DescuentoVenta"] != DBNull.Value
+                                ? Convert.ToDecimal(leer["DescuentoVenta"]) : 0;
+                            factura.TotalVenta = Convert.ToDecimal(leer["TotalVenta"]);
+
+                            factura.TipoPago = leer["TipoPago"].ToString();
+                        }
                     }
                 }
 
-                SqlCommand cmdDetallesDeventa = new SqlCommand("ObtenerDetalleVenta", connection);
-                cmdDetallesDeventa.CommandType = CommandType.StoredProcedure;
+                string sqlDetalles = @"
+            SELECT DV.IdDetalleVenta, P.NombreProducto, DV.Cantidad,
+                   DV.PrecioUnitario, DV.Descuento, DV.TotalDetalleventa
+            FROM DetalleVenta DV
+            INNER JOIN Producto P ON DV.IdProducto = P.IdProducto
+            WHERE DV.IdVenta = @IdVenta;";
 
-                cmdDetallesDeventa.Parameters.Add("@IdVenta", SqlDbType.Int).Value = IdVenta;
-
-                using (SqlDataReader leer = command.ExecuteReader())
+                using (SQLiteCommand cmdDetalles = new SQLiteCommand(sqlDetalles, connection))
                 {
-                    while (leer.Read())
+                    cmdDetalles.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+
+                    using (SQLiteDataReader leer = cmdDetalles.ExecuteReader())
                     {
-                        factura.Detalles.Add(new DetalledeVenta
+                        while (leer.Read())
                         {
-                            IdDetalleVenta = (int)leer["IdDetalleVenta"],
-                            NombreProducto = leer["NombreProducto"].ToString(),
-                            Cantidad = (int)leer["Cantidad"],
-                            PrecioUnitario = (decimal)leer["PrecioUnitario"],
-                            Descuento = leer["Descuento"] != DBNull.Value ? (decimal)leer["Descuento"] : 0,
-                            TotalDetalleVenta = (decimal)leer["TotalDetalleVenta"]
-                        });
+                            factura.Detalles.Add(new DetalledeVenta
+                            {
+
+                                IdDetalleVenta = Convert.ToInt32(leer["IdDetalleVenta"]),
+                                NombreProducto = leer["NombreProducto"].ToString(),
+                                Cantidad = Convert.ToInt32(leer["Cantidad"]),
+                                PrecioUnitario = Convert.ToDecimal(leer["PrecioUnitario"]),
+                                Descuento = leer["Descuento"] != DBNull.Value
+                                    ? Convert.ToDecimal(leer["Descuento"]) : 0,
+                                TotalDetalleVenta = Convert.ToDecimal(leer["TotalDetalleventa"])
+                            });
+                        }
                     }
                 }
             }
             return factura;
         }
+
+        private void RegistrarPagoAutomatico(int idVenta)
+        {
+            try
+            {
+                using (SQLiteConnection connection = ConexionDB.Conectar())
+                {
+                    int idServicio = 1; 
+
+                    using (SQLiteCommand cmdServ = new SQLiteCommand(@"
+                SELECT P.IdServicio 
+                FROM DetalleVenta DV
+                INNER JOIN Producto P ON DV.IdProducto = P.IdProducto
+                WHERE DV.IdVenta = @IdVenta
+                LIMIT 1;", connection))
+                    {
+                        cmdServ.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                        object result = cmdServ.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                            idServicio = Convert.ToInt32(result);
+                    }
+
+                    string sqlPago = @"
+                INSERT INTO RegistoPago
+                    (EstadoPago, FechaPago, IdServicio, IdVenta, IdCliente)
+                SELECT 
+                    'Pagado',
+                    date('now','localtime'),
+                    @IdServicio,
+                    @IdVenta,
+                    IdCliente
+                FROM Venta
+                WHERE IdVenta = @IdVenta;";
+
+                    using (SQLiteCommand cmdPago = new SQLiteCommand(sqlPago, connection))
+                    {
+                        cmdPago.Parameters.Add("@IdVenta", DbType.Int32).Value = idVenta;
+                        cmdPago.Parameters.Add("@IdServicio", DbType.Int32).Value = idServicio;
+                        cmdPago.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("La venta se guardó, pero no se pudo registrar el pago automáticamente:\n\n" + ex.Message,
+                                "ADVERTENCIA-PAGO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }
+

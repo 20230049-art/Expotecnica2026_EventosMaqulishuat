@@ -79,7 +79,7 @@
             this.pnlVistaDetalleProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlVistaDetalleProducto.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaDetalleProducto.Name = "pnlVistaDetalleProducto";
-            this.pnlVistaDetalleProducto.Size = new System.Drawing.Size(1428, 718);
+            this.pnlVistaDetalleProducto.Size = new System.Drawing.Size(1429, 719);
             this.pnlVistaDetalleProducto.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -99,7 +99,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.278688F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.00596F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.600596F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1428, 718);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1429, 719);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -115,7 +115,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1340, 56);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1341, 56);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // txtBuscar
@@ -164,7 +164,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(51, 122);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1340, 537);
+            this.panel1.Size = new System.Drawing.Size(1341, 538);
             this.panel1.TabIndex = 1;
             // 
             // flpVistaClientes
@@ -175,7 +175,7 @@
             this.flpVistaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpVistaClientes.Location = new System.Drawing.Point(0, 0);
             this.flpVistaClientes.Name = "flpVistaClientes";
-            this.flpVistaClientes.Size = new System.Drawing.Size(1340, 537);
+            this.flpVistaClientes.Size = new System.Drawing.Size(1341, 538);
             this.flpVistaClientes.TabIndex = 1;
             // 
             // pnlContenedor
@@ -432,7 +432,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1428, 718);
+            this.ClientSize = new System.Drawing.Size(1429, 719);
             this.Controls.Add(this.pnlVistaDetalleProducto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBuscarCliente";

@@ -38,6 +38,8 @@ namespace Vista.GerenteInicio
                 InitializeComponent();
 
                 Redondeo.RedondearFig(btnCerrarSesionGere, 16);
+                Responsive.Apply(this);
+
                 QuestPDF.Settings.License = LicenseType.Community;
             }
             catch (Exception ex)

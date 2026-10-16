@@ -125,14 +125,12 @@
             // 
             // flpRecordatorios
             // 
-            this.flpRecordatorios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.flpRecordatorios.AutoScroll = true;
             this.flpRecordatorios.Controls.Add(this.pnlContenedorRecordatorio);
-            this.flpRecordatorios.Location = new System.Drawing.Point(8, 7);
+            this.flpRecordatorios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpRecordatorios.Location = new System.Drawing.Point(0, 0);
             this.flpRecordatorios.Name = "flpRecordatorios";
-            this.flpRecordatorios.Size = new System.Drawing.Size(852, 314);
+            this.flpRecordatorios.Size = new System.Drawing.Size(871, 329);
             this.flpRecordatorios.TabIndex = 12;
             // 
             // pnlContenedorRecordatorio

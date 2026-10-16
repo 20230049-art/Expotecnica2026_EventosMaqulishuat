@@ -18,7 +18,7 @@ namespace Vista.EmpleadosVenta
         public frmBuscarCliente()
         {
 
-            Redondeo.RedondearFormulario(this, 12);
+            Redondeo.RedondearFormulario(this, 10);
 
             InitializeComponent();
             DataTable clientes = Clientes.MostrarClientes();
@@ -26,8 +26,6 @@ namespace Vista.EmpleadosVenta
 
             ControlesBloqueo.LimitarTextBox(txtBuscar, 100);
         }
-
-        //Muestra los datos de la DB atraves del panel creado
 
         private void CargarClientesEnPantalla(DataTable clientes)
         {

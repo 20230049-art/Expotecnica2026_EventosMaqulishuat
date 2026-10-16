@@ -98,7 +98,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblEmpresas = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
@@ -165,7 +165,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.04046F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1135F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel6.Controls.Add(this.lblProductos, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -186,7 +186,7 @@
             this.lblProductos.Font = new System.Drawing.Font("Cambria", 37.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.Location = new System.Drawing.Point(237, 20);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(450, 108);
+            this.lblProductos.Size = new System.Drawing.Size(449, 108);
             this.lblProductos.TabIndex = 0;
             this.lblProductos.Text = "VENTA FINAL";
             this.lblProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -196,10 +196,10 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.060606F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.93939F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
             this.tableLayoutPanel7.Controls.Add(this.btnCancelarVenta, 2, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(693, 23);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(692, 23);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
@@ -216,9 +216,9 @@
             this.btnCancelarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarVenta.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.btnCancelarVenta.Location = new System.Drawing.Point(805, 20);
+            this.btnCancelarVenta.Location = new System.Drawing.Point(804, 20);
             this.btnCancelarVenta.Name = "btnCancelarVenta";
-            this.btnCancelarVenta.Size = new System.Drawing.Size(321, 56);
+            this.btnCancelarVenta.Size = new System.Drawing.Size(322, 56);
             this.btnCancelarVenta.TabIndex = 12;
             this.btnCancelarVenta.Text = "Cancelar Compra";
             this.toolTip1.SetToolTip(this.btnCancelarVenta, "Elimianr Compra");
@@ -230,7 +230,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.49289F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.50711F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.pbRegresar, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
@@ -246,7 +246,7 @@
             // 
             this.pbRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbRegresar.Image = global::Vista.Properties.Resources.botonRegresar;
-            this.pbRegresar.Location = new System.Drawing.Point(79, 20);
+            this.pbRegresar.Location = new System.Drawing.Point(78, 20);
             this.pbRegresar.Name = "pbRegresar";
             this.pbRegresar.Size = new System.Drawing.Size(126, 70);
             this.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -308,7 +308,7 @@
             this.lblClienteNombreCompleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(184)))), ((int)(((byte)(153)))));
             this.lblClienteNombreCompleto.Font = new System.Drawing.Font("Bookman Old Style", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClienteNombreCompleto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblClienteNombreCompleto.Location = new System.Drawing.Point(413, 9);
+            this.lblClienteNombreCompleto.Location = new System.Drawing.Point(422, 9);
             this.lblClienteNombreCompleto.Name = "lblClienteNombreCompleto";
             this.lblClienteNombreCompleto.Size = new System.Drawing.Size(549, 45);
             this.lblClienteNombreCompleto.TabIndex = 23;
@@ -318,11 +318,11 @@
             // 
             this.label35.AutoSize = true;
             this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(184)))), ((int)(((byte)(153)))));
-            this.label35.Font = new System.Drawing.Font("Book Antiqua", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Font = new System.Drawing.Font("Book Antiqua", 22.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
             this.label35.Location = new System.Drawing.Point(14, 8);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(381, 51);
+            this.label35.Size = new System.Drawing.Size(356, 47);
             this.label35.TabIndex = 22;
             this.label35.Text = "Nueva Compra de:";
             // 
@@ -390,7 +390,7 @@
             this.lblDui.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.lblDui.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDui.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblDui.Location = new System.Drawing.Point(389, 104);
+            this.lblDui.Location = new System.Drawing.Point(452, 104);
             this.lblDui.Name = "lblDui";
             this.lblDui.Size = new System.Drawing.Size(134, 33);
             this.lblDui.TabIndex = 34;
@@ -402,7 +402,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.label4.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.label4.Location = new System.Drawing.Point(309, 103);
+            this.label4.Location = new System.Drawing.Point(373, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 35);
             this.label4.TabIndex = 33;
@@ -414,7 +414,7 @@
             this.lblCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.lblCorreo.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblCorreo.Location = new System.Drawing.Point(690, 98);
+            this.lblCorreo.Location = new System.Drawing.Point(762, 98);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(280, 33);
             this.lblCorreo.TabIndex = 31;
@@ -426,7 +426,7 @@
             this.lblTelefono.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.lblTelefono.Font = new System.Drawing.Font("Bookman Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblTelefono.Location = new System.Drawing.Point(690, 63);
+            this.lblTelefono.Location = new System.Drawing.Point(763, 63);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(180, 33);
             this.lblTelefono.TabIndex = 30;
@@ -435,7 +435,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel5.Location = new System.Drawing.Point(678, 16);
+            this.panel5.Location = new System.Drawing.Point(747, 16);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1, 130);
             this.panel5.TabIndex = 4;
@@ -446,7 +446,7 @@
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.label20.Font = new System.Drawing.Font("Book Antiqua", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.label20.Location = new System.Drawing.Point(692, 16);
+            this.label20.Location = new System.Drawing.Point(762, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(179, 44);
             this.label20.TabIndex = 28;
@@ -458,11 +458,11 @@
             this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.label31.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.label31.Location = new System.Drawing.Point(307, 26);
+            this.label31.Location = new System.Drawing.Point(375, 26);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(229, 35);
+            this.label31.Size = new System.Drawing.Size(237, 35);
             this.label31.TabIndex = 27;
-            this.label31.Text = "Tipo de Cliente";
+            this.label31.Text = "Tipo de Cliente:";
             // 
             // label33
             // 
@@ -470,7 +470,7 @@
             this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.label33.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(27)))), ((int)(((byte)(15)))));
-            this.label33.Location = new System.Drawing.Point(309, 68);
+            this.label33.Location = new System.Drawing.Point(373, 68);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(80, 35);
             this.label33.TabIndex = 24;
@@ -491,7 +491,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel7.Location = new System.Drawing.Point(289, 19);
+            this.panel7.Location = new System.Drawing.Point(359, 19);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1, 130);
             this.panel7.TabIndex = 2;
@@ -502,7 +502,7 @@
             this.lblNit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.lblNit.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblNit.Location = new System.Drawing.Point(390, 68);
+            this.lblNit.Location = new System.Drawing.Point(453, 68);
             this.lblNit.Name = "lblNit";
             this.lblNit.Size = new System.Drawing.Size(134, 33);
             this.lblNit.TabIndex = 26;
@@ -538,7 +538,7 @@
             this.lblTipoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(199)))), ((int)(((byte)(169)))));
             this.lblTipoCliente.Font = new System.Drawing.Font("Bookman Old Style", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.lblTipoCliente.Location = new System.Drawing.Point(542, 24);
+            this.lblTipoCliente.Location = new System.Drawing.Point(610, 24);
             this.lblTipoCliente.Name = "lblTipoCliente";
             this.lblTipoCliente.Size = new System.Drawing.Size(118, 33);
             this.lblTipoCliente.TabIndex = 29;
@@ -629,7 +629,7 @@
             this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.lblEmpresas);
             this.panel3.Controls.Add(this.panel12);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.lblDireccion);
@@ -1085,21 +1085,21 @@
             this.label15.TabIndex = 29;
             this.label15.Text = "Sello:";
             // 
-            // label12
+            // lblEmpresas
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblEmpresas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
-            this.label12.Location = new System.Drawing.Point(178, 142);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(247, 58);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Eventos y Aquileres \r\nMaquilishuat";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEmpresas.AutoSize = true;
+            this.lblEmpresas.BackColor = System.Drawing.Color.White;
+            this.lblEmpresas.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpresas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(23)))), ((int)(((byte)(19)))));
+            this.lblEmpresas.Location = new System.Drawing.Point(178, 142);
+            this.lblEmpresas.Name = "lblEmpresas";
+            this.lblEmpresas.Size = new System.Drawing.Size(247, 58);
+            this.lblEmpresas.TabIndex = 28;
+            this.lblEmpresas.Text = "Eventos y Aquileres \r\nMaquilishuat";
+            this.lblEmpresas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel12
             // 
@@ -1281,7 +1281,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblEmpresas;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblDireccion;

@@ -20,7 +20,6 @@ namespace Vista.IniciarSesion
         public frmSeleccionarPefil()
         {
             InitializeComponent();
-            this.Resize += frmEmpleadoTitulo_Resize;
 
             Redondeo.RedondearFig(panel1, 12);
             Redondeo.RedondearFig(panel3, 7);
@@ -28,6 +27,8 @@ namespace Vista.IniciarSesion
             Redondeo.RedondearFig(panel6, 5);
             Redondeo.RedondearFig(btnSeleccionarGerente, 6);
             Redondeo.RedondearFig(btnSeleccionarEmpleado, 6);
+
+            Responsive.Apply(this);
         }
 
         private void frmSeleccionarPefil_Load(object sender, EventArgs e)
@@ -52,48 +53,9 @@ namespace Vista.IniciarSesion
 
             lblTituloGerente.Dock = DockStyle.Fill;
             lblTituloGerente.TextAlign = ContentAlignment.MiddleCenter;
-
-            AjustarTitulo();
         }
 
-        private void frmEmpleadoTitulo_Resize(object sender, EventArgs e)
-        {
-            AjustarTitulo();
-        }
-
-        private void AjustarTitulo()
-        {
-            if (tamañoOriginalFormulario.Width <= 0 ||
-                tamañoOriginalFormulario.Height <= 0)
-                return;
-
-            // Calculamos cuánto cambió el formulario horizontalmente
-            float escalaX = (float)this.ClientSize.Width /
-                tamañoOriginalFormulario.Width;
-
-            // Calculamos cuánto cambió verticalmente
-            float escalaY = (float)this.ClientSize.Height /
-                tamañoOriginalFormulario.Height;
-
-            // Utilizamos la escala menor para mantener la proporción
-            float escala = Math.Min(escalaX, escalaY);
-
-            // Calculamos el nuevo tamaño de la letra
-            float nuevoTamaño = tamañoFuenteOriginal * escala;
-
-            // Límites para evitar que la letra sea demasiado pequeña
-            // o demasiado grande
-            nuevoTamaño = Math.Max(14, nuevoTamaño);
-            nuevoTamaño = Math.Min(40, nuevoTamaño);
-
-            // Aplicamos el nuevo tamaño
-            lblTituloGerente.Font = new Font(
-                lblTituloGerente.Font.FontFamily,
-                nuevoTamaño,
-                lblTituloGerente.Font.Style
-            );
-        }
-
+      
         //Cmbio de formularios 
         private Form activeForm = null;
         private void abrirFormulario(Form formularioAbrir)

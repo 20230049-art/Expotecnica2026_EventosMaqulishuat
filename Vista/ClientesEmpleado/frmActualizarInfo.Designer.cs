@@ -346,6 +346,7 @@
             // cmbTipoCliente
             // 
             this.cmbTipoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(217)))));
+            this.cmbTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTipoCliente.Font = new System.Drawing.Font("Book Antiqua", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoCliente.FormattingEnabled = true;

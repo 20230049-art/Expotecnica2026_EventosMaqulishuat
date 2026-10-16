@@ -51,7 +51,7 @@ namespace Vista.GerenteCalendario
             {
                 flpCalendario.Controls.Clear();
 
-                string nombreDelMes = new DateTimeFormatInfo().GetMonthName(mes);
+                string nombreDelMes = new CultureInfo("es-ES").DateTimeFormat.GetMonthName(mes);
                 lblMes.Text = nombreDelMes.ToUpper() + " " + anio;
 
                 DateTime primerDiaDelMes = new DateTime(anio, mes, 1);
@@ -120,6 +120,11 @@ namespace Vista.GerenteCalendario
                 MessageBox.Show("Error al abrir los recordatorios: " + ex.Message,
                         "ERROR-CAMBIO-103", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblMes_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

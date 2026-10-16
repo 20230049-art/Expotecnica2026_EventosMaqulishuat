@@ -84,6 +84,7 @@
             // cbProveedor
             // 
             this.cbProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(223)))), ((int)(((byte)(206)))));
+            this.cbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProveedor.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedor.FormattingEnabled = true;
@@ -150,6 +151,7 @@
             // cmbServicio
             // 
             this.cmbServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(223)))), ((int)(((byte)(206)))));
+            this.cmbServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbServicio.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbServicio.FormatString = "Seleccionar servicio";

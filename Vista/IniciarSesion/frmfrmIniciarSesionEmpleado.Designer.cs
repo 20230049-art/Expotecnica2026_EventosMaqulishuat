@@ -30,111 +30,117 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmfrmIniciarSesionEmpleado));
-            this.pnlVistaIniciarEmpleado = new System.Windows.Forms.Panel();
-            this.tlpFondo = new System.Windows.Forms.TableLayoutPanel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlVista = new Vista.Utilidades.redisenoPanel();
+            this.rediseñoImagen1 = new Vista.Utilidades.RediseñoImagen();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rediseñoImagen2 = new Vista.Utilidades.RediseñoImagen();
             this.panlContraseña = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtContrasena = new System.Windows.Forms.TextBox();
-            this.txtTituloUsuario = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlUsuario = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnIngresarEmpleado = new System.Windows.Forms.Button();
-            this.btnRegresar = new System.Windows.Forms.Button();
-            this.lblRecuperarContrasena = new System.Windows.Forms.Label();
-            this.pnlcontenedor = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTituloUsuario = new System.Windows.Forms.TextBox();
+            this.rediseñoImagen3 = new Vista.Utilidades.RediseñoImagen();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.rediseñoImagen4 = new Vista.Utilidades.RediseñoImagen();
+            this.btnIngresarEmpleado = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.rediseñoImagen5 = new Vista.Utilidades.RediseñoImagen();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rediseñoImagen6 = new Vista.Utilidades.RediseñoImagen();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlVistaIniciarEmpleado.SuspendLayout();
-            this.tlpFondo.SuspendLayout();
+            this.pnlVista.SuspendLayout();
+            this.rediseñoImagen1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.rediseñoImagen2.SuspendLayout();
             this.panlContraseña.SuspendLayout();
             this.pnlUsuario.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.pnlcontenedor.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.rediseñoImagen3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.rediseñoImagen4.SuspendLayout();
+            this.rediseñoImagen5.SuspendLayout();
+            this.rediseñoImagen6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnlVistaIniciarEmpleado
+            // pnlVista
             // 
-            this.pnlVistaIniciarEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(32)))), ((int)(((byte)(16)))));
-            this.pnlVistaIniciarEmpleado.Controls.Add(this.tlpFondo);
-            this.pnlVistaIniciarEmpleado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlVistaIniciarEmpleado.Location = new System.Drawing.Point(0, 0);
-            this.pnlVistaIniciarEmpleado.Name = "pnlVistaIniciarEmpleado";
-            this.pnlVistaIniciarEmpleado.Size = new System.Drawing.Size(1924, 973);
-            this.pnlVistaIniciarEmpleado.TabIndex = 1;
+            this.pnlVista.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlVista.BackgroundImage")));
+            this.pnlVista.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlVista.Controls.Add(this.rediseñoImagen1);
+            this.pnlVista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlVista.Location = new System.Drawing.Point(0, 0);
+            this.pnlVista.Name = "pnlVista";
+            this.pnlVista.Size = new System.Drawing.Size(1924, 973);
+            this.pnlVista.TabIndex = 0;
             // 
-            // tlpFondo
+            // rediseñoImagen1
             // 
-            this.tlpFondo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpFondo.BackgroundImage = global::Vista.Properties.Resources.Fondo2;
-            this.tlpFondo.ColumnCount = 3;
-            this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.70062F));
-            this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.24948F));
-            this.tlpFondo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.0499F));
-            this.tlpFondo.Controls.Add(this.panel1, 1, 1);
-            this.tlpFondo.Controls.Add(this.tableLayoutPanel2, 2, 2);
-            this.tlpFondo.Location = new System.Drawing.Point(0, 0);
-            this.tlpFondo.Name = "tlpFondo";
-            this.tlpFondo.RowCount = 3;
-            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.24666F));
-            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.04008F));
-            this.tlpFondo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.71326F));
-            this.tlpFondo.Size = new System.Drawing.Size(1924, 973);
-            this.tlpFondo.TabIndex = 0;
+            this.rediseñoImagen1.BackColor = System.Drawing.Color.Transparent;
+            this.rediseñoImagen1.ColumnCount = 3;
+            this.rediseñoImagen1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.4262F));
+            this.rediseñoImagen1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.21206F));
+            this.rediseñoImagen1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.36175F));
+            this.rediseñoImagen1.Controls.Add(this.panel1, 1, 1);
+            this.rediseñoImagen1.Controls.Add(this.rediseñoImagen6, 2, 2);
+            this.rediseñoImagen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rediseñoImagen1.Location = new System.Drawing.Point(0, 0);
+            this.rediseñoImagen1.Name = "rediseñoImagen1";
+            this.rediseñoImagen1.RowCount = 3;
+            this.rediseñoImagen1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.09661F));
+            this.rediseñoImagen1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.90956F));
+            this.rediseñoImagen1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.99383F));
+            this.rediseñoImagen1.Size = new System.Drawing.Size(1924, 973);
+            this.rediseñoImagen1.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(235)))), ((int)(((byte)(211)))));
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.pnlcontenedor);
+            this.panel1.Controls.Add(this.rediseñoImagen2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(458, 200);
+            this.panel1.Location = new System.Drawing.Point(396, 218);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1057, 549);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(1113, 538);
+            this.panel1.TabIndex = 3;
             // 
-            // panel3
+            // rediseñoImagen2
             // 
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.panlContraseña);
-            this.panel3.Controls.Add(this.txtTituloUsuario);
-            this.panel3.Controls.Add(this.pnlUsuario);
-            this.panel3.Controls.Add(this.tableLayoutPanel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 109);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1057, 440);
-            this.panel3.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(235)))), ((int)(((byte)(211)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(52)))), ((int)(((byte)(21)))));
-            this.textBox1.Location = new System.Drawing.Point(105, 148);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(805, 30);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Ingresa tu contraseña";
+            this.rediseñoImagen2.ColumnCount = 3;
+            this.rediseñoImagen2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.69193F));
+            this.rediseñoImagen2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.147F));
+            this.rediseñoImagen2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.24138F));
+            this.rediseñoImagen2.Controls.Add(this.panlContraseña, 1, 9);
+            this.rediseñoImagen2.Controls.Add(this.textBox1, 1, 7);
+            this.rediseñoImagen2.Controls.Add(this.pnlUsuario, 1, 5);
+            this.rediseñoImagen2.Controls.Add(this.lblTitulo, 1, 1);
+            this.rediseñoImagen2.Controls.Add(this.txtTituloUsuario, 1, 3);
+            this.rediseñoImagen2.Controls.Add(this.rediseñoImagen3, 0, 1);
+            this.rediseñoImagen2.Controls.Add(this.rediseñoImagen4, 1, 11);
+            this.rediseñoImagen2.Controls.Add(this.rediseñoImagen5, 1, 12);
+            this.rediseñoImagen2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rediseñoImagen2.Location = new System.Drawing.Point(0, 0);
+            this.rediseñoImagen2.Name = "rediseñoImagen2";
+            this.rediseñoImagen2.RowCount = 15;
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.56239F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.34058F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.615942F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.677149F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.4058F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.225225F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.585586F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.801802F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.615942F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.828829F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.126126F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.423424F));
+            this.rediseñoImagen2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.627486F));
+            this.rediseñoImagen2.Size = new System.Drawing.Size(1113, 538);
+            this.rediseñoImagen2.TabIndex = 9;
             // 
             // panlContraseña
             // 
@@ -142,43 +148,43 @@
             this.panlContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(224)))), ((int)(((byte)(193)))));
             this.panlContraseña.Controls.Add(this.panel6);
             this.panlContraseña.Controls.Add(this.txtContrasena);
-            this.panlContraseña.Location = new System.Drawing.Point(105, 188);
+            this.panlContraseña.Location = new System.Drawing.Point(155, 324);
             this.panlContraseña.Name = "panlContraseña";
-            this.panlContraseña.Size = new System.Drawing.Size(885, 71);
+            this.panlContraseña.Size = new System.Drawing.Size(762, 66);
             this.panlContraseña.TabIndex = 8;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(173)))), ((int)(((byte)(123)))));
-            this.panel6.Location = new System.Drawing.Point(18, 56);
+            this.panel6.Location = new System.Drawing.Point(18, 48);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(700, 1);
+            this.panel6.Size = new System.Drawing.Size(600, 1);
             this.panel6.TabIndex = 6;
             // 
             // txtContrasena
             // 
+            this.txtContrasena.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContrasena.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(224)))), ((int)(((byte)(193)))));
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContrasena.Location = new System.Drawing.Point(15, 23);
+            this.txtContrasena.Location = new System.Drawing.Point(15, 18);
             this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.PasswordChar = '•';
-            this.txtContrasena.Size = new System.Drawing.Size(653, 29);
+            this.txtContrasena.PasswordChar = '*';
+            this.txtContrasena.Size = new System.Drawing.Size(547, 29);
             this.txtContrasena.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.txtContrasena, "Ingresa tu contraseña");
             // 
-            // txtTituloUsuario
+            // textBox1
             // 
-            this.txtTituloUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTituloUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(235)))), ((int)(((byte)(211)))));
-            this.txtTituloUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTituloUsuario.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTituloUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(52)))), ((int)(((byte)(21)))));
-            this.txtTituloUsuario.Location = new System.Drawing.Point(105, 16);
-            this.txtTituloUsuario.Name = "txtTituloUsuario";
-            this.txtTituloUsuario.Size = new System.Drawing.Size(805, 30);
-            this.txtTituloUsuario.TabIndex = 0;
-            this.txtTituloUsuario.Text = "Ingresa tu usuario";
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(235)))), ((int)(((byte)(211)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(52)))), ((int)(((byte)(21)))));
+            this.textBox1.Location = new System.Drawing.Point(155, 285);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(762, 30);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Ingresa tu contraseña";
             // 
             // pnlUsuario
             // 
@@ -186,9 +192,9 @@
             this.pnlUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(224)))), ((int)(((byte)(193)))));
             this.pnlUsuario.Controls.Add(this.panel4);
             this.pnlUsuario.Controls.Add(this.txtNombreUsuario);
-            this.pnlUsuario.Location = new System.Drawing.Point(105, 53);
+            this.pnlUsuario.Location = new System.Drawing.Point(155, 185);
             this.pnlUsuario.Name = "pnlUsuario";
-            this.pnlUsuario.Size = new System.Drawing.Size(885, 66);
+            this.pnlUsuario.Size = new System.Drawing.Size(762, 66);
             this.pnlUsuario.TabIndex = 6;
             // 
             // panel4
@@ -196,40 +202,89 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(173)))), ((int)(((byte)(123)))));
             this.panel4.Location = new System.Drawing.Point(18, 47);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(700, 1);
+            this.panel4.Size = new System.Drawing.Size(600, 1);
             this.panel4.TabIndex = 6;
             // 
             // txtNombreUsuario
             // 
+            this.txtNombreUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(224)))), ((int)(((byte)(193)))));
             this.txtNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(15, 13);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(15, 16);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(653, 29);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(547, 29);
             this.txtNombreUsuario.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.txtNombreUsuario, "Ingresa tu usuario");
             // 
-            // tableLayoutPanel1
+            // lblTitulo
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.96216F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.65184F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.203406F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.74645F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.43614F));
-            this.tableLayoutPanel1.Controls.Add(this.btnIngresarEmpleado, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnRegresar, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblRecuperarContrasena, 3, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 305);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.37037F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.96296F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.92593F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1057, 135);
-            this.tableLayoutPanel1.TabIndex = 11;
+            this.lblTitulo.AutoEllipsis = true;
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitulo.Font = new System.Drawing.Font("Book Antiqua", 31.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(155, 36);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(762, 73);
+            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Text = "Iniciar Sesión";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtTituloUsuario
+            // 
+            this.txtTituloUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(235)))), ((int)(((byte)(211)))));
+            this.txtTituloUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTituloUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTituloUsuario.Font = new System.Drawing.Font("Bookman Old Style", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTituloUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(52)))), ((int)(((byte)(21)))));
+            this.txtTituloUsuario.Location = new System.Drawing.Point(155, 146);
+            this.txtTituloUsuario.Name = "txtTituloUsuario";
+            this.txtTituloUsuario.Size = new System.Drawing.Size(762, 30);
+            this.txtTituloUsuario.TabIndex = 0;
+            this.txtTituloUsuario.Text = "Ingresa tu usuario";
+            // 
+            // rediseñoImagen3
+            // 
+            this.rediseñoImagen3.ColumnCount = 2;
+            this.rediseñoImagen3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.009009F));
+            this.rediseñoImagen3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.99099F));
+            this.rediseñoImagen3.Controls.Add(this.pbLogo, 1, 0);
+            this.rediseñoImagen3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rediseñoImagen3.Location = new System.Drawing.Point(3, 39);
+            this.rediseñoImagen3.Name = "rediseñoImagen3";
+            this.rediseñoImagen3.RowCount = 2;
+            this.rediseñoImagen3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.4058F));
+            this.rediseñoImagen3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.5942F));
+            this.rediseñoImagen3.Size = new System.Drawing.Size(146, 67);
+            this.rediseñoImagen3.TabIndex = 9;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(16, 3);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(127, 53);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
+            // 
+            // rediseñoImagen4
+            // 
+            this.rediseñoImagen4.ColumnCount = 5;
+            this.rediseñoImagen4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.52041F));
+            this.rediseñoImagen4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.10204F));
+            this.rediseñoImagen4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.015306F));
+            this.rediseñoImagen4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.22959F));
+            this.rediseñoImagen4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.51531F));
+            this.rediseñoImagen4.Controls.Add(this.btnIngresarEmpleado, 3, 0);
+            this.rediseñoImagen4.Controls.Add(this.button2, 1, 0);
+            this.rediseñoImagen4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rediseñoImagen4.Location = new System.Drawing.Point(155, 426);
+            this.rediseñoImagen4.Name = "rediseñoImagen4";
+            this.rediseñoImagen4.RowCount = 1;
+            this.rediseñoImagen4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rediseñoImagen4.Size = new System.Drawing.Size(762, 42);
+            this.rediseñoImagen4.TabIndex = 10;
             // 
             // btnIngresarEmpleado
             // 
@@ -237,107 +292,76 @@
             this.btnIngresarEmpleado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnIngresarEmpleado.FlatAppearance.BorderSize = 0;
             this.btnIngresarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresarEmpleado.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresarEmpleado.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresarEmpleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(47)))), ((int)(((byte)(36)))));
-            this.btnIngresarEmpleado.Location = new System.Drawing.Point(518, 17);
+            this.btnIngresarEmpleado.Location = new System.Drawing.Point(386, 3);
             this.btnIngresarEmpleado.Name = "btnIngresarEmpleado";
-            this.btnIngresarEmpleado.Size = new System.Drawing.Size(244, 52);
+            this.btnIngresarEmpleado.Size = new System.Drawing.Size(223, 36);
             this.btnIngresarEmpleado.TabIndex = 3;
             this.btnIngresarEmpleado.Text = "Ingresar";
-            this.toolTip1.SetToolTip(this.btnIngresarEmpleado, "Ingresa al sistema");
             this.btnIngresarEmpleado.UseVisualStyleBackColor = false;
-            this.btnIngresarEmpleado.Click += new System.EventHandler(this.btnIngresarEmpleado_Click);
+            this.btnIngresarEmpleado.Click += new System.EventHandler(this.btnIngresarEmpleado_Click_1);
             // 
-            // btnRegresar
+            // button2
             // 
-            this.btnRegresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(148)))));
-            this.btnRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRegresar.FlatAppearance.BorderSize = 0;
-            this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegresar.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(47)))), ((int)(((byte)(36)))));
-            this.btnRegresar.Location = new System.Drawing.Point(214, 17);
-            this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(243, 52);
-            this.btnRegresar.TabIndex = 4;
-            this.btnRegresar.Text = "Regresar";
-            this.toolTip1.SetToolTip(this.btnRegresar, "regresar a la pantalla anterior");
-            this.btnRegresar.UseVisualStyleBackColor = false;
-            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(148)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Georgia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(105, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(222, 36);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Regresar";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lblRecuperarContrasena
+            // rediseñoImagen5
             // 
-            this.lblRecuperarContrasena.AutoSize = true;
-            this.lblRecuperarContrasena.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblRecuperarContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecuperarContrasena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(30)))), ((int)(((byte)(15)))));
-            this.lblRecuperarContrasena.Location = new System.Drawing.Point(518, 72);
-            this.lblRecuperarContrasena.Name = "lblRecuperarContrasena";
-            this.lblRecuperarContrasena.Size = new System.Drawing.Size(244, 18);
-            this.lblRecuperarContrasena.TabIndex = 3;
-            this.lblRecuperarContrasena.Text = "¿Olvidaste tu contraseña?";
-            this.lblRecuperarContrasena.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.toolTip1.SetToolTip(this.lblRecuperarContrasena, "Recuperar contraseña");
-            this.lblRecuperarContrasena.Click += new System.EventHandler(this.lblRecuperarContrasena_Click);
+            this.rediseñoImagen5.ColumnCount = 3;
+            this.rediseñoImagen5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rediseñoImagen5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.7398F));
+            this.rediseñoImagen5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.13265F));
+            this.rediseñoImagen5.Controls.Add(this.label1, 1, 2);
+            this.rediseñoImagen5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rediseñoImagen5.Location = new System.Drawing.Point(155, 474);
+            this.rediseñoImagen5.Name = "rediseñoImagen5";
+            this.rediseñoImagen5.RowCount = 3;
+            this.rediseñoImagen5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rediseñoImagen5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rediseñoImagen5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.rediseñoImagen5.Size = new System.Drawing.Size(762, 27);
+            this.rediseñoImagen5.TabIndex = 11;
             // 
-            // pnlcontenedor
+            // label1
             // 
-            this.pnlcontenedor.Controls.Add(this.tableLayoutPanel3);
-            this.pnlcontenedor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlcontenedor.Location = new System.Drawing.Point(0, 0);
-            this.pnlcontenedor.Name = "pnlcontenedor";
-            this.pnlcontenedor.Size = new System.Drawing.Size(1057, 106);
-            this.pnlcontenedor.TabIndex = 2;
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Location = new System.Drawing.Point(384, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "¿Olvidaste tu contraseña?";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // tableLayoutPanel3
+            // rediseñoImagen6
             // 
-            this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.7568591F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.068117F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.31883F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.47588F));
-            this.tableLayoutPanel3.Controls.Add(this.lblTitulo, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1057, 106);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoEllipsis = true;
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTitulo.Font = new System.Drawing.Font("Book Antiqua", 46.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(205, 15);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(621, 91);
-            this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Iniciar Sesión";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.pbLogo);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(11, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(145, 100);
-            this.panel2.TabIndex = 2;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = global::Vista.Properties.Resources.LgoColor;
-            this.pbLogo.Location = new System.Drawing.Point(11, 10);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(100, 50);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
+            this.rediseñoImagen6.ColumnCount = 3;
+            this.rediseñoImagen6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.26087F));
+            this.rediseñoImagen6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
+            this.rediseñoImagen6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.29469F));
+            this.rediseñoImagen6.Controls.Add(this.button1, 1, 1);
+            this.rediseñoImagen6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rediseñoImagen6.Location = new System.Drawing.Point(1515, 762);
+            this.rediseñoImagen6.Name = "rediseñoImagen6";
+            this.rediseñoImagen6.RowCount = 3;
+            this.rediseñoImagen6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.86425F));
+            this.rediseñoImagen6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.62896F));
+            this.rediseñoImagen6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.95928F));
+            this.rediseñoImagen6.Size = new System.Drawing.Size(406, 208);
+            this.rediseñoImagen6.TabIndex = 4;
             // 
             // button1
             // 
@@ -345,93 +369,71 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(110, 85);
+            this.button1.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(117, 64);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 65);
-            this.button1.TabIndex = 1;
+            this.button1.Size = new System.Drawing.Size(174, 80);
+            this.button1.TabIndex = 0;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(39)))), ((int)(((byte)(3)))));
-            this.tableLayoutPanel2.BackgroundImage = global::Vista.Properties.Resources.Fondo2;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23F));
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1521, 755);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.13953F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.02325F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.37209F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(400, 215);
-            this.tableLayoutPanel2.TabIndex = 5;
             // 
             // frmfrmIniciarSesionEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1924, 973);
-            this.Controls.Add(this.pnlVistaIniciarEmpleado);
+            this.Controls.Add(this.pnlVista);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "frmfrmIniciarSesionEmpleado";
             this.Text = "frmfrmIniciarSesionEmpleado";
+            this.TransparencyKey = System.Drawing.SystemColors.ActiveBorder;
             this.Load += new System.EventHandler(this.frmfrmIniciarSesionEmpleado_Load);
-            this.pnlVistaIniciarEmpleado.ResumeLayout(false);
-            this.tlpFondo.ResumeLayout(false);
+            this.pnlVista.ResumeLayout(false);
+            this.rediseñoImagen1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.rediseñoImagen2.ResumeLayout(false);
+            this.rediseñoImagen2.PerformLayout();
             this.panlContraseña.ResumeLayout(false);
             this.panlContraseña.PerformLayout();
             this.pnlUsuario.ResumeLayout(false);
             this.pnlUsuario.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.pnlcontenedor.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.rediseñoImagen3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.rediseñoImagen4.ResumeLayout(false);
+            this.rediseñoImagen5.ResumeLayout(false);
+            this.rediseñoImagen5.PerformLayout();
+            this.rediseñoImagen6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlVistaIniciarEmpleado;
-        private System.Windows.Forms.TableLayoutPanel tlpFondo;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private Utilidades.redisenoPanel pnlVista;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtTituloUsuario;
-        private System.Windows.Forms.Panel pnlUsuario;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pbLogo;
-        private System.Windows.Forms.TextBox txtNombreUsuario;
-        private System.Windows.Forms.TextBox textBox1;
+        private Utilidades.RediseñoImagen rediseñoImagen2;
         private System.Windows.Forms.Panel panlContraseña;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtContrasena;
-        private System.Windows.Forms.Button btnIngresarEmpleado;
-        private System.Windows.Forms.Label lblRecuperarContrasena;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel pnlUsuario;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txtNombreUsuario;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Panel pnlcontenedor;
-        private System.Windows.Forms.Button btnRegresar;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox txtTituloUsuario;
+        private Utilidades.RediseñoImagen rediseñoImagen3;
+        private System.Windows.Forms.PictureBox pbLogo;
+        private Utilidades.RediseñoImagen rediseñoImagen4;
+        private System.Windows.Forms.Button btnIngresarEmpleado;
+        private Utilidades.RediseñoImagen rediseñoImagen5;
+        private Utilidades.RediseñoImagen rediseñoImagen1;
+        private Utilidades.RediseñoImagen rediseñoImagen6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }

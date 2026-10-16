@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,18 +28,22 @@ namespace Modelos.Entidades
         //Hay usuarios o una configuracion previa
         public static (bool existenteUsuarios, bool existenDatosEmpresa) ExisteConfiguracion()
         {
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("ExisteConfiguracionInicial", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+                string sql = @"SELECT 
+                (SELECT COUNT(*) FROM Usuario WHERE EliminadoUsuario = 0)       AS TieneUsuarios,
+                (SELECT COUNT(*) FROM DatosEmpresa)                             AS TieneConfiguracion;";
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
                 {
-                    if (reader.Read())
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        bool usuarios = Convert.ToInt32(reader["TieneUsuarios"]) == 1;
-                        bool configuracion = Convert.ToInt32(reader["TieneConfiguracion"]) == 1;
-                        return (usuarios, configuracion);
+                        if (reader.Read())
+                        {
+                            bool usuarios = Convert.ToInt32(reader["TieneUsuarios"]) > 0;
+                            bool configuracion = Convert.ToInt32(reader["TieneConfiguracion"]) > 0;
+                            return (usuarios, configuracion);
+                        }
                     }
                 }
             }
@@ -50,20 +54,47 @@ namespace Modelos.Entidades
         //Guardar info empresa
         public static bool Guardar(DatosEmpresa config)
         {
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("GuardarConfiguracionEmpresa", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+                string sqlExiste = "SELECT COUNT(*) FROM DatosEmpresa;";
 
-                cmd.Parameters.Add("@NombreEmpresa", SqlDbType.VarChar).Value = config.NombreEmpresa;
-                cmd.Parameters.Add("@CorreoEmpresa", SqlDbType.VarChar).Value = config.CorreoEmpresa;
-                cmd.Parameters.Add("@TelefonoEmpresa", SqlDbType.VarChar).Value = config.TelefonoEmpresa;
-                cmd.Parameters.Add("@DireccionEmpresa", SqlDbType.VarChar).Value = config.DireccionEmpresa;
+                using (SQLiteCommand cmdExiste = new SQLiteCommand(sqlExiste, cn))
+                {
+                    int existe = Convert.ToInt32(cmdExiste.ExecuteScalar());
 
-                cmd.Parameters.Add("@LogoEmpresa", SqlDbType.VarChar).Value =
-                    string.IsNullOrWhiteSpace(config.LogoEmpresa) ? (object)DBNull.Value : config.LogoEmpresa;
+                    string sql;
+                    if (existe > 0)
+                    {
+                        sql = @"UPDATE DatosEmpresa
+                                SET NombreEmpresa      = @NombreEmpresa,
+                                    CorreoEmpresa      = @CorreoEmpresa,
+                                    TelefonoEmpresa    = @TelefonoEmpresa,
+                                    DireccionEmpresa   = @DireccionEmpresa,
+                                    LogoEmpresa        = @LogoEmpresa,
+                                    FechaConfiguracion = datetime('now','localtime')
+                                WHERE IdDatosEmpresa = (SELECT IdDatosEmpresa FROM DatosEmpresa ORDER BY IdDatosEmpresa LIMIT 1);";
+                    }
+                    else
+                    {
+                        sql = @"INSERT INTO DatosEmpresa 
+                                    (NombreEmpresa, CorreoEmpresa, TelefonoEmpresa, DireccionEmpresa, LogoEmpresa)
+                                VALUES 
+                                    (@NombreEmpresa, @CorreoEmpresa, @TelefonoEmpresa, @DireccionEmpresa, @LogoEmpresa);";
+                    }
 
-                cmd.ExecuteNonQuery();
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.Add("@NombreEmpresa", DbType.String).Value = config.NombreEmpresa;
+                        cmd.Parameters.Add("@CorreoEmpresa", DbType.String).Value = config.CorreoEmpresa;
+                        cmd.Parameters.Add("@TelefonoEmpresa", DbType.String).Value = config.TelefonoEmpresa;
+                        cmd.Parameters.Add("@DireccionEmpresa", DbType.String).Value = config.DireccionEmpresa;
+                        cmd.Parameters.Add("@LogoEmpresa", DbType.String).Value =
+                            string.IsNullOrWhiteSpace(config.LogoEmpresa) ? (object)DBNull.Value : config.LogoEmpresa;
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
                 return true;
             }
         }
@@ -71,12 +102,16 @@ namespace Modelos.Entidades
         //Guardar configuracion datso empresa
         public static DatosEmpresa Obtener()
         {
-            using (SqlConnection cn = ConexionDB.Conectar())
-            using (SqlCommand cmd = new SqlCommand("MostrarConfiguracionEmpresa", cn))
+            using (SQLiteConnection cn = ConexionDB.Conectar())
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+                string sql = @"SELECT IdDatosEmpresa, NombreEmpresa, CorreoEmpresa, TelefonoEmpresa,
+                                      DireccionEmpresa, LogoEmpresa, FechaConfiguracion
+                               FROM DatosEmpresa
+                               ORDER BY IdDatosEmpresa DESC
+                               LIMIT 1;";
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cn))
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {

@@ -73,7 +73,8 @@ namespace Vista.GerenteCalendario
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Error: " + ex.Message);
+                MessageBox.Show("Error al cargar recordatorios: " + ex.Message,
+            "ERROR-DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -91,7 +92,12 @@ namespace Vista.GerenteCalendario
                 panel.Cursor = Cursors.Hand;
                 Redondeo.RedondearFig(panel, 10);
 
-                TimeSpan hora = (TimeSpan)fila["HoraFecha"];
+                TimeSpan hora;
+
+                if (!TimeSpan.TryParse(Convert.ToString(fila["HoraFecha"]),out hora))
+                {
+                    hora = TimeSpan.Zero;
+                }
 
                 Label lblHora = new Label();
                 lblHora.Text = "Hora: " + DateTime.Today.Add(hora).ToString("hh:mm tt");

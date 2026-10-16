@@ -174,7 +174,7 @@ namespace Vista.EmpleadoServicios
                 lblTituloPrecio.AutoSize = true;
 
                 Label lblPrecio = new Label();
-                decimal precio = Convert.ToDecimal(fila["PrecioAlquilerProducto"]);
+                decimal precio = Convert.ToDecimal(fila["PrecioALquilerProducto"]);
                 lblPrecio.Text = precio.ToString("F2");
                 lblPrecio.Font = new Font("Bookman Old Style", 20, FontStyle.Regular);
                 lblPrecio.Location = new Point(765, 57);

@@ -124,7 +124,7 @@
             this.btnFinalizarConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(189)))), ((int)(((byte)(45)))));
             this.btnFinalizarConfiguracion.FlatAppearance.BorderSize = 0;
             this.btnFinalizarConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizarConfiguracion.Font = new System.Drawing.Font("Georgia", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarConfiguracion.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizarConfiguracion.ForeColor = System.Drawing.Color.Black;
             this.btnFinalizarConfiguracion.Location = new System.Drawing.Point(178, 485);
             this.btnFinalizarConfiguracion.Name = "btnFinalizarConfiguracion";
@@ -171,11 +171,11 @@
             // 
             this.txtCorreoGerente.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtCorreoGerente.Font = new System.Drawing.Font("Microsoft Tai Le", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreoGerente.Location = new System.Drawing.Point(32, 258);
+            this.txtCorreoGerente.Location = new System.Drawing.Point(32, 259);
             this.txtCorreoGerente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreoGerente.Multiline = true;
             this.txtCorreoGerente.Name = "txtCorreoGerente";
-            this.txtCorreoGerente.Size = new System.Drawing.Size(527, 24);
+            this.txtCorreoGerente.Size = new System.Drawing.Size(527, 29);
             this.txtCorreoGerente.TabIndex = 32;
             // 
             // lblLogo
@@ -449,7 +449,7 @@
             this.MinimumSize = new System.Drawing.Size(1299, 725);
             this.Name = "frmConfiguracionInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmConfiguracionInicial";
+            this.Text = "Configuracion Inicial";
             this.pnlConfiguracionInicial.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
